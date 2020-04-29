@@ -1,0 +1,21 @@
+---
+title: "Individual Work Log - Sofia Bahmutsky"
+author: "Sofia Bahmutsky"
+date: "29/04/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Individual Work Log - Capstone Project
+
+## Wednesday April 29
+1. Meeting with capstone partners from 11am to 12pm, discussing ideas, scheduling, and other expectations of the project. (1 hour)
+
+2. Meeting as a student group from 12pm to 12:45pm. We talked about which project ideas we are interested in, and workload for the weekend. We planned on having individual research during the weekend, then assmbling a rough proposal draft throuhgout Monday, and refining it. Then to have it sent to SC and an answer from Bruno by Wednesday. This would give us enough time to make edits before the dealine on Friday May 8. (45 mins)
+
+3. Individual research on the topic, looking through the data...(? hours)

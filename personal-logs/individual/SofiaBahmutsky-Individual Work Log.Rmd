@@ -18,4 +18,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 2. Meeting as a student group from 12pm to 12:45pm. We talked about which project ideas we are interested in, and workload for the weekend. We planned on having individual research during the weekend, then assmbling a rough proposal draft throuhgout Monday, and refining it. Then to have it sent to SC and an answer from Bruno by Wednesday. This would give us enough time to make edits before the dealine on Friday May 8. (45 mins)
 
-3. Individual research on the topic, looking through the data...(? hours)
+3. Individual research on the topic, looking through the data...(2 hours)
+
+
+## Friday May 1
+1. Meeting with group members via Zoo. from 10:30 until 12pm. We further discussed group roles, and work plan for the next week ahead. We determined how we will accomplish the goald of the week. (1.5 hour)
+
+
+## Saturday May 2
+1. Individual research, looking deeper into the datasets which were emailed to us by Bruno. I locally downloaded all the data, trial inport to python to do some small explorations of the data. 
+
+2. Contribute to the presentation slides for Tuesday, so Dr. Scott can review our progress.
+
+
+## Monday May 4
+1. Group meeting 9:30-? Working on the proposal, further discussion of ideas to include in our capstone deliverables. 

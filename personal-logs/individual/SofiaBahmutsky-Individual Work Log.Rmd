@@ -1,5 +1,5 @@
 ---
-title: "Individual Work Log - Sofia Bahmutsky"
+title: "Individual Work Log WEEK 1 - Sofia Bahmutsky"
 author: "Sofia Bahmutsky"
 date: "29/04/2020"
 output:
@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Individual Work Log - Capstone Project
+### Individual Work Log  WEEK 1 - Capstone Project
 
 ## Wednesday April 29
 1. Meeting with capstone partners from 11am to 12pm, discussing ideas, scheduling, and other expectations of the project. (1 hour)
@@ -26,10 +26,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Saturday May 2
-1. Individual research, looking deeper into the datasets which were emailed to us by Bruno. I locally downloaded all the data, trial inport to python to do some small explorations of the data. 
+1. Individual research, looking deeper into the datasets which were emailed to us by Bruno. I locally downloaded all the data, trial inport to python to do some small explorations of the data. (1 hour)
 
-2. Contribute to the presentation slides for Tuesday, so Dr. Scott can review our progress.
+2. Contribute to the presentation slides for Tuesday, so Dr. Scott can review our progress. (30 mins)
 
 
 ## Monday May 4
-1. Group meeting 9:30-? Working on the proposal, further discussion of ideas to include in our capstone deliverables. 
+1. Group meeting 9:30-? Working on the proposal, further discussion of ideas to include in our capstone deliverables. Finish presentation slides for tomorrow meeting with prof and TA's. (3)

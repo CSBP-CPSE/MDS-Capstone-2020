@@ -22,14 +22,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Friday May 1
-1. Meeting with group members via Zoo. from 10:30 until 12pm. We further discussed group roles, and work plan for the next week ahead. We determined how we will accomplish the goald of the week. (1.5 hour)
+1. Meeting with group members via Zoom. from 10:30 until 12pm. We further discussed group roles, and work plan for the next week ahead. We determined how we will accomplish the goals of the week. (1.5 hour)
 
 
 ## Saturday May 2
-1. Individual research, looking deeper into the datasets which were emailed to us by Bruno. I locally downloaded all the data, trial inport to python to do some small explorations of the data. (1 hour)
+1. Individual research, looking deeper into the datasets which were emailed to us by Bruno. I locally downloaded all the data, trial import to python to do some small explorations of the data. (1 hour)
 
 2. Contribute to the presentation slides for Tuesday, so Dr. Scott can review our progress. (30 mins)
 
 
 ## Monday May 4
-1. Group meeting 9:30-? Working on the proposal, further discussion of ideas to include in our capstone deliverables. Finish presentation slides for tomorrow meeting with prof and TA's. (3)
+1. Group meeting 9:30-? Working on the proposal, further discussion of ideas to include in our capstone deliverables. Finish presentation slides for tomorrow meeting with prof and TA's. (3 hours)
+
+2. Finding Ontario long-term care homes information about number of cases daily and in which facility. (1 hour)

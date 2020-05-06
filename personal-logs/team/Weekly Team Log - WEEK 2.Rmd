@@ -1,0 +1,24 @@
+---
+title: "Weekly Team Log - WEEK 2"
+author: "Sofia Bahmutsky"
+date: "05/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Weekly Team Log - WEEK 1
+
+### Week of April May 5 to May 11
+
+1. Presentation of project to prof and TA's.
+
+2. Finished proposal draft, sent to Stats Canada for review. 
+
+3. Began working in pairs on one of the two tasks for the week, data cleaning, and making a web scraper. 
+
+4. Review our proposal with Bruno and Marian on Wednesday May 6. 
+
+5. Revising proposal.

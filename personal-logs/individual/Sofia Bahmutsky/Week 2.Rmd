@@ -1,0 +1,29 @@
+---
+title: "Individual Work Log WEEK 2 - Sofia Bahmutsky"
+author: "Sofia Bahmutsky"
+date: "04/05/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Individual Work Log  WEEK 2 - Capstone Project
+
+## Tuesday May 5
+
+1. Meeting with prof and TA's, presenting the weekly update. 11:30am-12pm. (30 mins)
+
+2. Importing data to R, checking summary stats, research on connecting the open street map. 
+
+3. Group meeting, also with Debangsha. asking questions about his capstone project last year. 3pm - 3:30pm (30 mins)
+
+
+## Wednesday May 6
+
+1. Group meeting 9:30am -3?
+
+2. Meeting with SC 11am-12pm (1 hour)
+
+3. Revising proposal to fix issues which Bruno brought up.

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.5.8)  5 MAY 2020 15:47
+This is LuaTeX, Version 1.10.0 (TeX Live 2019)  (format=lualatex 2019.5.8)  7 MAY 2020 11:29
  restricted system commands enabled.
 **proposal.tex
 (./proposal.tex
@@ -48,7 +48,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.057 seconds
+luaotfload | main : initialization completed in 0.059 seconds
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/size10.clo
@@ -531,30 +531,49 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 38.
 
-(./proposal.aux)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip74
+\RaggedLeftLeftskip=\skip75
+\RaggedRightLeftskip=\skip76
+\CenteringRightskip=\skip77
+\RaggedLeftRightskip=\skip78
+\RaggedRightRightskip=\skip79
+\CenteringParfillskip=\skip80
+\RaggedLeftParfillskip=\skip81
+\RaggedRightParfillskip=\skip82
+\JustifyingParfillskip=\skip83
+\CenteringParindent=\skip84
+\RaggedLeftParindent=\skip85
+\RaggedRightParindent=\skip86
+\JustifyingParindent=\skip87
+) (./proposal.aux)
 \openout1 = proposal.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
-Package chemgreek Info: Activating mapping `default' on line 56.
+Package chemgreek Info: Activating mapping `default' on line 59.
 
-
-(/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count289
 \scratchdimen=\dimen170
@@ -600,7 +619,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: luatex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 56.
+Package hyperref Info: Link coloring ON on input line 59.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -610,108 +629,200 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count295
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (./proposal.out) (./proposal.out)
 \@outlinefile=\write3
 
 \openout3 = proposal.out
- [1
+ ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 59.
+
+[1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (10.34007pt too wide) in paragraph at lines 104--105
-[]
+Overfull \hbox (19.28891pt too wide) in paragraph at lines 104--105
+[]\TU/lmr/m/n/10 A comma-separated
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
-
+Overfull \hbox (15.64894pt too wide) in paragraph at lines 107--108
+[]\TU/lmr/m/n/10 A fea-ture server from Statis-tics Canada. 
  []
 
 [2]
-Overfull \hbox (14.872pt too wide) in paragraph at lines 146--147
-[]\TU/lmr/m/n/10 Vi-su-al-iza-tions in-te-grat-ing health-care fa-cil-i-ties, p
-rox-im-ity met-rics and COVID-
- []
-
-<schedule.png, id=55, 1055.945pt x 511.9125pt>
+<schedule.png, id=71, 1055.945pt x 511.9125pt>
 File: schedule.png Graphic file (type png)
 <use schedule.png>
-Package luatex.def Info: schedule.png  used on input line 158.
+Package luatex.def Info: schedule.png  used on input line 169.
 (luatex.def)             Requested size: 224.2479pt x 108.7077pt.
 
-Overfull \hbox (72.78395pt too wide) in paragraph at lines 168--182
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
+[]|\TU/lmr/m/n/10 Cre-ate LTC homes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
+[]|\TU/lmr/m/n/10 R, ar-cGIS,
+ []
+
+
+Overfull \hbox (61.68579pt too wide) in paragraph at lines 179--193
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
-
- []
-
-[3<./schedule.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
-
+[3]
+Overfull \hbox (12.09001pt too wide) in paragraph at lines 218--219
+\TU/lmr/m/n/10 to track COVID-19 in real time. Lancet In-fect Dis. [][]https://
+doi.org/10.1016/S1473-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--204
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
+
+ []
+
+[4<./schedule.png>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.221 \textbf
+           {2} World Health Organization. (2020, March 3). Coronavirus disea...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (37.48999pt too wide) in paragraph at lines 221--222
+\TU/lmr/m/n/10 (COVID-19) Sit-u-a-tion Re-port --- 42. Re-trieved from [][]http
+s://www.who.int/docs/default-
+ []
+
+
+Overfull \hbox (56.44998pt too wide) in paragraph at lines 221--222
+\TU/lmr/m/n/10 source/coro-n-aviruse/situation-reports/20200503-covid-19-sitrep
+-104.pdf?sfvrsn=53328f46_4[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
-No file proposal.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+
+Overfull \hbox (18.40001pt too wide) in paragraph at lines 225--226
+\TU/lmr/m/n/10 mail.com/canada/article-outbreaks-at-seniors-homes-linked-to-alm
+ost-half-of-covid-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
+
+ []
+
+
+Overfull \hbox (79.53001pt too wide) in paragraph at lines 229--230
+[][]\TU/lmr/m/n/10 https://ser-vices1.ar-cgis.com/HsjBaDykC1mjhXz9/ar-cgis/rest
+/ser-vices/covid_19_by_health_re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.233 ...reporting.ltchomes.net/en-ca/LHIN_Map.aspx}
+                                                  . \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.233 ...reporting.ltchomes.net/en-ca/LHIN_Map.aspx}
+                                                  . \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (72.08998pt too wide) in paragraph at lines 233--234
+[]\TU/lmr/bx/n/10 8 \TU/lmr/m/n/10 Pub-lic Re-port-ing for Long-Term Care. Re-t
+rieved from [][]http://publicreporting.ltchomes.net/en-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 73B510D18D7AB18CCF62F39F4652A622;501.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+(rerunfilecheck)             Checksum: C66E1E4227B9CABC3B80EBB7C5865726;698.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
 )
 
 Here is how much of LuaTeX's memory you used:
- 18716 strings out of 494291
+ 18806 strings out of 494291
  100000,460012 words of node,token memory allocated
- 548 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 62 glue_spec,
- 8 attribute_list, 1 write, 1 pdf_action nodes
-   avail lists: 2:373,3:104,4:30,5:161,6:21,7:2720,8:10,9:152,10:11,11:204
- 22614 multiletter control sequences out of 65536+600000
+ 678 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 14 attribute, 76 glue_spec
+, 14 attribute_list, 1 write, 7 pdf_action nodes
+   avail lists: 2:417,3:139,4:32,5:202,6:28,7:3285,8:19,9:244,10:10,11:260
+ 22687 multiletter control sequences out of 65536+600000
  68 fonts using 8707799 bytes
- 41i,10n,63p,1129b,855s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 41i,10n,63p,698b,790s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf>
 </usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
 </usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.o
 tf></usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmromancaps10-re
 gular.otf></usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroman12
 -regular.otf></usr/local/texlive/2019/texmf-dist/fonts/opentype/public/lm/lmroma
-n17-regular.otf>
-Output written on proposal.pdf (4 pages, 63341 bytes).
+n17-regular.otf></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb>
+Output written on proposal.pdf (5 pages, 86726 bytes).
 
-PDF statistics: 115 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 131072)
- 73 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 154 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 131072)
+ 105 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -37,3 +37,6 @@ May 6
   - Discussed proposal draft
 - Team meeting with Sofia, KT
   - Proposal writing and revision(5h)
+
+May 7
+- Revised the proposal 

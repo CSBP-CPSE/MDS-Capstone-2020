@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Weekly Team Log - WEEK 1
+## Weekly Team Log - WEEK 2
 
 ### Week of April May 5 to May 11
 
@@ -22,3 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 4. Review our proposal with Bruno and Marian on Wednesday May 6. 
 
 5. Revising proposal.
+
+6. Submitting final draft of proposal to Bruno and Marian.
+
+

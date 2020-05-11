@@ -22,8 +22,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Wednesday May 6
 
-1. Group meeting 9:30am -3?
+1. Group meeting 9:30am -4pm (6.5 hours)
 
 2. Meeting with SC 11am-12pm (1 hour)
 
-3. Revising proposal to fix issues which Bruno brought up.
+3. Revising proposal to fix issues which Bruno brought up (3 hours)
+
+
+## Thursday May 7
+
+1. Data manipulation in R with ODHF dataset (2 hours)
+
+
+## Monday May 11
+
+1. Zoom meeting with group 9:30am - ?
+
+2. ODHF data cleaning and manipulation in Python, 2 hours
+
+3. Reviewing scarping, trying to create a scraper for getting addresses to combine with ODHF data
+
+

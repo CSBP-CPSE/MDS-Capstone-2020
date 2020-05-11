@@ -9,7 +9,7 @@
 # 
 # *Note:* must run selenium server in command prompt
 # 
-# `java -jar /path/to/selenium`
+# `java -jar /usr/local/bin/selenium-server-standalone-3.141.59.jar`
 # 
 # ---
 
@@ -55,16 +55,6 @@ my_url = 'https://www.ontario.ca/page/how-ontario-is-responding-covid-19#section
 driver.get(my_url)
 
 
-# In[10]:
-
-
-# tables = driver.find_elements_by_tag_name('table')
-
-# for t in tables:
-#     content = driver.find_element_by_class_name('node-130423')
-#     print(content.text)
-
-
 # In[13]:
 
 
@@ -101,77 +91,3 @@ all_ltc = df.append(df2)
 
 
 all_ltc.to_csv('../../data/merged_ltc.csv')
-
-
-# ---
-# # Other Attempts:
-# 
-# ---
-
-# #### Methods 1: Firefox driver with options and binary
-
-# In[109]:
-
-
-import selenium 
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-
-options = Options()
-options.binary_location = FirefoxBinary('/usr/local/bin')
-selenium.webdriver.firefox.webdriver.WebDriver(firefox_options=options)
-
-
-# #### Methods 2: Firefox driver with binary and desired capabilities
-
-# In[110]:
-
-
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-cap = DesiredCapabilities().FIREFOX
-cap["marionette"] = False
-browser = webdriver.Firefox(capabilities=cap, executable_path="/usr/local/bin/geckodriver.exe")
-browser.get(my_url)
-browser.quit()
-
-
-# #### Methods 3: Firefox driver
-
-# In[106]:
-
-
-with webdriver.Firefox() as driver:
-    driver.get('my_url')
-    tds = driver.get_element_by_tag_name('table')
-    for i in range(0, len(table)):
-        bs = bs4.BeautifulSoup(i, 'html.parser')
-        print(bs)
-
-
-# #### Methods 4: Faking a browser visit
-
-# In[111]:
-
-
-import requests
-
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-
-response = requests.get(my_url, headers=headers)
-print(response.content)
-
-
-# In[115]:
-
-
-profile = webdriver.FirefoxProfile('/usr/local/bin')
-driver = webdriver.Firefox(profile)
-
-
-# In[34]:
-
-
-s
-

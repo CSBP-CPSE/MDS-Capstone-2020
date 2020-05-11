@@ -74,12 +74,12 @@ df = pd.read_html(driver.page_source)[3]
 # In[140]:
 
 
-df.to_csv('ltc-active.csv')
+df.to_csv('../data/ltc-active.csv')
 
 
 # In[139]:
 
 
 df2 = pd.read_html(driver.page_source)[4]
-df2.to_csv('ltc-inactive.csv')
+df2.to_csv('../data/ltc-inactive.csv')
 

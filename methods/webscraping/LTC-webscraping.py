@@ -7,9 +7,9 @@
 # 
 # **Authors:** KT and Shreeram
 # 
-# *Note:* must run selenium server in command prompt
+# *Note:* must run selenium server in command prompt (downloaded from https://www.selenium.dev/downloads/)
 # 
-# `java -jar /path/to/selenium`
+# java -jar /usr/local/bin/selenium-server-standalone-3.141.59.jar
 # 
 # ---
 

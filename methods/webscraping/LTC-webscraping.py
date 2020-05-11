@@ -7,13 +7,13 @@
 # 
 # **Authors:** KT and Shreeram
 # 
-# *Note:* must run selenium server in command prompt (downloaded from https://www.selenium.dev/downloads/)
+# *Note:* must run selenium server in command prompt
 # 
-# java -jar /usr/local/bin/selenium-server-standalone-3.141.59.jar
+# `java -jar /path/to/selenium`
 # 
 # ---
 
-# In[31]:
+# In[1]:
 
 
 import pandas as pd
@@ -23,13 +23,13 @@ r = requests.get('https://www.ontario.ca/page/how-ontario-is-responding-covid-19
 s = BeautifulSoup(r.text,'html5lib')
 
 
-# In[33]:
+# In[2]:
 
 
 r.request.headers
 
 
-# In[35]:
+# In[3]:
 
 
 r.headers['Last-Modified']
@@ -37,7 +37,7 @@ r.headers['Last-Modified']
 
 # #### Method 5: Selenium Server
 
-# In[143]:
+# In[8]:
 
 
 from selenium import webdriver
@@ -48,14 +48,14 @@ driver = webdriver.Remote(
    desired_capabilities=DesiredCapabilities.CHROME)
 
 
-# In[144]:
+# In[9]:
 
 
 my_url = 'https://www.ontario.ca/page/how-ontario-is-responding-covid-19#section-1'
 driver.get(my_url)
 
 
-# In[142]:
+# In[10]:
 
 
 # tables = driver.find_elements_by_tag_name('table')
@@ -65,21 +65,113 @@ driver.get(my_url)
 #     print(content.text)
 
 
-# In[145]:
+# In[13]:
 
 
 df = pd.read_html(driver.page_source)[3]
+df2 = pd.read_html(driver.page_source)[4]
 
 
 # In[140]:
 
 
-df.to_csv('../data/ltc-active.csv')
+df.to_csv('../../data/ltc-active.csv')
+df2.to_csv('../../data/ltc-inactive.csv')
 
 
-# In[139]:
+# In[15]:
 
 
-df2 = pd.read_html(driver.page_source)[4]
-df2.to_csv('../data/ltc-inactive.csv')
+df2['Status'] = 'Inactive'
+
+
+# In[17]:
+
+
+df['Status'] = 'Active'
+
+
+# In[19]:
+
+
+all_ltc = df.append(df2)
+
+
+# In[23]:
+
+
+all_ltc.to_csv('../../data/merged_ltc.csv')
+
+
+# ---
+# # Other Attempts:
+# 
+# ---
+
+# #### Methods 1: Firefox driver with options and binary
+
+# In[109]:
+
+
+import selenium 
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
+options = Options()
+options.binary_location = FirefoxBinary('/usr/local/bin')
+selenium.webdriver.firefox.webdriver.WebDriver(firefox_options=options)
+
+
+# #### Methods 2: Firefox driver with binary and desired capabilities
+
+# In[110]:
+
+
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+cap = DesiredCapabilities().FIREFOX
+cap["marionette"] = False
+browser = webdriver.Firefox(capabilities=cap, executable_path="/usr/local/bin/geckodriver.exe")
+browser.get(my_url)
+browser.quit()
+
+
+# #### Methods 3: Firefox driver
+
+# In[106]:
+
+
+with webdriver.Firefox() as driver:
+    driver.get('my_url')
+    tds = driver.get_element_by_tag_name('table')
+    for i in range(0, len(table)):
+        bs = bs4.BeautifulSoup(i, 'html.parser')
+        print(bs)
+
+
+# #### Methods 4: Faking a browser visit
+
+# In[111]:
+
+
+import requests
+
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+
+response = requests.get(my_url, headers=headers)
+print(response.content)
+
+
+# In[115]:
+
+
+profile = webdriver.FirefoxProfile('/usr/local/bin')
+driver = webdriver.Firefox(profile)
+
+
+# In[34]:
+
+
+s
 

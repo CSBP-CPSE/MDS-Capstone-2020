@@ -30,8 +30,6 @@ May 5
   - Proposal Writing (2h)
     - Sent first draft of the proposal to StatCan for feedback
 
-
-
 May 6
 - Weekly meeting with StatCan (1h)
   - Discussed proposal draft
@@ -39,4 +37,7 @@ May 6
   - Proposal writing and revision(5h)
 
 May 7
-- Revised the proposal 
+- Revised the proposal
+
+May 11
+- Webscraping for LTC database (6h)

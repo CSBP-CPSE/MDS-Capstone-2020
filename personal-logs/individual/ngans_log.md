@@ -46,3 +46,5 @@ May 11
 May 12
 - Weekly presentation (3h)
 - Weekly meeting with Prof Scott (20min)
+- Team meeting (40min)
+- Webscraping for LTC database (3h)

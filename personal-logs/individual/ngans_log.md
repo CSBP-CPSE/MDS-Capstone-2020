@@ -40,4 +40,4 @@ May 7
 - Revised the proposal
 
 May 11
-- Webscraping for LTC database (6h)
+- Webscraping for LTC database (9h)

@@ -1,0 +1,29 @@
+---
+title: "Weekly Team Log - WEEK 3"
+author: "Sofia Bahmutsky"
+date: "13/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+---
+title: "Weekly Team Log - WEEK 2"
+author: "Sofia Bahmutsky"
+date: "05/05/2020"
+output: html_document
+---
+
+## Weekly Team Log - WEEK 3
+
+### Week of April May 12 to May 18
+
+1. Presentation of project to prof and TA's.
+
+2. Working on web scraping. 
+
+
+

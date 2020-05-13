@@ -32,14 +32,3 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Thursday May 7
 
 1. Data manipulation in R with ODHF dataset (2 hours)
-
-
-## Monday May 11
-
-1. Zoom meeting with group 9:30am - ?
-
-2. ODHF data cleaning and manipulation in Python, 2 hours
-
-3. Reviewing scarping, trying to create a scraper for getting addresses to combine with ODHF data
-
-

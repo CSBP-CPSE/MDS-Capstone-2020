@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Weekly Team Log - WEEK 2
 
-### Week of April May 5 to May 11
+### Week of May 5 to May 11
 
 1. Presentation of project to prof and TA's.
 

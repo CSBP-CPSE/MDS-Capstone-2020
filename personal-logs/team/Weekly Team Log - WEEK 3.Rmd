@@ -10,12 +10,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
----
-title: "Weekly Team Log - WEEK 2"
-author: "Sofia Bahmutsky"
-date: "05/05/2020"
-output: html_document
----
 
 ## Weekly Team Log - WEEK 3
 
@@ -24,6 +18,12 @@ output: html_document
 1. Presentation of project to prof and TA's.
 
 2. Working on web scraping. 
+
+3. Everyone installing and learning qGIS.
+
+4. Splitting tasks for everyone to focus on for rest of the week, and next week.
+
+5.
 
 
 

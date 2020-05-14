@@ -2,7 +2,9 @@
 title: "Weekly Team Log - WEEK 2"
 author: "Sofia Bahmutsky"
 date: "05/05/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}

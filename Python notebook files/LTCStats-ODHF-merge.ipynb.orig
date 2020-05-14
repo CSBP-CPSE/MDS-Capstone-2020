@@ -24,16 +24,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 245,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
-    "odhf = pd.read_csv('../data/ODHF/odhf_v1.csv', engine='python')"
+    "<<<<<<< local\n",
+    "odhf = pd.read_csv('../data/ODHF/odhf_v1.csv', engine='python')\n",
+    "=======\n",
+    "odhf = pd.read_csv('/Users/Sofia/Desktop/ODHF/odhf_v1.csv', engine='python')\n",
+    ">>>>>>> remote"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -42,9 +46,155 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": null,
    "metadata": {},
    "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "<<<<<<< local\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "=======\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>Beds</th>\n",
+       "      <th>City</th>\n",
+       "      <th>Confirmed Resident Cases</th>\n",
+       "      <th>Confirmed Staff Cases</th>\n",
+       "      <th>LTC Home</th>\n",
+       "      <th>Resident Deaths</th>\n",
+       "      <th>Status</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>82</td>\n",
+       "      <td>Almonte</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>13</td>\n",
+       "      <td>Almonte Country Haven</td>\n",
+       "      <td>28</td>\n",
+       "      <td>Active</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>159</td>\n",
+       "      <td>Scarborough</td>\n",
+       "      <td>72</td>\n",
+       "      <td>60</td>\n",
+       "      <td>Altamont Care Community</td>\n",
+       "      <td>46</td>\n",
+       "      <td>Active</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>61</td>\n",
+       "      <td>Hagersville</td>\n",
+       "      <td>28</td>\n",
+       "      <td>29</td>\n",
+       "      <td>Anson Place Care Centre</td>\n",
+       "      <td>23</td>\n",
+       "      <td>Active</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>129</td>\n",
+       "      <td>Hamilton</td>\n",
+       "      <td>0</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>Arbour Creek Long-Term Care Centre</td>\n",
+       "      <td>0</td>\n",
+       "      <td>Active</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>4</td>\n",
+       "      <td>137</td>\n",
+       "      <td>Orangeville</td>\n",
+       "      <td>0</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>Avalon Retirement Centre</td>\n",
+       "      <td>0</td>\n",
+       "      <td>Active</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0  Beds         City Confirmed Resident Cases  \\\n",
+       "0           0    82      Almonte                       <5   \n",
+       "1           1   159  Scarborough                       72   \n",
+       "2           2    61  Hagersville                       28   \n",
+       "3           3   129     Hamilton                        0   \n",
+       "4           4   137  Orangeville                        0   \n",
+       "\n",
+       "  Confirmed Staff Cases                            LTC Home Resident Deaths  \\\n",
+       "0                    13               Almonte Country Haven              28   \n",
+       "1                    60             Altamont Care Community              46   \n",
+       "2                    29             Anson Place Care Centre              23   \n",
+       "3                    <5  Arbour Creek Long-Term Care Centre               0   \n",
+       "4                    <5            Avalon Retirement Centre               0   \n",
+       "\n",
+       "   Status  \n",
+       "0  Active  \n",
+       "1  Active  \n",
+       "2  Active  \n",
+       "3  Active  \n",
+       "4  Active  "
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      ">>>>>>> remote\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "<<<<<<< local <modified: text/html, text/plain>\n"
+     ]
+    },
     {
      "data": {
       "text/html": [
@@ -155,6 +305,20 @@
      "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "=======\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      ">>>>>>> remote <removed>\n"
+     ]
     }
    ],
    "source": [
@@ -163,7 +327,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": null,
    "metadata": {},
    "outputs": [
     {
@@ -348,7 +512,7 @@
        "4     NaN     48       NaN        NaN  "
       ]
      },
-     "execution_count": 5,
+     "execution_count": null,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -363,40 +527,27 @@
    "source": [
     "#### To Fix:\n",
     "- remove symbols in odhf `facility_name`\n",
-    "- convert ltc `LTC Home` to lower case\n",
-    "- convert french characters to english\n"
+    "- convert ltc `LTC Home` to lower case\n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 192,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
     "import unicodedata\n",
     "\n",
-    "odhf['cleaned_name'] = odhf['facility_name'].apply(lambda val: unicodedata.normalize('NFKD', val).encode('ascii', 'ignore').decode())"
+    "odhf['facility_name_clean'] = odhf['facility_name'].apply(lambda val: unicodedata.normalize('NFKD', val).encode('ascii', 'ignore').decode())"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
-    "ltc['cleaned_name'] = ltc['LTC Home'].map(lambda x: str(x).lower())"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 29,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import unidecode\n",
-    "\n",
-    "odhf['cleaned_name'] = odhf['facility_name_clean'].map(lambda x: unidecode.unidecode(x))\n",
-    "ltc['cleaned_name'] = ltc['facility_name_clean'].map(lambda x: unidecode.unidecode(x))\n"
+    "ltc['facility_name_clean'] = ltc['LTC Home'].map(lambda x: str(x).lower())"
    ]
   },
   {
@@ -408,16 +559,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
-    "outer = pd.merge(odhf, ltc, how = 'right', on = 'cleaned_name')"
+    "outer = pd.merge(odhf, ltc, how = 'right', on = 'facility_name_clean')"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -426,7 +577,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": null,
    "metadata": {},
    "outputs": [
     {
@@ -443,7 +594,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": null,
    "metadata": {
     "scrolled": true
    },
@@ -460,7 +611,7 @@
        "Name: facility_name_clean, dtype: int64"
       ]
      },
-     "execution_count": 26,
+     "execution_count": null,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -478,9 +629,131 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": null,
    "metadata": {},
    "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "<<<<<<< local\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "=======\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>Beds</th>\n",
+       "      <th>City</th>\n",
+       "      <th>Confirmed Resident Cases</th>\n",
+       "      <th>Confirmed Staff Cases</th>\n",
+       "      <th>LTC Home</th>\n",
+       "      <th>Resident Deaths</th>\n",
+       "      <th>Status</th>\n",
+       "      <th>facility_name_clean</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>44</th>\n",
+       "      <td>44</td>\n",
+       "      <td>71</td>\n",
+       "      <td>Ottawa</td>\n",
+       "      <td>10</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>Élisabeth-Bruyère Residence</td>\n",
+       "      <td>5</td>\n",
+       "      <td>Active</td>\n",
+       "      <td>élisabeth-bruyère residence</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>122</th>\n",
+       "      <td>122</td>\n",
+       "      <td>198</td>\n",
+       "      <td>Ottawa</td>\n",
+       "      <td>21</td>\n",
+       "      <td>17</td>\n",
+       "      <td>Residence Saint-Louis</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>Active</td>\n",
+       "      <td>residence saint-louis</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>142</th>\n",
+       "      <td>142</td>\n",
+       "      <td>87</td>\n",
+       "      <td>Mount Forest</td>\n",
+       "      <td>0</td>\n",
+       "      <td>&lt;5</td>\n",
+       "      <td>Strathcona Long Term Care</td>\n",
+       "      <td>0</td>\n",
+       "      <td>Active</td>\n",
+       "      <td>strathcona long term care</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     Unnamed: 0  Beds          City Confirmed Resident Cases  \\\n",
+       "44           44    71        Ottawa                       10   \n",
+       "122         122   198        Ottawa                       21   \n",
+       "142         142    87  Mount Forest                        0   \n",
+       "\n",
+       "    Confirmed Staff Cases                     LTC Home Resident Deaths  \\\n",
+       "44                     <5  Élisabeth-Bruyère Residence               5   \n",
+       "122                    17        Residence Saint-Louis              <5   \n",
+       "142                    <5    Strathcona Long Term Care               0   \n",
+       "\n",
+       "     Status          facility_name_clean  \n",
+       "44   Active  élisabeth-bruyère residence  \n",
+       "122  Active        residence saint-louis  \n",
+       "142  Active    strathcona long term care  "
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      ">>>>>>> remote\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "<<<<<<< local <modified: text/html, text/plain>\n"
+     ]
+    },
     {
      "data": {
       "text/html": [
@@ -524,7 +797,7 @@
        "      <td>5</td>\n",
        "      <td>&lt;5</td>\n",
        "      <td>Active</td>\n",
-       "      <td>elisabeth-bruyere residence</td>\n",
+       "      <td>élisabeth-bruyère residence</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>122</th>\n",
@@ -566,18 +839,32 @@
        "142                        0               0                    <5  Active   \n",
        "\n",
        "             facility_name_clean  \n",
-       "44   elisabeth-bruyere residence  \n",
+       "44   élisabeth-bruyère residence  \n",
        "122        residence saint-louis  \n",
        "142    strathcona long term care  "
       ]
      },
-     "execution_count": 32,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "=======\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      ">>>>>>> remote <removed>\n"
+     ]
     }
    ],
    "source": [
-    "ltc[~ltc['cleaned_name'].isin(odhf['cleaned_name'])].dropna()"
+    "ltc[~ltc['facility_name_clean'].isin(odhf['facility_name_clean'])].dropna()"
    ]
   },
   {
@@ -614,6 +901,7 @@
    ]
   },
   {
+   "attachments": {},
    "cell_type": "markdown",
    "metadata": {},
    "source": [
@@ -632,221 +920,7 @@
     "---\n",
     "\n",
     "***Next Steps:***\n",
-    "\n",
-    "1. adjust text in odhf dataframe prior to merge\n",
-    "2. merge with Ngan's scrape"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "---\n",
-    "\n",
-    "### Merge with Ngan's Scrape\n",
-    "\n",
-    "- filter ON for odhf"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 246,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "ngan=pd.read_csv(\"../data/df_ltc_final.csv\")"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 247,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "odhf['cleaned_name'] = odhf['facility_name'].apply(lambda val: unicodedata.normalize('NFKD', val).encode('ascii', 'ignore').decode())"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 248,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "odhf = odhf.loc[odhf['province'] == 'on']"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "***To Do:***\n",
-    "- remove closed homes\n",
-    "- cross reference discrepancies between Ngan's LTC scrape and ODHF\n",
-    "- change names to match ODHF for those found\n"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 249,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "20"
-      ]
-     },
-     "execution_count": 249,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "closed_homes = outer2[outer2['additional_info'].fillna('none').str.lower().str.contains('closed')]\n",
-    "len(closed_homes)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 250,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "a = set(closed_homes['cleaned_name'])\n",
-    "b = set(ngan['cleaned_name'])\n",
-    "def removeClosedHomes(a, b):\n",
-    "    return [x for x in b if x not in a]\n",
-    "open_homes = removeClosedHomes(a, b)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 251,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "ngan2 = ngan[ngan['cleaned_name'].isin(open_homes)]"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "#### Merge"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 231,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "outer2 = pd.merge(odhf, ngan2, how = 'right', on = 'cleaned_name')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 232,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "outer2.to_csv('../data/FINAL_merge.csv')"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "#### Rename LTC scraped homes with ODHF discrepancies"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 262,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# alternative entry names from scrape\n",
-    "ngan2['cleaned_name'].replace({'albright gardens homes, incorporated' : 'albright gardens',\n",
-    "                               'st. joseph\\'s villa, dundas' : \"st. joseph's villa (dundas)\",\n",
-    "                               'bella senior care residences inc.' : \"bella senior care residences\",\n",
-    "                               'bon air long term care residence' : 'chartwell bon air long term care residence',\n",
-    "                                'caressant care - codben' : 'caressant care - cobden',\n",
-    "                               'caressant care harriston' : 'caressant care - harriston',\n",
-    "                               'champlain long term care residence' : 'chartwell champlain long term care residence',\n",
-    "                                'dawson court' : 'city of thunder bay  dawson court',\n",
-    "                               'heartwood (fka versa-care cornwall)' : 'heartwood',\n",
-    "                               'lancaster long term care residence' : 'chartwell lancaster long term care residence',\n",
-    "                               'niagara long term care residence' : 'chartwell niagara long term care residence',\n",
-    "                               'north renfrew long-term care services' : 'north renfrew long-term care services inc.',\n",
-    "                               'st. joseph\\'s health centre, guelph': 'st. joseph\\'s health centre - guelph', \n",
-    "                                'the meadows' :'revera inc.  the meadows long term care centre',\n",
-    "            'william a. \"bill\" george extended care facility': 'william a. \\'bill\\' george extended care facility'}, inplace = True)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "\n",
-    "#### Rename names with french accents:\n",
-    "\n",
-    "*Require changing both ltc scraped data and odhf*"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 256,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# elisabeth-bruyere residence\n",
-    "#ngan2.loc[ngan['address'] == '75 Bruyere Street']['cleaned_name'] = 'elisabeth-bruyere residence'\n",
-    "ngan2['cleaned_name'].replace({'élisabeth-bruyère residence' : 'elisabeth-bruyere residence',\n",
-    "                              'rÈsidence saint-louis': 'residence saint-louis',\n",
-    "                              'north shore health network – eldcap unit' : 'north shore health network - eldcap unit',\n",
-    "                              'north shore health network – ltc unit' : 'north shore health network - ltc unit'}, inplace = True)\n",
-    "\n",
-    "odhf['cleaned_name'].replace({'lisabeth-bruyre residence': 'elisabeth-bruyere residence',\n",
-    "                             'rsidence saint-louis' : 'residence saint-louis',\n",
-    "                             'north shore health network - eldcap unit' : 'north shore health network - eldcap unit',\n",
-    "                             'north shore health network - ltc unit' : 'north shore health network - ltc unit'}, inplace = True)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 257,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "#ngan.loc[ngan.cleaned_name.fillna('none').str.lower().str.contains('north shore')]['cleaned_name']"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 258,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "#odhf.loc[odhf.cleaned_name.fillna('none').str.lower().str.contains('the meadows long term care')]['cleaned_name']"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "#### Merge again"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 263,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "outer2 = pd.merge(odhf, ngan2, how = 'right', on = 'cleaned_name')\n",
-    "\n",
-    "outer2.to_csv('../data/FINAL_merge.csv')"
+    "adjust text in odhf dataframe prior to merge"
    ]
   },
   {
@@ -873,7 +947,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

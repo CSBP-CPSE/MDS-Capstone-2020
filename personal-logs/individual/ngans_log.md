@@ -48,3 +48,8 @@ May 12
 - Weekly meeting with Prof Scott (20min)
 - Team meeting (40min)
 - Webscraping for LTC database (4h)
+
+May 13
+- Clean and merge scraped database
+- Weekly meeting with StatCan (1h)
+  - Discussed how to aggregate the proximity data

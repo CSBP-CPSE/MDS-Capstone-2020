@@ -53,3 +53,14 @@ May 13
 - Clean and merge scraped database
 - Weekly meeting with StatCan (1h)
   - Discussed how to aggregate the proximity data
+
+Thursday May 14
+- Clean merged LTC database (3h)
+  - Manual review of descrepacies
+  - Align with KTs work
+
+Saturday May 16
+- Learn QGIS (2h)
+  - Introduction video
+  - StatsCan Tutorial
+- Inspect and collect StatsCan data (1h)

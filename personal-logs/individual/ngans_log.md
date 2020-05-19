@@ -64,3 +64,7 @@ Saturday May 16
   - Introduction video
   - StatsCan Tutorial
 - Inspect and collect StatsCan data (1h)
+
+Monday May 18
+- Learn QGIS (1h)
+- Add quartile information to the inspections data and updated the merged LTC database (1h)

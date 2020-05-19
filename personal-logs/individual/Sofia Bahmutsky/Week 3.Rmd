@@ -20,6 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. Reviewing scraping, trying to create a scraper for getting addresses to combine with ODHF data (4-5 hours)
 
+## Tuesday May 12
+
+I was driving from Calgary to Kelowna today...I did not have time to work this day. 
 
 ## Wednesday May 13
 
@@ -45,6 +48,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. Combining Layers, DB's and PHU layer on top. (30 mins)
 
-4. Trying to find a method to count the db's which do not fall easily into a particular PHU. Checking is there are DB's which overlap into 2 or more PHu's. (3?)
+4. Trying to find a method to count the db's which do not fall easily into a particular PHU. Checking is there are DB's which overlap into 2 or more PHu's. (4 hours)
 
-5. Fixing the github...it was broken becuase I tried to push files which were too large.
+5. Fixing the github...it was broken becuase I tried to push files which were too large. (30 mins)

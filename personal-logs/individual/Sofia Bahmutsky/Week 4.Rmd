@@ -1,0 +1,44 @@
+---
+title: "Individual Work Log WEEK 4"
+author: "Sofia Bahmutsky"
+date: "19/05/2020"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Tuesday May 19
+
+1. Group meeting (9am - ?)
+
+2. Presentation to Scott (20 mins)
+
+3. Going through the QGIS work which I did last week with everyone. "tutorial" for everyone in the group to get familiar with the steps I took. (3 mins)
+
+4. Trying to classify the DB's into the PHU...trying various methods (3...?)
+
+
+5. Steps to fix the bad polygons in qGIS...
+
+1. install plug-in Select Within
+2. select a PHU 
+3. use select within button to hilight all the DB's inside the PHU you selected.
+4. Now select Vector > Geoprocessing Tools > Clip
+5. Use the input layer DB's, and overlay layer as PHU
+6. If there are some DB's which do not work you will see a message in the progress of the Clip. 
+7. To fix this, go to Settings > Options > Processing > General > Invalid Features filtering
+8. Now change it to "ignore"
+9. Try to run the Clip again
+10. It will colour all the intersecting DB/PHU's and any DB which is not properly being classified will not get coloured. 
+11. The reason  is probably that there is a  "hole" in the DB (one of the edges comes to a point, qGIS cannot understand it properly)
+12. To fix these "holes", there is a built-in function in QGIS.
+13. Go to Processing > Toolbox > scroll down to Fix Geometries 
+14. The input layer should be "clipped" layer which you generated in step 9/10
+15. Now there will be a new layer called "Fixed Gemotries" which corresponds to the DB which was not working earlier!
+16. to combine the layers go to Vector > Data Management Tools > Merge Vector Layers 
+17. Select the Clipped and Fixed Geometries layers, now you will get the layer which contains the entire DB's classified into the appropriate PHU!

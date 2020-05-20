@@ -42,3 +42,14 @@ knitr::opts_chunk$set(echo = TRUE)
 15. Now there will be a new layer called "Fixed Gemotries" which corresponds to the DB which was not working earlier!
 16. to combine the layers go to Vector > Data Management Tools > Merge Vector Layers 
 17. Select the Clipped and Fixed Geometries layers, now you will get the layer which contains the entire DB's classified into the appropriate PHU!
+
+
+6. Overall time spent on QGIS today ~ 12 hours
+
+
+## Wednesday May 20
+
+1. Group meeting (9am - ?)
+
+2. Zoom meeting with Bruno and Marian 11am-12 (1 hour)
+

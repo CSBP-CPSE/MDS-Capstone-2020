@@ -14,13 +14,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Tuesday May 19
 
-1. Group meeting (9am - ?)
+1. Group meeting (9am - 3:30pm, 6.5 hours)
 
 2. Presentation to Scott (20 mins)
 
 3. Going through the QGIS work which I did last week with everyone. "tutorial" for everyone in the group to get familiar with the steps I took. (3 mins)
 
-4. Trying to classify the DB's into the PHU...trying various methods (3...?)
+4. Trying to classify the DB's into the PHU...trying various methods (5 hours)
 
 
 5. Steps to fix the bad polygons in qGIS...

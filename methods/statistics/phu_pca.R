@@ -5,18 +5,27 @@
 # read and clean data ----
 phu <- read.csv('../data/PMD-en/PHU_FINAL.csv')
 phu <- phu[,-c(1,2)]
-phu[,c(3,6,9,10)] <- lapply(phu[,c(3,6,9,10)], function(x) as.numeric(gsub("[\\%,]", "", x)))
-phu[,c(4,5,7,8)] <- lapply(phu[,c(4,5,7,8)], function(x) as.numeric(gsub("[,]", "", x)))
 
-# PHU numerical for pca ---
+# percent comorbidities clean ----
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbd.percent')
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x)))
+
+# numerical comorbidities clean ----
+como_num <- c('copd', 'asthma', 'smokers', 'hbd')
+phu[como_num] <- lapply(phu[como_num], function(x) as.numeric(gsub("[,]", "", x)))
+
+# PHU numerical for pca ----
 keep <- c('Reporting_PHU', 'asthma', 'copd', 'hbd', 'smokers', 
          'FEMALE', 'MALE', 'TRANSGENDER','OTHER',
          'CONTACT', 'NEITHER', 'TRAVEL.RELATED',
          'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
          'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
          'prox_idxx_parks', 'prox_idx_transit', 'transit_na', 'suppreessed')
-phu_num <- phu[colnames(phu) == keep]
 
+phu[colnames(phu) == keep]
+colnames(phu)
+
+phu_num <- phu[colnames(phu) == keep]
 colnames(phu_num)
 
 # general analysis ----
@@ -26,9 +35,8 @@ dim(phu_num)
 # assess missing values
 colSums(is.na(phu_num))
 
-#phu_num[is.na(phu_num)] <- 0
-
-
+phu_num$prox_idx_parks[is.na(phu_num$prox_idx_parks)]
+phu_num$prox_idx_parks
 # zero-variance columns 
 which(apply(phu_num, 2, var)==0)
       

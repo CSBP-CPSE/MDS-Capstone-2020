@@ -68,3 +68,15 @@ Saturday May 16
 Monday May 18
 - Learn QGIS (1h)
 - Add quartile information to the inspections data and updated the merged LTC database (1h)
+
+Teusday May 19
+- Team meeting (20min)
+- Worked as a team, data wrangling, data cleaning, QGIS work (6h)
+
+Wednesday May 20
+- Weekly meeting with StatCan (1h)
+  - Demo on how to aggregate the proximity database
+- Worked as a team (6h)
+  - PCA/FA analysis on LTC data
+
+  

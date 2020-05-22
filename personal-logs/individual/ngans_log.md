@@ -79,4 +79,6 @@ Wednesday May 20
 - Worked as a team (6h)
   - PCA/FA analysis on LTC data
 
-  
+Thursday May 21
+- Proximity data (6h)
+  - Wrangling and cleaning so the data can be read into QGIS and joined with the shape files

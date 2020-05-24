@@ -82,3 +82,11 @@ Wednesday May 20
 Thursday May 21
 - Proximity data (6h)
   - Wrangling and cleaning so the data can be read into QGIS and joined with the shape files
+
+Saturday May 23
+- Reading around PCA and factor analysis (4h)
+
+Sunday May 24
+- Cleaned up the LTC dataset (3h)
+  - Resolved discrepancies in bed numbers between datasets
+  - Improved documentation

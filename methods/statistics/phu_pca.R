@@ -10,51 +10,54 @@ phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
 phu <- phu[,-c(1,2)]
 
 # percent comorbidities clean ----
-percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbd.percent')
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
 phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# convert missing transit data to 0 ----
+# (ASSUMPTION: there is no public transit in the corresponding PHU)
+phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
 
 # numerical comorbidities clean ----
 #como_num <- c('copd', 'asthma', 'smokers', 'hbd', 'census')
 #phu[como_num] <- lapply(phu[como_num], function(x) as.numeric(gsub("[,]", "", x)))
 
-# PHU numerical for pca ----
-keep <- c('Reporting_PHU', '^asthma$', '^copd$', '^hbd$', '^smokers$', 
-         'FEMALE', 'MALE', 'TRANSGENDER','OTHER',
-         'CONTACT', 'NEITHER', 'TRAVEL.RELATED',
+# PHU cols for pca ----
+keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
+         'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop',
+         'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
          'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
          'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
-         'prox_idxx_parks', 'prox_idx_transit', 'transit_na', 'suppressed')
+         'prox_idx_parks', 'prox_idx_transit')
 
+phu_prop <- subset(phu, select = keep)
 
-phu_num <- phu %>% 
-              select(matches(keep))
-
-
-colnames(phu_num)
+colnames(phu_prop)
 
 # general analysis ----
 # n > p
-dim(phu_num) 
+dim(phu_prop)
 
 # assess missing values
-colSums(is.na(phu_num))
+colSums(is.na(phu_prop))
 
 ###########    
 # PCA ----
 ###########
 # assess zero-variance columns 
-which(apply(phu_num, 2, var)==0)
+which(apply(phu_prop, 2, var)==0)
 
-lapply(phu_num[,3:length(phu_num)], function(x) var(x))
+lapply(phu_prop[,2:length(phu_prop)], function(x) var(x))
 
-# adjust scale of proximity measures or other columns
+# adjust scale by multiplying by 1000
+scaledUP <- as.data.frame(lapply(phu_prop[,2:length(phu_prop)], function(x) x*1000))
 
-
-#phu_num2 <- phu_num2[, which(apply(phu, 2, var) != 0)]
-#colnames(phu_num2)
+# drop cols with no var 
+# (NONE)
+phu_prop2 <- scaledUP[, which(apply(scaledUP, 2, var) != 0)]
+colnames(phu_prop2)
 
 # pca - columns removed with little var ---
-phu_pca <- prcomp(phu_num2[,-1], scale.=TRUE)
+phu_pca <- prcomp(phu_prop2[,-1], scale.=TRUE)
 summary(phu_pca)
 
 # preserve 92.5% variation

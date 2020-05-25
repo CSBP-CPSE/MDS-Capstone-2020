@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Weekly Team Log - WEEK 3
 
-### Week of April May 12 to May 18
+### Week of May 12 to May 18
 
 1. Presentation of project to prof and TA's.
 
@@ -26,8 +26,3 @@ knitr::opts_chunk$set(echo = TRUE)
 5. KT and Ngan finished the data scraping and merging of the datasets.
 
 6. Sofia working on QGIS and layering the ODB and PHU layers. So far it looks that there are not overlapping blocks. Further methods are required to validate this. Need to do more research about how to do this. Or ask Bruno on wednesday.
-
-7. KT manually went through the addresses, flagged problematic entries, sent discrepancies to Marian. 
-
-
-

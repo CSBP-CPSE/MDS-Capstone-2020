@@ -1,0 +1,61 @@
+---
+title: "PHU stats"
+author: "Sofia Bahmutsky"
+date: "25/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{R}
+library(FactoMineR)
+library(factoextra)
+
+# load the data
+data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+str(data)
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbd.percent')
+data[,percents] <- lapply(data[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+str(data)
+
+names(data)[names(data) == "copd.percent"] <- "copd.prop"
+names(data)[names(data) == "asthma.percent"] <- "asthma.prop"
+names(data)[names(data) == "hbd.percent"] <- "hbd.prop"
+names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+df <- subset(data, select = -c(X, DGUID, Reporting_PHU, Location, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, transit_na, suppressed))
+             
+head(df)
+```
+
+```{r}
+# our reposonse variable is Location
+
+# the transit proximity column has missing values. For our purposes they can be changed to zeroes. missing values means that there is no data collected for transit proximity.
+
+df[is.na(df)] <- 0
+
+# scaling
+df_pca<- prcomp(df, scale. = TRUE)
+
+#scree plot
+plot(df_pca, type = "lines")
+
+#show all component loadings
+round(df_pca$rotation, 2)
+
+#summary and biplot
+summary(df_pca)
+#biplot(df_pca)
+```
+
+Based on Kaiser criterion, we would retain the first 5 components: *3.7672 1.7995 1.22849 1.06844 1.02332* 
+
+```{r}
+plot(data$Location, data$TOTALprop)
+```

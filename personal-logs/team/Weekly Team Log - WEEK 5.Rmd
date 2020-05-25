@@ -1,0 +1,22 @@
+---
+title: "Weekly Team Log - WEEK 5"
+author: "Sofia Bahmutsky"
+date: "25/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Weekly Team Log - WEEK 5
+
+### Week of May 26 o June 2
+
+1. Writing to Jeff for assitance in statistical analysis part. 
+
+2. Doing reading and research about methods which can work for our project statistical part.
+
+3. 

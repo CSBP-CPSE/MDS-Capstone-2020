@@ -1,0 +1,24 @@
+---
+title: "Individual Work Log WEEK 5"
+author: "Sofia Bahmutsky"
+date: "25/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Monday May 25
+
+1. Group meeting 9:30am - ?
+
+2. Working on updates for the team (30 mins)
+
+3. Creating weekly presetation slides for tomorrow's presentation (30 mins)
+
+4. Writing email to Jeff (prof) about our stats methods. (1 hour)
+
+5...

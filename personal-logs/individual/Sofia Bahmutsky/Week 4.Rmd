@@ -55,3 +55,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. Doing more GIS layering, trying to connect the proximity measures with the map...having issues with the data type. (3 hours)
 
+
+## Thursday May 21
+
+1. Working on QGIS... 9:30-3:30 (6 hours)
+
+2. group meeting 1:30 - 3:30 (2 hours)
+
+

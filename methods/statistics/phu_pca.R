@@ -6,16 +6,16 @@ library('dplyr')
 library('tidyverse')
 
 # read and clean data ----
-phu <- read.csv('../data/PMD-en/PHU_FINAL.csv')
+phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
 phu <- phu[,-c(1,2)]
 
 # percent comorbidities clean ----
 percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbd.percent')
-phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x)))
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
 
 # numerical comorbidities clean ----
-como_num <- c('copd', 'asthma', 'smokers', 'hbd')
-phu[como_num] <- lapply(phu[como_num], function(x) as.numeric(gsub("[,]", "", x)))
+#como_num <- c('copd', 'asthma', 'smokers', 'hbd', 'census')
+#phu[como_num] <- lapply(phu[como_num], function(x) as.numeric(gsub("[,]", "", x)))
 
 # PHU numerical for pca ----
 keep <- c('Reporting_PHU', '^asthma$', '^copd$', '^hbd$', '^smokers$', 
@@ -90,6 +90,7 @@ phu[cgroups == 3, 1:2] # everywhere else in ON
 # TO INVESTIGATE:
 # which col is reasonable to cluster by - maybe unsupervised clust is better 
 # which cols are important to observe (noted by PCA results)
+# CONVERT numbers to proportions for PHUs
 
 ############################
 # Unsupervised Clustering ----

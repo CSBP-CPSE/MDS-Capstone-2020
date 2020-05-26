@@ -54,8 +54,8 @@ summary(df_pca)
 #biplot(df_pca)
 ```
 
-Based on Kaiser criterion, we would retain the first 5 components: *3.7672 1.7995 1.22849 1.06844 1.02332* 
+ Based on Kaiser criterion, we would retain the first 5 components: *3.7672 1.7995 1.22849 1.06844 1.02332* 
 
 ```{r}
-plot(data$Location, data$TOTALprop)
+hist(df$prox_idx_transit)
 ```

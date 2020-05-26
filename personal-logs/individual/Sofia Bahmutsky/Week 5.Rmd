@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Monday May 25
 
-1. Group meeting 9:30am - ?
+1. Group meeting 9:30am - 3:30 (6 hours)
 
 2. Working on updates for the team (30 mins)
 
@@ -21,4 +21,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 4. Writing email to Jeff (prof) about our stats methods. (1 hour)
 
-5...
+5. REasearch about PCA/PCR and other methodss... (2 hours)

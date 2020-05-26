@@ -45,10 +45,15 @@ factanal(prox[,-1], 2, scores="regression", rotation = 'varimax')
 
 ### DIANA hierarchical cluster ----
 faclust <- diana(dist(faprox2$scores))
-pltree(faclust, cex = 0.6, hang = -1, main = "Dendrogram of DIANA") # 3 groups
+pltree(faclust, cex = 0.6, hang = -1, main = "Dendrogram of DIANA") 
 
 prox2 <- mutate(prox, labels = phu$Location)
 table(prox2[,11], cutree(faclust,3))
+
+
+# 3 groups shows least overlap
+fviz_cluster(list(data = prox2[,-11], cluster = cutree(faclust, k = 3)), 
+             main = "Cluster Plot k = 3 - Divisive Hierarchical Clustering")
 
 ###################################
 # TO ASK: ----

@@ -3,6 +3,7 @@ title: "R Notebook"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 # COVID PHU-Level Clustering 
 
@@ -104,6 +105,16 @@ count(phu_cl,cluster)
 # VIS: cluster groups ----
 fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
              main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
+
+```
+
+```{r k 3, echo = F}
+# VIS: bar plots ----
+phu_cl <- mutate(phu_cl, CovidCaseProp = phu$TOTALprop) 
+
+ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) 
 
 ```
 

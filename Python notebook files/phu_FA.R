@@ -43,7 +43,6 @@ faprox2
 factanal(prox[,-1], 2, scores="regression", rotation = 'varimax')
 
 
-
 ### DIANA hierarchical cluster ----
 faclust <- diana(dist(faprox2$scores))
 pltree(faclust, cex = 0.6, hang = -1, main = "Dendrogram of DIANA") # 3 groups

@@ -1,16 +1,24 @@
-#################################
-## COVID PHU-LEVEL PCA ----
-#################################
-# packages ----
-library('dplyr')
-library('tidyverse')
-library('mclust')
-library('factoextra')
-library('cluster')
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+# COVID PHU-Level Clustering 
+
+## Hierarchical Clustering Methods
+
+```{r packages, include = F}
+suppressPackageStartupMessages(library('dplyr'))
+suppressPackageStartupMessages(library('tidyverse'))
+suppressPackageStartupMessages(library('mclust'))
+suppressPackageStartupMessages(library('factoextra'))
+suppressPackageStartupMessages(library('cluster'))
 suppressPackageStartupMessages(library('ggplot2'))
 suppressPackageStartupMessages(library('dendextend'))
+```
 
-# read and clean data ----
+```{r read and clean data, include = F}
 phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
 phu <- phu[,-c(1,2)]
 
@@ -32,49 +40,48 @@ keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.
 
 phu_prop <- subset(phu, select = keep)
 
-colnames(phu_prop)
-
-# general analysis ----
-# n > p
-dim(phu_prop)
-
-# assess missing values
-colSums(is.na(phu_prop))
-any(is.na(phu_prop))
-
-############################
-# Hierarchical Clustering ----
-# Agglomerative: every obs  ----
-# starts as single cluster
-############################
 #assign names phu df
 rownames(phu_prop) <- phu_prop$Location
+```
 
+### Agglomerative Clustering:
+
+Data is first scaled then the euclidean distance is computed between each PHU. Clusters are formed based on least dissimilarities between observations.
+
+*Group average clustering:* attempts to produce relatively compact that are relatively far apart.
+*Complete clustering:* all union observations for two groups are least dissimilar - can produce clusters that violate "closeness" property (one observation may be more similar to observations in other groups).
+*Single clustering:* grouped based on one dissimilarity measure common between two observations being very small - prone to chaining.
+
+Single linkage appears to have chaining while average linkage groups are not as easily discernable. Complete linkage was chosen for further analysis.
+
+```{r scale and dist, include = F}
 #scale
 phu_prop_sc <- scale(phu_prop[,-1])
 
-#euc distance between each home is ok because all var are quantitative
+#euc distance between each PHU is ok because all var are quantitative
 phu_dist <- dist(phu_prop_sc)
-phu_dist
 
 #clust
 comp <- hclust(phu_dist, method = "complete")
 av <- hclust(phu_dist, method = "average")
 sing <- hclust(phu_dist, method = 'single')
 
-par(mfrow=c(2,2))
 plot(comp, main = "Complete Linkage") # best, suggests 3 groups
 plot(av, main = "Average Linkage") # chaining
 plot(sing, main = "Single Linkage") # chaining
 
+```
 
+```{r complete clust, echo = F}
 # comp clust better visualization ----
 comp_dend <- as.dendrogram(comp)
 comp_col_dend <- color_branches(comp_dend, h = 3)
 plot(comp_col_dend, main = "Complete Linkage")
+```
 
-#######################################
-# analysis: count of group members (8) ----
+With 8 groups it seems as though there is too much separation...
+
+```{r comp clust k 8, echo = F}
 
 # 8 clusters according to previous plot ----
 phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 8)) 
@@ -84,73 +91,77 @@ count(phu_cl,cluster)
 fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 8)), 
              main = "Cluster Plot k = 8 - Agglomerative Complete Hierarchical Clustering")
 
-# add back TOTAL col
-phu_cl <- mutate(phu_cl, CovidCaseProp = phu$TOTALprop) 
+```
 
-# VIS: bar plot ---- 
-ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
-  geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) 
+With 3 groups it appears as though there is not enough separation...
 
-#######################################
-# analysis: count of group members (3) ----
-# 3 clusters according to previous plot
+```{r comp clust k 3, echo = F}
+
+# 8 clusters according to previous plot ----
 phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 3)) 
 count(phu_cl,cluster)
 
 # VIS: cluster groups ----
-# add back TOTAL col
-phu_cl <- mutate(phu_cl, CovidCaseProp = phu$TOTALprop) 
-
 fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
              main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
 
-# VIS: bar plots ----
-ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
-  geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) 
+```
 
+### Divisive Hierarchical Clustering - DIANA
+All observations begin as a single cluster and are divisible separated based on largest average dissimilarity between an observation and all others.
 
-############################
-# Hierarchical Clustering ----
-# Divisive: ALL obs  ----
-# starts as single cluster
-############################
+Hierarchical clustering will always cluster even if there is no grouping in the data. The divisive coefficient is on a 0-1 scale, representing the extent to which the hierarchical structure produced by a dendrogram actually represents the data (closer to 1 = better representation).
+
+```{r DIANA, echo = F}
 hc <- diana(phu_dist)
+paste("Divisive Coefficient: ", hc$dc)
+```
 
-# divisive coefficient on a 0-1 scale ----
-# The extent to which the hierarchical structure produced by a dendrogram actually 
-# represents the data 
-hc$dc
-
-par(mfrow=c(2,1))
+```{r DIANA VIS, echo = F}
 pltree(hc, cex = 0.6, hang = -1, main = "Dendrogram of DIANA")
 clust <- cutree(hc, k = 4)
 fviz_cluster(list(data = phu_dist, cluster = clust), main = "Cluster Plot DIANA - Divisive Hierarchical Clustering")
 
+```
 
-############################
-# Mixture Model Clustering ----
-# EM Model ----
-############################
+## Mixture Model Clustering Methods 
 
+### EM Algorithm
+
+Soft version of K-means clustering that is based on probabilities rather than deterministic assignments of points to groups. Used package `Mclust`.
+
+For all parameters:
+
+```{r EM all params, include = F}
 # EM by all params ----
 mphu <-Mclust(phu_prop, G=1:3)
 plot(mphu, what="classification")
+```
 
+
+Between PHU and proportion of cases:
+
+```{r EM cases, include = F}
 # EM by total cases ----
 mcovid <- Mclust(phu[,c(17,18)], G=1:3)
 plot(mcovid, what="classification")
 
+```
+
+```{r EM case classes}
 # EM view clasess ----
 classes <- mutate(as.data.frame(mcovid$classification), loc = phu$Location[mcovid$data[,2]])
 colnames(classes)[1] <- 'class'
 classes <- classes[order(classes),][1:36,]
+classes
+```
 
-###########################
-# Mixture Model Clustering----
-# VIS: MDS Scaling ----
-############################
+
+### Multidimensional Scaling
+
+Uses euclidean distances of scaled PHU data. Similarly represents hierarchical clustering (Toronto is its own cluster, denser regions such as Peel, Halton, York, Waterloo, Ottawa...etc. separate from smaller districts).
+
+```{r}
 labels(phu_dist)
 plot(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], type = "n", 
      xlab = "", ylab = "", 
@@ -159,13 +170,9 @@ plot(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], type = "n",
 text(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], rownames(cmdscale(phu_dist)), cex = 0.6)
 
 
-###########################
-# Mode Seekers Clustering----
-# PRIM
-############################
+```
 
-###################################
-# TO ASK----
-# keeping covid stats for clustering/regression or not?
-# making new params from FA 
-# LASSO without test and training?
+
+
+#### Other unexplored methods:
+Combinatorial - works directly with data without assuming underlying probabilistic model.

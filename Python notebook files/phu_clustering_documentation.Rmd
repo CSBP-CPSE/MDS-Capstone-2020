@@ -33,8 +33,8 @@ phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
 
 # PHU cols for pca ----
 keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
-         'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
-         'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
+         #'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
+         #'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
          'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
          'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
          'prox_idx_parks', 'prox_idx_transit')
@@ -118,9 +118,10 @@ paste("Aggloemeratice Coefficient: ", coef.hclust(comp))
 # VIS: bar plots ----
 phu_cl <- mutate(phu_cl, CovidCaseProp = phu$TOTALprop) 
 
-ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) 
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
 
 ```
 
@@ -149,9 +150,10 @@ phu_cl <- mutate(phu_prop, CovidCaseProp = phu$TOTALprop)
 phu_cl <- mutate(phu_cl, cluster = clust) 
 
 
-ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) 
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
 
 ```
 

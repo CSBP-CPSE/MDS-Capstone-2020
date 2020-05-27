@@ -56,6 +56,17 @@ fviz_cluster(list(data = prox2[,-11], cluster = cutree(faclust, k = 3)),
              main = "Cluster Plot k = 3 - Divisive Hierarchical Clustering")
 
 ###################################
-# TO ASK: ----
+# FA Qs: ----
 # negative loadings in terms of interpretation?
 # parks having a high loading for both FACs
+# making new params from FA results
+
+# PHU Qs
+# will normalizing variables mask data var?
+# is it worth keeping gender variables? LASSO results show significance but effect size is small in lm.
+# regularization methods for small data (n = 36, p = 24)
+
+# PHU Clustering Qs ----
+# keeping covid stats for clustering/regression or not?
+
+

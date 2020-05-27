@@ -1,9 +1,9 @@
 ---
 title: "R Notebook"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 # COVID PHU-Level Clustering 
 
@@ -132,6 +132,20 @@ paste("Divisive Coefficient: ", hc$dc)
 pltree(hc, cex = 0.6, hang = -1, main = "Dendrogram of DIANA")
 clust <- cutree(hc, k = 4)
 fviz_cluster(list(data = phu_dist, cluster = clust), main = "Cluster Plot DIANA - Divisive Hierarchical Clustering")
+
+```
+
+Covid Case Total Proportions (per PHU) data and DIANA cluster assignment are added to `phu_prop` to assess groupings by covid output.
+
+```{r diana bar, echo = F}
+# VIS: bar plots ----
+phu_cl <- mutate(phu_prop, CovidCaseProp = phu$TOTALprop) 
+phu_cl <- mutate(phu_cl, cluster = clust) 
+
+
+ggplot(phu_cl, aes(x=Location, y = CovidCaseProp, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) 
 
 ```
 

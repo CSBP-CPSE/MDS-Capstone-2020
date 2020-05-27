@@ -1,9 +1,9 @@
 ---
 title: "R Notebook"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 # COVID PHU-Level Clustering 
 
@@ -98,7 +98,7 @@ With 3 groups it appears as though there is not enough separation...
 
 ```{r comp clust k 3, echo = F}
 
-# 8 clusters according to previous plot ----
+# 3 clusters according to previous plot ----
 phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 3)) 
 count(phu_cl,cluster)
 
@@ -106,6 +106,12 @@ count(phu_cl,cluster)
 fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
              main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
 
+```
+
+The agglomerative coefficient for complete linkage:
+
+```{r ac comp, echo = F}
+paste("Aggloemeratice Coefficient: ", coef.hclust(comp))
 ```
 
 ```{r k 3, echo = F}

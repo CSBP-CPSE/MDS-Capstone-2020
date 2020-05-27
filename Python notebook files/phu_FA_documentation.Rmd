@@ -1,0 +1,103 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Factor Analysis for PHU data
+
+### Proximity Measures:
+
+```{r packages, include = F}
+suppressMessages(library(corrplot))
+suppressPackageStartupMessages(library('cluster'))
+```
+
+```{r read and clean, include = F}
+phu_orig <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
+phu <- phu_orig[,-c(1,2)]
+
+# percent comorbidities clean ----
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# convert missing transit data to 0 ----
+# (ASSUMPTION: there is no public transit in the corresponding PHU)
+phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
+
+
+# PHU cols for pca ----
+keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
+         'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
+         'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
+         'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
+         'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
+         'prox_idx_parks', 'prox_idx_transit')
+
+phu_prop <- subset(phu, select = keep)
+
+#assign names phu df
+rownames(phu_prop) <- phu_prop$Location
+
+# grab only prox data
+prox <- phu_prop[ , grepl( "prox" , names(phu_prop) ) ]
+
+```
+
+```{r prox corr, include = F}
+cprox <- cor(prox)
+corrplot(cprox, type = "upper", method = "circle", order = "FPC",
+         main = "Proximity Correlations - First Principal Component Order")
+```
+
+Proximity to secondary education and libraries are generally uncorrelated with the rest.
+
+**2-factor Factor Analysis to identify connectedness (or urban v rural):**
+
+We can accept null hypothesis that factors are sufficient (1 factor is not, 3 is even less significant so 3 factors may be reasonable as well).
+
+```{r FA proximity, include = F}
+faprox2 <- factanal(prox[,-1], 2, scores="regression")
+faprox2
+```
+
+
+Hierarchical clustering of factor analysis score output shows the same as on euclidean distance data.
+
+```{r fa proximity cluster, include = F}
+faclust <- diana(dist(faprox2$scores))
+pltree(faclust, cex = 0.6, hang = -1, main = "Dendrogram of DIANA") 
+```
+
+### All PHU data
+
+```{r phu corr, include = F}
+cphu <- cor(phu_prop[,-1])
+corrplot(cphu, type = "upper", method = "circle", order = "FPC",
+         main = "PHU Data Correlations - First Principal Component Order")
+```
+
+The original PHU data is a singular invertible matrix. This means that rows or columns are linearly interdependent.
+
+```{r FA PHU, eval = F}
+factanal(phu_prop[,-1], 2, scores="regression")
+```
+
+Assessing multicolinearity in the data on a linear model fit:
+
+```{r lm multicolinearity, eval = F}
+tofit <- mutate(phu_prop, total = phu_orig$TOTALprop)
+fit <- lm(total ~.-Location, data = tofit)
+
+car::vif(fit)
+```
+
+Error suggests perfect multicolinearity.
+
+["Multicollinearity does not reduce the predictive power or reliability of the model as a whole, at least within the sample data set; it only affects calculations regarding individual predictors. That is, a multivariate regression model with collinear predictors can indicate how well the entire bundle of predictors predicts the outcome variable, but it may not give valid results about any individual predictor, or about which predictors are redundant with respect to others."](https://en.wikipedia.org/wiki/Multicollinearity)
+
+
+Exact linear relations prevents the matrix from being invertible.
+
+

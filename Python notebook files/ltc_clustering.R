@@ -12,9 +12,9 @@ suppressPackageStartupMessages(library('dendextend'))
 
 
 # load and clean ----
-ltc <- read.csv('../data/df_LTCdata_for_stats_FINAL.csv')
+ltc_orig <- read.csv('../data/df_LTCdata_for_stats_FINAL.csv')
 
-ltc <- ltc[,-c(1,2, 19, 24:27)]
+ltc <- ltc_orig[,-c(1,2, 19, 24:27)]
 
 subset(ltc, ltc$Confirmed.Resident.Cases == "<5")$Confirmed.Resident.Cases 
 
@@ -58,6 +58,7 @@ fviz_cluster(list(data = ltc_clust, cluster = cutree(LTCcomp, k = 4)),
 
 # 5 clusters according to previous plot ----
 LTC <- mutate(ltc, cluster = cutree(LTCcomp, k = 5)) 
+LTC2 <- mutate(LTC, name = ltc_orig$cleaned_name)
 count(LTC, cluster)
 
 # VIS: cluster groups ----
@@ -65,3 +66,17 @@ fviz_cluster(list(data = ltc_clust, cluster = cutree(LTCcomp, k = 5)),
              main = "Cluster Plot k = 5 - Agglomerative Complete Hierarchical Clustering")
 
 
+# k = 4 Cluster Analysis ----
+cl1 <- subset(LTC2, LTC2$cluster == 1)
+cl1 # mostly For-Profit
+
+subset(LTC2, LTC2$cluster == 2) # For-Profit, No, Yes
+
+library(Hmisc)
+Hmisc::describe(LTC2)
+
+#library(psych)
+#psych::describeBy(LTC2, LTC2$cluster)
+
+## Cluster lon lat
+xtabs(~col + cluster, data=)

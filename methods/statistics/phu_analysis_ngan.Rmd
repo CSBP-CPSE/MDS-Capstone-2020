@@ -1,0 +1,178 @@
+---
+title: "phu_analysis"
+author: "NL"
+date: "27/05/2020"
+output: html_document
+---
+
+```{r }
+df = read.csv(file = 'PHU_FINAL_num.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
+str(df)
+
+df_prop = read.csv(file = 'PHU_FINAL_prop.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
+str(df_prop)
+
+```
+
+
+
+```{r }
+keeps <- c("Location", "FATAL", "TOTAL", "copd", "asthma", "hbp", "smokers", "prox_idx_emp", "prox_idx_pharma", "prox_idx_childcare", "prox_idx_health", "prox_idx_educpri", "prox_idx_educsec", "prox_idx_lib", "prox_idx_parks", "prox_idx_transit")
+df2 = df[keeps]
+
+keeps_prop <- c('Location', 'FATALprop', 'TOTALprop', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health','prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib','prox_idx_parks', 'prox_idx_transit')
+
+df2_prop = df_prop[keeps_prop]
+
+library(skimr)
+summary(df2_prop)
+skim(df2_prop)
+
+```
+
+
+## Clean original phu data
+```{r }
+# Replace missing prox transit data with 0
+df2$prox_idx_transit[is.na(df2$prox_idx_transit)] <- 0
+
+# Remove commas and convert comorbids data to numeric
+comorbids = c('copd', 'asthma', 'hbp', 'smokers')
+df2[, comorbids] <- lapply(df2[, comorbids], function(x) as.numeric(gsub("[\\%,]", "", x)))
+
+skim(df2)
+head(df2)
+
+
+```
+
+## Clean PHU proportions data
+```{r }
+# Convert the percent data to proportions
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+df2_prop[,percents] <- lapply(df2_prop[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# Replace 
+df2_prop$prox_idx_transit[is.na(df2_prop$prox_idx_transit)] <- 0
+
+skim(df2_prop)
+```
+
+## PCA on the data
+```{r }
+phu_pca <- prcomp(df2[,-c(1,2,3)], scale = TRUE)
+summary(phu_pca)
+
+prop_pca <- prcomp(df2_prop[,-c(1,2,3)], scale = TRUE)
+summary(prop_pca)
+
+```
+
+
+```{r }
+biplot(phu_pca)
+
+biplot(prop_pca)
+```
+
+
+
+```{r }
+phu_pca$rotation
+
+prop_pca$rotation
+```
+
+
+
+```{r }
+plot(phu_pca, type="lines")
+
+plot(prop_pca, type="lines")
+```
+
+
+
+```{r }
+# Extract principal components for principal component regression
+pc_16 <- prop_pca$x[,c("PC1", "PC2", "PC3", "PC4", "PC5", "PC6")]
+
+# Create a dataframe with reponse variable TOTALprop and explanatory variables (the PCs)
+phu_pcr <- as.data.frame(cbind(df2_prop[,"TOTALprop"], pc_16))
+head(phu_pcr)
+
+# Perform linear regression
+phu_lm <- lm(V1~., data = phu_pcr)
+summary(phu_lm)
+
+
+```
+
+
+```{r }
+# Create a dataframe with reponse variable FATALprop and explanatory variables (the PCs)
+phu_pcr <- as.data.frame(cbind(df2_prop[,"FATALprop"], pc_16))
+head(phu_pcr)
+
+# Perform linear regression
+phu_lm <- lm(V1~., data = phu_pcr)
+summary(phu_lm)
+```
+
+
+
+```{r }
+
+```
+
+
+
+```{r }
+
+```
+
+
+
+```{r }
+
+```
+
+
+```{r }
+
+```
+
+
+
+```{r }
+
+```
+
+
+
+```{r }
+
+```
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

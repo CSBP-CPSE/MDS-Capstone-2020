@@ -90,3 +90,15 @@ Sunday May 24
 - Cleaned up the LTC dataset (3h)
   - Resolved discrepancies in bed numbers between datasets
   - Improved documentation
+
+Monday May 25
+- Cleaned the LTC dataset (1h)
+- Learned latex for keeping meeting minutes (1.5h)
+- Emails to our statistics professors to get help (2h)
+- Discussion and research on statistical methods (1.5h)
+
+Tuesday May 26
+- Team meeting (20min)
+- LTC statistical analysis
+  - Logistic regression
+  - Transformation of the skewed dataset

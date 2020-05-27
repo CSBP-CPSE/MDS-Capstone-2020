@@ -22,3 +22,21 @@ knitr::opts_chunk$set(echo = TRUE)
 4. Writing email to Jeff (prof) about our stats methods. (1 hour)
 
 5. REasearch about PCA/PCR and other methodss... (2 hours)
+
+## Tuesday May 26
+
+1. Presentation for prof/TA's (20 mins)
+
+2. Stats all day (7 hours)
+
+
+## Wendesday May 27
+
+1. Group meeting 9:00 - ?
+
+2. Walkthrough of everyone's work from the last few days. 
+
+3. Continuing to work on stats for PHU data.
+
+
+

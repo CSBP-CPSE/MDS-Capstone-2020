@@ -32,34 +32,69 @@ df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
 df[is.na(df)] <- 0
            
 head(df)
+plot(df$TOTALprop)
 
 library(skimr)
 skim(df)
 
+plotNormalHistogram(df$TOTALprop)
 
+#drop gender cols...
+df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop, CONTACTprop, TRAVEL.RELATEDprop))
 
-
-library(gbm)
-
-df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop))
+# log transformation
 log_df <- log(df+0.00001)
 
-boost <- gbm(TOTALprop ~., data= log_df, cv.folds = 5, distribution = 'gaussian')
-boost
-min(wine_boost$cv.error)
 
+plotNormalHistogram(log_df$TOTALprop)
 
-
+### LASSO
 library(leaps)
-regfit.full=regsubsets(TOTALprop~.,log_df, nvmax = 20)
+regfit.full=regsubsets(TOTALprop~.,log_df, nvmax = 25)
 reg.summary = summary(regfit.full)
 
 reg.summary
 
-print("RSS values (including 1 predictor to 8)")
 reg.summary$rss
 
 plot(reg.summary$rss ,xlab="Number of Variables ",ylab="RSS",
 type="l")
+
+
+# this MLR is using only the first 8 predicotrs from the LASSO which were most important. 
+MLR <- lm(TOTALprop ~ copd.prop+prox_idx_parks+prox_idx_childcare+hbp.prop+prox_idx_health+prox_idx_lib+prox_idx_educsec, log_df)
+plot(MLR)
+summary(MLR)
+```
+
+MLR function:
+
+Y =  -7.8556 -1.5655(X1) +   1.2355 (X2)  -0.9058 (X3) 
+TOTALproportion = -7.8556 -1.5655(copd.prop) +   1.2355(prox_idx_parks)  -0.9058(prox_idx_childcare)
+
+
+## Additive model?
+```{r}
+#summary(df)
+
+library(mgcv)
+covid_gam <- gam(TOTALprop ~ s(copd.prop) + s(prox_idx_parks) + s(prox_idx_childcare), data=df)
+covid_gam
+
+
+plot(covid_gam, residuals = T, cex = 4)
+qqnorm(resid(covid_gam))
+qqline(resid(covid_gam))
+
+
+
+covid_gam2 <- gam(TOTALprop ~ s(copd.prop) + s(prox_idx_parks) + s(prox_idx_childcare), data=df, family =Gamma(link = "log"))
+covid_gam2
+
+plot(covid_gam2, residuals = T, cex = 4)
+qqnorm(resid(covid_gam2))
+qqline(resid(covid_gam2))
+
+plot.gam(covid_gam2)
 
 ```

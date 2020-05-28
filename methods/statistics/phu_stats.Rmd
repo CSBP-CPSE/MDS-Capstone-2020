@@ -32,9 +32,13 @@ df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSD
   
 # dropping some cols which may be not make sense in this analysis...(need to check with John i think)
 df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
-
+df[is.na(df)] <- 0
            
 head(df)
+
+library(skimr)
+skim(df)
+# could try log transformations for the majority of variables.
 ```
 
 ```{r}
@@ -46,40 +50,158 @@ head(df)
 
 library(glmnet)
 x=model.matrix(TOTALprop~.-Location,df)[,-1] 
+dim(x)
 y <- df$TOTALprop
 y <- as.vector(y)
 
-# ridge regression method
 
-# alpha = 0 is for ridge regression.
 
-grid=10^seq(10,-2,length=100)
-ridge.mod=glmnet(x,y,alpha=0,lambda=grid)
+#LASSO
+set.seed (1)
+train=sample(1:nrow(x), nrow(x)/2)
+test=(-train)
+y.test=y[test]
+
+cv.out=cv.glmnet(x[train ,],y[train],alpha=1)
+plot(cv.out)
+bestlam=cv.out$lambda.min
+lasso.pred=predict(lasso.mod,s=bestlam ,newx=x[test,])
+mean((lasso.pred-y.test)^2)
+
+out=glmnet(x,y,alpha=1,lambda=grid)
+lasso.coef=predict(out,type="coefficients",s=bestlam)[1:23,] 
+lasso.coef
+```
+
+```{r}
+# Ridge Regression
+cv.out=cv.glmnet(x[train ,],y[train],alpha=0)
+plot(cv.out)
+bestlam=cv.out$lambda.min
+lasso.pred=predict(lasso.mod,s=bestlam ,newx=x[test,])
+mean((lasso.pred-y.test)^2)
+
+out=glmnet(x,y,alpha=1,lambda=grid)
+ridge.coef=predict(out,type="coefficients",s=bestlam)[1:23,] 
+ridge.coef
+```
+
+
+LM
+```{r}
+library(pls)
+
+#pcr.fit=pcr(TOTALprop~.-Location, data=df ,scale=TRUE)
+
+summary(pcr.fit)
+
+test <- lm(TOTALprop ~. -Location, df)
+plot(test)
+
+summary(test)
+```
+
+trying with transformations and dropping gender columns
+```{r}
+library(rcompanion)
+# Log transformations are better for the inspections data
+plotNormalHistogram(df$TOTALprop)
+
+#drop gender cols...
+df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop, hbp.prop))
+log_df <- log(df+0.00001)
+plotNormalHistogram(log_df$TOTALprop)
+
+
+test_logs <- lm(log_df$TOTALprop ~., log_df)
+plot(test_logs)
+summary(test_logs)
+
+
+test_logs2 <- lm(log_df$TOTALprop ~.-log_df$hbp.prop, log_df)
+plot(test_logs2)
+summary(test_logs2)
+
 
 ```
 
 
-PCA
 ```{r}
-df[is.na(df)] <- 0
+set.seed(123)    # seef for reproducibility
+library(glmnet)  # for ridge regression
+library(dplyr)   # for data cleaning
+library(psych)   # for function tr() to compute trace of a matrix
 
-# scaling
-df_pca<- prcomp(df, scale. = TRUE)
+df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop))
 
-#scree plot
-plot(df_pca, type = "lines")
+# Center y, X will be standardized in the modelling function
+y <- df %>% select(TOTALprop) %>% scale(center = TRUE, scale = FALSE) %>% as.matrix()
+X <- df %>% select(-c(TOTALprop)) %>% as.matrix()
 
-#show all component loadings
-round(df_pca$rotation, 2)
 
-#summary and biplot
-summary(df_pca)
-#biplot(df_pca)
+# Perform 10-fold cross-validation to select lambda ---------------------------
+lambdas_to_try <- 10^seq(-3, 5, length.out = 100)
+
+
+# Setting alpha = 1 implements lasso regression
+lasso_cv <- cv.glmnet(X, y, alpha = 0, lambda = lambdas_to_try,
+                      standardize = TRUE, nfolds = 10)
+# Plot cross-validation results
+plot(lasso_cv)
+
+
+# Best cross-validated lambda
+lambda_cv <- lasso_cv$lambda.min
+# Fit final model, get its sum of squared residuals and multiple R-squared
+model_cv <- glmnet(X, y, alpha = 0, lambda = lambda_cv, standardize = TRUE)
+y_hat_cv <- predict(model_cv, X)
+ssr_cv <- t(y - y_hat_cv) %*% (y - y_hat_cv)
+rsq_lasso_cv <- cor(y, y_hat_cv)^2
+
+
+# See how increasing lambda shrinks the coefficients --------------------------
+# Each line shows coefficients for one variables, for different lambdas.
+# The higher the lambda, the more the coefficients are shrinked towards zero.
+res <- glmnet(X, y, alpha = 0, lambda = lambdas_to_try, standardize = FALSE)
+plot(res, xvar = "lambda")
+legend("bottomright", lwd = 1, col = 1:6, legend = colnames(X), cex = .7)
+
+
 ```
 
- Based on Kaiser criterion, we would retain the first 5 components: *3.7672 1.7995 1.22849 1.06844 1.02332* 
 
 ```{r}
-df_pca5 <- df_pca$x[,1:5]
-df_pca5
+#df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop))
+
+# Center y, X will be standardized in the modelling function
+y <- df %>% select(TOTALprop) %>% scale(center = TRUE, scale = FALSE) %>% as.matrix()
+X <- df %>% select(-c(TOTALprop)) %>% as.matrix()
+
+
+# Perform 10-fold cross-validation to select lambda ---------------------------
+lambdas_to_try <- 10^seq(-3, 5, length.out = 100)
+
+
+# Setting alpha = 1 implements lasso regression
+lasso_cv <- cv.glmnet(X, y, alpha = 1, lambda = lambdas_to_try,
+                      standardize = TRUE, nfolds = 10)
+# Plot cross-validation results
+plot(lasso_cv)
+
+
+# Best cross-validated lambda
+lambda_cv <- lasso_cv$lambda.min
+# Fit final model, get its sum of squared residuals and multiple R-squared
+model_cv <- glmnet(X, y, alpha = 1, lambda = lambda_cv, standardize = TRUE)
+y_hat_cv <- predict(model_cv, X)
+ssr_cv <- t(y - y_hat_cv) %*% (y - y_hat_cv)
+rsq_lasso_cv <- cor(y, y_hat_cv)^2
+
+
+# See how increasing lambda shrinks the coefficients --------------------------
+# Each line shows coefficients for one variables, for different lambdas.
+# The higher the lambda, the more the coefficients are shrinked towards zero.
+res <- glmnet(X, y, alpha = 1, lambda = lambdas_to_try, standardize = FALSE)
+plot(res, xvar = "lambda")
+legend("bottomright", lwd = 1, col = 1:6, legend = colnames(X), cex = .7)
 ```

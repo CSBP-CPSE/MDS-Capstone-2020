@@ -1,0 +1,65 @@
+---
+title: "PHU regularization"
+author: "Sofia Bahmutsky"
+date: "27/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# load the data
+data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+str(data)
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+data[,percents] <- lapply(data[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+str(data)
+
+names(data)[names(data) == "copd.percent"] <- "copd.prop"
+names(data)[names(data) == "asthma.percent"] <- "asthma.prop"
+names(data)[names(data) == "hbp.percent"] <- "hbp.prop"
+names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, transit_na, suppressed))
+  
+# dropping some cols which may be not make sense in this analysis...(need to check with John i think)
+df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
+df[is.na(df)] <- 0
+           
+head(df)
+
+library(skimr)
+skim(df)
+
+
+
+
+library(gbm)
+
+df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop))
+log_df <- log(df+0.00001)
+
+boost <- gbm(TOTALprop ~., data= log_df, cv.folds = 5, distribution = 'gaussian')
+boost
+min(wine_boost$cv.error)
+
+
+
+library(leaps)
+regfit.full=regsubsets(TOTALprop~.,log_df, nvmax = 20)
+reg.summary = summary(regfit.full)
+
+reg.summary
+
+print("RSS values (including 1 predictor to 8)")
+reg.summary$rss
+
+plot(reg.summary$rss ,xlab="Number of Variables ",ylab="RSS",
+type="l")
+
+```

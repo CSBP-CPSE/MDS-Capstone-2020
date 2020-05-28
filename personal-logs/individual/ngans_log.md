@@ -102,3 +102,8 @@ Tuesday May 26
 - LTC statistical analysis
   - Logistic regression
   - Transformation of the skewed dataset
+
+Wednesday May 27
+- PHU data analysis (6h)
+  - PCA and PCR
+  - Factor Analysis and regression

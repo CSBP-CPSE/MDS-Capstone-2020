@@ -1,0 +1,71 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# COVID Association Rules
+
+```{r load, include = F}
+suppressMessages(library(arules))
+suppressMessages(library(arulesViz))
+
+covid <- read.csv('../data/ON_cases.csv')
+covid2 <- covid[,c(4:8)]
+```
+
+
+```{r AR Rules}
+covid_rules <- apriori(covid2, parameter = list(support = 0.01, confidence = 0.5))
+```
+
+```{r inspect AR}
+inspect(head(sort(covid_rules, by = "confidence"), 3))
+```
+
+## Comorbidities and Prox Data AR
+
+
+```{r packages, include = F}
+suppressMessages(library(corrplot))
+suppressPackageStartupMessages(library('cluster'))
+suppressPackageStartupMessages(library('dplyr'))
+```
+
+```{r read and clean, include = F}
+phu_orig <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
+phu <- phu_orig[,-c(1,2)]
+
+# percent comorbidities clean ----
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# convert missing transit data to 0 ----
+# (ASSUMPTION: there is no public transit in the corresponding PHU)
+phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
+
+
+# PHU cols for pca ----
+keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
+         #'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
+         #'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
+         'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
+         'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
+         'prox_idx_parks', 'prox_idx_transit', 'TOTALprop')
+
+phu_prop <- subset(phu, select = keep)
+
+#assign names phu df
+rownames(phu_prop) <- phu_prop$Location
+
+```
+
+```{r AR Rules coprox}
+#phu_prop$prox_idx_transit <- discretize(phu_prop$prox_idx_transit, method = 'cluster')
+coprox_rules <- apriori(phu_prop, parameter = list(support = 0.01, confidence = 0.5))
+```
+
+```{r inspect AR}
+inspect(head(sort(coprox_rules, by = "confidence"), 3), appearance = list (rhs="TOTALprop"))
+
+
+```

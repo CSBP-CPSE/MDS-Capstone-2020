@@ -157,6 +157,21 @@ ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCase
 
 ```
 
+
+Looking at covid case proportions for each PHU coloured by transit proximity.
+
+Peel and York have week transit proximity but high case proportions.
+
+```{r by transit}
+
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = prox_idx_transit)) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+
+
+```
+
 ## Mixture Model Clustering Methods 
 
 ### EM Algorithm

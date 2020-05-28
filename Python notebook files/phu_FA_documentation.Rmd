@@ -12,6 +12,7 @@ output:
 ```{r packages, include = F}
 suppressMessages(library(corrplot))
 suppressPackageStartupMessages(library('cluster'))
+suppressPackageStartupMessages(library('dplyr'))
 ```
 
 ```{r read and clean, include = F}
@@ -29,8 +30,8 @@ phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
 
 # PHU cols for pca ----
 keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
-         'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
-         'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
+         #'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
+         #'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
          'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
          'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
          'prox_idx_parks', 'prox_idx_transit')
@@ -80,24 +81,19 @@ corrplot(cphu, type = "upper", method = "circle", order = "FPC",
 
 The original PHU data is a singular invertible matrix. This means that rows or columns are linearly interdependent.
 
-```{r FA PHU, eval = F}
+```{r FA PHU}
 factanal(phu_prop[,-1], 2, scores="regression")
 ```
 
 Assessing multicolinearity in the data on a linear model fit:
 
-```{r lm multicolinearity, eval = F}
+```{r lm multicolinearity}
 tofit <- mutate(phu_prop, total = phu_orig$TOTALprop)
 fit <- lm(total ~.-Location, data = tofit)
 
 car::vif(fit)
 ```
 
-Error suggests perfect multicolinearity.
 
-["Multicollinearity does not reduce the predictive power or reliability of the model as a whole, at least within the sample data set; it only affects calculations regarding individual predictors. That is, a multivariate regression model with collinear predictors can indicate how well the entire bundle of predictors predicts the outcome variable, but it may not give valid results about any individual predictor, or about which predictors are redundant with respect to others."](https://en.wikipedia.org/wiki/Multicollinearity)
-
-
-Exact linear relations prevents the matrix from being invertible.
-
+["VIF quantifies the severity of multicollinearity in an ordinary least squares regression analysis"](https://en.wikipedia.org/wiki/Variance_inflation_factor)
 

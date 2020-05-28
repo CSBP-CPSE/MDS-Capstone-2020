@@ -1650,14 +1650,59 @@ summary {
 <h3>All PHU data</h3>
 <p>The original PHU data is a singular invertible matrix. This means that rows or columns are linearly interdependent.</p>
 <pre class="r"><code>factanal(phu_prop[,-1], 2, scores=&quot;regression&quot;)</code></pre>
+<pre><code>## 
+## Call:
+## factanal(x = phu_prop[, -1], factors = 2, scores = &quot;regression&quot;)
+## 
+## Uniquenesses:
+##     asthma.percent       copd.percent        hbp.percent    smokers.percent 
+##              0.659              0.280              0.588              0.295 
+##       prox_idx_emp    prox_idx_pharma prox_idx_childcare    prox_idx_health 
+##              0.108              0.369              0.481              0.255 
+##   prox_idx_grocery   prox_idx_educpri   prox_idx_educsec       prox_idx_lib 
+##              0.572              0.188              0.571              0.856 
+##     prox_idx_parks   prox_idx_transit 
+##              0.286              0.233 
+## 
+## Loadings:
+##                    Factor1 Factor2
+## asthma.percent              0.582 
+## copd.percent       -0.402   0.748 
+## hbp.percent        -0.434   0.473 
+## smokers.percent    -0.361   0.758 
+## prox_idx_emp        0.839  -0.434 
+## prox_idx_pharma     0.721  -0.333 
+## prox_idx_childcare  0.659  -0.290 
+## prox_idx_health     0.826  -0.248 
+## prox_idx_grocery    0.650         
+## prox_idx_educpri    0.901         
+## prox_idx_educsec    0.228   0.614 
+## prox_idx_lib       -0.127   0.358 
+## prox_idx_parks      0.667  -0.519 
+## prox_idx_transit    0.868  -0.116 
+## 
+##                Factor1 Factor2
+## SS loadings      5.324   2.935
+## Proportion Var   0.380   0.210
+## Cumulative Var   0.380   0.590
+## 
+## Test of the hypothesis that 2 factors are sufficient.
+## The chi square statistic is 68.54 on 64 degrees of freedom.
+## The p-value is 0.326</code></pre>
 <p>Assessing multicolinearity in the data on a linear model fit:</p>
 <pre class="r"><code>tofit &lt;- mutate(phu_prop, total = phu_orig$TOTALprop)
 fit &lt;- lm(total ~.-Location, data = tofit)
 
 car::vif(fit)</code></pre>
-<p>Error suggests perfect multicolinearity.</p>
-<p><a href="https://en.wikipedia.org/wiki/Multicollinearity">“Multicollinearity does not reduce the predictive power or reliability of the model as a whole, at least within the sample data set; it only affects calculations regarding individual predictors. That is, a multivariate regression model with collinear predictors can indicate how well the entire bundle of predictors predicts the outcome variable, but it may not give valid results about any individual predictor, or about which predictors are redundant with respect to others.”</a></p>
-<p>Exact linear relations prevents the matrix from being invertible.</p>
+<pre><code>##     asthma.percent       copd.percent        hbp.percent    smokers.percent 
+##           2.071204           3.689903           2.555517           4.211314 
+##       prox_idx_emp    prox_idx_pharma prox_idx_childcare    prox_idx_health 
+##          10.199448           3.707165           3.171340           5.107089 
+##   prox_idx_grocery   prox_idx_educpri   prox_idx_educsec       prox_idx_lib 
+##           2.855561           5.553030           1.837163           1.848736 
+##     prox_idx_parks   prox_idx_transit 
+##           4.797836           4.977857</code></pre>
+<p><a href="https://en.wikipedia.org/wiki/Variance_inflation_factor">“VIF quantifies the severity of multicollinearity in an ordinary least squares regression analysis”</a></p>
 </div>
 </div>
 

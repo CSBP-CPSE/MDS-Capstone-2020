@@ -1,0 +1,34 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Stratifying the Covid Cases
+
+DBs were grouped by PHU and sum `DBPOP` (population of PHU).
+
+```{r}
+phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
+phu <- phu[,-c(1,2)]
+```
+
+Determine stratified weights of PHU relative to Ontario:
+
+$W_{phu} = PHU/Ontario$
+
+```{r phu weights}
+phu$phu_weight <- phu$DBPOP/phu$Census
+```
+
+Multiply $W_{phu}$ by PHU case proportions (case count/phu population) to determine sample estimates of cases for each PHU:
+
+```{r}
+phu$TotalStratified <- phu$phu_weight*phu$TOTALprop
+```
+
+# GLM
+
+```{r}
+
+```
+

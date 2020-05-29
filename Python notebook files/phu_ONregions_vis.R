@@ -35,6 +35,13 @@ ggplot(merged, aes(x=fct_reorder(ADJ_LABEL,TOTALprop, .desc=F), y = TOTALprop, f
   theme(axis.text.x=element_text(angle=90,hjust=1)) +
   labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
 
+
+ggplot(merged, aes(x=fct_reorder(Location,TOTALprop, .desc=F), y = TOTALprop, fill = factor(ADJ_LABEL))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+
+
 ## Just Central
 central <- subset(merged, merged$ADJ_LABEL == "Toronto" | merged$ADJ_LABEL == "Central East" |
          merged$ADJ_LABEL == "Central West")

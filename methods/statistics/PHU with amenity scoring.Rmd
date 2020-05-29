@@ -1,0 +1,60 @@
+---
+title: "PHU more stats."
+author: "Sofia Bahmutsky"
+date: "28/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Data 
+```{r}
+# load the data
+data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+str(data)
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+data[,percents] <- lapply(data[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+str(data)
+
+names(data)[names(data) == "copd.percent"] <- "copd.prop"
+names(data)[names(data) == "asthma.percent"] <- "asthma.prop"
+names(data)[names(data) == "hbp.percent"] <- "hbp.prop"
+names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, transit_na, suppressed))
+  
+# dropping some cols which may be not make sense in this analysis...(need to check with John i think)
+df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
+df[is.na(df)] <- 0
+           
+head(df)
+plot(df$TOTALprop)
+```
+
+
+Amenity scoring data. Need to average and groupby the PHU
+```{r}
+data2 <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/QGIS_csv_files/Amenity_Scoring.csv")
+
+head(data2)
+
+# dropping unneeded cols
+data2 <- subset(data2, select = -c(FRE_LABEL, DBUID))
+
+data2[is.na(data2)] <- 0
+
+library(dplyr)
+amenity_score <- aggregate(data2$prox_ontario_nan_amenity_dense, by=list(Location=data2$ENG_LABEL), FUN=mean)
+names(amenity_score)[names(amenity_score) == "x"] <- "amenity"
+```
+
+Add this column to the dataframe with the co-morbidities
+```{r}
+df_final <- merge(df,amenity_score,by="Location")
+df_final
+```

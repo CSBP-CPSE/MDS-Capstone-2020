@@ -33,8 +33,6 @@ phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
 
 # PHU cols for pca ----
 keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
-         #'FEMALEprop', 'MALEprop', 'TRANSGENDERprop','OTHERprop', 'UNKNOWNprop',
-         #'CONTACTprop', 'NEITHERprop', 'TRAVEL.RELATEDprop',
          'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
          'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
          'prox_idx_parks', 'prox_idx_transit')

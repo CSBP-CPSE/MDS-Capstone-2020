@@ -18,4 +18,39 @@ $phu_{proportion} = \frac{cases}{phu_{pop}}$.
 ```{r}
 phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
 phu <- phu[,-c(1,2)]
+
+# percent comorbidities clean ----
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# transit NA = 0
+phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
+```
+
+## Correlations
+
+```{r prox corr, include = F}
+colSums(is.na(phu[,-c(2,7:21)]))
+
+cphu <- cor(phu[,-c(2,7:21)])
+corrplot(cphu, type = "upper", method = "circle", order = "FPC",
+         main = "Proximity Correlations - First Principal Component Order")
+```
+
+```{r}
+# just comorbidities and amenity richness measure
+phu[,c(3:6,32)]
+cphu <- cor(phu[,c(1,3:6,32)])
+corrplot(cphu, type = "upper", method = "circle", order = "FPC",
+         main = "Proximity Correlations - First Principal Component Order")
+```
+
+## Factor Analysis
+
+```{r FA PHU}
+amenity_keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 'amenity')
+
+phu_amen <- subset(phu, select = amenity_keep)
+
+factanal(phu_prop[,-c(1,6:15)], 2, scores="regression")
 ```

@@ -107,3 +107,10 @@ Wednesday May 27
 - PHU data analysis (6h)
   - PCA and PCR
   - Factor Analysis and regression
+
+Thursday May 28
+- Team meeting with John (1.5h)
+  - Discussed statistics for our project
+- PHU data preparation and cleaning
+  - Added population weighted version of proximity aggregation
+  

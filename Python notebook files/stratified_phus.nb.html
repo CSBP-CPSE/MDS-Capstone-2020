@@ -1751,7 +1751,11 @@ summary {
 <!-- rnb-text-begin -->
 <div id="stratifying-the-covid-cases" class="section level1">
 <h1>Stratifying the Covid Cases</h1>
-<p>DBs were grouped by PHU and sum <code>DBPOP</code> (population of PHU).</p>
+<p>DBs were grouped by PHU and sum <code>DBPOP</code> (population of PHU). Stratified weights were calculated by <span class="math inline">\(phu_{weight}*phu_{proportion}\)</span></p>
+<p>where</p>
+<p><span class="math inline">\(phu_{weight} = \frac{phu_{pop}}{ontario_{census}}\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(phu_{proportion} = \frac{cases}{phu_{pop}}\)</span>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGh1IDwtIHJlYWQuY3N2KCcuLi9kYXRhL1BNRC1lbi9QSFVfRklOQUxfcHJvcC5jc3YnKVxucGh1IDwtIHBodVssLWMoMSwyKV1cblxuXG5gYGAifQ== -->
@@ -1760,50 +1764,9 @@ phu &lt;- phu[,-c(1,2)]
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Determine stratified weights of PHU relative to Ontario:</p>
-<p><span class="math inline">\(W_{phu} = PHU/Ontario\)</span></p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGh1JERCUE9QL3BodSRDZW5zdXNcblxuYGBgIn0= -->
-<pre class="r"><code>phu$DBPOP/phu$Census
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSA4NS42ODU3NiA3NS42OTc1MCA2NC41OTE4NCA1OC45MTU5MSA1NC40NDIwMCA1My40NTI1MCA1MS4wMTgzMyAzMC45NDY0MCA0Mi4wNDA5MFxuWzEwXSA0MC40MjI0MyAzMy40OTc0NCAzNy41NTAwMCAzNC4yOTc4MiAzNS40NDcxNCA0MS4xMjU1NiAzMy40MDM1NSAzMy4zOTkxMiAzMi42MjQyOVxuWzE5XSAyOS40NDY3NiAyOC44NjI3MyAyOC43MjgxOCAyNy4zMTU2NSAyNy4zODU4OCAyMi44Mjk2MCAyNS44ODY4NyAyMi44Nzg4NiAyMi41MTU4MVxuWzI4XSAyMS4xODc5NSAyMS4wMzQyMyAxOS4zOTU2MiAyMC4xNTEyNSAyMC4xNDUwMCAyMC44NTg3MSAxOS4wOTc3NyAxNy45ODQxMiAxNy42MzA5N1xuIn0= -->
-<pre><code> [1] 85.68576 75.69750 64.59184 58.91591 54.44200 53.45250 51.01833 30.94640 42.04090
-[10] 40.42243 33.49744 37.55000 34.29782 35.44714 41.12556 33.40355 33.39912 32.62429
-[19] 29.44676 28.86273 28.72818 27.31565 27.38588 22.82960 25.88687 22.87886 22.51581
-[28] 21.18795 21.03423 19.39562 20.15125 20.14500 20.85871 19.09777 17.98412 17.63097</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Multiply <span class="math inline">\(W_{phu}\)</span> by PHU case proportions (case count/phu population) to determine sample estimates of cases for each PHU:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGh1JHBodV93ZWlnaHQqcGh1JFRPVEFMcHJvcFxuYGBgIn0= -->
-<pre class="r"><code>phu$phu_weight*phu$TOTALprop</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwLjExNTM3ODc4OCAwLjE0MTYwMTEyNCAwLjA1MjY0MzY3OCAwLjA4NjI4OTMwOCAwLjA5MjAzOTIxNiAwLjA2OTQwMDAwMCAwLjAzNzUwMDAwMFxuIFs4XSAwLjAxODAwMDAwMCAwLjA2MTczMDc2OSAwLjAyMDAwMDAwMCAwLjAyMjA1MTI4MiAwLjAzNDEzMjIzMSAwLjAzNTUxMjgyMSAwLjA1MjU4OTI4NlxuWzE1XSAwLjAwODMzMzMzMyAwLjAyNjc3NDE5NCAwLjAyNjU2MjUwMCAwLjAyMDM1NzE0MyAwLjAxNTQwNTQwNSAwLjAzMTQ5MzUwNiAwLjAxNDk3MzI2MlxuWzIyXSAwLjAzOTEzMDQzNSAwLjAyMDAwMDAwMCAwLjA0MjAwMDAwMCAwLjAxODQzNzUwMCAwLjAwMzYzNjM2NCAwLjAwNjYyNzkwNyAwLjAwOTg3MTc5NVxuWzI5XSAwLjAzNDAzODQ2MiAwLjAxNjQ1ODMzMyAwLjAwMjMyMTQyOSAwLjAwNTI1MDAwMCAwLjAwNjQ1MTYxMyAwLjAwOTAyOTEyNiAwLjAxMDU4ODIzNVxuWzM2XSAwLjAwMTk0NDQ0NFxuIn0= -->
-<pre><code> [1] 0.115378788 0.141601124 0.052643678 0.086289308 0.092039216 0.069400000 0.037500000
- [8] 0.018000000 0.061730769 0.020000000 0.022051282 0.034132231 0.035512821 0.052589286
-[15] 0.008333333 0.026774194 0.026562500 0.020357143 0.015405405 0.031493506 0.014973262
-[22] 0.039130435 0.020000000 0.042000000 0.018437500 0.003636364 0.006627907 0.009871795
-[29] 0.034038462 0.016458333 0.002321429 0.005250000 0.006451613 0.009029126 0.010588235
-[36] 0.001944444</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="glm" class="section level1">
-<h1>GLM</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBTdHJhdGlmeWluZyB0aGUgQ292aWQgQ2FzZXMKCkRCcyB3ZXJlIGdyb3VwZWQgYnkgUEhVIGFuZCBzdW0gYERCUE9QYCAocG9wdWxhdGlvbiBvZiBQSFUpLgoKYGBge3J9CnBodSA8LSByZWFkLmNzdignLi4vZGF0YS9QTUQtZW4vUEhVX0ZJTkFMX3Byb3AuY3N2JykKcGh1IDwtIHBodVssLWMoMSwyKV0KYGBgCgpEZXRlcm1pbmUgc3RyYXRpZmllZCB3ZWlnaHRzIG9mIFBIVSByZWxhdGl2ZSB0byBPbnRhcmlvOgoKJFdfe3BodX0gPSBQSFUvT250YXJpbyQKCmBgYHtyIHBodSB3ZWlnaHRzfQpwaHUkcGh1X3dlaWdodCA8LSBwaHUkREJQT1AvcGh1JENlbnN1cwpgYGAKCk11bHRpcGx5ICRXX3twaHV9JCBieSBQSFUgY2FzZSBwcm9wb3J0aW9ucyAoY2FzZSBjb3VudC9waHUgcG9wdWxhdGlvbikgdG8gZGV0ZXJtaW5lIHNhbXBsZSBlc3RpbWF0ZXMgb2YgY2FzZXMgZm9yIGVhY2ggUEhVOgoKYGBge3J9CnBodSRUb3RhbFN0cmF0aWZpZWQgPC0gcGh1JHBodV93ZWlnaHQqcGh1JFRPVEFMcHJvcApgYGAKCiMgR0xNCgpgYGB7cn0KCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBTdHJhdGlmeWluZyB0aGUgQ292aWQgQ2FzZXMKCkRCcyB3ZXJlIGdyb3VwZWQgYnkgUEhVIGFuZCBzdW0gYERCUE9QYCAocG9wdWxhdGlvbiBvZiBQSFUpLiBTdHJhdGlmaWVkIHdlaWdodHMgd2VyZSBjYWxjdWxhdGVkIGJ5ICRwaHVfe3dlaWdodH0qcGh1X3twcm9wb3J0aW9ufSQKCndoZXJlIAoKJHBodV97d2VpZ2h0fSA9IFxmcmFje3BodV97cG9wfX17b250YXJpb197Y2Vuc3VzfX0kCgphbmQKCiRwaHVfe3Byb3BvcnRpb259ID0gXGZyYWN7Y2FzZXN9e3BodV97cG9wfX0kLgoKYGBge3J9CnBodSA8LSByZWFkLmNzdignLi4vZGF0YS9QTUQtZW4vUEhVX0ZJTkFMX3Byb3AuY3N2JykKcGh1IDwtIHBodVssLWMoMSwyKV0KYGBgCg==</div>
 
 
 

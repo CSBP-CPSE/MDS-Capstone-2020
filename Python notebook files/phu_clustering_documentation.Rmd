@@ -57,17 +57,17 @@ Single linkage appears to have chaining while average linkage groups are not as 
 
 ```{r scale and dist, include = F}
 #scale
-phu_prop_sc <- scale(phu_prop[,-1])
+phu_sc <- scale(phu_prop[,-1])
 
 #euc distance between each PHU is ok because all var are quantitative
-phu_dist <- dist(phu_prop_sc)
+phu_dist <- dist(phu_sc)
 
 #clust
 comp <- hclust(phu_dist, method = "complete")
 av <- hclust(phu_dist, method = "average")
 sing <- hclust(phu_dist, method = 'single')
 
-plot(comp, main = "Complete Linkage") # best, suggests 3 groups
+plot(comp, main = "Complete Linkage") # best, suggests 2 groups
 plot(av, main = "Average Linkage") # chaining
 plot(sing, main = "Single Linkage") # chaining
 
@@ -82,7 +82,7 @@ plot(comp_col_dend, main = "Complete Linkage")
 
 With 8 groups it seems as though there is too much separation...
 
-```{r comp clust k 8, echo = F}
+```{r comp clust k 2, echo = F}
 
 # 8 clusters according to previous plot ----
 phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 8)) 
@@ -116,9 +116,9 @@ paste("Aggloemeratice Coefficient: ", coef.hclust(comp))
 
 ```{r k 3, echo = F}
 # VIS: bar plots ----
-phu_cl <- mutate(phu_cl, CovidCaseProp = phu$TOTALprop) 
+phu_cl <- mutate(phu_cl, CovidCaseStrat = phu$TotalStratified) 
 
-ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = factor(cluster))) + 
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
   theme(axis.text.x=element_text(angle=90,hjust=1)) +
   labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
@@ -146,14 +146,14 @@ Covid Case Total Proportions (per PHU) data and DIANA cluster assignment are add
 
 ```{r diana bar, echo = F}
 # VIS: bar plots ----
-phu_cl <- mutate(phu_prop, CovidCaseProp = phu$TOTALprop) 
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TotalStratified) 
 phu_cl <- mutate(phu_cl, cluster = clust) 
 
 
-ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = factor(cluster))) + 
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
   theme(axis.text.x=element_text(angle=90,hjust=1)) +
-  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
 
 ```
 
@@ -163,11 +163,12 @@ Looking at covid case proportions for each PHU coloured by transit proximity.
 Peel and York have week transit proximity but high case proportions.
 
 ```{r by transit}
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TotalStratified) 
 
-ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseProp, .desc=F), y = CovidCaseProp, fill = prox_idx_transit)) + 
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = prox_idx_transit)) + 
   geom_bar(stat="identity")  +
   theme(axis.text.x=element_text(angle=90,hjust=1)) +
-  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
 
 
 ```
@@ -187,18 +188,17 @@ plot(mphu, what="classification")
 ```
 
 
-Between PHU and proportion of cases:
+Between PHU and Stratified Proportion of Cases:
 
 ```{r EM cases, include = F}
 # EM by total cases ----
-mcovid <- Mclust(phu[,c(17,18)], G=1:3)
+mcovid <- Mclust(phu[,21], G=1:2)
 plot(mcovid, what="classification")
-
 ```
 
 ```{r EM case classes}
 # EM view clasess ----
-classes <- mutate(as.data.frame(mcovid$classification), loc = phu$Location[mcovid$data[,2]])
+classes <- mutate(as.data.frame(mcovid$classification), loc = phu$Location)
 colnames(classes)[1] <- 'class'
 classes <- classes[order(classes),][1:36,]
 classes
@@ -222,5 +222,72 @@ text(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], rownames(cmdscale(phu_dist)
 
 
 
-#### Other unexplored methods:
-Combinatorial - works directly with data without assuming underlying probabilistic model.
+---
+
+
+# Clustering with only `amenity` cols
+
+```{r}
+amenity_keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 'amenity')
+
+phu_amen <- subset(phu, select = amenity_keep)
+
+rownames(phu_amen) <- phu_amen$Location
+
+```
+
+
+```{r scale and dist2, include = F}
+#scale
+phu_amen_sc <- scale(phu_amen[,-1])
+
+#euc distance between each PHU is ok because all var are quantitative
+phu_dist2 <- dist(phu_amen_sc)
+
+#clust
+comp2 <- hclust(phu_dist2, method = "complete")
+av2 <- hclust(phu_dist2, method = "average")
+sing2 <- hclust(phu_dist2, method = 'single')
+
+plot(comp2, main = "Complete Linkage") # best, suggests 2 groups
+plot(av2, main = "Average Linkage") # chaining
+plot(sing2, main = "Single Linkage") # chaining
+
+```
+
+```{r complete clust2, echo = F}
+# comp clust better visualization ----
+comp_dend2 <- as.dendrogram(comp2)
+comp_col_dend2 <- color_branches(comp_dend2, h = 3)
+plot(comp_col_dend2, main = "Complete Linkage")
+```
+
+```{r}
+# 2 clusters according to previous plot ----
+phu_amen_cl <- mutate(phu_amen, cluster = cutree(comp2, k = 2)) 
+count(phu_amen_cl,cluster)
+
+# VIS: cluster groups ----
+fviz_cluster(list(data = phu_amen_cl[,-1], cluster = cutree(comp2, k = 2)), 
+             main = "Cluster Plot k = 2 - Agglomerative Complete Hierarchical Clustering for Amenity Rich Data")
+```
+
+
+The agglomerative coefficient for complete linkage:
+
+```{r ac comp2, echo = F}
+paste("Aggloemeratice Coefficient: ", coef.hclust(comp2))
+```
+
+
+```{r , echo = F}
+# VIS: bar plots ----
+phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TotalStratified) 
+
+ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
+
+```
+

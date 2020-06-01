@@ -19,5 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 2. Doing reading and research about methods which can work for our project statistical part.
 
-3. stats! 
+3. stats! a lot of stats.
+
+4. meeting with John to discuss statistical methods.
+
 

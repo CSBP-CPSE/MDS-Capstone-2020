@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 2. Meeting with John for stats help 11-12:30 (1.5 hours)
 
-3. Stats... 
+3. Stats... (8 hours)
 
 
 

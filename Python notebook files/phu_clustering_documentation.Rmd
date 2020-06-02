@@ -267,7 +267,8 @@ count(phu_amen_cl,cluster)
 
 # VIS: cluster groups ----
 fviz_cluster(list(data = phu_amen_cl[,-1], cluster = cutree(comp2, k = 2)), 
-             main = "Cluster Plot k = 2 - Agglomerative Complete Hierarchical Clustering for Amenity Rich Data")
+             main = "Agglomerative Complete Hierarchical Clustering, k = 2")+   scale_colour_manual(values=c("#46A5FE", "#E69F00")) +
+  scale_fill_manual(values=c("#46A5FE", "#E69F00")) 
 ```
 
 
@@ -289,3 +290,20 @@ ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = Cov
 
 ```
 
+```{r , echo = F}
+library(ggthemes)
+# VIS: bar plots ----
+phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TotalStratified) 
+phu_amen_cl$Cluster <- as.factor(phu_amen_cl$cluster)
+
+pdf('StratClust.pdf')
+ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = Cluster)) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Provincial Proportion of Covid Cases") +
+  ggtitle('Provincial Proportion of PHUs with Covid Cases')+ 
+  #theme(legend.title = element_blank()) +
+    scale_fill_manual(values=c("#46A5FE", "#E69F00"))
+dev.off()
+
+```

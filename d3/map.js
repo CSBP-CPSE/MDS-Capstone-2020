@@ -13,11 +13,10 @@ var svg = d3.select('#map').append('svg')
 //     https://github.com/mbostock/d3/wiki/Geo-Projections
 // and set the initial zoom to show the features.
 var projection = d3.geo.mercator()
-  // The approximate scale factor was found through try and error
+  // The approximate scale factor
   .scale(10000)
-  // The geographical center of Switzerland is around 46.8°, 8.2°
-  //     https://de.wikipedia.org/wiki/Älggi-Alp
-  .center([8.226692, 46.80121])
+  // The geographical center of Ontario from google (lon, lat)
+  .center([85.3232, 51.2538])
   // Translate: Translate it to fit the container
   .translate([width/2, height/2]);
 
@@ -26,7 +25,7 @@ var path = d3.geo.path()
   .projection(projection);
 
 // Load the features from the GeoJSON.
-d3.json('data/ch_municipalities.geojson', function(error, features) {
+d3.json('data/ontario_PHU_JSON.geojson', function(error, features) {
 
   // We add a <g> element to the SVG element and give it a class to
   // style it later.
@@ -81,7 +80,7 @@ function calculateScaleCenter(features) {
   };
 
   // ...
-  d3.json('data/ch_municipalities.geojson', function(error, features) {
+  d3.json('data/ontario_PHU_JSON.geojson', function(error, features) {
 
     // Get the scale and center parameters from the features.
     var scaleCenter = calculateScaleCenter(features);

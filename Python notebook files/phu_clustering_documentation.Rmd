@@ -97,11 +97,11 @@ With 3 groups it appears as though there is not enough separation...
 ```{r comp clust k 3, echo = F}
 
 # 3 clusters according to previous plot ----
-phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 2)) 
+phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 3)) 
 count(phu_cl,cluster)
 
 # VIS: cluster groups ----
-fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 2)), 
+fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
              main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
 
 ```
@@ -114,7 +114,7 @@ paste("Aggloemeratice Coefficient: ", coef.hclust(comp))
 
 ```{r k 3, echo = F}
 # VIS: bar plots ----
-phu_cl <- mutate(phu_cl, CovidCaseStrat = phu$TotalStratified) 
+phu_cl <- mutate(phu_cl, CovidCaseStrat = phu$TOTALprop) 
 
 ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
@@ -144,7 +144,7 @@ Covid Case Total Proportions (per PHU) data and DIANA cluster assignment are add
 
 ```{r diana bar, echo = F}
 # VIS: bar plots ----
-phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TotalStratified) 
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TOTALprop) 
 phu_cl <- mutate(phu_cl, cluster = clust) 
 
 
@@ -161,12 +161,12 @@ Looking at covid case proportions for each PHU coloured by transit proximity.
 Peel and York have week transit proximity but high case proportions.
 
 ```{r by transit}
-phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TotalStratified) 
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TOTALprop) 
 
 ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = prox_idx_transit)) + 
   geom_bar(stat="identity")  +
   theme(axis.text.x=element_text(angle=90,hjust=1)) +
-  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
 
 
 ```

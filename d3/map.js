@@ -17,33 +17,39 @@ var svg = d3.select('#map').append('svg')
 // and set the initial zoom to show the features.
 var projection = d3.geo.mercator()
   // The approximate scale factor
-  .scale(10000)
-  // The geographical center of Ontario from google (lon, lat)
-  .center([85.3232, 51.2538])
-  // Translate: Translate it to fit the container
-  .translate([width/2, height/2]);
+  .scale(1);
 
 // We prepare a path object and apply the projection to it.
 var path = d3.geo.path()
   .projection(projection);
 
+
 // Load the features from the GeoJSON.
 d3.json('data/PHU.geojson', function(error, features) {
 
-  // We add a <g> element to the SVG element and give it a class to
+  // Get the scale and center parameters from the features.
+  var scaleCenter = calculateScaleCenter(features);
+
+  // Apply scale, center and translate parameters.
+  projection.scale(scaleCenter.scale)
+    .center(scaleCenter.center)
+    .translate([width/2, height/2]);
+
+    // We add a <g> element to the SVG element and give it a class to
   // style it later.
   svg.append('g')
       .attr('class', 'features')
-    // D3 wants us to select the (non-existing) path objects first ...
-    .selectAll('path')
+      // D3 wants us to select the (non-existing) path objects first ...
+      .selectAll('path')
       // ... and then enter the data. For each feature, a <path> element
       // is added.
       .data(features.features)
-    .enter().append('path')
+      .enter().append('path')
       // As "d" attribute, we set the path of the feature.
       .attr('d', path);
 
 });
+
 
 /**
  * Calculate the scale factor and the center coordinates of a GeoJSON
@@ -81,17 +87,4 @@ function calculateScaleCenter(features) {
     'center': center
   };
 
-  // ...
-  d3.json('data/PHU.geojson', function(error, features) {
-
-    // Get the scale and center parameters from the features.
-    var scaleCenter = calculateScaleCenter(features);
-
-    // Apply scale, center and translate parameters.
-    projection.scale(scaleCenter.scale)
-      .center(scaleCenter.center)
-      .translate([width/2, height/2]);
-
-    // We add a <g> element to the SVG element and give it a class to
-    // ...
 }

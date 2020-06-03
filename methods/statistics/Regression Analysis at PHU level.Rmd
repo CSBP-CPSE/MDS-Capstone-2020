@@ -3,8 +3,8 @@ title: "PHU more stats."
 author: "Sofia Bahmutsky"
 date: "28/05/2020"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -27,11 +27,9 @@ names(data)[names(data) == "asthma.percent"] <- "asthma.prop"
 names(data)[names(data) == "hbp.percent"] <- "hbp.prop"
 names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
 
-# dropping unneeded cols
+# dropping unneeded cols, cleaning...
 df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat))
-  
-# dropping some cols which may be not make sense in this analysis...(need to check with John i think)
-df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
+
 df[is.na(df)] <- 0
            
 head(df)
@@ -43,10 +41,8 @@ Amenity scoring data. Need to average and groupby the PHU
 ```{r}
 data2 <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/QGIS_csv_files/Amenity_Scoring.csv")
 
-head(data2)
-
 # dropping unneeded cols
-data2 <- subset(data2, select = -c(FRE_LABEL, DBUID))
+data2 <- subset(data2, select = -c(DBUID))
 
 data2[is.na(data2)] <- 0
 
@@ -55,7 +51,7 @@ amenity_score <- aggregate(data2$prox_ontario_nan_amenity_dense, by=list(Locatio
 names(amenity_score)[names(amenity_score) == "x"] <- "amenity"
 
 #write.csv(amenity_score,'/Users/Sofia/Desktop/amenity_score.csv')
-#amenity_score
+head(amenity_score)
 ```
 
 Add this column to the dataframe with the co-morbidities
@@ -71,11 +67,6 @@ df_final
 
 
 
-
-
-
-
-##############################################################################################################
 Using the final merged dataframe. It has the new proximity scoring, stratified covid proportions. This will be the official last dataframe.
 
 ```{r}
@@ -94,31 +85,14 @@ names(final)[names(final) == "hbp.percent"] <- "hbp.prop"
 names(final)[names(final) == "smokers.percent"] <- "smokers.prop"
 
 # dropping unneeded cols
-final<- subset(final, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, FEMALEprop, MALEprop, TRANSGENDERprop, UNKNOWNprop, OTHERprop, CONTACTprop, NEITHERprop, TRAVEL.RELATEDprop, NOT.RESOLVEDprop, RESOLVEDprop, FATALprop, Census, prox_idx_emp, prox_idx_pharma, prox_idx_childcare, prox_idx_health, prox_idx_grocery, prox_idx_educpri, prox_idx_educsec, prox_idx_lib, prox_idx_parks, prox_idx_transit, DBPOP, Location, TOTALprop, phu_weight))
+final<- subset(final, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, Census, prox_idx_emp, prox_idx_pharma, prox_idx_childcare, prox_idx_health, prox_idx_grocery, prox_idx_educpri, prox_idx_educsec, prox_idx_lib, prox_idx_parks, prox_idx_transit, DBPOP, Location, FATALprop, phu_weight))
  
 # dealing with any NA's
 final[is.na(final)] <- 0
 
 # check the output
-final  
-
-# response column is TotalStratified. Label column is Location. 
-           
 head(final)
-plot(final$TotalStratified)
-```
-
-
-LM version...
-```{r}
-library(skimr)
-
-# checking the distribution of the response variable. 
-plotNormalHistogram(final$TotalStratified)
-# it does not follow the normal dicitrubution. Need to try a transfomraiton. 
-
-log_final <- log(final+0.001)
-plotNormalHistogram(log_final$TotalStratified)
+plot(final$TOTALprop)
 ```
 
 
@@ -126,7 +100,7 @@ LASSO
 ```{r}
 ### LASSO
 library(leaps)
-regfit.full=regsubsets(TotalStratified~.,final, nvmax = 25)
+regfit.full=regsubsets(TOTALprop~.,final, nvmax = 25)
 reg.summary = summary(regfit.full)
 
 reg.summary
@@ -135,51 +109,31 @@ plot(reg.summary$rss ,xlab="Number of Variables ",ylab="RSS", type="l")
 # plot suggests to keep 3 predictors
 
 library(glmnet)
-y=na.omit(log_final)
-x=model.matrix(TotalStratified~.,final)[,-1]
+y=na.omit(final)
+x=model.matrix(TOTALprop~.,final)[,-1]
 rownames(x)=c()
-y=as.matrix(final$TotalStratified)
+y=as.matrix(final$TOTALprop)
 
 lasso.mod =glmnet(x,y)
 plot(lasso.mod, xvar = "lambda", label = TRUE)
 ```
 
-MLR (not sure about this)
-```{r}
-MLR <- lm(TotalStratified ~ copd.prop+amenity+smokers.prop, log_final)
-plot(MLR, which = c(1, 2,3 ,4))
-
-#a few outliers, obs. 24, 29, 31. 
-
-summary(MLR)
-
-plot(log_final$TotalStratified~log_final$copd.prop)
-
-ggplot(log_final,aes(x, TotalStratified)) +
-  geom_point()+
-geom_abline(slope = MLR$coefficients[2], intercept = MLR$coefficients[1])
-
-# line...
-Y = -10.06123 -1.83963*(log_final$copd.prop) - 0.64551*(log_final$hbp.prop) + 0.0357*(log_final$amenity)
-
-model <- glm(TotalStratified~copd.prop, family=poisson, data=final)
-ggplot(final,aes(copd.prop,TotalStratified))+
-  geom_point()+
-  geom_line(aes(y=fitted(model)))
-
-```
-
-
 beta regression model...
 ```{r}
 library(betareg)
-beta_model <- betareg(TotalStratified~copd.prop+amenity+smokers.prop,data = final, link = "logit")
+beta_model <- betareg(TOTALprop~amenity+copd.prop+asthma.prop,data = final, link = "logit")
 summary(beta_model)
 
+# checking the links.
 sapply(c("logit", "probit", "cloglog", "cauchit", "loglog"),
 function(x) logLik(update(beta_model, link = x)))
 
-plot(beta_model3)
+# the highest Loglikelihood is when using the log-log link. Let us use that one.
+beta_model2 <- betareg(TOTALprop~amenity+copd.prop+asthma.prop,data = final, link = "loglog")
+summary(beta_model2)
+
+# diagnostic plots.
+plot(beta_model2)
 ```
 
 ```{r}
@@ -187,43 +141,138 @@ library(dplyr)
 library(ggplot2)
 library(ggrepel)
 library(ggiraphExtra)
-
-ggplot(final, aes(x=copd.prop, y=TotalStratified, col = amenity)) +
-  theme_classic()+
-    #geom_point(alpha=0.9, size = 3,pch=21, aes(fill = amenity), colour= "black")+
-  
-    geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
-  geom_abline(data = new.range, mapping = aes(intercept = exp(-0.9371), slope =exp(-35.9798)),color="blue")+
-    #geom_point(shape = 1,size = 4,colour = "black")+
-  lims( y = c(0, 0.15))+
-xlab("COPD prevalence (proportion)")+
-  ylab("COVID-19 total cases (proportion)")+
-  labs(col = "Amenity Richness")+
- scale_color_gradientn(colors = c("blue", "gold", "red")) +
- 
-  ggrepel::geom_label_repel(data=data %>% filter(copd.prop == 0.05), aes(label = Location, fill = factor(amenity)),label.size = 0, color = "black",  nudge_x = 0.0125, nudge_y = 0.035)+
-  
-  geom_label_repel( 
-    data=data %>% filter(TotalStratified > 0.1),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0, label.padding = unit(0.15, "lines"),nudge_x = 0.017, nudge_y = 0.006)+ guides(fill=FALSE)+
-scale_fill_manual(values = setNames(c("darkorchid1", "gold", "red"), levels(data$amenity)))
-
-
-
-# NO
+library(plotly)
 
 new.range<- data.frame(x=seq(0,0.1,length.out=100), y=seq(0, 0.15, length.out = 100))
 
-log_formula <-  exp(-0.9371-35.9798*new.range$x + 0.9116*new.range$y)
-plot(final$TotalStratified ~ final$copd.prop)
-lines(new.range$x, exp( -1.2335 -31.4649 *new.range$x+ 1.1270*new.range$y) , type = "l")
+
+ggplot(final, aes(x=copd.prop, y=TOTALprop, col = amenity)) +
+  theme_classic()+
+  geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
+  xlab("COPD prevalence (proportion)")+
+  ylab("COVID-19 total cases (proportion)")+
+  labs(col = "Amenity Richness")+
+  scale_color_gradientn(colors = c("blue", "gold", "red")) +
+ 
+ggrepel::geom_label_repel(data=data %>% filter(copd.prop == 0.05), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
+  
+geom_label( data=data %>% filter(TOTALprop> 0.003),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.015, nudge_y = 0.0001)+ 
+  
+guides(fill=FALSE)+
+scale_fill_manual(values = setNames(c("palevioletred3", "gold", "red"), levels(data$amenity)))
+
+```
 
 
+Fatal proportion of COVID-19 cases
+
+```{r}
+final <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+#str(final)
 
 
-plot(beta(177.52 ,5))
-p = seq(0,1, length=100)
+# data cleaning....
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+final[,percents] <- lapply(final[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
 
-plot(final$TotalStratified ~ final$copd.prop)
-#plot(p, dbeta(p, 100, 100), ylab="density", type ="l", col=4)
-lines(p, dbeta(p, 0.15, 177), type ="l", col=3)
+names(final)[names(final) == "copd.percent"] <- "copd.prop"
+names(final)[names(final) == "asthma.percent"] <- "asthma.prop"
+names(final)[names(final) == "hbp.percent"] <- "hbp.prop"
+names(final)[names(final) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+final<- subset(final, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, Census, prox_idx_emp, prox_idx_pharma, prox_idx_childcare, prox_idx_health, prox_idx_grocery, prox_idx_educpri, prox_idx_educsec, prox_idx_lib, prox_idx_parks, prox_idx_transit, DBPOP, Location, TOTALprop, phu_weight))
+ 
+# dealing with any NA's
+final[is.na(final)] <- 0
+
+# check the output
+head(final)
+plot(final$FATALprop)
+```
+
+
+LASSO
+```{r}
+### LASSO
+library(leaps)
+regfit.full=regsubsets(FATALprop~.,final, nvmax = 25)
+reg.summary = summary(regfit.full)
+
+reg.summary
+reg.summary$rss
+plot(reg.summary$rss ,xlab="Number of Variables ",ylab="RSS", type="l")
+# plot suggests to keep 3 predictors
+
+library(glmnet)
+y=na.omit(final)
+x=model.matrix(FATALprop~.,final)[,-1]
+rownames(x)=c()
+y=as.matrix(final$FATALprop)
+
+lasso.mod =glmnet(x,y)
+plot(lasso.mod, xvar = "lambda", label = TRUE)
+```
+
+beta regression model...
+```{r}
+library(betareg)
+
+# the standard beta regression model does not work on this data, because there are 0's. The data must be within interval 0,1. There is a transformation to try. Otherwise, can do quasibinomial GLM as well.
+
+# y also assumes the extremes 0 and 1, a useful transformation in practice is (y · (n − 1) + 0.5)/n where n is the sample size (Smithson and Verkuilen 2006).
+y.transf.betareg <- function(y){
+    n.obs <- sum(!is.na(y))
+    (y * (n.obs - 1) + 0.5) / n.obs
+}
+
+beta_model <- betareg( y.transf.betareg(FATALprop) ~ hbp.prop+amenity+copd.prop, data=final, link = "logit")
+summary(beta_model)
+
+# checking the links.
+sapply(c("logit", "probit", "cloglog", "cauchit", "loglog"),
+function(x) logLik(update(beta_model, link = x)))
+
+# the highest Loglikelihood is basically all the same. we can stay wih the default logit. 
+#plot(beta_model)
+
+
+# lets try the other models which can include 0's. 
+
+#linear regression with logistic transforamtion.
+logistic <- function(p) log(p / (1-p) +0.01)
+LM_model <- lm(logistic(FATALprop)~hbp.prop+amenity+copd.prop,data=final)
+#summary(LM_model)
+
+# the result is similar to the beta regression , however lower LL and lower R squared. 
+
+
+# lets try the quasibinomial model
+quassi_model <- glm(FATALprop ~ hbp.prop+amenity+copd.prop,  data = final, family = quasibinomial(link = "logit"))
+#summary(quassi_model)
+```
+
+```{r}
+ggplot(final, aes(x=hbp.prop, y=FATALprop, col = amenity)) +
+  theme_classic()+
+  geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
+  xlab("high blood pressure prevalence (proportion)")+
+  ylab("COVID-19 fatal cases (proportion)")+
+  labs(col = "Amenity Richness")+
+  ggtitle("COVID-19 Fatalities in Ontario PHU's")+
+  ylim(0, 0.00035)+
+  xlim(0.12, 0.26)+
+  scale_color_gradientn(colors = c("blue", "gold", "red")) +
+geom_smooth(method = "glm", method.args = list(family = "quasibinomial"), col = "gray", se = F)+
+#ggrepel::geom_label_repel(data=data %>% filter(hbp.prop < 0.16), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
+  
+geom_label_repel( data=data %>% filter(hbp.prop < 0.14),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.0275, nudge_y = -0.00002)+ 
+
+  geom_label_repel( data=data %>% filter(hbp.prop < 0.16 & hbp.prop > 0.14),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.0275, nudge_y = 0.00002)+ 
+
+  geom_label_repel( data=data %>% filter(hbp.prop == 	0.179),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = -0.0275, nudge_y = 0.00002)+ 
+
+guides(fill=FALSE)+
+scale_fill_manual(values = setNames(c("palevioletred", "gold", "red"), levels(data$amenity)))
 ```

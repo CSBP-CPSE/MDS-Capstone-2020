@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Weekly Team Log - WEEK 6
+
+## Week of June 1 to June 8
 
 ## Monday June 1
 

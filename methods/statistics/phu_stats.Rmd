@@ -91,7 +91,7 @@ LM
 ```{r}
 library(pls)
 
-#pcr.fit=pcr(TOTALprop~.-Location, data=df ,scale=TRUE)
+pcr.fit=pcr(TOTALprop~.-Location, data=df ,scale=TRUE)
 
 summary(pcr.fit)
 
@@ -108,7 +108,7 @@ library(rcompanion)
 plotNormalHistogram(df$TOTALprop)
 
 #drop gender cols...
-df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop, hbp.prop))
+df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop, CONTACTprop, TRAVEL.RELATEDprop))
 log_df <- log(df+0.00001)
 plotNormalHistogram(log_df$TOTALprop)
 
@@ -116,12 +116,6 @@ plotNormalHistogram(log_df$TOTALprop)
 test_logs <- lm(log_df$TOTALprop ~., log_df)
 plot(test_logs)
 summary(test_logs)
-
-
-test_logs2 <- lm(log_df$TOTALprop ~.-log_df$hbp.prop, log_df)
-plot(test_logs2)
-summary(test_logs2)
-
 
 ```
 
@@ -131,8 +125,6 @@ set.seed(123)    # seef for reproducibility
 library(glmnet)  # for ridge regression
 library(dplyr)   # for data cleaning
 library(psych)   # for function tr() to compute trace of a matrix
-
-df <- subset(df, select = -c(Location, MALEprop, FEMALEprop, TRANSGENDERprop, OTHERprop, UNKNOWNprop, NEITHERprop))
 
 # Center y, X will be standardized in the modelling function
 y <- df %>% select(TOTALprop) %>% scale(center = TRUE, scale = FALSE) %>% as.matrix()

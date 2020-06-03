@@ -62,9 +62,13 @@ type="l")
 
 
 # this MLR is using only the first 8 predicotrs from the LASSO which were most important. 
-MLR <- lm(TOTALprop ~ copd.prop+prox_idx_parks+prox_idx_childcare+hbp.prop+prox_idx_health+prox_idx_lib+prox_idx_educsec, log_df)
+MLR <- lm(TOTALprop ~ copd.prop+hbp.prop+prox_idx_transit, log_df)
 plot(MLR)
 summary(MLR)
+
+
+
+betareg()
 ```
 
 MLR function:

@@ -51,10 +51,53 @@ data2[is.na(data2)] <- 0
 library(dplyr)
 amenity_score <- aggregate(data2$prox_ontario_nan_amenity_dense, by=list(Location=data2$ENG_LABEL), FUN=mean)
 names(amenity_score)[names(amenity_score) == "x"] <- "amenity"
+
+#write.csv(amenity_score,'/Users/Sofia/Desktop/amenity_score.csv')
+#amenity_score
 ```
 
 Add this column to the dataframe with the co-morbidities
 ```{r}
 df_final <- merge(df,amenity_score,by="Location")
 df_final
+
+#write.csv(df_final,'/Users/Sofia/Desktop/df_final_sofia.csv')
+```
+
+
+
+
+
+
+
+
+
+
+##############################################################################################################
+Using the final merged dataframe. It has the new proximity scoring, stratified covid proportions. This will be the official last dataframe.
+
+```{r}
+final <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+#str(final)
+
+
+# data cleaning....
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+final[,percents] <- lapply(final[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# dropping unneeded cols
+final<- subset(final, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, FEMALEprop, MALEprop, TRANSGENDERprop, UNKNOWNprop, OTHERprop, CONTACTprop, NEITHERprop, TRAVEL.RELATEDprop, NOT.RESOLVEDprop, RESOLVEDprop, FATALprop, Census, prox_idx_emp, prox_idx_pharma, prox_idx_childcare, prox_idx_health, prox_idx_grocery, prox_idx_educpri, prox_idx_educsec, prox_idx_lib, prox_idx_parks, prox_idx_transit, DBPOP))
+ 
+# dealing with any NA's
+final[is.na(final)] <- 0
+
+# check the output
+final  
+
+# response column is TotalStratified. Label column is Location. 
+
+           
+head(final)
+plot(final$TotalStratified)
 ```

@@ -1,0 +1,229 @@
+---
+title: "PHU more stats."
+author: "Sofia Bahmutsky"
+date: "28/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Data 
+```{r}
+# load the data
+data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+str(data)
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+data[,percents] <- lapply(data[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+str(data)
+
+names(data)[names(data) == "copd.percent"] <- "copd.prop"
+names(data)[names(data) == "asthma.percent"] <- "asthma.prop"
+names(data)[names(data) == "hbp.percent"] <- "hbp.prop"
+names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat))
+  
+# dropping some cols which may be not make sense in this analysis...(need to check with John i think)
+df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
+df[is.na(df)] <- 0
+           
+head(df)
+plot(df$TOTALprop)
+```
+
+
+Amenity scoring data. Need to average and groupby the PHU
+```{r}
+data2 <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/QGIS_csv_files/Amenity_Scoring.csv")
+
+head(data2)
+
+# dropping unneeded cols
+data2 <- subset(data2, select = -c(FRE_LABEL, DBUID))
+
+data2[is.na(data2)] <- 0
+
+library(dplyr)
+amenity_score <- aggregate(data2$prox_ontario_nan_amenity_dense, by=list(Location=data2$ENG_LABEL), FUN=mean)
+names(amenity_score)[names(amenity_score) == "x"] <- "amenity"
+
+#write.csv(amenity_score,'/Users/Sofia/Desktop/amenity_score.csv')
+#amenity_score
+```
+
+Add this column to the dataframe with the co-morbidities
+```{r}
+df_final <- merge(df,amenity_score,by="Location")
+df_final
+
+#write.csv(df_final,'/Users/Sofia/Desktop/df_final_sofia.csv')
+```
+
+
+
+
+
+
+
+
+
+
+##############################################################################################################
+Using the final merged dataframe. It has the new proximity scoring, stratified covid proportions. This will be the official last dataframe.
+
+```{r}
+final <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/data/PMD-en/PHU_FINAL_prop.csv")
+
+#str(final)
+
+
+# data cleaning....
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+final[,percents] <- lapply(final[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+names(final)[names(final) == "copd.percent"] <- "copd.prop"
+names(final)[names(final) == "asthma.percent"] <- "asthma.prop"
+names(final)[names(final) == "hbp.percent"] <- "hbp.prop"
+names(final)[names(final) == "smokers.percent"] <- "smokers.prop"
+
+# dropping unneeded cols
+final<- subset(final, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, FEMALEprop, MALEprop, TRANSGENDERprop, UNKNOWNprop, OTHERprop, CONTACTprop, NEITHERprop, TRAVEL.RELATEDprop, NOT.RESOLVEDprop, RESOLVEDprop, FATALprop, Census, prox_idx_emp, prox_idx_pharma, prox_idx_childcare, prox_idx_health, prox_idx_grocery, prox_idx_educpri, prox_idx_educsec, prox_idx_lib, prox_idx_parks, prox_idx_transit, DBPOP, Location, TOTALprop, phu_weight))
+ 
+# dealing with any NA's
+final[is.na(final)] <- 0
+
+# check the output
+final  
+
+# response column is TotalStratified. Label column is Location. 
+           
+head(final)
+plot(final$TotalStratified)
+```
+
+
+LM version...
+```{r}
+library(skimr)
+
+# checking the distribution of the response variable. 
+plotNormalHistogram(final$TotalStratified)
+# it does not follow the normal dicitrubution. Need to try a transfomraiton. 
+
+log_final <- log(final+0.001)
+plotNormalHistogram(log_final$TotalStratified)
+```
+
+
+LASSO
+```{r}
+### LASSO
+library(leaps)
+regfit.full=regsubsets(TotalStratified~.,final, nvmax = 25)
+reg.summary = summary(regfit.full)
+
+reg.summary
+reg.summary$rss
+plot(reg.summary$rss ,xlab="Number of Variables ",ylab="RSS", type="l")
+# plot suggests to keep 3 predictors
+
+library(glmnet)
+y=na.omit(log_final)
+x=model.matrix(TotalStratified~.,final)[,-1]
+rownames(x)=c()
+y=as.matrix(final$TotalStratified)
+
+lasso.mod =glmnet(x,y)
+plot(lasso.mod, xvar = "lambda", label = TRUE)
+```
+
+MLR (not sure about this)
+```{r}
+MLR <- lm(TotalStratified ~ copd.prop+amenity+smokers.prop, log_final)
+plot(MLR, which = c(1, 2,3 ,4))
+
+#a few outliers, obs. 24, 29, 31. 
+
+summary(MLR)
+
+plot(log_final$TotalStratified~log_final$copd.prop)
+
+ggplot(log_final,aes(x, TotalStratified)) +
+  geom_point()+
+geom_abline(slope = MLR$coefficients[2], intercept = MLR$coefficients[1])
+
+# line...
+Y = -10.06123 -1.83963*(log_final$copd.prop) - 0.64551*(log_final$hbp.prop) + 0.0357*(log_final$amenity)
+
+model <- glm(TotalStratified~copd.prop, family=poisson, data=final)
+ggplot(final,aes(copd.prop,TotalStratified))+
+  geom_point()+
+  geom_line(aes(y=fitted(model)))
+
+```
+
+
+beta regression model...
+```{r}
+library(betareg)
+beta_model <- betareg(TotalStratified~copd.prop+amenity+smokers.prop,data = final, link = "logit")
+summary(beta_model)
+
+sapply(c("logit", "probit", "cloglog", "cauchit", "loglog"),
+function(x) logLik(update(beta_model, link = x)))
+
+plot(beta_model3)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(ggiraphExtra)
+
+ggplot(final, aes(x=copd.prop, y=TotalStratified, col = amenity)) +
+  theme_classic()+
+    #geom_point(alpha=0.9, size = 3,pch=21, aes(fill = amenity), colour= "black")+
+  
+    geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
+  geom_abline(data = new.range, mapping = aes(intercept = exp(-0.9371), slope =exp(-35.9798)),color="blue")+
+    #geom_point(shape = 1,size = 4,colour = "black")+
+  lims( y = c(0, 0.15))+
+xlab("COPD prevalence (proportion)")+
+  ylab("COVID-19 total cases (proportion)")+
+  labs(col = "Amenity Richness")+
+ scale_color_gradientn(colors = c("blue", "gold", "red")) +
+ 
+  ggrepel::geom_label_repel(data=data %>% filter(copd.prop == 0.05), aes(label = Location, fill = factor(amenity)),label.size = 0, color = "black",  nudge_x = 0.0125, nudge_y = 0.035)+
+  
+  geom_label_repel( 
+    data=data %>% filter(TotalStratified > 0.1),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0, label.padding = unit(0.15, "lines"),nudge_x = 0.017, nudge_y = 0.006)+ guides(fill=FALSE)+
+scale_fill_manual(values = setNames(c("darkorchid1", "gold", "red"), levels(data$amenity)))
+
+
+
+# NO
+
+new.range<- data.frame(x=seq(0,0.1,length.out=100), y=seq(0, 0.15, length.out = 100))
+
+log_formula <-  exp(-0.9371-35.9798*new.range$x + 0.9116*new.range$y)
+plot(final$TotalStratified ~ final$copd.prop)
+lines(new.range$x, exp( -1.2335 -31.4649 *new.range$x+ 1.1270*new.range$y) , type = "l")
+
+
+
+
+plot(beta(177.52 ,5))
+p = seq(0,1, length=100)
+
+plot(final$TotalStratified ~ final$copd.prop)
+#plot(p, dbeta(p, 100, 100), ylab="density", type ="l", col=4)
+lines(p, dbeta(p, 0.15, 177), type ="l", col=3)
+```

@@ -113,4 +113,11 @@ Thursday May 28
   - Discussed statistics for our project
 - PHU data preparation and cleaning
   - Added population weighted version of proximity aggregation
-  
+
+Sunday May 31
+- PHU data preparation (1h)
+
+Monday June 1
+- Worked on merging the new LTC homes quality dataset
+  - Data cleaning/wrangling
+- Preparation for the midterm status presentation

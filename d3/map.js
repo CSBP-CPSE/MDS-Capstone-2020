@@ -25,7 +25,7 @@ var path = d3.geo.path()
   .projection(projection);
 
 // Load the features from the GeoJSON.
-d3.json('data/ontario_PHU_JSON.geojson', function(error, features) {
+d3.json('data/PHU.geojson', function(error, features) {
 
   // We add a <g> element to the SVG element and give it a class to
   // style it later.
@@ -80,7 +80,7 @@ function calculateScaleCenter(features) {
   };
 
   // ...
-  d3.json('data/ontario_PHU_JSON.geojson', function(error, features) {
+  d3.json('data/PHU.geojson', function(error, features) {
 
     // Get the scale and center parameters from the features.
     var scaleCenter = calculateScaleCenter(features);

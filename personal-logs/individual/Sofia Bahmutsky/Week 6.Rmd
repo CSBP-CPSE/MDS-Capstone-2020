@@ -11,6 +11,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### Week of June 1 to June 8
+
 ## Monday June 1
 
 1. Working on stats.. finishing up the regression analysis 9am - 9pm (12 hours)

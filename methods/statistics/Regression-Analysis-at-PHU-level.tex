@@ -1,0 +1,1094 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={PHU more stats.},
+            pdfauthor={Sofia Bahmutsky},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{PHU more stats.}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Sofia Bahmutsky}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{28/05/2020}
+
+
+\begin{document}
+\maketitle
+
+Data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the data}
+\NormalTok{data \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"/Users/Sofia/Desktop/data{-}599{-}capstone{-}statistics{-}canada/data/PMD{-}en/PHU\_FINAL\_prop.csv"}\NormalTok{)}
+
+\KeywordTok{str}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    36 obs. of  34 variables:
+##  $ X                 : int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ DGUID             : Factor w/ 36 levels "2017A00073526",..: 35 36 8 20 22 32 11 23 3 30 ...
+##  $ DBPOP             : int  1131052 2694831 561949 936763 1388271 534525 61222 77366 655838 149563 ...
+##  $ Reporting_PHU     : Factor w/ 34 levels "Algoma Public Health Unit",..: 34 31 9 20 21 24 12 12 4 29 ...
+##  $ copd.percent      : Factor w/ 28 levels "2.0 %","2.2 %",..: 1 2 3 4 5 6 7 16 8 9 ...
+##  $ asthma.percent    : Factor w/ 28 levels "10.2 %","10.3 %",..: 10 20 16 1 12 16 2 4 27 23 ...
+##  $ hbp.percent       : Factor w/ 35 levels "13.5 %","15.8 %",..: 9 2 10 1 15 12 25 16 4 30 ...
+##  $ smokers.percent   : Factor w/ 33 levels "10.5 %","11.7 %",..: 1 5 2 4 3 11 17 16 9 15 ...
+##  $ Census            : int  14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 ...
+##  $ phu_weight        : num  0.0776 0.185 0.0386 0.0643 0.0953 ...
+##  $ TOTALprop         : num  0.00213 0.00382 0.00115 0.00209 0.00329 ...
+##  $ FATALprop         : num  1.83e-04 2.93e-04 4.45e-05 2.60e-04 1.97e-04 ...
+##  $ Location          : Factor w/ 36 levels "Brant County Health Unit",..: 36 5 11 4 22 33 13 23 6 31 ...
+##  $ fid               : num  117031 126962 22631 63544 72647 ...
+##  $ DBUID             : num  3.52e+10 3.52e+10 3.52e+10 3.51e+10 3.52e+10 ...
+##  $ PRUID_x           : num  35 35 35 35 35 35 35 35 35 35 ...
+##  $ CSDUID_x          : num  3519036 3520005 3524002 3506008 3521010 ...
+##  $ CMAUID_x          : num  535 535 535 505 535 541 NA 553 532 595 ...
+##  $ CMAPUID_x         : num  35535 35535 35535 35505 35535 ...
+##  $ HR_UID            : num  3570 3595 3536 3551 3553 ...
+##  $ DAUID             : num  35190950 35202564 35240577 35061147 35211591 ...
+##  $ lon               : num  -79.4 -79.4 -79.8 -75.7 -79.7 ...
+##  $ lat               : num  43.9 43.7 43.5 45.4 43.7 ...
+##  $ prox_idx_emp      : num  0.0337 0.0939 0.0307 0.0243 0.0496 0.0282 0.0009 0.0052 0.0257 0.0097 ...
+##  $ prox_idx_pharma   : num  0.0347 0.0494 0.0306 0.0264 0.0309 ...
+##  $ prox_idx_childcare: num  0.028 0.0657 0.0367 0.0892 0.0353 ...
+##  $ prox_idx_health   : num  0.0082 0.0222 0.0099 0.0072 0.0076 0.0045 0.0061 0.0112 0.0075 0.0058 ...
+##  $ prox_idx_grocery  : num  0.0322 0.0663 0.0341 0.0447 0.0365 0.0374 0.038 0.0341 0.0359 0.0363 ...
+##  $ prox_idx_educpri  : num  0.0945 0.1644 0.088 0.1168 0.1087 ...
+##  $ prox_idx_educsec  : num  0.0498 0.0729 0.0495 0.0586 0.0515 ...
+##  $ prox_idx_lib      : num  0.0666 0.0934 0.0641 0.0714 0.0659 0.0778 0.0934 0.0814 0.0693 0.0778 ...
+##  $ prox_idx_parks    : num  0.0608 0.0732 0.0678 0.0673 0.0613 ...
+##  $ prox_idx_transit  : num  0.0056 0.0348 0.0054 0.0146 0.0032 0.0076 NA NA 0.005 0.0088 ...
+##  $ amenity           : num  0.0766 0.6598 0.1064 0.206 0.1847 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{percents \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}copd.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}asthma.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}smokers.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}hbp.percent\textquotesingle{}}\NormalTok{)}
+\NormalTok{data[,percents] \textless{}{-}}\StringTok{ }\KeywordTok{lapply}\NormalTok{(data[,percents], }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{"[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{\%,]"}\NormalTok{, }\StringTok{""}\NormalTok{, x))}\OperatorTok{/}\DecValTok{100}\NormalTok{)}
+
+\KeywordTok{str}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    36 obs. of  34 variables:
+##  $ X                 : int  0 1 2 3 4 5 6 7 8 9 ...
+##  $ DGUID             : Factor w/ 36 levels "2017A00073526",..: 35 36 8 20 22 32 11 23 3 30 ...
+##  $ DBPOP             : int  1131052 2694831 561949 936763 1388271 534525 61222 77366 655838 149563 ...
+##  $ Reporting_PHU     : Factor w/ 34 levels "Algoma Public Health Unit",..: 34 31 9 20 21 24 12 12 4 29 ...
+##  $ copd.percent      : num  0.02 0.022 0.027 0.029 0.032 0.033 0.034 0.055 0.041 0.043 ...
+##  $ asthma.percent    : num  0.051 0.078 0.069 0.102 0.06 0.069 0.103 0.11 0.094 0.083 ...
+##  $ hbp.percent       : num  0.176 0.158 0.178 0.135 0.185 0.18 0.217 0.189 0.166 0.233 ...
+##  $ smokers.percent   : num  0.105 0.133 0.117 0.128 0.125 0.165 0.187 0.185 0.152 0.183 ...
+##  $ Census            : int  14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 14570000 ...
+##  $ phu_weight        : num  0.0776 0.185 0.0386 0.0643 0.0953 ...
+##  $ TOTALprop         : num  0.00213 0.00382 0.00115 0.00209 0.00329 ...
+##  $ FATALprop         : num  1.83e-04 2.93e-04 4.45e-05 2.60e-04 1.97e-04 ...
+##  $ Location          : Factor w/ 36 levels "Brant County Health Unit",..: 36 5 11 4 22 33 13 23 6 31 ...
+##  $ fid               : num  117031 126962 22631 63544 72647 ...
+##  $ DBUID             : num  3.52e+10 3.52e+10 3.52e+10 3.51e+10 3.52e+10 ...
+##  $ PRUID_x           : num  35 35 35 35 35 35 35 35 35 35 ...
+##  $ CSDUID_x          : num  3519036 3520005 3524002 3506008 3521010 ...
+##  $ CMAUID_x          : num  535 535 535 505 535 541 NA 553 532 595 ...
+##  $ CMAPUID_x         : num  35535 35535 35535 35505 35535 ...
+##  $ HR_UID            : num  3570 3595 3536 3551 3553 ...
+##  $ DAUID             : num  35190950 35202564 35240577 35061147 35211591 ...
+##  $ lon               : num  -79.4 -79.4 -79.8 -75.7 -79.7 ...
+##  $ lat               : num  43.9 43.7 43.5 45.4 43.7 ...
+##  $ prox_idx_emp      : num  0.0337 0.0939 0.0307 0.0243 0.0496 0.0282 0.0009 0.0052 0.0257 0.0097 ...
+##  $ prox_idx_pharma   : num  0.0347 0.0494 0.0306 0.0264 0.0309 ...
+##  $ prox_idx_childcare: num  0.028 0.0657 0.0367 0.0892 0.0353 ...
+##  $ prox_idx_health   : num  0.0082 0.0222 0.0099 0.0072 0.0076 0.0045 0.0061 0.0112 0.0075 0.0058 ...
+##  $ prox_idx_grocery  : num  0.0322 0.0663 0.0341 0.0447 0.0365 0.0374 0.038 0.0341 0.0359 0.0363 ...
+##  $ prox_idx_educpri  : num  0.0945 0.1644 0.088 0.1168 0.1087 ...
+##  $ prox_idx_educsec  : num  0.0498 0.0729 0.0495 0.0586 0.0515 ...
+##  $ prox_idx_lib      : num  0.0666 0.0934 0.0641 0.0714 0.0659 0.0778 0.0934 0.0814 0.0693 0.0778 ...
+##  $ prox_idx_parks    : num  0.0608 0.0732 0.0678 0.0673 0.0613 ...
+##  $ prox_idx_transit  : num  0.0056 0.0348 0.0054 0.0146 0.0032 0.0076 NA NA 0.005 0.0088 ...
+##  $ amenity           : num  0.0766 0.6598 0.1064 0.206 0.1847 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(data)[}\KeywordTok{names}\NormalTok{(data) }\OperatorTok{==}\StringTok{ "copd.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "copd.prop"}
+\KeywordTok{names}\NormalTok{(data)[}\KeywordTok{names}\NormalTok{(data) }\OperatorTok{==}\StringTok{ "asthma.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "asthma.prop"}
+\KeywordTok{names}\NormalTok{(data)[}\KeywordTok{names}\NormalTok{(data) }\OperatorTok{==}\StringTok{ "hbp.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "hbp.prop"}
+\KeywordTok{names}\NormalTok{(data)[}\KeywordTok{names}\NormalTok{(data) }\OperatorTok{==}\StringTok{ "smokers.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "smokers.prop"}
+
+\CommentTok{\# dropping unneeded cols, cleaning...}
+\NormalTok{df \textless{}{-}}\StringTok{ }\KeywordTok{subset}\NormalTok{(data, }\DataTypeTok{select =} \OperatorTok{{-}}\KeywordTok{c}\NormalTok{(X, DGUID, Reporting\_PHU, fid, DBUID, PRUID\_x, CSDUID\_x, CMAUID\_x, CMAPUID\_x, HR\_UID, DAUID, lon, lat))}
+
+\NormalTok{df[}\KeywordTok{is.na}\NormalTok{(df)] \textless{}{-}}\StringTok{ }\DecValTok{0}
+           
+\KeywordTok{head}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     DBPOP copd.prop asthma.prop hbp.prop smokers.prop   Census phu_weight
+## 1 1131052     0.020       0.051    0.176        0.105 14570000 0.07762883
+## 2 2694831     0.022       0.078    0.158        0.133 14570000 0.18495752
+## 3  561949     0.027       0.069    0.178        0.117 14570000 0.03856891
+## 4  936763     0.029       0.102    0.135        0.128 14570000 0.06429396
+## 5 1388271     0.032       0.060    0.185        0.125 14570000 0.09528284
+## 6  534525     0.033       0.069    0.180        0.165 14570000 0.03668668
+##     TOTALprop    FATALprop                    Location prox_idx_emp
+## 1 0.002133412 1.830155e-04   York Regional Health Unit       0.0337
+## 2 0.003818421 2.931538e-04 City of Toronto Health Unit       0.0939
+## 3 0.001147791 4.448802e-05 Halton Regional Health Unit       0.0307
+## 4 0.002089109 2.604714e-04  City of Ottawa Health Unit       0.0243
+## 5 0.003291864 1.973678e-04   Peel Regional Health Unit       0.0496
+## 6 0.002024227 2.076610e-04        Waterloo Health Unit       0.0282
+##   prox_idx_pharma prox_idx_childcare prox_idx_health prox_idx_grocery
+## 1          0.0347            0.02800          0.0082           0.0322
+## 2          0.0494            0.06570          0.0222           0.0663
+## 3          0.0306            0.03665          0.0099           0.0341
+## 4          0.0264            0.08920          0.0072           0.0447
+## 5          0.0309            0.03530          0.0076           0.0365
+## 6          0.0221            0.04355          0.0045           0.0374
+##   prox_idx_educpri prox_idx_educsec prox_idx_lib prox_idx_parks
+## 1          0.09450          0.04975       0.0666         0.0608
+## 2          0.16445          0.07290       0.0934         0.0732
+## 3          0.08800          0.04950       0.0641         0.0678
+## 4          0.11680          0.05860       0.0714         0.0673
+## 5          0.10875          0.05150       0.0659         0.0613
+## 6          0.09590          0.04810       0.0778         0.0607
+##   prox_idx_transit    amenity
+## 1           0.0056 0.07664184
+## 2           0.0348 0.65980785
+## 3           0.0054 0.10638815
+## 4           0.0146 0.20603139
+## 5           0.0032 0.18473534
+## 6           0.0076 0.14380734
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(df}\OperatorTok{$}\NormalTok{TOTALprop)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+Amenity scoring data. Need to average and groupby the PHU
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data2 \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"/Users/Sofia/Desktop/data{-}599{-}capstone{-}statistics{-}canada/data/QGIS\_csv\_files/Amenity\_Scoring.csv"}\NormalTok{)}
+
+\CommentTok{\# dropping unneeded cols}
+\NormalTok{data2 \textless{}{-}}\StringTok{ }\KeywordTok{subset}\NormalTok{(data2, }\DataTypeTok{select =} \OperatorTok{{-}}\KeywordTok{c}\NormalTok{(DBUID))}
+
+\NormalTok{data2[}\KeywordTok{is.na}\NormalTok{(data2)] \textless{}{-}}\StringTok{ }\DecValTok{0}
+
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{amenity\_score \textless{}{-}}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(data2}\OperatorTok{$}\NormalTok{prox\_ontario\_nan\_amenity\_dense, }\DataTypeTok{by=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{Location=}\NormalTok{data2}\OperatorTok{$}\NormalTok{ENG\_LABEL), }\DataTypeTok{FUN=}\NormalTok{mean)}
+\KeywordTok{names}\NormalTok{(amenity\_score)[}\KeywordTok{names}\NormalTok{(amenity\_score) }\OperatorTok{==}\StringTok{ "x"}\NormalTok{] \textless{}{-}}\StringTok{ "amenity"}
+
+\CommentTok{\#write.csv(amenity\_score,\textquotesingle{}/Users/Sofia/Desktop/amenity\_score.csv\textquotesingle{})}
+\KeywordTok{head}\NormalTok{(amenity\_score)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                       Location    amenity
+## 1     Brant County Health Unit 0.08411215
+## 2     Chatham-Kent Health Unit 0.00000000
+## 3 City of Hamilton Health Unit 0.27231270
+## 4   City of Ottawa Health Unit 0.20603139
+## 5  City of Toronto Health Unit 0.65980785
+## 6  Durham Regional Health Unit 0.12507096
+\end{verbatim}
+
+Add this column to the dataframe with the co-morbidities
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_final \textless{}{-}}\StringTok{ }\KeywordTok{merge}\NormalTok{(df,amenity\_score,}\DataTypeTok{by=}\StringTok{"Location"}\NormalTok{)}
+\NormalTok{df\_final}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                    Location   DBPOP
+## 1                                  Brant County Health Unit  139668
+## 2                                  Chatham-Kent Health Unit  103551
+## 3                              City of Hamilton Health Unit  534386
+## 4                                City of Ottawa Health Unit  936763
+## 5                               City of Toronto Health Unit 2694831
+## 6                               Durham Regional Health Unit  655838
+## 7                              Elgin-St. Thomas Health Unit   91348
+## 8                                    Grey Bruce Health Unit  165266
+## 9                             Haldimand-Norfolk Health Unit  109378
+## 10    Haliburton, Kawartha, Pine Ridge District Health Unit  186198
+## 11                              Halton Regional Health Unit  561949
+## 12          Hastings and Prince Edward Counties Health Unit  161160
+## 13                                 Huron County Health Unit   61222
+## 14 Kingston, Frontenac and Lennox and Addington Health Unit  193986
+## 15                                      Lambton Health Unit  125652
+## 16         Leeds, Grenville and Lanark District Health Unit  171222
+## 17                             Middlesex-London Health Unit  454355
+## 18                        Niagara Regional Area Health Unit  444486
+## 19               North Bay Parry Sound District Health Unit  126943
+## 20                                 Northwestern Health Unit   74026
+## 21                                Oxford County Health Unit  108953
+## 22                                Peel Regional Health Unit 1388271
+## 23                               Perth District Health Unit   77366
+## 24                   Peterborough County - City Health Unit  130640
+## 25                                    Porcupine Health Unit   82838
+## 26                  Renfrew County and District Health Unit  100667
+## 27                      Simcoe Muskoka District Health Unit  537217
+## 28                         Sudbury and District Health Unit  193636
+## 29                       The District of Algoma Health Unit  112847
+## 30                          The Eastern Ontario Health Unit  196707
+## 31                         Thunder Bay District Health Unit  149563
+## 32                                  Timiskaming Health Unit   30573
+## 33                                     Waterloo Health Unit  534525
+## 34                   Wellington-Dufferin-Guelph Health Unit  267523
+## 35                         Windsor-Essex County Health Unit  397008
+## 36                                York Regional Health Unit 1131052
+##    copd.prop asthma.prop hbp.prop smokers.prop   Census  phu_weight
+## 1      0.064       0.111    0.181        0.242 14570000 0.009585999
+## 2      0.049       0.090    0.258        0.147 14570000 0.007107138
+## 3      0.050       0.074    0.179        0.169 14570000 0.036677145
+## 4      0.029       0.102    0.135        0.128 14570000 0.064293960
+## 5      0.022       0.078    0.158        0.133 14570000 0.184957515
+## 6      0.041       0.094    0.166        0.152 14570000 0.045012903
+## 7      0.052       0.063    0.230        0.193 14570000 0.006269595
+## 8      0.075       0.062    0.210        0.206 14570000 0.011342896
+## 9      0.075       0.054    0.174        0.214 14570000 0.007507069
+## 10     0.078       0.104    0.236        0.190 14570000 0.012779547
+## 11     0.027       0.069    0.178        0.117 14570000 0.038568909
+## 12     0.079       0.090    0.211        0.252 14570000 0.011061084
+## 13     0.034       0.103    0.217        0.187 14570000 0.004201922
+## 14     0.079       0.111    0.183        0.181 14570000 0.013314070
+## 15     0.060       0.103    0.201        0.204 14570000 0.008624022
+## 16     0.067       0.116    0.214        0.211 14570000 0.011751682
+## 17     0.045       0.067    0.171        0.148 14570000 0.031184283
+## 18     0.055       0.069    0.216        0.181 14570000 0.030506932
+## 19     0.091       0.077    0.219        0.208 14570000 0.008712629
+## 20     0.048       0.098    0.218        0.190 14570000 0.005080714
+## 21     0.055       0.094    0.173        0.161 14570000 0.007477900
+## 22     0.032       0.060    0.185        0.125 14570000 0.095282841
+## 23     0.055       0.110    0.189        0.185 14570000 0.005309952
+## 24     0.045       0.098    0.213        0.196 14570000 0.008966369
+## 25     0.068       0.141    0.242        0.238 14570000 0.005685518
+## 26     0.072       0.080    0.194        0.194 14570000 0.006909197
+## 27     0.055       0.087    0.172        0.195 14570000 0.036871448
+## 28     0.073       0.085    0.229        0.235 14570000 0.013290048
+## 29     0.079       0.112    0.246        0.209 14570000 0.007745161
+## 30     0.082       0.117    0.191        0.185 14570000 0.013500824
+## 31     0.043       0.083    0.233        0.183 14570000 0.010265134
+## 32     0.084       0.110    0.256        0.198 14570000 0.002098353
+## 33     0.033       0.069    0.180        0.165 14570000 0.036686685
+## 34     0.047       0.081    0.160        0.149 14570000 0.018361222
+## 35     0.047       0.071    0.210        0.173 14570000 0.027248318
+## 36     0.020       0.051    0.176        0.105 14570000 0.077628826
+##       TOTALprop    FATALprop prox_idx_emp prox_idx_pharma
+## 1  0.0008377008 3.579918e-05       0.0163         0.02285
+## 2  0.0013906191 9.657077e-06       0.0015         0.02150
+## 3  0.0012612606 7.110965e-05       0.0404         0.03160
+## 4  0.0020891090 2.604714e-04       0.0243         0.02640
+## 5  0.0038184213 2.931538e-04       0.0939         0.04940
+## 6  0.0022322586 2.668342e-04       0.0257         0.01930
+## 7  0.0007991417 4.378859e-05       0.0023         0.02685
+## 8  0.0005385258 0.000000e+00       0.0009         0.01625
+## 9  0.0022582238 2.834208e-04       0.0016         0.02775
+## 10 0.0009506010 1.020419e-04       0.0005         0.02680
+## 11 0.0011477910 4.448802e-05       0.0307         0.03060
+## 12 0.0002730206 3.102507e-05       0.0014         0.02050
+## 13 0.0008493679 8.166999e-05       0.0009         0.02525
+## 14 0.0003196107 0.000000e+00       0.0043         0.02475
+## 15 0.0020930825 1.750867e-04       0.0018         0.01900
+## 16 0.0020324491 2.920185e-04       0.0017         0.02590
+## 17 0.0011818952 1.166489e-04       0.0240         0.02010
+## 18 0.0014398654 1.327376e-04       0.0109         0.01750
+## 19 0.0001969388 7.877551e-06       0.0006         0.02045
+## 20 0.0002971929 0.000000e+00       0.0014         0.01690
+## 21 0.0006700137 3.671308e-05       0.0051         0.02400
+## 22 0.0032918645 1.973678e-04       0.0496         0.03090
+## 23 0.0006721299 6.462787e-05       0.0052         0.02280
+## 24 0.0006736069 1.530925e-05       0.0036         0.02735
+## 25 0.0007846640 8.450228e-05       0.0027         0.02160
+## 26 0.0002682110 9.933742e-06       0.0015         0.02300
+## 27 0.0008730178 6.328914e-05       0.0041         0.02080
+## 28 0.0003201884 1.032866e-05       0.0017         0.01570
+## 29 0.0001860927 0.000000e+00       0.0025         0.02080
+## 30 0.0007574718 6.100444e-05       0.0018         0.01650
+## 31 0.0005415778 6.686146e-06       0.0097         0.01600
+## 32 0.0005887548 0.000000e+00       0.0010         0.01570
+## 33 0.0020242271 2.076610e-04       0.0282         0.02210
+## 34 0.0014391286 1.270919e-04       0.0080         0.02080
+## 35 0.0024256438 1.612058e-04       0.0160         0.02425
+## 36 0.0021334121 1.830155e-04       0.0337         0.03470
+##    prox_idx_childcare prox_idx_health prox_idx_grocery prox_idx_educpri
+## 1             0.02060         0.00460          0.04170          0.10040
+## 2             0.01330         0.00320          0.03175          0.07440
+## 3             0.03830         0.00930          0.04770          0.12250
+## 4             0.08920         0.00720          0.04470          0.11680
+## 5             0.06570         0.02220          0.06630          0.16445
+## 6             0.03160         0.00750          0.03590          0.08820
+## 7             0.01220         0.00390          0.03370          0.05690
+## 8             0.02275         0.00360          0.03730          0.05820
+## 9             0.01710         0.00280          0.04685          0.07020
+## 10            0.01850         0.00270          0.03500          0.06920
+## 11            0.03665         0.00990          0.03410          0.08800
+## 12            0.02480         0.00170          0.04455          0.08075
+## 13            0.03095         0.00610          0.03800          0.07600
+## 14            0.03360         0.00510          0.03800          0.09430
+## 15            0.01210         0.00420          0.03150          0.07620
+## 16            0.01970         0.00380          0.05055          0.11400
+## 17            0.02410         0.00580          0.03430          0.07650
+## 18            0.02160         0.00410          0.03500          0.07660
+## 19            0.04140         0.00570          0.03260          0.10740
+## 20            0.01500         0.00290          0.05250          0.06170
+## 21            0.02670         0.00550          0.03370          0.07070
+## 22            0.03530         0.00760          0.03650          0.10875
+## 23            0.02440         0.01120          0.03410          0.08850
+## 24            0.03360         0.00390          0.03540          0.06780
+## 25            0.01740         0.00885          0.03510          0.09900
+## 26            0.01925         0.00160          0.03390          0.08280
+## 27            0.02415         0.00260          0.03810          0.07160
+## 28            0.01750         0.00110          0.03540          0.07860
+## 29            0.01440         0.00330          0.03460          0.07940
+## 30            0.02125         0.00310          0.03410          0.07960
+## 31            0.01530         0.00580          0.03630          0.10830
+## 32            0.01180         0.00300          0.02910          0.07190
+## 33            0.04355         0.00450          0.03740          0.09590
+## 34            0.03280         0.00450          0.04140          0.08610
+## 35            0.01290         0.00520          0.04430          0.07850
+## 36            0.02800         0.00820          0.03220          0.09450
+##    prox_idx_educsec prox_idx_lib prox_idx_parks prox_idx_transit
+## 1           0.04900      0.07140        0.04450           0.0004
+## 2           0.05230      0.09600        0.03760           0.0000
+## 3           0.05480      0.07070        0.05550           0.0156
+## 4           0.05860      0.07140        0.06730           0.0146
+## 5           0.07290      0.09340        0.07320           0.0348
+## 6           0.05000      0.06930        0.04005           0.0050
+## 7           0.05175      0.08240        0.02600           0.0000
+## 8           0.04630      0.09100        0.03150           0.0000
+## 9           0.05730      0.08140        0.04480           0.0000
+## 10          0.04900      0.08870        0.02965           0.0000
+## 11          0.04950      0.06410        0.06780           0.0054
+## 12          0.05260      0.08050        0.03150           0.0000
+## 13          0.05825      0.09340        0.03490           0.0000
+## 14          0.04970      0.08570        0.05415           0.0087
+## 15          0.05540      0.09410        0.03150           0.0000
+## 16          0.07970      0.08650        0.04480           0.0034
+## 17          0.05150      0.07490        0.03400           0.0069
+## 18          0.04810      0.06930        0.03710           0.0044
+## 19          0.08950      0.07870        0.02440           0.0000
+## 20          0.06070      0.08760        0.02135           0.0000
+## 21          0.07090      0.10310        0.03035           0.0000
+## 22          0.05150      0.06590        0.06130           0.0032
+## 23          0.05145      0.08140        0.05050           0.0000
+## 24          0.05540      0.08240        0.04050           0.0001
+## 25          0.07090      0.07870        0.02615           0.0000
+## 26          0.05420      0.06895        0.02700           0.0000
+## 27          0.04950      0.08340        0.02975           0.0043
+## 28          0.08130      0.07530        0.03410           0.0043
+## 29          0.09660      0.08340        0.02780           0.0099
+## 30          0.07790      0.08340        0.03150           0.0064
+## 31          0.05260      0.07780        0.03020           0.0088
+## 32          0.05860      0.09340        0.02500           0.0000
+## 33          0.04810      0.07780        0.06070           0.0076
+## 34          0.05370      0.07960        0.04600           0.0044
+## 35          0.05200      0.07530        0.03130           0.0067
+## 36          0.04975      0.06660        0.06080           0.0056
+##      amenity.x   amenity.y
+## 1  0.084112150 0.084112150
+## 2  0.000000000 0.000000000
+## 3  0.272312704 0.272312704
+## 4  0.206031393 0.206031393
+## 5  0.659807846 0.659807846
+## 6  0.125070956 0.125070956
+## 7  0.000000000 0.000000000
+## 8  0.000000000 0.000000000
+## 9  0.000000000 0.000000000
+## 10 0.004152608 0.004152608
+## 11 0.106388147 0.106388147
+## 12 0.000000000 0.000000000
+## 13 0.000000000 0.000000000
+## 14 0.122187742 0.122187742
+## 15 0.000000000 0.000000000
+## 16 0.027505533 0.027505533
+## 17 0.103322823 0.103322823
+## 18 0.094658224 0.094658224
+## 19 0.000000000 0.000000000
+## 20 0.000000000 0.000000000
+## 21 0.000000000 0.000000000
+## 22 0.184735343 0.184735343
+## 23 0.000000000 0.000000000
+## 24 0.047197640 0.047197640
+## 25 0.000000000 0.000000000
+## 26 0.000000000 0.000000000
+## 27 0.028188669 0.028188669
+## 28 0.060437652 0.060437652
+## 29 0.012605042 0.012605042
+## 30 0.012090360 0.012090360
+## 31 0.084444444 0.084444444
+## 32 0.000000000 0.000000000
+## 33 0.143807339 0.143807339
+## 34 0.107108395 0.107108395
+## 35 0.078078078 0.078078078
+## 36 0.076641842 0.076641842
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#write.csv(df\_final,\textquotesingle{}/Users/Sofia/Desktop/df\_final\_sofia.csv\textquotesingle{})}
+\end{Highlighting}
+\end{Shaded}
+
+Using the final merged dataframe. It has the new proximity scoring,
+stratified covid proportions. This will be the official last dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"/Users/Sofia/Desktop/data{-}599{-}capstone{-}statistics{-}canada/data/PMD{-}en/PHU\_FINAL\_prop.csv"}\NormalTok{)}
+
+\CommentTok{\#str(final)}
+
+
+\CommentTok{\# data cleaning....}
+\NormalTok{percents \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}copd.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}asthma.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}smokers.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}hbp.percent\textquotesingle{}}\NormalTok{)}
+\NormalTok{final[,percents] \textless{}{-}}\StringTok{ }\KeywordTok{lapply}\NormalTok{(final[,percents], }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{"[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{\%,]"}\NormalTok{, }\StringTok{""}\NormalTok{, x))}\OperatorTok{/}\DecValTok{100}\NormalTok{)}
+
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "copd.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "copd.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "asthma.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "asthma.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "hbp.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "hbp.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "smokers.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "smokers.prop"}
+
+\CommentTok{\# dropping unneeded cols}
+\NormalTok{final\textless{}{-}}\StringTok{ }\KeywordTok{subset}\NormalTok{(final, }\DataTypeTok{select =} \OperatorTok{{-}}\KeywordTok{c}\NormalTok{(X, DGUID, Reporting\_PHU, fid, DBUID, PRUID\_x, CSDUID\_x, CMAUID\_x, CMAPUID\_x, HR\_UID, DAUID, lon, lat, Census, prox\_idx\_emp, prox\_idx\_pharma, prox\_idx\_childcare, prox\_idx\_health, prox\_idx\_grocery, prox\_idx\_educpri, prox\_idx\_educsec, prox\_idx\_lib, prox\_idx\_parks, prox\_idx\_transit, DBPOP, Location, FATALprop, phu\_weight))}
+ 
+\CommentTok{\# dealing with any NA\textquotesingle{}s}
+\NormalTok{final[}\KeywordTok{is.na}\NormalTok{(final)] \textless{}{-}}\StringTok{ }\DecValTok{0}
+
+\CommentTok{\# check the output}
+\KeywordTok{head}\NormalTok{(final)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   copd.prop asthma.prop hbp.prop smokers.prop   TOTALprop    amenity
+## 1     0.020       0.051    0.176        0.105 0.002133412 0.07664184
+## 2     0.022       0.078    0.158        0.133 0.003818421 0.65980785
+## 3     0.027       0.069    0.178        0.117 0.001147791 0.10638815
+## 4     0.029       0.102    0.135        0.128 0.002089109 0.20603139
+## 5     0.032       0.060    0.185        0.125 0.003291864 0.18473534
+## 6     0.033       0.069    0.180        0.165 0.002024227 0.14380734
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(final}\OperatorTok{$}\NormalTok{TOTALprop)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+LASSO
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\#\# LASSO}
+\KeywordTok{library}\NormalTok{(leaps)}
+\NormalTok{regfit.full=}\KeywordTok{regsubsets}\NormalTok{(TOTALprop}\OperatorTok{\textasciitilde{}}\NormalTok{.,final, }\DataTypeTok{nvmax =} \DecValTok{25}\NormalTok{)}
+\NormalTok{reg.summary =}\StringTok{ }\KeywordTok{summary}\NormalTok{(regfit.full)}
+
+\NormalTok{reg.summary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(TOTALprop ~ ., final, nvmax = 25)
+## 5 Variables  (and intercept)
+##              Forced in Forced out
+## copd.prop        FALSE      FALSE
+## asthma.prop      FALSE      FALSE
+## hbp.prop         FALSE      FALSE
+## smokers.prop     FALSE      FALSE
+## amenity          FALSE      FALSE
+## 1 subsets of each size up to 5
+## Selection Algorithm: exhaustive
+##          copd.prop asthma.prop hbp.prop smokers.prop amenity
+## 1  ( 1 ) " "       " "         " "      " "          "*"    
+## 2  ( 1 ) "*"       " "         " "      " "          "*"    
+## 3  ( 1 ) "*"       "*"         " "      " "          "*"    
+## 4  ( 1 ) "*"       "*"         " "      "*"          "*"    
+## 5  ( 1 ) "*"       "*"         "*"      "*"          "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg.summary}\OperatorTok{$}\NormalTok{rss}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.643328e-05 1.376470e-05 1.336218e-05 1.321610e-05 1.312006e-05
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(reg.summary}\OperatorTok{$}\NormalTok{rss ,}\DataTypeTok{xlab=}\StringTok{"Number of Variables "}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"RSS"}\NormalTok{, }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{)}
+\CommentTok{\# plot suggests to keep 3 predictors}
+
+\KeywordTok{library}\NormalTok{(glmnet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## Loaded glmnet 3.0-2
+\end{verbatim}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y=}\KeywordTok{na.omit}\NormalTok{(final)}
+\NormalTok{x=}\KeywordTok{model.matrix}\NormalTok{(TOTALprop}\OperatorTok{\textasciitilde{}}\NormalTok{.,final)[,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\KeywordTok{rownames}\NormalTok{(x)=}\KeywordTok{c}\NormalTok{()}
+\NormalTok{y=}\KeywordTok{as.matrix}\NormalTok{(final}\OperatorTok{$}\NormalTok{TOTALprop)}
+
+\NormalTok{lasso.mod =}\KeywordTok{glmnet}\NormalTok{(x,y)}
+\KeywordTok{plot}\NormalTok{(lasso.mod, }\DataTypeTok{xvar =} \StringTok{"lambda"}\NormalTok{, }\DataTypeTok{label =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+beta regression model\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(betareg)}
+\NormalTok{beta\_model \textless{}{-}}\StringTok{ }\KeywordTok{betareg}\NormalTok{(TOTALprop}\OperatorTok{\textasciitilde{}}\NormalTok{amenity}\OperatorTok{+}\NormalTok{copd.prop}\OperatorTok{+}\NormalTok{asthma.prop,}\DataTypeTok{data =}\NormalTok{ final, }\DataTypeTok{link =} \StringTok{"logit"}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(beta\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## betareg(formula = TOTALprop ~ amenity + copd.prop + asthma.prop, 
+##     data = final, link = "logit")
+## 
+## Standardized weighted residuals 2:
+##     Min      1Q  Median      3Q     Max 
+## -1.9988 -0.8151 -0.1058  0.6615  1.9569 
+## 
+## Coefficients (mean model with logit link):
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  -5.6262     0.4043 -13.917  < 2e-16 ***
+## amenity       1.3199     0.5355   2.465  0.01370 *  
+## copd.prop   -16.3804     5.4723  -2.993  0.00276 ** 
+## asthma.prop  -4.3681     4.5143  -0.968  0.33324    
+## 
+## Phi coefficients (precision model with identity link):
+##       Estimate Std. Error z value Pr(>|z|)    
+## (phi)   3206.4      779.7   4.113 3.91e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+## 
+## Type of estimator: ML (maximum likelihood)
+## Log-likelihood: 221.4 on 5 Df
+## Pseudo R-squared: 0.4426
+## Number of iterations: 5000 (BFGS) + 11 (Fisher scoring)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# checking the links.}
+\KeywordTok{sapply}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"logit"}\NormalTok{, }\StringTok{"probit"}\NormalTok{, }\StringTok{"cloglog"}\NormalTok{, }\StringTok{"cauchit"}\NormalTok{, }\StringTok{"loglog"}\NormalTok{),}
+\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{logLik}\NormalTok{(}\KeywordTok{update}\NormalTok{(beta\_model, }\DataTypeTok{link =}\NormalTok{ x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    logit   probit  cloglog  cauchit   loglog 
+## 221.4395 221.4677 221.4390 220.3779 221.4800
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# the highest Loglikelihood is when using the log{-}log link. Let us use that one.}
+\NormalTok{beta\_model2 \textless{}{-}}\StringTok{ }\KeywordTok{betareg}\NormalTok{(TOTALprop}\OperatorTok{\textasciitilde{}}\NormalTok{amenity}\OperatorTok{+}\NormalTok{copd.prop}\OperatorTok{+}\NormalTok{asthma.prop,}\DataTypeTok{data =}\NormalTok{ final, }\DataTypeTok{link =} \StringTok{"loglog"}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(beta\_model2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## betareg(formula = TOTALprop ~ amenity + copd.prop + asthma.prop, 
+##     data = final, link = "loglog")
+## 
+## Standardized weighted residuals 2:
+##     Min      1Q  Median      3Q     Max 
+## -2.0112 -0.8291 -0.1137  0.6740  1.9839 
+## 
+## Coefficients (mean model with loglog link):
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -1.74941    0.06155 -28.422  < 2e-16 ***
+## amenity      0.22629    0.09111   2.484  0.01300 *  
+## copd.prop   -2.40132    0.80122  -2.997  0.00273 ** 
+## asthma.prop -0.59346    0.65709  -0.903  0.36645    
+## 
+## Phi coefficients (precision model with identity link):
+##       Estimate Std. Error z value Pr(>|z|)    
+## (phi)   3218.7      782.8   4.112 3.92e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+## 
+## Type of estimator: ML (maximum likelihood)
+## Log-likelihood: 221.5 on 5 Df
+## Pseudo R-squared: 0.4571
+## Number of iterations: 5000 (BFGS) + 11 (Fisher scoring)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# diagnostic plots.}
+\KeywordTok{plot}\NormalTok{(beta\_model2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-6-2.pdf}
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-6-3.pdf}
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-6-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(ggrepel)}
+\KeywordTok{library}\NormalTok{(ggiraphExtra)}
+\KeywordTok{library}\NormalTok{(plotly)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'plotly' was built under R version 3.6.2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'plotly'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new.range\textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\DataTypeTok{length.out=}\DecValTok{100}\NormalTok{), }\DataTypeTok{y=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.15}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{100}\NormalTok{))}
+
+
+\KeywordTok{ggplot}\NormalTok{(final, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{copd.prop, }\DataTypeTok{y=}\NormalTok{TOTALprop, }\DataTypeTok{col =}\NormalTok{ amenity)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_classic}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.9}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour=}\NormalTok{amenity), }\DataTypeTok{size=}\DecValTok{4}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"COPD prevalence (proportion)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"COVID{-}19 total cases (proportion)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{"Amenity Richness"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_color\_gradientn}\NormalTok{(}\DataTypeTok{colors =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"gold"}\NormalTok{, }\StringTok{"red"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{ }
+\NormalTok{ggrepel}\OperatorTok{::}\KeywordTok{geom\_label\_repel}\NormalTok{(}\DataTypeTok{data=}\NormalTok{data }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{filter}\NormalTok{(copd.prop }\OperatorTok{==}\StringTok{ }\FloatTok{0.05}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ Location, }\DataTypeTok{fill=}\KeywordTok{factor}\NormalTok{(amenity)),}\DataTypeTok{label.size =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{color =} \StringTok{"black"}\NormalTok{,  }\DataTypeTok{nudge\_x =} \FloatTok{0.025}\NormalTok{, }\DataTypeTok{nudge\_y =} \DecValTok{0}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }
+\KeywordTok{geom\_label}\NormalTok{( }\DataTypeTok{data=}\NormalTok{data }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TOTALprop}\OperatorTok{\textgreater{}}\StringTok{ }\FloatTok{0.003}\NormalTok{),}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{Location, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(amenity)), }\DataTypeTok{color =} \StringTok{"black"}\NormalTok{,}\DataTypeTok{label.size =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{label.padding =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.15}\NormalTok{, }\StringTok{"lines"}\NormalTok{),}\DataTypeTok{nudge\_x =} \FloatTok{0.015}\NormalTok{, }\DataTypeTok{nudge\_y =} \FloatTok{0.0001}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+\StringTok{  }
+\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill=}\OtherTok{FALSE}\NormalTok{)}\OperatorTok{+}
+\KeywordTok{scale\_fill\_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{setNames}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"palevioletred3"}\NormalTok{, }\StringTok{"gold"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\KeywordTok{levels}\NormalTok{(data}\OperatorTok{$}\NormalTok{amenity)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+Fatal proportion of COVID-19 cases
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"/Users/Sofia/Desktop/data{-}599{-}capstone{-}statistics{-}canada/data/PMD{-}en/PHU\_FINAL\_prop.csv"}\NormalTok{)}
+
+\CommentTok{\#str(final)}
+
+
+\CommentTok{\# data cleaning....}
+\NormalTok{percents \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}copd.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}asthma.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}smokers.percent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}hbp.percent\textquotesingle{}}\NormalTok{)}
+\NormalTok{final[,percents] \textless{}{-}}\StringTok{ }\KeywordTok{lapply}\NormalTok{(final[,percents], }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{"[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{\%,]"}\NormalTok{, }\StringTok{""}\NormalTok{, x))}\OperatorTok{/}\DecValTok{100}\NormalTok{)}
+
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "copd.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "copd.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "asthma.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "asthma.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "hbp.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "hbp.prop"}
+\KeywordTok{names}\NormalTok{(final)[}\KeywordTok{names}\NormalTok{(final) }\OperatorTok{==}\StringTok{ "smokers.percent"}\NormalTok{] \textless{}{-}}\StringTok{ "smokers.prop"}
+
+\CommentTok{\# dropping unneeded cols}
+\NormalTok{final\textless{}{-}}\StringTok{ }\KeywordTok{subset}\NormalTok{(final, }\DataTypeTok{select =} \OperatorTok{{-}}\KeywordTok{c}\NormalTok{(X, DGUID, Reporting\_PHU, fid, DBUID, PRUID\_x, CSDUID\_x, CMAUID\_x, CMAPUID\_x, HR\_UID, DAUID, lon, lat, Census, prox\_idx\_emp, prox\_idx\_pharma, prox\_idx\_childcare, prox\_idx\_health, prox\_idx\_grocery, prox\_idx\_educpri, prox\_idx\_educsec, prox\_idx\_lib, prox\_idx\_parks, prox\_idx\_transit, DBPOP, Location, TOTALprop, phu\_weight))}
+ 
+\CommentTok{\# dealing with any NA\textquotesingle{}s}
+\NormalTok{final[}\KeywordTok{is.na}\NormalTok{(final)] \textless{}{-}}\StringTok{ }\DecValTok{0}
+
+\CommentTok{\# check the output}
+\KeywordTok{head}\NormalTok{(final)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   copd.prop asthma.prop hbp.prop smokers.prop    FATALprop    amenity
+## 1     0.020       0.051    0.176        0.105 1.830155e-04 0.07664184
+## 2     0.022       0.078    0.158        0.133 2.931538e-04 0.65980785
+## 3     0.027       0.069    0.178        0.117 4.448802e-05 0.10638815
+## 4     0.029       0.102    0.135        0.128 2.604714e-04 0.20603139
+## 5     0.032       0.060    0.185        0.125 1.973678e-04 0.18473534
+## 6     0.033       0.069    0.180        0.165 2.076610e-04 0.14380734
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(final}\OperatorTok{$}\NormalTok{FATALprop)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+LASSO
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\#\# LASSO}
+\KeywordTok{library}\NormalTok{(leaps)}
+\NormalTok{regfit.full=}\KeywordTok{regsubsets}\NormalTok{(FATALprop}\OperatorTok{\textasciitilde{}}\NormalTok{.,final, }\DataTypeTok{nvmax =} \DecValTok{25}\NormalTok{)}
+\NormalTok{reg.summary =}\StringTok{ }\KeywordTok{summary}\NormalTok{(regfit.full)}
+
+\NormalTok{reg.summary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(FATALprop ~ ., final, nvmax = 25)
+## 5 Variables  (and intercept)
+##              Forced in Forced out
+## copd.prop        FALSE      FALSE
+## asthma.prop      FALSE      FALSE
+## hbp.prop         FALSE      FALSE
+## smokers.prop     FALSE      FALSE
+## amenity          FALSE      FALSE
+## 1 subsets of each size up to 5
+## Selection Algorithm: exhaustive
+##          copd.prop asthma.prop hbp.prop smokers.prop amenity
+## 1  ( 1 ) " "       " "         "*"      " "          " "    
+## 2  ( 1 ) " "       " "         "*"      " "          "*"    
+## 3  ( 1 ) "*"       " "         "*"      " "          "*"    
+## 4  ( 1 ) "*"       " "         "*"      "*"          "*"    
+## 5  ( 1 ) "*"       "*"         "*"      "*"          "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg.summary}\OperatorTok{$}\NormalTok{rss}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.317618e-07 2.126890e-07 2.064103e-07 2.057105e-07 2.057089e-07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(reg.summary}\OperatorTok{$}\NormalTok{rss ,}\DataTypeTok{xlab=}\StringTok{"Number of Variables "}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"RSS"}\NormalTok{, }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# plot suggests to keep 3 predictors}
+
+\KeywordTok{library}\NormalTok{(glmnet)}
+\NormalTok{y=}\KeywordTok{na.omit}\NormalTok{(final)}
+\NormalTok{x=}\KeywordTok{model.matrix}\NormalTok{(FATALprop}\OperatorTok{\textasciitilde{}}\NormalTok{.,final)[,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\KeywordTok{rownames}\NormalTok{(x)=}\KeywordTok{c}\NormalTok{()}
+\NormalTok{y=}\KeywordTok{as.matrix}\NormalTok{(final}\OperatorTok{$}\NormalTok{FATALprop)}
+
+\NormalTok{lasso.mod =}\KeywordTok{glmnet}\NormalTok{(x,y)}
+\KeywordTok{plot}\NormalTok{(lasso.mod, }\DataTypeTok{xvar =} \StringTok{"lambda"}\NormalTok{, }\DataTypeTok{label =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+beta regression model\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(betareg)}
+
+\CommentTok{\# the standard beta regression model does not work on this data, because there are 0\textquotesingle{}s. The data must be within interval 0,1. There is a transformation to try. Otherwise, can do quasibinomial GLM as well.}
+
+\CommentTok{\# y also assumes the extremes 0 and 1, a useful transformation in practice is (y · (n − 1) + 0.5)/n where n is the sample size (Smithson and Verkuilen 2006).}
+\NormalTok{y.transf.betareg \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(y)\{}
+\NormalTok{    n.obs \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(y))}
+\NormalTok{    (y }\OperatorTok{*}\StringTok{ }\NormalTok{(n.obs }\OperatorTok{{-}}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\FloatTok{0.5}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{n.obs}
+\NormalTok{\}}
+
+\NormalTok{beta\_model \textless{}{-}}\StringTok{ }\KeywordTok{betareg}\NormalTok{( }\KeywordTok{y.transf.betareg}\NormalTok{(FATALprop) }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{hbp.prop}\OperatorTok{+}\NormalTok{amenity}\OperatorTok{+}\NormalTok{copd.prop, }\DataTypeTok{data=}\NormalTok{final, }\DataTypeTok{link =} \StringTok{"logit"}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(beta\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## betareg(formula = y.transf.betareg(FATALprop) ~ hbp.prop + amenity + 
+##     copd.prop, data = final, link = "logit")
+## 
+## Standardized weighted residuals 2:
+##     Min      1Q  Median      3Q     Max 
+## -1.4956 -0.8232 -0.2303  0.6703  3.0621 
+## 
+## Coefficients (mean model with logit link):
+##              Estimate Std. Error  z value Pr(>|z|)    
+## (Intercept) -4.237713   0.007530 -562.755   <2e-16 ***
+## hbp.prop    -0.078050   0.036406   -2.144    0.032 *  
+## amenity      0.011814   0.009255    1.277    0.202    
+## copd.prop   -0.060712   0.057593   -1.054    0.292    
+## 
+## Phi coefficients (precision model with identity link):
+##       Estimate Std. Error z value Pr(>|z|)    
+## (phi)  2554166     602024   4.243 2.21e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+## 
+## Type of estimator: ML (maximum likelihood)
+## Log-likelihood: 291.6 on 5 Df
+## Pseudo R-squared: 0.3627
+## Number of iterations: 7 (BFGS) + 24 (Fisher scoring)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# checking the links.}
+\KeywordTok{sapply}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"logit"}\NormalTok{, }\StringTok{"probit"}\NormalTok{, }\StringTok{"cloglog"}\NormalTok{, }\StringTok{"cauchit"}\NormalTok{, }\StringTok{"loglog"}\NormalTok{),}
+\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{logLik}\NormalTok{(}\KeywordTok{update}\NormalTok{(beta\_model, }\DataTypeTok{link =}\NormalTok{ x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    logit   probit  cloglog  cauchit   loglog 
+## 291.5891 291.5880 291.5892 291.5984 291.5871
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# the highest Loglikelihood is basically all the same. we can stay wih the default logit. }
+\CommentTok{\#plot(beta\_model)}
+
+
+\CommentTok{\# lets try the other models which can include 0\textquotesingle{}s. }
+
+\CommentTok{\#linear regression with logistic transforamtion.}
+\NormalTok{logistic \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(p) }\KeywordTok{log}\NormalTok{(p }\OperatorTok{/}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{p) }\FloatTok{+0.01}\NormalTok{)}
+\NormalTok{LM\_model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{logistic}\NormalTok{(FATALprop)}\OperatorTok{\textasciitilde{}}\NormalTok{hbp.prop}\OperatorTok{+}\NormalTok{amenity}\OperatorTok{+}\NormalTok{copd.prop,}\DataTypeTok{data=}\NormalTok{final)}
+\CommentTok{\#summary(LM\_model)}
+
+\CommentTok{\# the result is similar to the beta regression , however lower LL and lower R squared. }
+
+
+\CommentTok{\# lets try the quasibinomial model}
+\NormalTok{quassi\_model \textless{}{-}}\StringTok{ }\KeywordTok{glm}\NormalTok{(FATALprop }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{hbp.prop}\OperatorTok{+}\NormalTok{amenity}\OperatorTok{+}\NormalTok{copd.prop,  }\DataTypeTok{data =}\NormalTok{ final, }\DataTypeTok{family =} \KeywordTok{quasibinomial}\NormalTok{(}\DataTypeTok{link =} \StringTok{"logit"}\NormalTok{))}
+\CommentTok{\#summary(quassi\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(final, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{hbp.prop, }\DataTypeTok{y=}\NormalTok{FATALprop, }\DataTypeTok{col =}\NormalTok{ amenity)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_classic}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.9}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour=}\NormalTok{amenity), }\DataTypeTok{size=}\DecValTok{4}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"high blood pressure prevalence (proportion)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"COVID{-}19 fatal cases (proportion)"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{"Amenity Richness"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"COVID{-}19 Fatalities in Ontario PHU\textquotesingle{}s"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.00035}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\FloatTok{0.12}\NormalTok{, }\FloatTok{0.26}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_color\_gradientn}\NormalTok{(}\DataTypeTok{colors =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"gold"}\NormalTok{, }\StringTok{"red"}\NormalTok{)) }\OperatorTok{+}
+\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"glm"}\NormalTok{, }\DataTypeTok{method.args =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{family =} \StringTok{"quasibinomial"}\NormalTok{), }\DataTypeTok{col =} \StringTok{"gray"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F)}\OperatorTok{+}
+\CommentTok{\#ggrepel::geom\_label\_repel(data=data \%\textgreater{}\% filter(hbp.prop \textless{} 0.16), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge\_x = 0.025, nudge\_y = 0)+}
+\StringTok{  }
+\KeywordTok{geom\_label\_repel}\NormalTok{( }\DataTypeTok{data=}\NormalTok{data }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{filter}\NormalTok{(hbp.prop }\OperatorTok{\textless{}}\StringTok{ }\FloatTok{0.14}\NormalTok{),}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{Location, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(amenity)), }\DataTypeTok{color =} \StringTok{"black"}\NormalTok{,}\DataTypeTok{label.size =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{label.padding =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.15}\NormalTok{, }\StringTok{"lines"}\NormalTok{),}\DataTypeTok{nudge\_x =} \FloatTok{0.0275}\NormalTok{, }\DataTypeTok{nudge\_y =} \FloatTok{{-}0.00002}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+
+\StringTok{  }\KeywordTok{geom\_label\_repel}\NormalTok{( }\DataTypeTok{data=}\NormalTok{data }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{filter}\NormalTok{(hbp.prop }\OperatorTok{\textless{}}\StringTok{ }\FloatTok{0.16} \OperatorTok{\&}\StringTok{ }\NormalTok{hbp.prop }\OperatorTok{\textgreater{}}\StringTok{ }\FloatTok{0.14}\NormalTok{),}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{Location, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(amenity)), }\DataTypeTok{color =} \StringTok{"black"}\NormalTok{,}\DataTypeTok{label.size =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{label.padding =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.15}\NormalTok{, }\StringTok{"lines"}\NormalTok{),}\DataTypeTok{nudge\_x =} \FloatTok{0.0275}\NormalTok{, }\DataTypeTok{nudge\_y =} \FloatTok{0.00002}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+
+\StringTok{  }\KeywordTok{geom\_label\_repel}\NormalTok{( }\DataTypeTok{data=}\NormalTok{data }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{filter}\NormalTok{(hbp.prop }\OperatorTok{==}\StringTok{    }\FloatTok{0.179}\NormalTok{),}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{Location, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(amenity)), }\DataTypeTok{color =} \StringTok{"black"}\NormalTok{,}\DataTypeTok{label.size =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{label.padding =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.15}\NormalTok{, }\StringTok{"lines"}\NormalTok{),}\DataTypeTok{nudge\_x =} \FloatTok{{-}0.0275}\NormalTok{, }\DataTypeTok{nudge\_y =} \FloatTok{0.00002}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+
+\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill=}\OtherTok{FALSE}\NormalTok{)}\OperatorTok{+}
+\KeywordTok{scale\_fill\_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{setNames}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"palevioletred"}\NormalTok{, }\StringTok{"gold"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\KeywordTok{levels}\NormalTok{(data}\OperatorTok{$}\NormalTok{amenity)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Regression-Analysis-at-PHU-level_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+
+\end{document}

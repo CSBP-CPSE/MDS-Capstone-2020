@@ -1,3 +1,6 @@
+// This is where the map will be coded.
+console.log("Ready to create the map!");
+
 // We specify the dimensions for the map container. We use the same
 // width and height as specified in the CSS above.
 var width = 900,
@@ -41,7 +44,6 @@ d3.json('data/PHU.geojson', function(error, features) {
       .attr('d', path);
 
 });
-
 
 /**
  * Calculate the scale factor and the center coordinates of a GeoJSON

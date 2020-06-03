@@ -97,11 +97,11 @@ With 3 groups it appears as though there is not enough separation...
 ```{r comp clust k 3, echo = F}
 
 # 3 clusters according to previous plot ----
-phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 3)) 
+phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 2)) 
 count(phu_cl,cluster)
 
 # VIS: cluster groups ----
-fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
+fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 2)), 
              main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
 
 ```

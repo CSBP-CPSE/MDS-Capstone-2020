@@ -143,15 +143,14 @@ library(ggrepel)
 library(ggiraphExtra)
 library(plotly)
 
-new.range<- data.frame(x=seq(0,0.1,length.out=100), y=seq(0, 0.15, length.out = 100))
-
-
 ggplot(final, aes(x=copd.prop, y=TOTALprop, col = amenity)) +
   theme_classic()+
   geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
-  xlab("COPD prevalence (proportion)")+
+  stat_smooth(method = "glm", family= "beta",formula = y ~ log(x), se = T, col = "gray", fill="lightgray") +
+   xlab("COPD prevalence (proportion)")+
   ylab("COVID-19 total cases (proportion)")+
   labs(col = "Amenity Richness")+
+  ggtitle("COVID-19 Cases in Ontario PHU's")+
   scale_color_gradientn(colors = c("blue", "gold", "red")) +
  
 ggrepel::geom_label_repel(data=data %>% filter(copd.prop == 0.05), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
@@ -160,6 +159,29 @@ geom_label( data=data %>% filter(TOTALprop> 0.003),aes(label=Location, fill = fa
   
 guides(fill=FALSE)+
 scale_fill_manual(values = setNames(c("palevioletred3", "gold", "red"), levels(data$amenity)))
+```
+```{r}
+library(rgl)
+library(RColorBrewer)
+library(scatterplot3d)
+
+final$amenity_bin <- as.numeric(cut_number(final$amenity,2))
+
+get_colors <- function(groups, group.col = palette()){
+  groups <- as.factor(groups)
+  ngrps <- length(levels(groups))
+  if(ngrps > length(group.col)) 
+    group.col <- rep(group.col, ngrps)
+  color <- group.col[as.numeric(groups)]
+  names(color) <- as.vector(groups)
+  return(color)
+}
+
+cols <- get_colors(final$amenity_bin, brewer.pal(n=3, name="YlOrRd") )
+
+plot3d(final$TOTALprop, final$copd.prop, final$amenity, type ="s", col = cols)
+# add legend
+legend3d("right", legend = c(levels(final$amenity)), col = brewer.pal(n=3, name="YlOrRd"), pch = 16)
 
 ```
 
@@ -243,17 +265,18 @@ function(x) logLik(update(beta_model, link = x)))
 #linear regression with logistic transforamtion.
 logistic <- function(p) log(p / (1-p) +0.01)
 LM_model <- lm(logistic(FATALprop)~hbp.prop+amenity+copd.prop,data=final)
-#summary(LM_model)
+summary(LM_model)
 
 # the result is similar to the beta regression , however lower LL and lower R squared. 
 
 
 # lets try the quasibinomial model
 quassi_model <- glm(FATALprop ~ hbp.prop+amenity+copd.prop,  data = final, family = quasibinomial(link = "logit"))
-#summary(quassi_model)
+summary(quassi_model)
 ```
 
 ```{r}
+
 ggplot(final, aes(x=hbp.prop, y=FATALprop, col = amenity)) +
   theme_classic()+
   geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
@@ -264,7 +287,7 @@ ggplot(final, aes(x=hbp.prop, y=FATALprop, col = amenity)) +
   ylim(0, 0.00035)+
   xlim(0.12, 0.26)+
   scale_color_gradientn(colors = c("blue", "gold", "red")) +
-geom_smooth(method = "glm", method.args = list(family = "quasibinomial"), col = "gray", se = F)+
+stat_smooth(method = "glm", family= "beta",formula = y ~ log(x), se = F, col = "gray") +
 #ggrepel::geom_label_repel(data=data %>% filter(hbp.prop < 0.16), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
   
 geom_label_repel( data=data %>% filter(hbp.prop < 0.14),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.0275, nudge_y = -0.00002)+ 

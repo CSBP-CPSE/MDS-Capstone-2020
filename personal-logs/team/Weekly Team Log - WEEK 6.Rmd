@@ -2,7 +2,9 @@
 title: "Weekly Team Log - WEEK 6"
 author: "Sofia Bahmutsky"
 date: "02/06/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -32,3 +34,5 @@ knitr::opts_chunk$set(echo = TRUE)
 2. Meeting with Bruno/Marian (11am - 12pm)
 
 3. D3 tutorials...
+
+4. Fixing some of the stats and graphs to refelct what we talked about in the meeting.

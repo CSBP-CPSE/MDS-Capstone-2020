@@ -8,3 +8,13 @@ body {
   border: 1px solid silver;
   background: #E6E6E6;
 }
+
+/* fill styles for metadata classes */
+.class0 { fill: rgb(254, 224, 210); }
+.class1 { fill: rgb(252, 146, 114); }
+.class2 { fill: rgb(222, 45, 38); }
+
+.phu {
+stroke: #000;
+stroke-linejoin: round;
+}

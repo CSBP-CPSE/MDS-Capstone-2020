@@ -121,3 +121,12 @@ Monday June 1
 - Worked on merging the new LTC homes quality dataset
   - Data cleaning/wrangling
 - Preparation for the midterm status presentation
+
+Tuesday June 2
+- Midterm status presentations (4h)
+- Learn D3 (1h)
+- LTC homes quality data cleaning
+
+Wednesday
+- Meeting with StatCan (1h)
+- LTC homes quality data cleaning (5h)

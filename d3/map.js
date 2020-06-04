@@ -25,6 +25,11 @@ var zoom = d3.behavior.zoom()
   .on('zoom', doZoom);
 svg.call(zoom);
 
+// We add a <div> container for the tooltip, which is hidden by default.
+var tooltip = d3.select("#map")
+  .append("div")
+  .attr("class", "tooltip hidden");
+
 // We define a geographical projection
 //     https://github.com/mbostock/d3/wiki/Geo-Projections
 // and set the initial zoom to show the features.
@@ -81,9 +86,11 @@ d3.json('data/PHU.geojson', function(error, ontario) {
     .append("path")
     .attr('class', function(d) {
       // Use the quantized value for the class
-      return quantize(getValueOfData(dataById[d.properties.Total]));
+      return quantize(getValueOfData(dataById[getIdOfFeature(d)]));
     })
-    .attr("d", path);
+    .attr("d", path)
+    // When the mouse moves over a feature, show the tooltip.
+    .on('mousemove', showTooltip);
 
     });
 
@@ -99,7 +106,10 @@ d3.json('data/PHU.geojson', function(error, ontario) {
  */
 function doZoom() {
   mapFeatures.attr("transform",
-    "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
+  "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")")
+ // Keep the stroke width proportional. The initial stroke width
+ // (0.5) must match the one set in the CSS.
+ .style("stroke-width", 0.5 / d3.event.scale + "px");
 }
 
 
@@ -111,4 +121,24 @@ function doZoom() {
  */
 function getValueOfData(d) {
   return +d[currentKey];
+}
+
+/**
+* Help function retrieve the ID of a feature.
+**/
+function getIdOfFeature(f) {
+  return f.properties.GMDNR;
+}
+
+/**
+ * Show a tooltip with the name of the feature.
+ */
+function showTooltip(f) {
+  // Get the ID of the feature.
+  var id = getIdOfFeature(f);
+  // Use the ID to get the data entry.
+  var d = dataById[id];
+  // Show the tooltip (unhide it) and set the name of the data entry.
+  tooltip.classed('hidden', false)
+    .html(d.name);
 }

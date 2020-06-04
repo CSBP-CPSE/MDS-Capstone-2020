@@ -1,5 +1,8 @@
+
 body {
   margin: 25px;
+  font-family: "Arial", sans-serif;
+  background-color: coral;
 }
 
 #map {
@@ -7,6 +10,30 @@ body {
   height: 600px;
   border: 1px solid silver;
   background: #E6E6E6;
+}
+
+g.features {
+  stroke: #d8d8d8;
+  stroke-width: 0.5;
+}
+g.features path:hover {
+  opacity: 0.5;
+}
+
+.tooltip {
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid silver;
+  color: #222;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #a6a6a6;
+  opacity: 0.9;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
 }
 
 /* fill styles for metadata classes */

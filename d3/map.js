@@ -14,6 +14,17 @@ var svg = d3.select('#map').append('svg')
   .attr('width', width)
   .attr('height', height);
 
+// We add a <g> element to the SVG element and give it a class to
+// style. We also add a class name for Colorbrewer.
+var mapFeatures = svg.append('g')
+  .attr('class', 'features YlGnBu');
+
+// Define the zoom and attach it to the map
+var zoom = d3.behavior.zoom()
+  .scaleExtent([1, 10])
+  .on('zoom', doZoom);
+svg.call(zoom);
+
 // We define a geographical projection
 //     https://github.com/mbostock/d3/wiki/Geo-Projections
 // and set the initial zoom to show the features.
@@ -33,7 +44,8 @@ var quantize = d3.scale.quantize()
 .domain([0, 100])
 .range(d3.range(3).map(function(d,i) {return "class"+i;}));
 
-// Define dictionary to associate province names with proportion of covid cases
+
+// Define dictionary to associate PHU names with proportion of covid cases
 var dataById = d3.map();
 
 
@@ -61,7 +73,7 @@ d3.json('data/PHU.geojson', function(error, ontario) {
     ]);
 
 
-  svg.selectAll("append")
+  mapFeatures.selectAll("append")
   // if we were to use the smaller .json (topoJSON) file, we'd have to convert it back to geojson
     // .data(topojson.feature(ontario, ontario.objects.geometry).features)
     .data(ontario.features)
@@ -75,44 +87,28 @@ d3.json('data/PHU.geojson', function(error, ontario) {
 
     });
 
+
 });
 
 
 
+// FUNCTIONS FOR INTERACTIVITY
 
-// Using Queue.js to load JSON and CSV
-// d3.map().set(key, value); sets values for specified key string
-// "+" converts text to numeric.
-// queue()
-// .defer(d3.json, "data/PHU.geojson")
-// .defer(d3.csv, "data/PHU_metadata.csv", function(d)
-// { dataById.set(d.ENG_LABEL, +d.Total); })
-// .await(myFunction);
-
-
-
+/**
+ * Zoom the features on the map. This rescales the features on the map.
+ */
+function doZoom() {
+  mapFeatures.attr("transform",
+    "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
+}
 
 
 /**
  * Helper function to access the (current) value of a data object.
- *
  * Use "+" to convert text values to numbers.
- *
  * @param {object} d - A data object representing an entry (one line) of
  * the data CSV.
  */
 function getValueOfData(d) {
   return +d[currentKey];
 }
-
-
-// function myFunction(error, ontario) {
-// svg.append("g")
-// .attr("class", "phu")
-// .selectAll("path")
-// .data(ontario.features)
-// .enter()
-// .append("path")
-// .attr("class", function(d) { return quantize(getValueOfData(dataById[d.properties.Total])); })
-// .attr("d", path);
-// };

@@ -134,7 +134,7 @@ function getIdOfFeature(f) {
 /*****************************************************
  * Show a tooltip with the name of the feature.
  * Issue with set-up of PHU_metadata.csv. There is no 'id' column
- * but when renaming `HR_UID` -> `id`the map disappears.
+ * but when renaming f.properties.X -> `HR_UID` in the above function the map disappears.
  * Example data (areastatistics.csv) from https://data-map-d3.readthedocs.io/en/latest/steps/step_08.html#step-08
  * has id column that aligns with their geojson geometry.
  */

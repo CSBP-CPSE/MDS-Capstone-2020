@@ -25,6 +25,34 @@
     <!-- Custom JS code -->
     <script src="map.js"></script>
 
+
+    <!-- Mustache template, rendered later to show the details of a feature -->
+  <script id="template" type="x-tmpl-mustache">
+    <h3 class="six columns">{{ name }}</h3>
+    <table class="six columns">
+      <tr>
+        <th>Total:</th>
+        <td>{{ Total }} %</td>
+      </tr>
+      <tr>
+        <th>Fatal:</th>
+        <td>{{ Fatal }} %</td>
+      </tr>
+      <tr>
+        <th>Contact:</th>
+        <td>{{ Contact }} %</td>
+      </tr>
+      <tr>
+        <th>Travel-Related:</th>
+        <td>{{ Travel-Related }} %</td>
+      </tr>
+      <tr>
+        <th>Neither:</th>
+        <td>{{ Neither }} %</td>
+      </tr>
+    </table>
+  </script>
+
   </body>
 
 </html>

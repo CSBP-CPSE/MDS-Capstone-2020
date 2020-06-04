@@ -90,7 +90,8 @@ d3.json('data/PHU.geojson', function(error, ontario) {
     })
     .attr("d", path)
     // When the mouse moves over a feature, show the tooltip.
-    .on('mousemove', showTooltip);
+    .on('mousemove', showTooltip)
+    .on('mouseout', hideTooltip);
 
     });
 
@@ -124,10 +125,10 @@ function getValueOfData(d) {
 }
 
 /**
-* Help function retrieve the ID of a feature.
+* Help function retrieve the HR_UID of a feature.
 **/
 function getIdOfFeature(f) {
-  return f.properties.GMDNR;
+  return f.properties.HR_UID;
 }
 
 /*****************************************************
@@ -140,9 +141,17 @@ function getIdOfFeature(f) {
 function showTooltip(f) {
   // Get the ID of the feature.
   var id = getIdOfFeature(f);
+  console.log(getIdOfFeature(f))
   // Use the ID to get the data entry.
   var d = dataById[id];
   // Show the tooltip (unhide it) and set the name of the data entry.
   tooltip.classed('hidden', false)
     .html(d.name);
+}
+
+/**
+ * Hide the tooltip.
+ */
+function hideTooltip() {
+  tooltip.classed('hidden', true);
 }

@@ -20,14 +20,14 @@ var projection = d3.geo.azimuthalEqualArea()
     .center([5, 20])
     .scale(800)
     .translate([width/2, height/2])
-    
+
 var path = d3.geo.path()
 .projection(projection);
 
 
 
 // Load the features from the GeoJSON.
-d3.json('data/PHU.json', function(ontario) {
+d3.json('data/PHU.geojson', function(error, ontario) {
   console.log(ontario);
 
 // rewinding the polygons in case they were counter-clockwise (to avoid the black image).
@@ -57,6 +57,7 @@ d3.json('data/PHU.json', function(ontario) {
 
 
   svg.selectAll("append")
+    // .data(topojson.feature(ontario, ontario.objects.geometry).features)
     .data(ontario.features)
     .enter()
     .append("path")

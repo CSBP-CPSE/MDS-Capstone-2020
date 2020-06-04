@@ -11,7 +11,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Week of June 1 to June 8
 
 ## Monday June 1
 
@@ -31,11 +30,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Wednesday June 3
 
-1. Group meeting
+1. Group meeting 9:30-4pm
 
-2. meeting with Bruno/Marian
+2. meeting with Bruno/Marian (11-12pm)
 
 3. Learnng D3
 
-4. need to finish the stats, send email to John about regression analysis
+4. need to finish the stats
+
+
+## Thursday June 4
+
+1. Zoom meeting to talk about some things which everyone was working on from last few days. 
+
+2. Conitnue to learn D3.
+
+
 

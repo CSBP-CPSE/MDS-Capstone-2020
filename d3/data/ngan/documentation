@@ -1,0 +1,10 @@
+In terminal cd to the folder containing the webpage and input
+- python3 -m http.server
+
+In browser search bar navigate to
+http://localhost:8000/
+
+https://bl.ocks.org/mbostock/a7bdfeb041e850799a8d3dce4d8c50c8
+
+Using mapshaper to make coordinates wgs84
+https://help.flourish.studio/article/67-how-to-make-your-coordinates-wgs84-with-mapshaper-org

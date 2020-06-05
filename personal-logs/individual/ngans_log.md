@@ -134,3 +134,8 @@ Wednesday June 3
 
 Thursday June 4
 - Prep/clean/merge new comorbidity data (1.5h)
+- D3 visualization (5h)
+  - Map of Ontario PHUs
+
+Friday June 5
+- D3 visualization (2h)

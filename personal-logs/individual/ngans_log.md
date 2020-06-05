@@ -127,6 +127,10 @@ Tuesday June 2
 - Learn D3 (1h)
 - LTC homes quality data cleaning
 
-Wednesday
+Wednesday June 3
 - Meeting with StatCan (1h)
 - LTC homes quality data cleaning (5h)
+- Download and prep/clean new comorbidity data (2h)
+
+Thursday June 4
+- Prep/clean/merge new comorbidity data (1.5h)

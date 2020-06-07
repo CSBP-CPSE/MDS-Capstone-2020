@@ -281,7 +281,7 @@ paste("Aggloemeratice Coefficient: ", coef.hclust(comp2))
 
 ```{r , echo = F}
 # VIS: bar plots ----
-phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TotalStratified) 
+phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TOTALprop) 
 
 ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
   geom_bar(stat="identity")  +
@@ -292,18 +292,45 @@ ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = Cov
 
 ```{r , echo = F}
 library(ggthemes)
+library(htmlwidgets)
 # VIS: bar plots ----
-phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TotalStratified) 
+phu_amen_cl <- mutate(phu_amen_cl, CovidCase = phu$TOTALprop) 
 phu_amen_cl$Cluster <- as.factor(phu_amen_cl$cluster)
 
-pdf('StratClust.pdf')
-ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = Cluster)) + 
+
+# clean location names
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$Location, "Health Unit")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "North Bay Parry Sound District", "NBPS")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Haliburton, Kawartha, Pine Ridge", "HKPR")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Leeds, Grenville and Lanark District", "LGL")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Kingston, Frontenac and Lennox and Addington", "KFLA")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "District")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "County")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "The")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "of")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "City")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Regional")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Counties")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "and")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "-")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Area")
+phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "  ", " ")
+
+
+
+
+#pdf('StratClust.pdf')
+yes <-ggplot(phu_amen_cl, aes(x=fct_reorder(abbrev,CovidCase, .desc=F), y = CovidCase, fill = Cluster)) + 
   geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) +
-  labs(x = "PHU", y = "Provincial Proportion of Covid Cases") +
-  ggtitle('Provincial Proportion of PHUs with Covid Cases')+ 
+  theme(axis.text.x=element_text(angle=45,hjust=1)) +
+  labs(x = "PHU", y = "Proportion") +
+  ggtitle('PHU Proportion of Covid Cases')+ 
   #theme(legend.title = element_blank()) +
     scale_fill_manual(values=c("#46A5FE", "#E69F00"))
-dev.off()
+
+
+saveWidget(ggplotly(yes), 'barplotly.html')
+
+#dev.off()
 
 ```

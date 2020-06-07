@@ -56,26 +56,35 @@ var dataById = d3.map();
 
 // Load the features from the GeoJSON.
 d3.json('data/PHU.geojson', function(error, ontario) {
-  console.log(ontario);
+  console.log(ontario.features[0].properties.HR_UID);
 
 
   // Read the metadata.
   d3.csv('data/PHU_metadata.csv', function(data) {
-
+      console.log(data[0].HR_UID)
     // This maps the data of the CSV so it can be easily accessed by
     // the ID of the PHU, for example: dataById[2196] --- how can I change this
     // to work as a search by PHU `ENG_LABEL` (name)?
-    dataById = d3.nest()
-      .key(function(d) { return d.id; })
-      .rollup(function(d) { return d[0]; })
-      .map(data);
+    data.forEach(function(d, i) {
+      ontario.features.forEach(function(e, j){
+        if (d.HR_UID == e.properties.HR_UID) {
+          e.ENG_LABEL = d.ENG_LABEL
+          // console.log(e, d)
+          // Show the tooltip (unhide it) and set the name of the data entry.
+          
+          tooltip.classed('hidden', false)
+            .html(d.ENG_LABEL);
+        }
+      })
+    })
+
 
     // Set the domain of the values (the minimum and maximum values of
     // all values of the current key) to the quantize scale.
-    quantize.domain([
-      d3.min(data, function(d) { return getValueOfData(d); }),
-      d3.max(data, function(d) { return getValueOfData(d); })
-    ]);
+    // quantize.domain([
+    //   d3.min(data, function(d) { return getValueOfData(d); }),
+    //   d3.max(data, function(d) { return getValueOfData(d); })
+    // ]);
 
 
   mapFeatures.selectAll("append")
@@ -84,10 +93,10 @@ d3.json('data/PHU.geojson', function(error, ontario) {
     .data(ontario.features)
     .enter()
     .append("path")
-    .attr('class', function(d) {
-      // Use the quantized value for the class
-      return quantize(getValueOfData(dataById[getIdOfFeature(d)]));
-    })
+    // .attr('class', function(d) {
+    //   // Use the quantized value for the class
+    //   return quantize(getValueOfData(dataById[getIdOfFeature(d)]));
+    // })
     .attr("d", path)
     // When the mouse moves over a feature, show the tooltip.
     .on('mousemove', showTooltip)
@@ -119,18 +128,23 @@ function doZoom() {
  * Use "+" to convert text values to numbers.
  * @param {object} d - A data object representing an entry (one line) of
  * the data CSV.
- */
-function getValueOfData(d) {
-  return +d[currentKey];
-}
+//  */
+// function getValueOfData(d) {
+//   return +d[currentKey];
+// }
 
 /**
 * Help function retrieve the HR_UID of a feature.
 **/
-function getIdOfFeature(f) {
-  return f.properties.HR_UID;
-}
+// function getIdOfFeature(f) {
+//   f.features.forEach(function(d){
+//     return d.properties.HR_UID;
+//   }) //GMDNR
+// }
 
+function getIdOfFeature(f){
+
+}
 /*****************************************************
  * Show a tooltip with the name of the feature.
  * Issue with set-up of PHU_metadata.csv. There is no 'id' column
@@ -141,12 +155,13 @@ function getIdOfFeature(f) {
 function showTooltip(f) {
   // Get the ID of the feature.
   var id = getIdOfFeature(f);
-  console.log(getIdOfFeature(f))
+
   // Use the ID to get the data entry.
   var d = dataById[id];
+
   // Show the tooltip (unhide it) and set the name of the data entry.
   tooltip.classed('hidden', false)
-    .html(d.name);
+    .html(d.ENG_LABEL);
 }
 
 /**

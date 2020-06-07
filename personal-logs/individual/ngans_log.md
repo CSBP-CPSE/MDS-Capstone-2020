@@ -139,3 +139,10 @@ Thursday June 4
 
 Friday June 5
 - D3 visualization (2h)
+  - Troubleshooting the 'black box'
+  - Reversed the winding order of the geojson file
+- Javascript LindedIn video training (2h)
+
+Saturday June 6
+- D3 tutorial (1h)
+- D3 visualization (2h)

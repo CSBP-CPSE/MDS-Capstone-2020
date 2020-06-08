@@ -1,4 +1,4 @@
-HR_UID,ENG_LABEL,amenity_dense,prox_idx_emp,prox_idx_pharma,prox_idx_childcare,prox_idx_health,prox_idx_grocery,prox_idx_educpri,prox_idx_educsec,prox_idx_lib,prox_idx_parks,prox_idx_transit,HRPOP
+HR_UID,ENG_LABEL,amenity_dense,emp,pharma,childcare,health,grocery,educpri,edusec,lib,parks,tranist,HRPOP
 3570,York Regional Health Unit,0.076745763,0.0337,0.0347,0.028,0.0082,0.0322,0.0945,0.04975,0.0666,0.0608,0.0056,1131052
 3568,Windsor-Essex County Health Unit,0.078367725,0.016,0.02425,0.0129,0.0052,0.0443,0.0785,0.052,0.0753,0.0313,0.0067,397008
 3566,Wellington-Dufferin-Guelph Health Unit,0.107280928,0.008,0.0208,0.0328,0.0045,0.0414,0.0861,0.0537,0.0796,0.046,0.0044,267523

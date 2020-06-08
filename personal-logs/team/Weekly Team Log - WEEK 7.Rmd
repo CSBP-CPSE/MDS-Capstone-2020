@@ -1,0 +1,26 @@
+---
+title: "Weekly Team Log - WEEK 6"
+author: "Sofia Bahmutsky"
+date: "02/06/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Weekly Team Log - WEEK 7
+
+## Week of June 8 to June 15
+
+## Monday June 8
+
+1. Group meeting, also a help session with Bruno to help us with the D3. 9:30-?
+
+2. Bruni help session (11am-12?)
+
+3. Conitnuing to work on the dahsboard.
+
+4. Sofia started the documentation, and writing the final paper.
+

@@ -6,7 +6,7 @@ var columns=['emp',
             'health',
             'grocery',
             'educpri',
-            'educsec',
+            'edusec',
             'lib',
             'parks',
             'transit'];
@@ -28,35 +28,38 @@ var svg = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var xValue = function(d) { return +d[x];},
-    xScale = d3.scale.linear().range([0, width]),
+var xValue = function(d) { return d[x];},
+    xScale = d3.scale.ordinal().range([50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270, 290, 310, 330, 350, 
+        370, 390, 410, 430, 450, 470, 490, 510, 530, 550, 570, 590, 610, 630,
+    650, 670, 690, 710, 730, 750]),
     xMap = function(d) { return xScale(xValue(d));},
     xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 
 // plotting columns
 
-d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY4C3GIQRYMNZEJE6R265AEY6',
+d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AYZFPCLOKFFUS7NUTE265AF2W',
 function(data){
     console.log(data)
 
 
 for(var i=0;i<columns.length;i++) {
 
-    xScale.domain([d3.min(data, xValue)-0.5, d3.max(data, xValue)+0.5]);
-
+    //xScale.domain([d3.min(data, xValue), d3.max(data, xValue)]);
 
     var y=columns[i];
-    var yValue = function(d) { return d[y];},
+    var yValue = function(d) { return +d[y];},
     yScale = d3.scale.linear().range([height, 0]),
     yMap = function(d) { return yScale(yValue(d));},
     yAxis = d3.svg.axis().scale(yScale).orient("left");
     data.forEach(function(d) {
-        //console.log(d[x], +d[y])
+        console.log(columns[i], d[x], +d[y])
         d[x] = d[x];
         d[y] = +d[y];
     });
-    yScale.domain([d3.min(data, yValue)-0.1, d3.max(data, yValue)+0.1]);
+    
+    yScale.domain([d3.min(data, yValue)-0.001, d3.max(data, yValue)+0.05]);
+    
     svg.selectAll(".dot"+i)
         .data(data)
         .enter()
@@ -70,15 +73,16 @@ for(var i=0;i<columns.length;i++) {
         .attr("cy", yMap);
 }
 
-        yScale.domain([d3.min(data, yValue)-0.1, d3.max(data, yValue)+0.1]);
 
         // axis
         svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(-50," + height + ")")
             .call(xAxis)
+            .selectAll("text")
+            .attr("transform", "rotate(90)")
             .append("text")
-            .attr("y", 2)
+            .attr("y", -2)
             .attr("x", width-20)
             .style("text-anchor", "end").style("fill","#333333").style("font-size","15px").text(xLabel);
         svg.append("g")

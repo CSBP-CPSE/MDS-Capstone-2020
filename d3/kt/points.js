@@ -14,25 +14,25 @@ bb = [-80.01, 43.21];
 
 // TRY
 // d3.select.('#points').append('svg');
-
-d3.csv("data/ltc.csv", function(csv) {
-    console.log(csv)
-            mapFeatures.selectAll("circle")
-                 .data(csv)
-               .enter()
-                 .append("circle")
-                 .attr("cx", function (d) {
-                     return projection([d.long, d.lat])[0];
-                 })
-                 .attr("cy", function (d) {
-                     return projection([d.long, d.lat])[1];
-                 })
-                 // .attr("r", function (d) {
-                 //     return Math.sqrt(parseInt(d.number_beds));
-                 // })
-                 .attr("r", 14)
-                 .style("fill", "69b3a2")
-                 .attr("stroke", "#69b3a2")
-                 .attr("stroke-width", 3)
-                 .attr("fill-opacity", .4)
-        });
+//
+// d3.csv("data/ltc_points.csv", function(csv) {
+//     console.log(csv)
+//             mapFeatures.selectAll("circle")
+//                  .data(csv)
+//                .enter()
+//                  .append("circle")
+//                  .attr("cx", function (d) {
+//                      return projection([d.long, d.lati])[0];
+//                  })
+//                  .attr("cy", function (d) {
+//                      return projection([d.long, d.lati])[1];
+//                  })
+//                  // .attr("r", function (d) {
+//                  //     return Math.sqrt(parseInt(d.number_beds));
+//                  // })
+//                  .attr("r", 14)
+//                  .style("fill", "69b3a2")
+//                  .attr("stroke", "#69b3a2")
+//                  .attr("stroke-width", 3)
+//                  .attr("fill-opacity", .4)
+//         });

@@ -46,13 +46,25 @@ td {
   padding: 0.5rem;
 }
 
-#close-details {
+/* #close-details {
   color: #FA5858;
   text-decoration: none;
   font-size: 4rem;
   text-align: right;
   line-height: 4.5rem;
+} */
+
+#close-details {
+  color: #000000;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: right;
+  line-height: 2.5rem;
+  padding-right: 10px;
+  border-radius: 2px;
+  border-style: solid;
 }
+
 #close-details:hover {
   color: red;
 }

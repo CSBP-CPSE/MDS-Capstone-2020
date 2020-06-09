@@ -8,10 +8,7 @@ d3.select('#select-key').on('change', function(a) {
   currentKey = d3.select(this).property('value');
   updateMapColors();
 });
-//
-// // We add a listener to the browser window, calling updateLegend when
-// // the window is resized.
-// window.onresize = updateLegend;
+
 
 // We specify the dimensions for the map container. We use the same
 // width and height as specified in the CSS above.
@@ -20,10 +17,6 @@ var width = 900,
 
 // We define a variable to later hold the data of the CSV.
 var mapData;
-
-// // We get and prepare the Mustache template, parsing it speeds up future uses
-// var template = d3.select('#template').html();
-// Mustache.parse(template);
 
 // We create a SVG element in the map container and give it some
 // dimensions. We can use a viewbox and preserve the aspect ratio. This
@@ -76,20 +69,22 @@ var quantize = d3.scale.quantize()
   .map(function(i) { return 'q' + i + '-9'; }));
 
 // We prepare a number format which will always return 2 decimal places.
-var formatNumber = d3.format('.2f');
+// var formatNumber = d3.format('.2f');
+var formatNumber = d3.format('.4f');
 
 // Load the features from the GeoJSON.
 d3.json('data/reversed_phu.geojson', function(error, features) {
-  aa = [-82.36, 42.98];
-  bb = [-80.01, 43.21];
-
-  svg.selectAll("circle")
-  .data([aa,bb]).enter()
-  .append("circle")
-  .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
-  .attr("cy", function (d) { return projection(d)[1]; })
-  .attr("r", "2px")
-  .attr("fill", "red")
+  //
+  // aa = [-82.36, 42.98];
+  // bb = [-80.01, 43.21];
+  //
+  // svg.selectAll("circle")
+  // .data([aa,bb]).enter()
+  // .append("circle")
+  // .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
+  // .attr("cy", function (d) { return projection(d)[1]; })
+  // .attr("r", "2px")
+  // .attr("fill", "red")
 
   // Read the data for the cartogram
   d3.csv('data/phu_statistics.csv', function(data) {

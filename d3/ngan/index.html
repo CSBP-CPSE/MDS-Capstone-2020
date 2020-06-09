@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Land use statistics map</title>
+  <title>Ontario COVID-19 Map</title>
 
   <!-- CSS libraries -->
   <link href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +23,7 @@
       </select>
     </div>
     <div id="map"><!-- Map container --></div>
+
     <div id="legend"><!-- Legend container --></div>
 
     <div id="details" class="hidden row"><!-- Details container --></div>
@@ -35,7 +36,7 @@
       </ul>
     </div>
     <div class="footer">
-      <strong>Data sources</strong>: Data from the Statistics Canada <a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020011-eng.htm" target="_blank">proximity data</a> and the <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301" target="_blank">health data</a>.
+      <strong>Data sources</strong>: Data from Statistics Canada <a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020011-eng.htm" target="_blank">proximity data</a> and <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301" target="_blank">health data</a>.
     </div>
   </div>
 
@@ -73,6 +74,9 @@
 
   <!-- Custom JS code -->
   <script src="map.js"></script>
+  <script src="legend.js"></script>
+  <script src="mustache.js"></script>
+  <!-- <script src="points.js"></script> -->
 </body>
 </html>
 

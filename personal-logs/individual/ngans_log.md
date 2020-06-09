@@ -146,3 +146,8 @@ Friday June 5
 Saturday June 6
 - D3 tutorial (1h)
 - D3 visualization (2h)
+
+Monday June 8
+- Meeting with Bruno StatCan (1h)
+- D3 visualization
+  - Add LTC home points

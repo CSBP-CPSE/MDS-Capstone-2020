@@ -120,6 +120,7 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
 
         d3.csv("data/ltc_points.csv", function(csv) {
             console.log(csv)
+
                     mapFeatures.selectAll("circle")
                          .data(csv)
                        .enter()
@@ -134,15 +135,55 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
                          //     return Math.sqrt(parseInt(d.number_beds));
                          // })
                          .attr("r", 2)
-                         .style("fill", "69b3a2")
-                         .attr("stroke", "#69b3a2")
+                         .style("fill", status) //69b3a2
+                         .attr("stroke", status)
                          .attr("stroke-width", 1)
                          .attr("fill-opacity", .4)
+                         .on('mousemove', showHomes)
+                         .on('mouseout', hideHome)
                 });
 
   });
 });
 
+//  Colour by LTC home status
+function status(d){
+          if(d.outbreak == "No"){
+            return "#67A1F1"
+          } else {
+            return "#B51515" }
+        }
+// LTC SHOW HOME NAME
+function showHomes(d) {
+  // Get the ID of the feature.
+  d3.select(this).attr("r", 10)
+  // Get the current mouse position (as integer)
+  var mouse = d3.mouse(d3.select('#map').node()).map(
+    function(d) { return parseInt(d); }
+
+  );
+
+  // Calculate the absolute left and top offsets of the tooltip. If the
+  // mouse is close to the right border of the map, show the tooltip on
+  // the left.
+  var left = Math.min(width - 4 * d.cleaned_name.length, mouse[0] + 5);
+  var top = mouse[1] + 25;
+
+  // Show the tooltip (unhide it) and set the name of the data entry.
+  // Set the position as calculated before.
+  tooltip.classed('hidden', false)
+    .attr("style", "left:" + left + "px; top:" + top + "px")
+    .html(d.cleaned_name);
+}
+
+/**
+ * LTCT Hide the tooltip.
+ */
+function hideHome() {
+  d3.select(this).attr("r", 2)
+  .attr("stroke", "#815F5F")
+  tooltip.classed('hidden', true);
+}
 /**
  * Update the colors of the features on the map. Each feature is given a
  * CSS class based on its value.

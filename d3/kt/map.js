@@ -1,5 +1,6 @@
 // We define a variable holding the current key to visualize on the map.
 var currentKey = 'TOTAL';
+console.log("hi")
 
 // Listen to changes of the dropdown to select the key to visualize on
 // the map.
@@ -77,7 +78,7 @@ var quantize = d3.scale.quantize()
   .map(function(i) { return 'q' + i + '-9'; }));
 
 // We prepare a number format which will always return 2 decimal places.
-var formatNumber = d3.format('.2f');
+var formatNumber = d3.format('.4f');
 
 // For the legend, we prepare a very simple linear scale. Domain and
 // range will be set later as they depend on the data currently shown.
@@ -140,6 +141,7 @@ function updateLegend() {
     var r = quantize.invertExtent(d);
     return r[1];
   });
+
   // Since we always only took the upper limit of the category, we also
   // need to add the lower limit of the very first category to the top
   // of the domain.
@@ -194,7 +196,7 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
 
   // Read the data for the cartogram
   d3.csv('data/phu_statistics.csv', function(data) {
-
+    console.log(data)
     // We store the data object in the variable which is accessible from
     // outside of this function.
     mapData = data;
@@ -205,7 +207,7 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
       .key(function(d) { return d.HR_UID; })
       .rollup(function(d) { return d[0]; })
       .map(data);
-      
+
     //
     // We add the features to the <g> element created before.
     // D3 wants us to select the (non-existing) path objects first ...

@@ -19,8 +19,8 @@ var xLabel="Public Health Unit",yLabel="Proximity";
 // container SVG
 var color=d3.scale.category20c();
 var margin = {top: 50, right: 50, bottom: 50, left: 50},
-    width = window.innerWidth - margin.left - margin.right,
-    height = window.innerHeight - margin.top - margin.bottom;
+    width = 900 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -38,7 +38,7 @@ var xValue = function(d) { return d[x];},
 
 // plotting columns
 
-d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AYZFPCLOKFFUS7NUTE265AF2W',
+d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AYZNBL7UTJA6WJMASE265AOO6',
 function(data){
     console.log(data)
 
@@ -77,14 +77,17 @@ for(var i=0;i<columns.length;i++) {
         // axis
         svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(-50," + height + ")")
+            .attr("transform", "translate(5," + height + ")")
             .call(xAxis)
             .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 9)
             .attr("transform", "rotate(90)")
+            .style("font-size","10px").style("text-anchor", "start")
             .append("text")
             .attr("y", -2)
             .attr("x", width-20)
-            .style("text-anchor", "end").style("fill","#333333").style("font-size","15px").text(xLabel);
+            .style("text-anchor", "end").style("fill","#333333").style("font-size","10px").text(xLabel);
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis)

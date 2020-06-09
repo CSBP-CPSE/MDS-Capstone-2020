@@ -27,7 +27,7 @@ table {
   margin-bottom: 0;
 }
 td, th {
-  padding: 6px 9px;
+  padding: 3px 9px;
 }
 td {
   text-align: right;
@@ -49,9 +49,9 @@ td {
 #close-details {
   color: #FA5858;
   text-decoration: none;
-  font-size: 4rem;
+  font-size: 1rem;
   text-align: right;
-  line-height: 4.5rem;
+  line-height: 2.5rem;
 }
 #close-details:hover {
   color: red;

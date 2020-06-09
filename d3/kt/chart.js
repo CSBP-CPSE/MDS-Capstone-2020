@@ -18,7 +18,7 @@ d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-s
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([0, 0.25])
+    .domain([0, 0.7])
     .range([ 0, width]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")

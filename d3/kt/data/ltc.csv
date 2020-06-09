@@ -1,0 +1,630 @@
+LHIN,home type,short stay,total_inspections,2y_inspections,cleaned_name,Confirmed Resident Cases,Resident Deaths,Confirmed Staff Cases,Status,number_beds,lat,long
+Erie St. Clair,For-Profit,No,67,9,afton park place long term care community,,,,,128,42.98,-82.36
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,20,4,the meadows,,,,,128,43.21,-80.01
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,28,8,alexander place,,,,,128,43.34,-79.9
+North East,,Yes,23,7,algoma manor nursing home,,,,,96,46.26,-83.56
+North East,Non-Profit,Yes,23,5,algonquin nursing home,,,,,73,46.31,-78.72
+Mississauga Halton,Municipal,No,38,15,allendale,,0,,Inactive,200,43.52,-79.87
+Champlain,For-Profit,No,49,10,almonte country haven,<5,28,13,Active,82,45.22,-76.19
+Central East,For-Profit,Yes,33,12,altamont care community,72,46,60,Active,159,43.8,-79.14
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,22,6,anson place care centre,28,23,29,Active,61,42.97,-80.05
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,60,14,arbour creek long-term care centre,0,0,<5,Active,129,43.22,-79.78
+South East,For-Profit,No,70,13,arbour heights,,,,,174,44.24,-76.56
+North West,Non-Profit,No,11,4,atikokan general hospital,,,,,26,48.75,-91.6
+North East,Municipal,Yes,47,13,au chateau,,,,,162,46.37,-79.92
+Central West,For-Profit,Yes,30,10,avalon retirement centre,0,0,<5,Active,137,43.92,-80.12
+South West,For-Profit,No,32,10,babcock community care centre,,,,,60,42.66,-81.76
+Erie St. Clair,For-Profit,Yes,74,16,banwell gardens care centre,,,,,142,42.31,-82.9
+Waterloo Wellington,For-Profit,No,17,3,barnswallow place care community,,,,,96,43.59,-80.58
+North Simcoe Muskoka,For-Profit,No,14,6,bay haven nursing home,,,,,60,44.5,-80.2
+Central East,For-Profit,No,53,12,bay ridges,,0,,Inactive,124,43.83,-79.08
+Champlain,For-Profit,No,22,4,bayfield manor,,,,,66,45.02,-75.65
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,46,11,baywoods place,,,,,128,43.25,-79.86
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,39,15,"albright gardens homes, incorporated",,0,,Inactive,231,43.15,-79.48
+Toronto Central,Non-Profit,No,13,6,belmont house,,0,,Inactive,140,43.67,-79.39
+South East,For-Profit,No,35,8,belmont long term care facility,,0,,Inactive,128,44.16,-77.4
+North East,Municipal,No,40,13,belvedere heights,,,,,101,45.34,-80.04
+Central East,Municipal,Yes,35,10,bendale acres,0,0,0,Active,302,43.75,-79.25
+Mississauga Halton,Non-Profit,No,24,6,bennett health care centre,,,,,66,43.64,-79.93
+Erie St. Clair,For-Profit,No,172,25,berkshire care centre,0,0,<5,Active,231,42.32,-83.04
+North West,Non-Profit,No,35,19,bethammi nursing home,,,,,110,48.44,-89.24
+Central,Non-Profit,No,16,4,bethany lodge,<5,<5,<5,Active,128,43.86,-79.3
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,24,8,billings court manor,,,,,160,43.36,-79.79
+North West,For-Profit,Yes,53,14,birchwood terrace,,,,,96,49.77,-94.5
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,31,9,blackadar continuing care centre,<5,0,0,Active,80,43.26,-79.97
+Erie St. Clair,For-Profit,No,33,5,blenheim community village,,,,,65,42.34,-81.99
+Central,For-Profit,Yes,39,11,bloomington cove care community,,,,,112,44,-79.26
+South West,Non-Profit,No,21,4,blue water rest home,<5,0,0,Active,65,43.42,-81.64
+North Simcoe Muskoka,Non-Profit,No,35,7,bob rumball home for the deaf,,,,,64,44.36,-79.62
+South West,Municipal,Yes,19,2,bobier villa,,,,,57,42.67,-81.51
+North East,Non-Profit,No,12,2,north shore health network â€“ eldcap unit,,,,,10,46.19,-82.92
+Champlain,Municipal,Yes,43,11,bonnechere manor,0,0,<5,Active,180,45.48,-76.7
+Central,For-Profit,No,40,8,bradford valley care community,<5,11,0,Active,246,44.1,-79.57
+South West,For-Profit,No,39,6,braemar retirement centre,0,0,0,Active,69,43.9,-81.3
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,55,9,brierwood gardens,,,,,79,43.18,-80.25
+South East,For-Profit,No,31,10,broadview nursing centre,,,,,75,44.89,-76.02
+Erie St. Clair,For-Profit,No,33,4,brouillette manor,,,,,60,42.31,-82.89
+South West,Municipal,No,79,17,brucelea haven long term care home - corporation of the county of bruce,0,0,<5,Active,144,44.12,-81.15
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,22,6,burloak,,,,,144,43.38,-79.74
+Central East,For-Profit,No,28,5,burnbrae gardens long term care residence,,,,,43,44.28,-77.85
+Central West,For-Profit,No,27,6,burton manor,11,8,14,Active,128,43.66,-79.77
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,16,2,cama woodlands nursing home,,,,,134,43.31,-79.87
+Waterloo Wellington,For-Profit,No,35,8,cambridge country manor,,,,,80,43.46,-80.36
+Mississauga Halton,For-Profit,Yes,52,10,camilla care community,152,48,44,Active,236,43.57,-79.61
+Central,Municipal,No,18,7,carefree lodge,<5,0,0,Active,127,43.79,-79.39
+Waterloo Wellington,For-Profit,No,65,9,caressant care arthur nursing home,,,,,80,43.83,-80.53
+Champlain,For-Profit,No,116,24,caressant care bourget,,,,,60,45.44,-75.16
+North East,Non-Profit,No,15,3,north shore health network â€“ ltc unit,,,,,22,46.19,-82.92
+South West,For-Profit,No,33,8,caressant care courtland,0,0,<5,Active,55,42.83,-80.63
+Waterloo Wellington,For-Profit,No,68,26,caressant care fergus nursing home,,0,,Inactive,87,43.71,-80.37
+Central East,For-Profit,Yes,21,5,bon air long term care residence,,,,,57,44.35,-79.04
+Central East,For-Profit,No,49,12,caressant care lindsay nursing home,<5,0,<5,Active,124,44.34,-78.75
+South West,For-Profit,Yes,28,4,caressant care listowel nursing home,,,,,52,43.72,-80.95
+South East,For-Profit,No,47,15,caressant care marmora,,,,,84,44.48,-77.68
+South West,For-Profit,No,87,15,caressant care on bonnie place,,0,,Inactive,116,42.77,-81.16
+South West,For-Profit,No,36,7,caressant care on mary bucke,,,,,60,42.77,-81.17
+Central East,For-Profit,No,38,5,caressant care on mclaughlin road,,,,,96,44.34,-78.76
+South West,For-Profit,Yes,95,21,caressant care woodstock nursing home,,,,,163,43.12,-80.74
+Champlain,Municipal,No,29,10,carleton lodge,,,,,161,45.27,-75.71
+Champlain,For-Profit,No,105,31,carlingview manor,93,39,61,Active,303,45.37,-75.78
+South East,For-Profit,No,29,6,carveth care centre,,,,,104,44.34,-76.16
+Central East,For-Profit,No,24,9,case manor care community,,0,,Inactive,96,44.54,-78.54
+North East,Municipal,Yes,47,16,cassellholme,<5,0,0,Active,240,46.32,-79.45
+Toronto Central,Municipal,Yes,78,12,castleview wychwood towers,0,0,<5,Active,456,43.67,-79.42
+Mississauga Halton,For-Profit,No,27,7,cawthra gardens,,,,,192,43.59,-79.6
+Central,For-Profit,No,19,10,cedarvale lodge retirement and care community,,,,,60,44.23,-79.46
+Toronto Central,For-Profit,Yes,65,16,cedarvale terrace,0,0,<5,Active,218,43.69,-79.41
+North East,For-Profit,No,37,5,cedarwood lodge,,,,,50,46.55,-84.32
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,34,13,cedarwood village,,,,,91,42.84,-80.33
+Central East,For-Profit,No,29,7,centennial place long-term care home,,,,,128,44.16,-78.45
+Champlain,Municipal,No,122,44,centre d'accueil champlain,0,0,<5,Active,160,45.44,-75.66
+Champlain,Non-Profit,Yes,51,20,centre d'accueil roger seguin,,0,,Inactive,113,45.51,-75.22
+Champlain,For-Profit,No,22,4,caressant care cobden,,,,,64,45.63,-76.89
+Central,For-Profit,Yes,28,8,chartwell aurora long term care residence,31,11,5,Active,235,44,-79.47
+South West,For-Profit,No,30,5,chartwell aylmer long term care residence,,,,,64,42.77,-81
+Central East,For-Profit,No,65,7,chartwell ballycliffe long term care residence,5,30,31,Active,100,43.85,-79.03
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,42,6,chartwell brant centre long term care residence,,,,,175,43.32,-79.8
+Waterloo Wellington,For-Profit,No,17,4,chartwell elmira long term care residence,,0,,Inactive,48,43.6,-80.56
+Central,For-Profit,No,57,5,chartwell gibson long term care residence,31,9,10,Active,202,43.81,-79.37
+South West,For-Profit,No,43,8,chartwell london long term care residence,,,,,95,43.04,-81.26
+South West,For-Profit,No,21,10,chartwell parkhill long term care residence,,,,,59,43.16,-81.68
+Central West,For-Profit,Yes,15,5,chartwell pine grove long term care residence,0,0,<5,Active,96,43.8,-79.58
+Erie St. Clair,For-Profit,No,72,14,chartwell royal oak long term care residence,,,,,160,42.05,-82.74
+Central East,For-Profit,Yes,31,9,chartwell trilogy long term care residence,,,,,197,43.74,-79.24
+Mississauga Halton,For-Profit,No,42,11,chartwell waterford long term care residence,<5,0,<5,Active,168,43.43,-79.76
+Mississauga Halton,For-Profit,No,27,7,chartwell wenleigh long term care residence,,,,,161,43.52,-79.65
+Mississauga Halton,For-Profit,No,20,3,chartwell westbury long term care residence,61,20,23,Active,187,43.65,-79.57
+Waterloo Wellington,For-Profit,No,44,9,chartwell westmount long term care residence,<5,0,0,Active,160,43.41,-80.52
+Toronto Central,For-Profit,Yes,13,3,chartwell white eagle long term care residence,26,11,9,Active,56,43.64,-79.44
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,24,7,chartwell willowgrove long term care residence,,,,,169,43.23,-79.94
+Central,For-Profit,Yes,30,9,chartwell woodhaven long term care residence,0,0,<5,Active,192,43.89,-79.23
+Central East,For-Profit,No,27,10,chartwell wynfield long term care residence,,,,,172,43.95,-78.87
+Erie St. Clair,For-Profit,No,16,3,chateau park long term care home,,,,,59,42.31,-83.07
+South West,For-Profit,Yes,73,16,chelsey park,,0,,Inactive,247,42.99,-81.28
+Central,For-Profit,Yes,30,9,cheltenham care community,,,,,170,43.78,-79.44
+Toronto Central,Non-Profit,No,23,4,chester village,,,,,203,43.69,-79.27
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,22,7,clarion nursing home,,0,,Inactive,100,43.22,-79.73
+North Simcoe Muskoka,For-Profit,No,19,7,coleman care centre,,,,,112,44.4,-79.72
+North Simcoe Muskoka,For-Profit,No,23,13,collingwood nursing home,,,,,60,44.48,-80.23
+Waterloo Wellington,For-Profit,No,44,5,columbia forest,,,,,156,43.46,-80.59
+Mississauga Halton,For-Profit,Yes,65,11,cooksville care centre,40,6,17,Active,192,43.57,-79.61
+Toronto Central,Non-Profit,Yes,24,9,copernicus lodge,0,0,<5,Active,228,43.64,-79.45
+Erie St. Clair,For-Profit,Yes,94,20,copper terrace,,,,,138,42.4,-82.2
+South West,For-Profit,No,21,2,country lane long term care residence,,,,,34,44.47,-80.9
+South West,For-Profit,Yes,83,11,country terrace,,,,,120,42.96,-81.44
+Erie St. Clair,For-Profit,No,62,9,country village homes - woodslee,0,18,<5,Active,104,42.17,-82.72
+South West,Non-Profit,Yes,51,10,craigholme,,,,,83,43.15,-81.53
+Central East,For-Profit,No,65,17,craiglee nursing home,<5,<5,7,Active,169,43.71,-79.25
+North Simcoe Muskoka,For-Profit,No,26,11,creedan valley care community,,,,,95,44.33,-80.1
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,30,7,creek way village,,,,,144,43.39,-79.78
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,26,8,crescent park lodge,,,,,68,42.91,-78.92
+South East,For-Profit,Yes,24,4,crown ridge place,,,,,116,44.11,-77.56
+Central,Municipal,Yes,50,13,cummer lodge,<5,<5,0,Active,391,43.79,-79.41
+South West,Municipal,Yes,76,16,dearness home for senior citizens,,,,,243,42.94,-81.22
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,14,4,deer park villa,,,,,39,43.19,-79.54
+Central West,For-Profit,No,33,11,deerwood creek care community,,,,,160,43.73,-79.62
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,27,3,delhi long term care centre,,,,,60,42.84,-80.49
+Waterloo Wellington,For-Profit,No,10,3,derbecker's heritage house,,,,,73,43.54,-80.55
+Mississauga Halton,Non-Profit,No,10,2,dom lipa,,0,,Inactive,66,43.63,-79.57
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,Yes,32,7,douglas h. rapelje lodge,,0,,Inactive,120,42.98,-79.25
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,38,7,dover cliffs,,,,,70,42.79,-80.21
+Central,For-Profit,Yes,63,6,downsview long term care centre,35,23,71,Active,252,43.75,-79.49
+Central West,Municipal,No,24,6,dufferin oaks,<5,<5,6,Active,160,44.08,-80.2
+Champlain,Non-Profit,No,40,14,dundas manor nursing home,,,,,98,45.09,-75.36
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,52,8,dundurn place care centre,6,<5,<5,Active,201,43.26,-79.86
+South East,For-Profit,Yes,24,5,e. j. mcquigge lodge,,,,,57,44.2,-77.39
+Central,For-Profit,No,13,2,eagle terrace,<5,<5,<5,Active,70,44.05,-79.46
+South West,For-Profit,No,90,21,earls court village,9,<5,8,Active,128,43.03,-81.22
+North East,Municipal,No,18,4,eastholme home for the aged,,,,,128,46.08,-79.36
+Mississauga Halton,For-Profit,No,38,7,eatonville care centre,142,40,56,Active,247,43.65,-79.56
+Waterloo Wellington,For-Profit,No,17,7,eden house nursing home,,,,,59,43.58,-80.17
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,21,10,edgewater gardens long term care centre,,,,,64,42.91,-79.63
+Central East,Non-Profit,No,9,2,ehatare nursing home,,0,,Inactive,32,43.78,-79.18
+South West,For-Profit,No,33,7,elgin abbey nursing home,,,,,27,44.31,-81.1
+South West,Municipal,Yes,34,10,elgin manor,,,,,90,42.77,-81.24
+Central,For-Profit,Yes,25,12,elginwood,,,,,124,43.9,-79.44
+Champlain,For-Profit,No,39,13,heartwood (fka versa-care cornwall),,,,,118,45.03,-74.73
+North East,For-Profit,Yes,51,17,elizabeth centre,,,,,128,46.61,-81.03
+Toronto Central,For-Profit,No,14,4,elm grove living centre,44,17,43,Active,126,43.64,-79.43
+South West,For-Profit,No,49,10,elmwood place,<5,0,<5,Active,90,42.97,-81.27
+North West,Non-Profit,No,9,2,emo health centre,,,,,12,48.63,-93.84
+Mississauga Halton,For-Profit,No,35,6,erin mills lodge nursing home,29,16,22,Active,86,43.53,-79.67
+South West,For-Profit,Yes,30,5,errinrung long term care home,,,,,60,44.56,-80.46
+North East,Non-Profit,No,10,3,espanola general hospital (operating as espanola nursing home-eldcap),,,,,30,46.25,-81.78
+North East,Non-Profit,No,16,4,espanola general hospital (operating as espanola nursing home-ltc),,,,,32,46.25,-81.78
+South West,For-Profit,Yes,18,7,exeter villa,0,0,<5,Active,47,43.35,-81.47
+Central,For-Profit,Yes,34,4,extendicare bayview,60,8,13,Active,205,43.79,-79.39
+Central West,For-Profit,No,26,10,extendicare brampton,13,<5,<5,Active,150,43.66,-79.74
+Central East,For-Profit,No,42,7,extendicare cobourg,,,,,69,43.98,-78.17
+North East,For-Profit,Yes,67,19,extendicare falconbridge,,,,,234,46.51,-80.94
+Central East,For-Profit,Yes,39,10,extendicare guildwood,36,7,12,Active,169,43.75,-79.2
+Central East,For-Profit,No,20,6,extendicare haliburton,,,,,60,45.05,-78.5
+Mississauga Halton,For-Profit,No,45,9,extendicare halton hills,,,,,130,43.65,-79.95
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,42,8,extendicare hamilton,,,,,160,43.24,-79.92
+North East,For-Profit,Yes,27,11,extendicare kapuskasing,,,,,61,49.42,-82.41
+Central East,For-Profit,No,15,4,extendicare kawartha lakes,,,,,64,44.36,-78.72
+South East,For-Profit,No,28,4,extendicare kingston,,,,,150,44.24,-76.54
+North East,For-Profit,Yes,22,5,extendicare kirkland lake,,,,,100,48.16,-80.02
+Central East,For-Profit,Yes,19,4,extendicare lakefield,,0,,Inactive,100,44.42,-78.28
+Champlain,For-Profit,No,85,15,extendicare laurier manor,10,22,33,Active,242,45.45,-75.61
+South West,For-Profit,Yes,61,12,extendicare london,,,,,170,43,-81.25
+North East,For-Profit,No,46,24,extendicare maple view of sault ste. marie,<5,0,0,Active,256,46.54,-84.3
+Champlain,For-Profit,No,63,19,extendicare medex,,,,,193,45.35,-75.76
+Mississauga Halton,For-Profit,No,22,6,extendicare mississauga,,,,,140,43.63,-79.73
+Champlain,For-Profit,No,30,6,extendicare new orchard lodge,,,,,111,45.38,-75.78
+Central East,For-Profit,Yes,41,8,extendicare oshawa,<5,0,0,Active,175,43.9,-78.88
+Central East,For-Profit,Yes,29,9,extendicare peterborough,,,,,174,44.3,-78.35
+Central East,For-Profit,No,29,5,extendicare port hope,,,,,128,43.97,-78.28
+South West,For-Profit,Yes,31,8,extendicare port stanley,,,,,60,42.67,-81.21
+Central East,For-Profit,Yes,35,11,extendicare rouge valley,,0,,Inactive,192,43.8,-79.19
+Central East,For-Profit,Yes,31,6,extendicare scarborough,11,<5,8,Active,154,43.76,-79.21
+Erie St. Clair,For-Profit,No,100,14,extendicare southwood lakes,0,0,<5,Active,150,42.24,-82.98
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,27,9,extendicare st. catharines,,,,,153,43.13,-79.26
+Champlain,For-Profit,No,54,14,extendicare starwood,,0,,Inactive,192,45.35,-75.75
+Erie St. Clair,For-Profit,No,66,14,extendicare tecumseh,,,,,128,42.28,-82.88
+North East,For-Profit,No,39,9,extendicare timmins,<5,0,0,Active,180,48.48,-81.38
+North East,For-Profit,Yes,15,3,extendicare tri-town,,,,,60,47.44,-79.63
+North East,For-Profit,Yes,22,9,extendicare van daele,,,,,100,46.53,-84.32
+Champlain,For-Profit,No,104,20,extendicare west end villa,0,0,<5,Active,242,45.35,-75.78
+North East,For-Profit,Yes,61,12,extendicare york,,0,,Inactive,288,46.48,-81.01
+North East,Non-Profit,No,65,10,f. j. davey home,,,,,374,46.55,-84.31
+Erie St. Clair,For-Profit,No,32,11,fairfield park,,,,,99,42.59,-82.41
+Central East,Municipal,Yes,36,12,fairhaven,,,,,256,44.33,-78.32
+South East,Municipal,No,34,10,fairmount home for the aged,,,,,128,44.31,-76.47
+North Simcoe Muskoka,Non-Profit,No,21,6,fairvern nursing home,,,,,76,45.33,-79.21
+Central East,Municipal,No,46,11,fairview lodge,0,0,<5,Active,198,43.88,-78.95
+Champlain,Non-Profit,Yes,29,11,fairview manor,,,,,112,45.23,-76.19
+Waterloo Wellington,Non-Profit,No,18,6,fairview mennonite home,,,,,84,43.4,-80.34
+Toronto Central,For-Profit,No,33,6,fairview nursing home,,,,,108,43.65,-79.43
+Central West,Non-Profit,No,39,6,faith manor nursing home,<5,0,<5,Active,120,43.65,-79.74
+Central East,For-Profit,No,18,4,fenelon court,,,,,67,44.53,-78.73
+Erie St. Clair,For-Profit,No,37,12,fiddick's nursing home,,,,,92,42.88,-82.14
+Central East,For-Profit,Yes,43,6,fieldstone commons care community,,,,,224,43.77,-79.28
+North East,For-Profit,Yes,42,7,finlandia hoivakoti nursing home,0,0,<5,Active,112,46.48,-80.93
+Waterloo Wellington,For-Profit,Yes,101,12,forest heights,166,46,59,Active,240,43.43,-80.53
+Champlain,For-Profit,No,42,9,forest hill,,,,,160,45.31,-75.91
+Central East,For-Profit,Yes,23,2,fosterbrooke,,,,,88,43.65,-79.39
+Toronto Central,For-Profit,No,43,11,fountain view care community,0,0,<5,Active,158,43.72,-79.3
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,64,8,fox ridge care community,,,,,122,43.16,-80.26
+North East,Non-Profit,Yes,17,6,foyer des pionniers,,,,,67,49.68,-83.68
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,43,8,foyer richelieu welland,,,,,63,42.99,-79.22
+Champlain,For-Profit,No,66,10,foyer st-viateur nursing home,,,,,57,45.29,-75.23
+Erie St. Clair,For-Profit,No,56,9,franklin gardens long term care home,<5,0,<5,Active,120,42.03,-82.6
+South East,For-Profit,No,30,5,friendly manor nursing home,,,,,60,44.2,-77.04
+Central East,For-Profit,No,22,4,frost manor,,,,,62,44.34,-78.75
+Toronto Central,Municipal,Yes,21,6,fudger house,<5,0,0,Active,250,43.67,-79.37
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,56,10,garden city manor,<5,0,0,Active,200,43.18,-79.25
+Toronto Central,For-Profit,No,13,4,garden court nursing home,,,,,45,43.6,-79.5
+Champlain,For-Profit,Yes,54,20,garden terrace,0,<5,<5,Active,160,45.31,-75.9
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,18,2,gardenview long term care home,0,0,0,Active,64,42.89,-80.14
+Champlain,Municipal,No,69,21,garry j. armstrong home,,0,,Inactive,180,45.44,-75.68
+South West,Municipal,No,19,5,gateway haven long term care home,,,,,100,44.74,-81.13
+South West,For-Profit,No,20,4,georgian heights,,,,,40,44.57,-80.92
+North Simcoe Muskoka,Municipal,Yes,22,6,georgian manor home for the aged,,,,,143,44.77,-79.92
+North West,Non-Profit,No,13,2,geraldton district hospital,,,,,19,49.72,-86.95
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,16,2,gilmore lodge,,,,,80,42.92,-78.91
+Champlain,Non-Profit,No,42,18,glebe centre,,,,,254,45.4,-75.69
+Central East,Non-Profit,No,24,5,glen hill marnwood,,,,,60,43.92,-78.69
+Central East,Non-Profit,Yes,57,11,glen hill strathaven,<5,0,0,Active,210,43.91,-78.67
+Champlain,Municipal,Yes,42,14,glen-stor-dun lodge,,,,,132,45.03,-74.68
+South West,Non-Profit,No,17,5,golden dawn nursing home,<5,0,0,Active,45,44.99,-81.26
+North East,Municipal,Yes,21,5,golden manor,<5,0,0,Active,177,48.49,-81.34
+Central East,Municipal,No,62,5,golden plough lodge,,,,,151,43.97,-78.2
+Waterloo Wellington,For-Profit,No,56,12,golden years nursing home,0,0,<5,Active,88,43.4,-80.35
+Central,For-Profit,No,14,4,good samaritan nursing home,,,,,64,44.16,-79.85
+Central West,Non-Profit,No,33,9,grace manor,42,11,25,Active,120,43.65,-79.74
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,79,10,grace villa nursing home,0,0,<5,Active,184,43.21,-79.85
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,37,7,grandview lodge / dunnville,,,,,128,42.91,-79.63
+Champlain,For-Profit,No,34,10,granite ridge care community,,,,,224,45.27,-75.9
+South West,Non-Profit,No,20,3,greenwood court,,<5,,Inactive,45,43.38,-80.98
+South West,Municipal,No,40,8,grey gables home for the aged,,,,,66,44.31,-80.64
+North Simcoe Muskoka,Non-Profit,No,22,8,grove park home for senior citizens,,,,,143,44.41,-79.67
+Champlain,For-Profit,Yes,19,8,groves park lodge,,,,,90,45.48,-76.7
+South East,Municipal,No,62,13,h.j. mcfarland memorial home,,,,,84,44.03,-77.14
+South East,For-Profit,No,41,8,hallowell house,,0,,Inactive,97,43.99,-77.18
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,40,6,hamilton continuing care,,,,,64,43.25,-79.85
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,31,5,hampton terrace care centre,,0,,Inactive,101,43.31,-79.86
+South West,For-Profit,No,22,4,hanover care centre,,,,,41,44.16,-81.02
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,45,11,hardy terrace,,,,,101,43.09,-80.31
+Toronto Central,For-Profit,No,19,6,harmony hills care community,,,,,160,43.72,-79.3
+Central,Non-Profit,No,21,5,harold and grace baker centre,8,13,17,Active,120,43.7,-79.47
+South East,Municipal,Yes,33,13,hastings centennial manor,,,,,110,45.06,-77.86
+South East,Municipal,Yes,71,13,hastings manor home for the aged,6,<5,5,Active,253,44.15,-77.41
+Central West,For-Profit,No,58,14,hawthorn woods care community,,,,,160,43.76,-79.69
+Central,For-Profit,Yes,85,10,hawthorne place care centre,45,31,77,Active,269,43.76,-79.52
+Champlain,Non-Profit,Yes,22,5,north renfrew long-term care services,,,,,21,46.1,-77.49
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,22,4,heidehof long term care home,,,,,106,43.2,-79.25
+South East,For-Profit,No,59,10,helen henderson nursing home,,,,,104,44.23,-76.66
+Toronto Central,Non-Profit,No,20,6,hellenic care for seniors (toronto),,,,,81,43.68,-79.43
+Central East,Non-Profit,Yes,38,13,hellenic home - scarborough,44,14,21,Active,128,43.75,-79.27
+South West,For-Profit,No,61,18,henley place,<5,0,0,Active,192,43.05,-81.21
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,61,16,heritage green nursing home,0,<5,0,Active,167,43.19,-79.79
+Erie St. Clair,For-Profit,No,87,9,heron terrace long term care community,46,23,14,Active,140,42.32,-82.9
+Central East,Non-Profit,No,15,6,highland wood,,,,,30,45.04,-78.53
+North Simcoe Muskoka,For-Profit,No,23,7,hillcrest village care centre,,,,,164,44.75,-79.88
+Champlain,Non-Profit,No,47,15,hillel lodge,,,,,121,45.38,-75.75
+Central East,Municipal,No,52,14,hillsdale estates,,,,,300,43.91,-78.86
+Central East,Municipal,No,57,9,hillsdale terraces,,13,,Inactive,200,43.92,-78.86
+South West,For-Profit,No,29,9,hillside manor,,0,,Inactive,90,43.42,-81.1
+South East,For-Profit,No,41,5,hilltop manor nursing home (merrickville),,,,,60,44.91,-75.83
+North West,Non-Profit,No,84,33,hogarth riverview manor,0,0,<5,Active,543,48.39,-89.27
+Central East,For-Profit,Yes,41,10,hope street terrace,,,,,97,43.95,-78.29
+North East,Non-Profit,No,11,4,hornepayne community hospital,,,,,12,49.21,-84.77
+Central West,For-Profit,No,34,3,humber valley terrace,46,9,18,Active,158,43.73,-79.6
+Erie St. Clair,Municipal,Yes,44,10,huron lodge long term care home,,,,,224,42.25,-83.02
+South West,Municipal,No,25,5,huronlea home for the aged,,,,,64,43.74,-81.26
+South West,Municipal,No,39,7,huronview home for the aged,,,,,120,43.6,-81.53
+Central East,Municipal,Yes,22,8,hyland crest,,,,,62,44.93,-78.73
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,58,11,idlewyld manor,<5,0,0,Active,192,43.24,-79.91
+Erie St. Clair,For-Profit,No,106,19,iler lodge,,,,,104,42.17,-82.82
+Central East,Non-Profit,No,59,7,ina grafton gage home,43,26,30,Active,128,43.71,-79.28
+North Simcoe Muskoka,Non-Profit,Yes,30,8,ioof seniors home,,0,,Inactive,182,44.37,-79.69
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,Yes,18,8,iroquois lodge nursing home,,,,,50,43.07,-80.12
+Toronto Central,Non-Profit,No,35,8,isabel and arthur meighen manor,61,42,45,Active,168,43.7,-79.39
+Toronto Central,Non-Profit,No,11,5,ivan franko home (etobicoke),0,0,<5,Active,85,43.64,-79.51
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,25,4,john noble home,,,,,156,43.13,-80.28
+Champlain,Non-Profit,Yes,13,4,kemptville district hospital,,,,,12,45.01,-75.64
+Central East,For-Profit,Yes,25,7,kennedy lodge,,,,,289,43.76,-79.28
+South West,For-Profit,Yes,69,3,kensington village,<5,5,<5,Active,78,43.02,-81.21
+South East,For-Profit,No,27,6,kentwood park,,,,,45,44,-77.15
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,16,3,kilean lodge,,,,,50,43.19,-79.56
+Central,For-Profit,No,13,3,king city lodge nursing home,,,,,36,43.97,-79.55
+Central West,For-Profit,Yes,55,12,king nursing home,,,,,86,43.88,-79.74
+South West,For-Profit,Yes,19,5,kingsway lodge nursing home,,,,,63,43.26,-81.14
+Central West,Municipal,Yes,41,11,kipling acres,53,13,11,Active,337,43.73,-79.57
+South West,Non-Profit,Yes,14,3,knollcrest lodge,,,,,78,43.57,-80.92
+Central,Non-Profit,Yes,18,6,kristus darzs latvian home,21,7,17,Active,100,43.87,-79.6
+Mississauga Halton,Non-Profit,No,19,4,labdara lithuanian nursing home,,0,,Inactive,90,43.64,-79.53
+North East,Non-Profit,Yes,15,3,lady dunn health centre (wawa),,,,,16,48,-84.77
+,,,,,st. joseph's mother house (martha wing),,,,,,,
+North East,Non-Profit,No,13,2,lakeland long term care (eldcap),,,,,20,45.34,-80.02
+North East,Non-Profit,No,23,10,lakeland long term care services,,,,,90,45.34,-80.02
+Toronto Central,Municipal,No,14,3,lakeshore lodge,41,11,17,Active,150,43.6,-79.52
+Toronto Central,Non-Profit,Yes,13,3,lakeside long term care centre,,,,,128,43.64,-79.43
+Central East,Municipal,Yes,30,5,lakeview manor,,0,,Inactive,149,44.43,-79.16
+Erie St. Clair,Municipal,No,33,8,lambton meadowview villa,,0,,Inactive,125,42.88,-82.16
+Waterloo Wellington,For-Profit,No,82,7,lanark heights long term care centre,<5,<5,<5,Active,160,43.42,-80.54
+South East,Municipal,Yes,37,15,lanark lodge,,,,,163,44.9,-76.27
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,Yes,100,15,"st. joseph's villa, dundas",,0,,Inactive,425,43.26,-79.96
+Central,For-Profit,No,19,6,langstaff square care community,,,,,160,43.84,-79.42
+Waterloo Wellington,For-Profit,No,50,13,lapointe-fisher nursing home,,,,,92,43.56,-80.26
+North Simcoe Muskoka,For-Profit,Yes,38,12,leacock care centre,,,,,145,44.61,-79.39
+Erie St. Clair,Non-Profit,No,20,6,leamington mennonite home long term care residence,0,0,<5,Active,84,42.04,-82.59
+South West,Municipal,No,36,10,lee manor home,,,,,150,44.56,-80.93
+,,,9,2,lennox and addington county general hospital,,,,,,44.24,-76.97
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,Yes,56,12,linhaven,,,,,248,43.18,-79.27
+Champlain,For-Profit,No,34,10,longfields manor,,,,,114,45.28,-75.73
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,31,11,macassa lodge,,0,,Inactive,270,43.23,-79.85
+Central,Non-Profit,No,25,8,mackenzie health long term care facility,,,,,168,43.87,-79.45
+Central,For-Profit,No,26,9,mackenzie place,66,11,21,Active,93,44.06,-79.48
+Champlain,For-Profit,No,109,38,madonna care community,52,33,41,Active,160,45.46,-75.56
+Toronto Central,For-Profit,Yes,47,7,main street terrace,<5,0,0,Active,150,43.68,-79.3
+South West,For-Profit,Yes,35,10,maitland manor,,,,,91,43.73,-81.71
+Central West,Municipal,No,62,14,malton village long term care centre,<5,0,<5,Active,160,43.72,-79.62
+North East,Municipal,No,26,6,manitoulin centennial manor home for the aged,,,,,60,45.98,-81.94
+North East,For-Profit,Yes,27,7,manitoulin lodge,,,,,61,45.91,-82.47
+Champlain,For-Profit,No,115,22,manoir marochel,29,7,15,Active,64,45.45,-75.63
+Central West,For-Profit,No,37,13,maple grove care community,,,,,160,43.76,-79.75
+South West,For-Profit,No,28,7,maple manor nursing home,,,,,106,42.86,-80.73
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,26,5,maple park lodge,,,,,96,42.91,-78.92
+South West,For-Profit,No,19,3,maple view,,0,,Inactive,29,44.57,-80.95
+South East,Municipal,No,33,4,maple view lodge,,,,,60,44.63,-75.93
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,17,4,maple villa long term care centre,,,,,93,43.32,-79.8
+South East,For-Profit,No,25,10,maplewood,<5,0,0,Active,49,44.04,-77.74
+Champlain,Non-Profit,Yes,32,12,marianhill nursing home,,,,,139,45.81,-77.1
+Central,Non-Profit,No,13,3,mariann home,,,,,64,43.87,-79.44
+Central,Non-Profit,No,27,10,markhaven,9,17,16,Active,96,43.88,-79.25
+Erie St. Clair,Municipal,No,61,12,marshall gowland manor,,,,,126,42.96,-82.38
+North East,Non-Profit,Yes,20,3,mauno kaihla koti,,,,,63,46.54,-84.34
+Champlain,Non-Profit,Yes,32,3,maxville manor,,,,,122,45.28,-74.86
+Toronto Central,For-Profit,No,21,4,maynard nursing home,0,0,0,Active,77,43.65,-79.42
+Mississauga Halton,Non-Profit,No,11,4,mccall centre long term care interim unit,,0,,Inactive,21,43.61,-79.56
+South West,Non-Profit,Yes,47,9,mccormick home,,,,,160,42.97,-81.35
+South West,For-Profit,No,48,11,mcgarrell place,,,,,157,43.02,-81.3
+South West,For-Profit,Yes,88,11,meadow park (london),<5,<5,8,Active,126,42.95,-81.2
+Erie St. Clair,For-Profit,Yes,19,5,meadow park nursing home (chatham),,,,,99,42.41,-82.2
+South West,For-Profit,Yes,36,5,meaford long term care - a peoplecare community,,,,,77,44.61,-80.6
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,Yes,28,6,mennonite brethren senior citizens home,,,,,82,43.19,-79.23
+South West,For-Profit,No,43,7,middlesex terrace,,,,,105,42.92,-81.43
+Central East,For-Profit,Yes,80,33,midland gardens care community,21,<5,8,Active,299,43.71,-79.25
+North Simcoe Muskoka,Non-Profit,Yes,35,6,mill creek care centre,,,,,160,44.37,-79.66
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,50,13,millennium trail manor,,,,,160,43.08,-79.12
+Champlain,Municipal,Yes,30,10,miramichi lodge,,0,,Inactive,166,45.83,-77.13
+Mississauga Halton,For-Profit,No,14,5,mississauga long term care facility,,,,,55,43.55,-79.59
+South West,Non-Profit,No,34,5,mitchell nursing home,,,,,48,43.47,-81.2
+South East,For-Profit,No,37,7,moira place long-term care home,,0,,Inactive,128,44.47,-77.32
+Toronto Central,Non-Profit,Yes,13,4,mon sheong home for the aged,23,32,16,Active,105,43.66,-79.39
+Central,Non-Profit,Yes,11,4,mon sheong richmond hill long term care centre,,,,,192,43.9,-79.44
+Central East,Non-Profit,Yes,18,6,mon sheong scarborough long term care centre,,,,,160,43.81,-79.3
+Champlain,For-Profit,No,87,24,montfort,63,27,18,Active,128,45.45,-75.64
+Waterloo Wellington,For-Profit,No,20,2,morriston park nursing home,,,,,28,43.44,-80.13
+South West,Non-Profit,Yes,87,15,mount hope centre for long term care,,0,,Inactive,394,43,-81.26
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,19,6,mount nemo christian nursing home,,,,,61,43.4,-79.88
+North Simcoe Muskoka,For-Profit,Yes,32,8,muskoka landing,,,,,94,45.34,-79.2
+North Simcoe Muskoka,For-Profit,No,43,18,muskoka shores care community,,,,,183,44.91,-79.37
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,30,5,"niagara health system, welland hospital site, extended care unit",,,,,115,42.98,-79.25
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,30,7,niagara ina grafton gage village,,,,,40,43.2,-79.23
+Waterloo Wellington,Non-Profit,No,42,3,"st. joseph's health centre, guelph",,,,,240,"43.550165, ",-80.27
+North West,Non-Profit,No,13,5,nipigon district memorial hospital,,,,,15,49.02,-88.28
+North East,For-Profit,No,20,10,nipissing manor nursing care center,,,,,120,46.25,-79.34
+Toronto Central,Non-Profit,No,13,6,nisbet lodge,,,,,103,43.68,-79.35
+Waterloo Wellington,Non-Profit,No,46,11,nithview home,,,,,99,43.38,-80.7
+Central,For-Profit,No,17,7,norfinch care community,,,,,160,43.76,-79.53
+North East,Non-Profit,No,17,5,north centennial manor,,,,,78,49.42,-82.43
+Erie St. Clair,Municipal,No,27,9,north lambton lodge,,,,,88,43.09,-81.99
+Central,For-Profit,No,25,4,north park nursing home,0,0,<5,Active,75,43.72,-79.48
+Waterloo Wellington,For-Profit,No,28,5,caressant care harriston,,,,,92,43.91,-80.88
+Champlain,For-Profit,No,38,8,lancaster long term care residence,,,,,60,45.15,-74.5
+Champlain,For-Profit,No,30,10,champlain long term care residence,,,,,60,45.63,-74.67
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,31,8,northland pointe,,,,,151,42.88,-79.26
+Mississauga Halton,For-Profit,No,35,5,northridge,,0,,Inactive,133,43.49,-79.71
+North East,For-Profit,Yes,22,6,northview nursing home,<5,0,0,Active,48,47.82,-79.87
+North West,Municipal,No,19,5,northwood lodge,,,,,32,51.01,-93.82
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,Yes,24,5,norview lodge,,0,,Inactive,179,42.84,-80.33
+Toronto Central,For-Profit,No,15,3,norwood nursing home,<5,0,<5,Active,60,43.64,-79.43
+North Simcoe Muskoka,For-Profit,No,31,5,oak terrace,,,,,94,44.6,-79.43
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,51,16,oakwood park lodge,,,,,153,43.08,-79.12
+South West,Non-Profit,No,39,5,oneida nation of the thames long-term care home (tsi' nu: yoyantle' na' tuhuwatisni),,,,,64,42.82,-81.41
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,19,4,orchard terrace care centre,,,,,45,43.21,-79.68
+Central East,For-Profit,No,67,12,orchard villa,74,69,<5,Active,233,43.85,-79.08
+North Simcoe Muskoka,For-Profit,No,17,4,owen hill care community,14,6,10,Active,57,44.4,-79.69
+Champlain,For-Profit,No,31,10,parisien manor,,,,,65,45.02,-74.72
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,45,15,park lane terrace,,,,,132,43.21,-80.39
+Central,Non-Profit,No,17,5,parkview home long-term care,,,,,128,43.97,-79.26
+South West,For-Profit,No,17,7,parkview manor health care centre,<5,0,0,Active,34,44.3,-81.09
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,13,4,parkview nursing centre,,,,,126,43.26,-79.88
+Waterloo Wellington,Non-Profit,No,22,9,parkwood mennonite home,,,,,96,43.52,-80.5
+Central West,Municipal,No,55,6,peel manor,<5,<5,6,Active,177,43.7,-79.78
+North West,Non-Profit,No,12,3,santÃ© manitouwadge health,,,,,9,49.13,-85.82
+Waterloo Wellington,Non-Profit,No,31,6,peoplecare a.r. goudie kitchener,<5,9,13,Active,80,43.46,-80.47
+Waterloo Wellington,For-Profit,No,42,6,peoplecare hilltop manor cambridge,0,0,<5,Active,185,43.35,-80.31
+South West,For-Profit,No,83,14,peoplecare oakcrossing london,0,0,<5,Active,160,42.99,-81.31
+South West,For-Profit,Yes,22,5,peoplecare tavistock,,,,,100,43.32,-80.84
+South East,For-Profit,No,40,14,perth community care centre,,,,,121,44.9,-76.27
+Champlain,Municipal,No,91,35,peter d. clark centre,5,<5,5,Active,216,45.34,-75.76
+South East,Non-Profit,Yes,20,5,pine meadow nursing home,,,,,60,44.74,-77.16
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,20,5,pine villa nursing home,,,,,41,43.22,-79.72
+North West,Municipal,Yes,25,6,pinecrest (kenora),,,,,116,49.78,-94.46
+Champlain,For-Profit,No,50,12,pinecrest (plantagenet),24,9,5,Active,60,45.54,-75
+South West,For-Profit,No,19,5,pinecrest manor,,,,,61,43.96,-81.51
+Central East,For-Profit,No,20,5,pinecrest nursing home (bobcaygeon),33,29,32,Active,65,44.53,-78.53
+Waterloo Wellington,For-Profit,No,39,7,pinehaven nursing home,,0,,Inactive,84,43.49,-80.51
+North East,Municipal,No,73,19,pioneer manor,,,,,433,46.52,-80.98
+North West,Municipal,No,27,5,pioneer ridge,,,,,150,48.42,-89.26
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,14,3,pleasant manor retirement village,,,,,41,43.23,-79.12
+Central East,For-Profit,No,22,7,pleasant meadow manor,,,,,61,44.38,-77.97
+Central East,For-Profit,No,50,6,port perry place,,,,,107,44.11,-78.95
+Mississauga Halton,Municipal,Yes,35,5,post inn village,<5,0,<5,Active,228,43.48,-79.72
+North West,Municipal,Yes,28,6,princess court,,,,,97,49.78,-92.84
+Toronto Central,Non-Profit,No,55,11,providence healthcare,,<5,,Inactive,288,43.71,-79.29
+South East,Non-Profit,Yes,69,16,providence manor,,0,,Inactive,243,44.24,-76.49
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,44,9,queen's garden,,,,,128,43.26,-79.88
+South West,For-Profit,Yes,26,7,queensway long term care home,,,,,60,43.43,-81.5
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,Yes,18,5,r. h. lawson eventide home,,,,,101,43.1,-79.08
+North West,Non-Profit,No,12,3,rainy river health centre,,,,,21,48.72,-94.57
+North West,Non-Profit,Yes,68,28,rainycrest,,,,,164,48.62,-93.39
+Central East,For-Profit,No,41,6,reachview village,6,<5,8,Active,100,44.1,-79.11
+Central East,For-Profit,Yes,26,4,regency long term care home,,,,,60,43.95,-78.29
+Erie St. Clair,For-Profit,No,28,8,regency park long term care home,,,,,72,42.31,-83.04
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,32,6,regina gardens,0,0,<5,Active,128,43.23,-79.91
+Champlain,Municipal,Yes,54,10,residence prescott et russell,,,,,146,45.6,-74.61
+Waterloo Wellington,For-Profit,Yes,30,7,strathcona long term care,0,0,<5,Active,87,43.98,-80.74
+Erie St. Clair,For-Profit,Yes,62,15,richmond terrace,,,,,120,42.1,-83.11
+South East,Municipal,No,69,20,rideaucrest home,,,,,170,44.24,-76.48
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,24,7,ridgeview,,,,,120,43.19,-79.8
+South West,Non-Profit,No,66,10,ritz lutheran villa,,,,,85,43.48,-81.19
+Central,For-Profit,No,27,5,river glen haven nursing home,35,5,18,Active,119,44.3,-79.36
+Waterloo Wellington,For-Profit,No,17,5,riverbend place,,,,,54,43.38,-80.33
+Erie St. Clair,For-Profit,No,50,11,riverside place,0,0,<5,Active,96,42.3,-82.93
+Erie St. Clair,Municipal,Yes,104,17,riverview gardens,,,,,320,42.4,-82.19
+Central East,For-Profit,No,35,7,riverview manor nursing home,,0,,Inactive,124,44.34,-78.32
+North Simcoe Muskoka,For-Profit,Yes,38,18,roberta place,,,,,140,44.34,-79.71
+Central East,For-Profit,Yes,35,21,rockcliffe care community,0,0,<5,Active,204,43.75,-79.25
+South West,Municipal,No,28,5,rockwood terrace home for the aged,,,,,100,44.17,-80.81
+Toronto Central,Non-Profit,No,14,2,rose of sharon korean long term care,,,,,60,43.69,-79.42
+South East,For-Profit,No,24,5,rosebridge manor,,0,,Inactive,78,44.84,-75.89
+North East,Non-Profit,No,13,2,rosedale centre,,,,,20,48.54,-80.47
+Champlain,Non-Profit,Yes,23,8,royal ottawa place,,,,,70,45.39,-75.73
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,13,8,royal rose place,<5,17,<5,Active,96,43,-79.27
+Waterloo Wellington,For-Profit,No,23,6,royal terrace,,0,,Inactive,67,43.84,-80.84
+Waterloo Wellington,Non-Profit,No,29,6,saint luke's place,,0,,Inactive,114,43.43,-80.31
+Champlain,For-Profit,No,26,10,sandfield place,,,,,53,45.04,-74.75
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,66,12,bella senior care residences inc.,,,,,161,43.05,-79.04
+North Simcoe Muskoka,For-Profit,Yes,14,4,sara vista,,,,,60,44.58,-79.86
+Champlain,For-Profit,No,62,12,sarsfield colonial home,,,,,46,45.44,-75.35
+South West,For-Profit,Yes,16,5,seaforth long term care home,,,,,63,43.56,-81.4
+South West,For-Profit,Yes,58,12,secord trails care community,,,,,80,43.03,-80.88
+Central,Non-Profit,Yes,33,8,seniors' health centre,,,,,192,43.77,-79.36
+Central East,Municipal,Yes,47,20,seven oaks,24,40,21,Active,249,43.78,-79.2
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,20,9,shalom manor long term care home,,0,,Inactive,144,43.19,-79.52
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,20,6,shalom village nursing home,,,,,127,43.26,-79.9
+Central West,For-Profit,Yes,21,8,shelburne long term care home,19,18,18,Active,60,44.08,-80.2
+Central East,Non-Profit,No,48,15,shepherd lodge,,0,,Inactive,252,43.78,-79.29
+Toronto Central,Non-Profit,Yes,31,5,sherbourne place,38,18,26,Active,126,43.66,-79.37
+Mississauga Halton,Municipal,No,24,7,sheridan villa,10,<5,7,Active,142,43.51,-79.65
+Central,For-Profit,No,40,11,sherwood court long term care centre,0,0,<5,Active,96,43.89,-79.52
+South East,Non-Profit,No,59,11,sherwood park manor,,,,,107,44.61,-75.66
+Mississauga Halton,For-Profit,No,25,3,silverthorn care community,0,0,<5,Active,160,43.56,-79.69
+Central,Municipal,Yes,27,6,simcoe manor home for the aged,,,,,126,44.08,-79.78
+North East,Non-Profit,No,16,4,smooth rock falls hospital,,,,,20,49.27,-81.61
+North East,Non-Profit,Yes,22,10,south centennial manor,<5,0,0,Active,69,48.77,-80.68
+South West,For-Profit,Yes,28,7,southampton care centre,,,,,88,44.49,-81.37
+North West,For-Profit,No,76,9,southbridge lakehead,,,,,131,48.38,-89.25
+North West,For-Profit,No,38,9,southbridge pinewood,,,,,128,48.37,-89.27
+North West,For-Profit,No,39,8,southbridge roseview,,,,,157,48.45,-89.22
+Central,Non-Profit,No,49,13,southlake residential care village,0,0,<5,Active,224,44.06,-79.45
+North Simcoe Muskoka,Non-Profit,No,31,10,spencer house,,0,,Inactive,160,44.6,-79.45
+Central East,For-Profit,No,30,6,springdale country manor,,,,,68,44.23,-78.4
+South West,Municipal,Yes,44,7,spruce lodge home for the aged,,,,,128,43.37,-81
+South West,For-Profit,No,18,3,sprucedale care centre,,0,,Inactive,96,42.96,-81.62
+Champlain,Non-Profit,Yes,86,24,st. patrick's home,9,0,<5,Active,288,45.37,-75.69
+Waterloo Wellington,For-Profit,No,52,9,st. andrew's terrace long term care community,,0,,Inactive,128,43.35,-80.33
+Toronto Central,Non-Profit,No,9,1,st. clair o'connor community nursing home,6,8,<5,Active,25,43.71,-79.31
+North East,Non-Profit,No,73,28,st. gabriel's villa of sudbury,0,0,<5,Active,128,46.58,-81.18
+Toronto Central,For-Profit,Yes,45,11,st. george care community,0,0,<5,Active,238,43.67,-79.4
+Champlain,Non-Profit,No,50,8,st. jacques nursing home,,,,,60,45.27,-75.29
+Central East,Non-Profit,No,110,14,st. joseph's at fleming,<5,0,<5,Active,200,44.27,-78.37
+Champlain,Non-Profit,No,34,10,st. joseph's continuing care centre,0,0,<5,Active,150,45.01,-74.73
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,19,6,niagara long term care residence,,,,,124,43.26,-79.06
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,28,13,st. joseph's lifecare centre,,0,,Inactive,205,43.15,-80.24
+North East,Non-Profit,Yes,39,10,st. joseph's manor,,,,,64,46.38,-82.66
+Champlain,Non-Profit,No,64,22,Ã©lisabeth-bruyÃ¨re residence,10,5,<5,Active,71,45.43,-75.7
+Champlain,Non-Profit,Yes,114,28,residence saint-louis,21,<5,17,Active,198,45.48,-75.55
+North East,Non-Profit,No,39,10,"st. joseph's villa, sudbury",,<5,,Inactive,128,46.47,-80.97
+South East,Municipal,No,53,11,st. lawrence lodge,,,,,224,44.6,-75.67
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,37,10,st. peter's residence at chedoke,,,,,210,43.24,-79.92
+North Simcoe Muskoka,For-Profit,No,15,5,stayner care centre,,,,,49,44.42,-80.09
+Waterloo Wellington,For-Profit,No,23,8,stirling heights,,0,,Inactive,110,43.34,-80.33
+South East,For-Profit,No,35,6,stirling manor nursing home,,,,,75,44.3,-77.55
+Champlain,For-Profit,No,27,6,stoneridge manor,52,6,<5,Active,60,45.14,-76.15
+North West,Non-Profit,No,12,3,"william a. ""bill"" george extended care facility",,,,,20,50.11,-91.92
+South West,Municipal,Yes,42,7,strathmere lodge,,,,,160,42.96,-81.64
+Central East,For-Profit,No,24,6,streamway villa,,,,,59,43.96,-78.17
+Mississauga Halton,For-Profit,No,22,4,streetsville care community,,,,,118,43.58,-79.71
+Erie St. Clair,For-Profit,No,60,10,sumac lodge,,0,,Inactive,100,43.01,-82.35
+South West,For-Profit,No,29,8,summit place,,,,,119,44.56,-80.93
+Erie St. Clair,Municipal,No,54,11,sun parlor home for senior citizens,<5,<5,<5,Active,206,42.06,-82.59
+Central East,For-Profit,No,55,4,sunnycrest nursing home,<5,0,0,Active,136,43.89,-78.91
+Waterloo Wellington,Municipal,Yes,83,13,sunnyside home,,,,,263,43.44,-80.45
+North Simcoe Muskoka,Municipal,Yes,29,13,sunset manor home for senior citizens,,,,,150,44.5,-80.2
+Toronto Central,Non-Profit,No,14,3,suomi-koti toronto nursing home,,,,,34,43.71,-79.37
+Central West,Municipal,No,28,9,tall pines long term care centre,<5,0,<5,Active,160,43.75,-79.74
+North East,Municipal,No,29,6,teck pioneer residence,,,,,81,48.15,-80.01
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,27,5,telfer place,<5,0,0,Active,45,43.21,-80.39
+North East,For-Profit,Yes,21,7,temiskaming lodge,<5,0,<5,Active,83,47.44,-79.63
+Central East,For-Profit,No,35,8,tendercare living centre,,<5,,Inactive,254,43.81,-79.34
+South West,Municipal,Yes,33,12,terrace lodge,,,,,100,42.77,-80.97
+North East,Non-Profit,Yes,11,3,the bignucolo residence,,,,,18,47.84,-83.41
+Waterloo Wellington,Non-Profit,No,24,4,the elliott long term care residence,,,,,85,43.56,-80.25
+South West,For-Profit,No,18,5,the fordwich village nursing home,,,,,33,43.87,-81.03
+Champlain,Non-Profit,No,12,4,the four seasons lodge,,,,,14,46.09,-77.48
+Champlain,Non-Profit,Yes,18,5,"the grove, arnprior and district nursing home",,,,,61,45.44,-76.36
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,54,12,the henley house,0,0,0,Active,160,43.18,-79.26
+Toronto Central,For-Profit,Yes,24,6,the heritage nursing home,,,,,201,43.66,-79.33
+Toronto Central,Non-Profit,No,48,17,the jewish home for the aged,<5,<5,6,Active,472,43.73,-79.43
+South East,Municipal,Yes,30,9,the john m. parrott centre,,,,,168,44.24,-76.97
+Toronto Central,Non-Profit,No,39,10,the kensington gardens,14,8,5,Active,350,43.66,-79.4
+South West,For-Profit,No,23,3,the maples home for seniors,,,,,43,43.32,-80.84
+South West,For-Profit,Yes,7,,people care centre,,,,,60,43.38,-80.98
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,19,5,the meadows of dorchester,,,,,121,43.08,-79.14
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,12,3,the norfolk hospital nursing home,,,,,80,42.84,-80.31
+Toronto Central,For-Profit,Yes,27,3,the o'neill centre,<5,0,<5,Active,162,43.66,-79.42
+Champlain,For-Profit,No,37,18,the palace,,,,,70,45.31,-74.63
+Champlain,Non-Profit,Yes,88,18,the perley and rideau veterans' health centre,9,8,16,Active,450,45.4,-75.64
+North Simcoe Muskoka,Municipal,No,13,5,the pines,,,,,160,45.05,-79.3
+Champlain,Non-Profit,No,63,15,the salvation army ottawa grace manor,,,,,128,45.4,-75.73
+North Simcoe Muskoka,For-Profit,Yes,29,12,the villa care centre,,,,,114,44.74,-79.89
+Erie St. Clair,For-Profit,No,62,20,the village at st. clair,0,0,<5,Active,256,42.24,-83.01
+Waterloo Wellington,For-Profit,No,15,7,the village at university gates,0,0,<5,Active,192,43.48,-80.57
+South East,For-Profit,No,28,5,the village green nursing home,,,,,66,44.3,-76.98
+Erie St. Clair,For-Profit,No,92,16,the village of aspen lake,,,,,192,42.32,-82.92
+Mississauga Halton,For-Profit,No,51,16,the village of erin meadows,43,9,21,Active,180,43.55,-79.72
+South West,For-Profit,No,108,17,the village of glendale crossing,,,,,192,42.94,-81.27
+Central,For-Profit,No,23,11,the village of humber heights,20,6,9,Active,192,43.7,-79.53
+Waterloo Wellington,For-Profit,No,109,13,the village of riverside glen,0,0,<5,Active,192,43.57,-80.27
+Central West,For-Profit,No,28,5,the village of sandalwood park,,,,,120,43.74,-79.77
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,30,9,the village of tansley woods,,,,,144,43.38,-79.8
+Central East,For-Profit,No,35,11,the village of taunton mills,,,,,120,43.91,-78.96
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,26,6,the village of wentworth heights,0,0,<5,Active,120,43.2,-79.87
+Waterloo Wellington,For-Profit,No,36,6,the village of winston park,<5,0,0,Active,95,43.41,-80.5
+South West,For-Profit,No,35,9,the village seniors community,,,,,70,44.15,-81.04
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,40,9,the wellington nursing home,,,,,102,43.21,-79.88
+North East,Non-Profit,No,14,4,the west nipissing general hospital,,,,,48,46.37,-79.92
+Central East,Non-Profit,No,56,15,the wexford,,0,,Inactive,166,43.74,-79.3
+Central,For-Profit,No,23,10,the willows estate nursing home,,,,,84,43.97,-79.46
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,20,5,the woodlands of sunset,,0,,Inactive,121,43.02,-79.29
+Central,Non-Profit,No,16,7,thompson house,,,,,136,43.73,-79.35
+Central East,For-Profit,No,42,13,thorntonview,,,,,154,43.89,-78.89
+Erie St. Clair,For-Profit,Yes,33,7,tilbury manor nursing home,,,,,75,42.26,-82.43
+Central East,Non-Profit,Yes,17,5,tony stacey centre for veterans' care,<5,0,0,Active,100,43.78,-79.16
+Champlain,Non-Profit,Yes,21,6,township of osgoode care centre,,,,,100,45.22,-75.5
+South East,For-Profit,No,45,10,trent valley lodge,,,,,102,44.1,-77.56
+South West,For-Profit,No,23,4,trillium court,,,,,40,44.18,-81.62
+North Simcoe Muskoka,Municipal,Yes,23,5,trillium manor home for the aged,,,,,122,44.63,-79.43
+South East,For-Profit,Yes,81,17,trillium retirement and care community,,,,,190,44.25,-76.55
+Erie St. Clair,For-Profit,Yes,36,7,trillium villa nursing home,,,,,152,43,-82.36
+Waterloo Wellington,Non-Profit,No,54,7,trinity village care centre,29,14,38,Active,150,43.43,-80.44
+Toronto Central,Municipal,Yes,24,9,true davidson acres,,,,,187,43.7,-79.3
+Champlain,Non-Profit,No,21,7,tsiionkwanonhsote,,,,,50,45,-74.69
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,15,2,tufford nursing home,,,,,65,43.16,-79.22
+Central West,For-Profit,Yes,52,16,tullamore care community,,,,,159,43.68,-79.74
+Erie St. Clair,For-Profit,No,13,5,twin lakes terrace long term care community,,,,,60,43,-82.37
+Waterloo Wellington,For-Profit,No,18,5,twin oaks of maryhill,0,0,<5,Active,31,43.54,-80.39
+Mississauga Halton,For-Profit,No,48,8,tyndall nursing home,,,,,151,43.63,-79.63
+Central,Non-Profit,No,15,7,ukrainian canadian care centre,25,<5,<5,Active,152,43.68,-79.52
+Central,Non-Profit,No,33,11,union villa,0,0,<5,Active,160,43.86,-79.31
+Hamilton Niagara Haldimand Brant (Hnhb),Non-Profit,No,25,6,united mennonite home,,,,,128,43.16,-79.39
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,24,7,upper canada lodge,,,,,80,43.25,-79.07
+Champlain,Non-Profit,No,21,4,valley manor nursing home,,,,,90,45.49,-77.69
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,31,4,valley park lodge,,,,,65,43.1,-79.1
+South West,Municipal,Yes,33,13,valleyview home,,,,,136,42.8,-81.16
+Central,Non-Profit,No,57,15,valleyview residence,<5,<5,<5,Active,174,43.77,-79.45
+Central West,Non-Profit,No,14,4,vera m. davis community care centre,,,,,64,43.87,-79.72
+Toronto Central,For-Profit,Yes,21,12,vermont square,<5,0,<5,Active,130,43.67,-79.41
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,No,18,5,victoria gardens long term care,,,,,76,43.26,-79.85
+Central East,Municipal,Yes,45,5,victoria manor home for the aged,,,,,166,44.34,-78.74
+North Simcoe Muskoka,Non-Profit,Yes,35,19,victoria village manor,,,,,128,44.39,-79.7
+Central,Non-Profit,Yes,52,12,villa colombo homes for the aged,9,<5,11,Active,391,43.71,-79.46
+Central,Non-Profit,No,45,29,villa colombo seniors centre (vaughan),24,11,16,Active,160,43.84,79.63
+Mississauga Halton,Non-Profit,No,38,7,villa forum,37,10,20,Active,160,43.61,-79.65
+Central,Non-Profit,Yes,34,7,villa leonardo gambin,31,11,23,Active,168,43.77,-79.57
+Champlain,Non-Profit,No,53,21,villa marconi,,0,,Inactive,128,45.37,-75.73
+North East,Non-Profit,No,22,4,villa minto,,,,,33,49.07,-81.02
+Erie St. Clair,For-Profit,No,15,5,village on the ridge,,,,,40,42.44,-81.88
+Erie St. Clair,Non-Profit,Yes,38,5,vision nursing home,5,<5,<5,Active,146,42.97,-82.4
+Central East,For-Profit,Yes,24,4,warkworth place,,,,,60,44.2,-77.89
+North East,For-Profit,No,41,12,waters edge care community,,,,,148,46.28,-79.45
+Erie St. Clair,For-Profit,Yes,18,3,watford quality care centre,,,,,63,42.95,-81.89
+Toronto Central,Non-Profit,Yes,35,9,wellesley central place,43,16,21,Active,150,43.67,-79.38
+South East,For-Profit,No,57,7,wellington house nursing home,,,,,60,44.72,-75.52
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,42,5,wellington park care centre,,,,,132,43.33,-79.81
+Waterloo Wellington,Municipal,No,18,4,wellington terrace long-term care home,,0,,Inactive,176,43.7,-80.4
+Hamilton Niagara Haldimand Brant (Hnhb),Municipal,No,23,12,wentworth lodge,0,0,0,Active,160,43.26,-79.95
+Mississauga Halton,Municipal,Yes,62,6,wesburn manor,<5,0,0,Active,192,43.64,-79.57
+South East,For-Profit,No,26,6,west lake terrace,,,,,47,43.93,-77.26
+Mississauga Halton,For-Profit,No,33,11,west oak village,,,,,133,43.45,-79.76
+Hamilton Niagara Haldimand Brant (Hnhb),For-Profit,Yes,48,10,west park health centre,,,,,101,43.14,-79.25
+Toronto Central,Non-Profit,Yes,61,11,west park long term care centre,57,20,31,Active,200,43.69,-79.51
+South East,For-Profit,Yes,42,12,westgate lodge nursing home,,,,,88,44.15,-77.41
+South West,For-Profit,No,86,10,westmount gardens long term care home,,,,,160,42.95,-81.31
+Central,For-Profit,No,34,9,weston terrace care community,42,13,29,Active,224,43.7,-79.51
+Central West,For-Profit,Yes,50,10,westside,,<5,,Inactive,242,43.74,-79.57
+North East,Non-Profit,Yes,54,12,wikwemikong nursing home,<5,0,0,Active,59,45.8,-81.72
+South West,For-Profit,No,25,6,wildwood care centre,,,,,60,43.26,-81.15
+North West,Non-Profit,No,9,2,wilkes terrace,,,,,22,48.78,-87.1
+North East,For-Profit,Yes,65,,lady isabelle nursing home,,,,,66,45.99,-79.36
+Central East,For-Profit,Yes,44,8,winbourne park,,0,,Inactive,110,43.88,-79.04
+Central West,For-Profit,No,53,12,woodbridge vista care community,<5,0,<5,Active,224,43.76,-79.6
+Central West,For-Profit,No,38,7,woodhall park care community,,,,,147,43.72,-79.78
+South West,Municipal,No,20,9,woodingford lodge - ingersoll,,,,,34,43.03,-80.88
+South West,Municipal,Yes,19,7,woodingford lodge - tillsonburg,,,,,34,42.86,-80.73
+South West,Municipal,Yes,38,12,woodingford lodge - woodstock,,,,,160,43.11,-80.76
+Champlain,For-Profit,No,44,6,woodland villa,<5,0,0,Active,111,45.03,-74.89
+North Simcoe Muskoka,For-Profit,Yes,31,8,woods park care centre,,0,,Inactive,123,44.4,-79.72
+Mississauga Halton,Non-Profit,No,34,6,wyndham manor long term care centre,,,,,128,43.45,-79.67
+Central,Non-Profit,Yes,12,3,yee hong centre - markham,,0,,Inactive,200,43.89,-79.23
+Mississauga Halton,Non-Profit,Yes,23,7,yee hong centre - mississauga,,,,,200,43.6,-79.69
+Central East,Non-Profit,Yes,16,7,yee hong centre - scarborough finch,,,,,250,43.81,-79.25
+Central East,Non-Profit,Yes,15,3,yee hong centre - scarborough mcnicoll,,0,,Inactive,155,43.81,-79.29
+Central,Municipal,Yes,25,10,york region maple health centre,,,,,100,43.87,-79.52
+Central,Municipal,Yes,26,8,york region newmarket health centre,,,,,132,44.05,-79.47

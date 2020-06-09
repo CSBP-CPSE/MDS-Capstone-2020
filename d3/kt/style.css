@@ -24,14 +24,16 @@ body {
 }
 
 table {
+
   margin-bottom: 0;
 }
 td, th {
-  padding: 3px 9px;
+  padding: 6px 9px;
 }
 td {
-  text-align: right;
+  text-align: left;
 }
+tr:hover {background-color: #f5f5f5;}
 
 .container {
   width: 100%;
@@ -51,7 +53,7 @@ td {
   text-decoration: none;
   font-size: 1rem;
   text-align: right;
-  line-height: 2.5rem;
+  line-height: 4.5rem;
 }
 #close-details:hover {
   color: red;
@@ -61,11 +63,21 @@ td {
   font-size: 0; /* to prevent margin at bottom of map container */
   border: 1px solid silver;
   background: #E6E6E6;
+  width: 48%;
+  overflow: hidden;
+  float: left;
 }
 
+#chart{
+  width: 48%;
+  overflow: hidden;
+  float: right;
+
+}
 #legend {
   border: 1px solid silver;
   border-top: 0;
+  width: 49%;
 }
 
 .legend-key path {
@@ -98,51 +110,4 @@ g.features {
 }
 g.features path:hover {
   opacity: 0.5;
-}
-
-.axis path, .axis line {
-  fill:none;
-  stroke:#484D60;
-  shape-rendering:crispEdges;
-}
-.dot{
-  fill:#F6B1EE;
-  stroke:#F6B1EE;
-}
-.label{
-  fill:#FFFFFF;
-}
-.line{
-  fill:#F6B1EE;stroke:#F6B1EE;
-}
-.xAxis{
-  stroke:#FFFFFF;
-  fill:none;
-}
-.yAxis{
-  stroke:#FFFFFF;
-  fill:none
-}
-.mainBox{
-  background:#484D60 !important;
-  margin:10px;
-  border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;
-  border:1px solid #484D60;
-}
-.bubbleText{
-  font-size:12px;
-  fill:#FFFFFF;
-}
-.output{
-  font-size:14px;
-  font-family:Ubuntu, Roboto, Lato, "Open Sans", sans serif
-}
-.title{
-  fill:#FFFFFF;
-  font-weight:400;
-  font-size:30px;
-}
-.legend rect {
-  fill:transparent;
-  stroke:transparent;
 }

@@ -1,56 +1,61 @@
-// set the dimensions and margins of the graph
-var margin = {top: 100, right: 0, bottom: 0, left: 0},
-    width = 460 - margin.left - margin.right,
-    height = 460 - margin.top - margin.bottom,
-    innerRadius = 90,
-    outerRadius = Math.min(width, height) / 2;   // the outerRadius goes from the middle of the SVG area to the border
 
-// append the svg object
-var svg = d3.select("#chart")
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 40, left: 150},
+    width = 460 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox3.csv?token=AJI7AY3GIJQEUZWHFJDGKU2647OUY", function(data) {
+// Parse the Data
+d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY6TTDG5MEQKMS7EVXS65ECSY", function(data) {
 
-  // Scales
-  var x = d3.scaleBand()
-      .range([0, 2 * Math.PI])    // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
-      .align(0)                  // This does nothing
-      .domain(data.map(function(d) { return d.ENG_LABEL; })); // The domain of the X axis is the list of states.
-  var y = d3.scaleRadial()
-      .range([innerRadius, outerRadius])   // Domain will be define later.
-      .domain([0, 0.70]); // Domain of Y is from 0 to the max seen in the data
-
-  // Add the bars
+  // Add X axis
+  var x = d3.scaleLinear()
+    .domain([0, 0.7])
+    .range([ 0, width]);
   svg.append("g")
-    .selectAll("path")
-    .data(data)
-    .enter()
-    .append("path")
-      .attr("fill", "#69b3a2")
-      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
-          .innerRadius(innerRadius)
-          .outerRadius(function(d) { return y(+d['amenity_dense']); })
-          .startAngle(function(d) { return x(d.ENG_LABEL); })
-          .endAngle(function(d) { return x(d.ENG_LABEL) + x.bandwidth(); })
-          .padAngle(0.01)
-          .padRadius(innerRadius))
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
 
-  // Add the labels
-  svg.append("g")
-      .selectAll("g")
-      .data(data)
-      .enter()
-      .append("g")
-        .attr("text-anchor", function(d) { return (x(d.ENG_LABEL) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
-        .attr("transform", function(d) { return "rotate(" + ((x(d.ENG_LABEL) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (y(+d['amenity_dense'])+10) + ",0)"; })
-      .append("text")
-        .text(function(d){return(d.ENG_LABEL)})
-        .attr("transform", function(d) { return (x(d.ENG_LABEL) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-        .style("font-size", "11px")
-        .attr("alignment-baseline", "middle")
+// Y axis
+var y = d3.scaleBand()
+  .range([ 0, height ])
+  .domain(data.map(function(d) { return d.ENG_LABEL; }))
+  .padding(1);
+svg.append("g")
+  .call(d3.axisLeft(y))
 
-});
+
+// Lines
+svg.selectAll("myline")
+  .data(data)
+  .enter()
+  .append("line")
+    .attr("x1", function(d) { return x(+d.amenity_dense); })
+    .attr("x2", x(0))
+    .attr("y1", function(d) { return y(d.ENG_LABEL); })
+    .attr("y2", function(d) { return y(d.ENG_LABEL); })
+    .attr("stroke", "grey")
+
+// Circles
+svg.selectAll("mycircle")
+  .data(data)
+  .enter()
+  .append("circle")
+    .attr("cx", function(d) { return x(+d.amenity_dense); })
+    .attr("cy", function(d) { return y(d.ENG_LABEL); })
+    .attr("r", "4")
+    .style("fill", "#69b3a2")
+    .attr("stroke", "black")
+})
+

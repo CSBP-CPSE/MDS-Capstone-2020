@@ -1,5 +1,5 @@
 // We define a variable holding the current key to visualize on the map.
-var currentKey = 'TOTAL';
+var currentKey = 'TOTAL_prop';
 
 // Listen to changes of the dropdown to select the key to visualize on
 // the map.
@@ -36,7 +36,7 @@ var svg = d3.select('#map').append('svg')
 // We add a <g> element to the SVG element and give it a class to
 // style. We also add a class name for Colorbrewer.
 var mapFeatures = svg.append('g')
-  .attr('class', 'features YlGnBu');
+  .attr('class', 'features BuGn');
 
 // We add a <div> container for the tooltip, which is hidden by default.
 var tooltip = d3.select("#map")
@@ -181,7 +181,6 @@ function showHomes(d) {
  */
 function hideHome() {
   d3.select(this).attr("r", 2)
-  .attr("stroke", "#815F5F")
   tooltip.classed('hidden', true);
 }
 /**

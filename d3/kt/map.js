@@ -36,7 +36,7 @@ var svg = d3.select('#map').append('svg')
 // We add a <g> element to the SVG element and give it a class to
 // style. We also add a class name for Colorbrewer.
 var mapFeatures = svg.append('g')
-  .attr('class', 'features BuGn');
+  .attr('class', 'features YlGnBu');
 
 // We add a <div> container for the tooltip, which is hidden by default.
 var tooltip = d3.select("#map")

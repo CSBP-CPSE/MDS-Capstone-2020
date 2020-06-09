@@ -36,14 +36,14 @@ var xValue = function(d) { return +d[x];},
 
 // plotting columns
 
-d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY2EWUC2EMAP2WRNWTS6474MQ',
+d3.csv('https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY4C3GIQRYMNZEJE6R265AEY6',
 function(data){
     console.log(data)
 
 
 for(var i=0;i<columns.length;i++) {
 
-    xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
+    xScale.domain([d3.min(data, xValue)-0.5, d3.max(data, xValue)+0.5]);
 
 
     var y=columns[i];
@@ -52,7 +52,8 @@ for(var i=0;i<columns.length;i++) {
     yMap = function(d) { return yScale(yValue(d));},
     yAxis = d3.svg.axis().scale(yScale).orient("left");
     data.forEach(function(d) {
-        d[x] = +d[x];
+        //console.log(d[x], +d[y])
+        d[x] = d[x];
         d[y] = +d[y];
     });
     yScale.domain([d3.min(data, yValue)-0.1, d3.max(data, yValue)+0.1]);

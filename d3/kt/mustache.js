@@ -35,7 +35,7 @@ Mustache.parse(ltc);
 function showLTC(f) {
   // Render the Mustache template with the data object and put the
   // resulting HTML output in the details container.
-  console.log(f)
+  // console.log(f)
   var detailsHtml = Mustache.render(ltc, f);
 
   // Hide the initial container.

@@ -1,5 +1,5 @@
 // We define a variable holding the current key to visualize on the map.
-var currentKey = 'TOTAL_prop';
+var currentKey = 'Long-Term Care';
 
 // Listen to changes of the dropdown to select the key to visualize on
 // the map.
@@ -119,7 +119,7 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
         updateMapColors();
 
         d3.csv("data/ltc_points.csv", function(csv) {
-            console.log(csv)
+            // console.log(csv)
 
                     mapFeatures.selectAll("circle")
                          .data(csv)

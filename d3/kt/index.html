@@ -75,6 +75,29 @@
     <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a>
   </script>
 
+
+  <script id="ltc-table" type="x-tmpl-mustache">
+    <h3 class="six columns">{{ name }}</h3>
+    <table class="five columns">
+      <tr>
+        <th>Long Term Care Home:</th>
+        <td>{{ cleaned_name }} </td>
+      </tr>
+      <tr>
+        <th>Outbreak Status:</th>
+        <td>{{ Status }} </td>
+      </tr>
+      <tr>
+        <th>Beds:</th>
+        <td>{{ number_beds }} </td>
+      </tr>
+      <tr>
+        <th>Home Type:</th>
+        <td>{{ home type }} </td>
+      </tr>
+    </table>
+    <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a>
+  </script>
   <!-- JS libraries -->
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>

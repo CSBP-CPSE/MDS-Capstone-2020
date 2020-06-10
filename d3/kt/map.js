@@ -141,6 +141,7 @@ d3.json('data/reversed_phu.geojson', function(error, features) {
                          .attr("fill-opacity", .4)
                          .on('mousemove', showHomes)
                          .on('mouseout', hideHome)
+                         .on('click', showLTC)
                 });
 
   });
@@ -177,7 +178,7 @@ function showHomes(d) {
 }
 
 /**
- * LTCT Hide the tooltip.
+ * LTC Hide the tooltip.
  */
 function hideHome() {
   d3.select(this).attr("r", 2)

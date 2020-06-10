@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ontario COVID-19 Map</title>
+
+  <!-- CSS libraries -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom CSS styles -->
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h3 class="nine columns">Ontario COVID-19 Map</h3>
+      <select id="select-key" class="three columns">
+        <option value="TOTAL" selected="selected">No. confirmed cases</option>
+        <option value="TOTAL_prop">Proportion confirmed cases</option>
+        <option value="FATAL">No. fatalities</option>
+        <option value="amenity_dense">Amenity score</option>
+      </select>
+    </div>
+    <div id="map"><!-- Map container --></div>
+
+    <div id="legend"><!-- Legend container --></div>
+
+    <div id="details" class="hidden row"><!-- Details container --></div>
+    <div id="initial">
+      <h5>Instructions</h5>
+      <ul>
+        <li>Change the value type using the dropdown above the map.</li>
+        <li>Select a health region to show the details.</li>
+        <li>Scroll in the map to zoom in and out.</li>
+      </ul>
+    </div>
+    <div class="footer">
+      <strong>Data sources</strong>: Data from Statistics Canada <a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020011-eng.htm" target="_blank">proximity data</a> and <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301" target="_blank">health data</a>.
+    </div>
+  </div>
+
+  <!-- Mustache template, rendered later to show the details of a feature -->
+  <script id="template" type="x-tmpl-mustache">
+    <h3 class="six columns">{{ name }}</h3>
+    <table class="five columns">
+      <tr>
+        <th>Total population:</th>
+        <td>{{ HRPOP }} </td>
+      </tr>
+      <tr>
+        <th>No. confirmed cases:</th>
+        <td>{{ TOTAL }} </td>
+      </tr>
+      <tr>
+        <th>Proportion confirmed cases:</th>
+        <td>{{ TOTAL_prop }} </td>
+      </tr>
+      <tr>
+        <th>Amenity score:</th>
+        <td>{{ amenity_dense }} </td>
+      </tr>
+      <tr>
+        <th>No. fatalities:</th>
+        <td>{{ FATAL }} </td>
+      </tr>
+    </table>
+    <a href="#" id="close-details" class="one column" onclick="hideDetails(); return false;">&#x274c;</a>
+  </script>
+
+  <!-- JS libraries -->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
+  <!-- Custom JS code -->
+  <script src="map.js"></script>
+  <script src="legend.js"></script>
+  <script src="mustache.js"></script>
+  <!-- <script src="points.js"></script> -->
+</body>
+</html>
+
+<!-- <script src='https://unpkg.com/@turf/turf/turf.min.js'></script> -->
+<!-- <script> var bbox = turf.bbox(features);</script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.5/turf.min.js"></script> -->

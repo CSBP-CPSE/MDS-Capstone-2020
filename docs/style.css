@@ -1,0 +1,59 @@
+
+body {
+  margin: 25px;
+  font-family: "Arial", sans-serif;
+
+}
+
+#map {
+  width: 900px;
+  height: 600px;
+  border: 1px solid silver;
+  background: #E6E6E6;
+}
+
+g.features {
+  stroke: #d8d8d8;
+  stroke-width: 0.5;
+}
+g.features path:hover {
+  opacity: 0.5;
+}
+
+.tooltip {
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid silver;
+  color: #222;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #a6a6a6;
+  opacity: 0.9;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+/* fill styles for metadata classes */
+.class0 { fill: rgb(254, 224, 210); }
+.class1 { fill: rgb(252, 146, 114); }
+.class2 { fill: rgb(222, 45, 38); }
+
+.phu {
+stroke: #000;
+stroke-linejoin: round;
+}
+
+
+/* styles for class = "features YlGnBu" in svg*/
+.YlGnBu .q0-9{fill:rgb(255,255,217)}
+.YlGnBu .q1-9{fill:rgb(237,248,177)}
+.YlGnBu .q2-9{fill:rgb(199,233,180)}
+.YlGnBu .q3-9{fill:rgb(127,205,187)}
+.YlGnBu .q4-9{fill:rgb(65,182,196)}
+.YlGnBu .q5-9{fill:rgb(29,145,192)}
+.YlGnBu .q6-9{fill:rgb(34,94,168)}
+.YlGnBu .q7-9{fill:rgb(37,52,148)}
+.YlGnBu .q8-9{fill:rgb(8,29,88)}

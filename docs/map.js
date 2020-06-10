@@ -98,12 +98,12 @@ var dataById = d3.map();
 
 
 // Load the features from the GeoJSON.
-d3.json('data/PHU.geojson', function(error, ontario) {
+d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/PHU.geojson', function(error, ontario) {
   console.log(ontario.features[0].properties.HR_UID);
 
 
   // Read the metadata.
-  d3.csv('data/PHU_metadata.csv', function(data) {
+  d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/PHU_metadata.csv', function(data) {
       console.log(data[0].HR_UID)
     // This maps the data of the CSV so it can be easily accessed by
     // the ID of the PHU, for example: dataById[2196] --- how can I change this

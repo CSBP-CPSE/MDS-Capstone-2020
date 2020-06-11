@@ -273,7 +273,7 @@ function LoadData(map, key, points) {
 function status(d){
 	if(d.outbreak == "No") return "#69b3a2"
 
-	else return "#404080";
+	else return "#61acff";
 }
 
 

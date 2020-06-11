@@ -41,3 +41,6 @@ knitr::opts_chunk$set(echo = TRUE)
 2. meeting with Bruno and Marian, going through the latest progress.
 
 
+## Thursday June 11
+
+1. Work on remaining tasks for the week...writing and D3.

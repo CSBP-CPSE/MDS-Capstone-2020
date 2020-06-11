@@ -1,0 +1,41 @@
+---
+title: "Individual Work Log WEEK 7"
+author: "Sofia Bahmutsky"
+date: "11/06/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Monday June 8
+
+1. Gruop meeting 9:30-4:30pm
+
+2. Bruno gave tutorial for D3.
+
+3. Writing the paper, layout, methods..
+
+
+## Tuesday June 9
+
+1. Presentation to Scott and TA's (1 hour)
+
+2. Writing
+
+
+## Wendesday June 10
+
+1. Group meeting from 9:30-1:30 
+
+2. zoom meeting with Stats Canada (11am - 1pm)
+
+3. Writing
+
+
+## Thursday June 11
+
+1. Writing! a lot of writing...

@@ -1,62 +1,90 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>COVID-19 in Ontario</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Ontario COVID-19 Map</title>
 
-    <!-- Custom CSS styles -->
-    <link href="style.css" rel="stylesheet" type="text/css">
+  <!-- CSS libraries -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
 
-    <!-- favicon ico -->
-    <link rel="shortcut icon" href="#">
+  <!-- Custom CSS styles -->
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h3 class="nine columns">Ontario COVID-19 Map</h3>
+    </div>
 
-  </head>
-  <body>
-    <h2>COVID-19 in Ontario's Public Health Units</h2>
-    <p> Scroll down over the map to zoom! </p>
+    <div id="details" class="hidden row"><!-- Details container --></div>
+
+    <div id="initial">
+      <h5>Instructions</h5>
+      <ul>
+        <li>Scroll in the map to zoom in and out.</li>
+        <li>Click and drag the map to move.</li>
+        <li>Hover over a public health unit or long-term care home (represented as points) to view details.</li>
+      </ul>
+    </div>
+    <div class="right">
+        The chloropleth map of Ontario (left) displays the proportion of cases for each of the 36 Public Health Units (PHUs). To calculate this proportion,
+        the number of cases for each PHU was determined from data provided by Statistics Canada and divided by the population of the corresponding PHU.
+        On hover, additional data is provided regarding the <strong>PHU name</strong>, <strong> count of fatalities</strong>, and <strong> Amenity Score</strong>, which
+        represents a measure of "connectedness" according to proximity to amenities (transit, pharmacies, education, employment... etc.).
+
+      </br>
+
+
+    </div>
+
     <div id="map"><!-- Map container --></div>
-
-    <!-- JS libraries -->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
-    <!-- Queue.js will allow us to load both our json and tcsv data before manipulating them. -->
-    <script src="http://d3js.org/queue.v1.min.js"></script>
-
-    <!-- topoJSON-->
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <div id="legend"><!-- Legend container --></div>
+    <div class="left">
+      </br>
+        Zoom and hover over the map of Ontario Long-Term Care homes (right) to view the home <strong> name</strong>, <strong> type</strong>,
+        <strong> number of beds</strong>, associated <strong> Local Health Integration Network</strong>, and <strong> outbreak status</strong>.
+        </br>
+    </div>
 
 
-    <!-- Custom JS code -->
-    <script src="map.js"></script>
+    <div id="map2"><!-- Map container --></div>
+    <div id="legend2"><!-- Legend container --></div>
+
+    <div id="map3"><!-- Map container --></div>
+    <div id="legend3"><!-- Legend container --></div>
+
+    <div id="map4"><!-- Map container --></div>
+    <div id="legend4"><!-- Legend container --></div>
 
 
-    <!-- Mustache template, rendered later to show the details of a feature -->
-  <script id="template" type="x-tmpl-mustache">
-    <h3 class="six columns">{{ name }}</h3>
-    <table class="six columns">
-      <tr>
-        <th>Total:</th>
-        <td>{{ Total }} %</td>
-      </tr>
-      <tr>
-        <th>Fatal:</th>
-        <td>{{ Fatal }} %</td>
-      </tr>
-      <tr>
-        <th>Contact:</th>
-        <td>{{ Contact }} %</td>
-      </tr>
-      <tr>
-        <th>Travel-Related:</th>
-        <td>{{ Travel-Related }} %</td>
-      </tr>
-      <tr>
-        <th>Neither:</th>
-        <td>{{ Neither }} %</td>
-      </tr>
-    </table>
-  </script>
+  <div id="chart"> <!-- chart container--></div>
 
-  </body>
+</br>
 
+  </div>
+
+  <div class="footer">
+  </br>
+    <strong>Data sources</strong>: Data from Statistics Canada -
+      <a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020011-eng.htm" target="_blank">proximity data</a>,
+      <a href="https://data.ontario.ca/dataset/f4112442-bdc8-45d2-be3c-12efae72fb27/resource/455fd63b-603d-4608-8216-7d8647f43350" target="_blank">Ontario Covid-19 data</a> and
+      <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301" target="_blank">health data</a>.
+  </br>
+    <strong> Authors:</strong> Ngan Lyle, Sofia Bahtmutsky, Kaitlyn Hobbs, Shreeram Murali.
+  </div>
+
+
+  <!-- JS libraries -->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+  <script src="https://d3js.org/d3-scale.v3.min.js"></script>
+
+  <!-- Custom JS code -->
+  <script src="main.js"></script>
+  <script src="legend.js"></script>
+  <script src="chart.js"></script
+
+
+</body>
 </html>

@@ -1,5 +1,5 @@
 
-function InitializeLegend(container, map) {	
+function InitializeLegend(container, map) {
 	// For the legend, we prepare a very simple linear scale. Domain and
 	// range will be set later as they depend on the data currently shown.
 	var legendX = d3.scale.linear();
@@ -37,15 +37,15 @@ function InitializeLegend(container, map) {
 	g.append("text")
 		.attr("class", "caption")
 		.attr("y", -6)
-	
+
 	var legend = {
 		g : g,
 		legendX : legendX,
 		legendXAxis : legendXAxis
 	}
-	
+
 	updateLegend(map, legend);
-	
+
 	return legend;
 }
 

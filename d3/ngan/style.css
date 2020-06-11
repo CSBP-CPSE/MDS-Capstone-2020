@@ -3,7 +3,6 @@ body {
 }
 
 .tooltip {
-  margin-top: -20px;
   font-weight: bold;
   padding: 0.5rem;
   border: 1px solid silver;
@@ -111,8 +110,4 @@ g.features {
 }
 g.features path:hover {
   opacity: 0.5;
-}
-
-path{
-  fill: #ceded2
 }

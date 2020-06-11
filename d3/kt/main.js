@@ -55,7 +55,7 @@ function InitializeMap(container, width, height) {
 function InitZoom(map) {
 	// Define the zoom and attach it to the map
 	var zoom = d3.behavior.zoom()
-				 .scaleExtent([1, 10])
+				 .scaleExtent([1, 50])
 				 .on('zoom', doZoom);
 
 	map.svg.call(zoom);
@@ -130,14 +130,15 @@ d3.json('data/reversed_phu.geojson', function(error, collection) {
 		legend1 = InitializeLegend('#legend', map1);
 		// legend2 = InitializeLegend('#legend2', map2);
 		// legend3 = InitializeLegend('#legend3', map3);
-		//legend4 = InitializeLegend('#legend4', map4);
+		// legend4 = InitializeLegend('#legend4', map4);
+		// LTCLegend('#legend4', map4);
 
 		// We add a listener to the browser window, calling updateLegend when the window is resized.
 		window.onresize = (ev) => {
 			updateLegend(map1, legend1);
 			updateLegend(map2, legend2);
 			updateLegend(map3, legend3);
-			//updateLegend(map4, legend4);
+
 		};
 
 	})
@@ -204,7 +205,7 @@ function LoadData(map, key, points) {
 	if (points != 0)	{
 					map.mapFeatures.selectAll("path")
 						.attr('d', map.path)
-						.style('fill', "#5e6360") // map fill colour
+						.style('fill', "#243327") // map fill colour
 
 					map.mapFeatures.selectAll("circle")
 						 .data(points)
@@ -229,8 +230,8 @@ function LoadData(map, key, points) {
 
 					 // LTC SHOW HOME NAME
 				 	function showHomes(d) {
-				 		// Get the ID of the feature.
-				 		d3.select(this).attr("r", 10)
+
+				 		// d3.select(this).attr("r", 10) // increase size on hover
 
 				 		// Get the current mouse position (as integer)
 				 		var mouse = d3.mouse(d3.select('#map').node()).map(
@@ -259,7 +260,7 @@ function LoadData(map, key, points) {
 					 * LTC Hide the tooltip.
 					 */
 					function hideHome() {
-						d3.select(this).attr("r", 2)
+						// d3.select(this).attr("r", 2)
 						map.tooltip.classed('hidden', true);
 					}
 };
@@ -270,9 +271,9 @@ function LoadData(map, key, points) {
 
 //  Colour by LTC home status
 function status(d){
-	if(d.outbreak == "No") return "#67A1F1"
+	if(d.outbreak == "No") return "#69b3a2"
 
-	else return "#B51515";
+	else return "#404080";
 }
 
 

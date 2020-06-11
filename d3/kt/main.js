@@ -94,12 +94,12 @@ InitZoom(map1);
 InitZoom(map4);
 
 // Load the features from the GeoJSON.
-d3.json('data/reversed_phu.geojson', function(error, collection) {
+d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/reversed_phu.geojson', function(error, collection) {
 	// console.log(collection.features)
 	var features = collection.features;
 
 	// Read the data for the cartogram
-	d3.csv('data/phu_statistics.csv', function(data) {
+	d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/phu_statistics.csv', function(data) {
 		// We store the data object in the variable which is accessible from
 		// outside of this function.
 		var index = d3.nest()
@@ -148,11 +148,11 @@ d3.json('data/reversed_phu.geojson', function(error, collection) {
 // TODO : Map data for map2, 3, 4
 
 // Load the features from the GeoJSON.
-d3.json('data/reversed_LHIN.json', function(error, collection) {
+d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/reversed_LHIN.json', function(error, collection) {
 	// console.log(collection.features)
 	var features = collection.features;
 
-			d3.csv("data/ltc_points.csv", function(csv) {
+			d3.csv("https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/ltc_points.csv", function(csv) {
 				console.log(csv)
 						map4.features = features;
 						map4.data = csv;

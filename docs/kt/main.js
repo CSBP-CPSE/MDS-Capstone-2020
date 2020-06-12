@@ -17,7 +17,7 @@ function InitializeMap(container, width, height) {
 	// We add a <div> container for the tooltip, which is hidden by default.
 	var tooltip = d3.select("#map")
 				    .append("div")
-				    .attr("class", "tooltip hidden");
+				    .attr("class", "tooltip hidden")
 
 	// We define a geographical projection
 	//     https://github.com/mbostock/d3/wiki/Geo-Projections
@@ -55,7 +55,7 @@ function InitializeMap(container, width, height) {
 function InitZoom(map) {
 	// Define the zoom and attach it to the map
 	var zoom = d3.behavior.zoom()
-				 .scaleExtent([1, 50])
+				 .scaleExtent([1,75])
 				 .on('zoom', doZoom);
 
 	map.svg.call(zoom);
@@ -71,7 +71,7 @@ function InitZoom(map) {
 				.style("stroke-width", 0.5 / d3.event.scale + "px");
 		map.mapFeatures.selectAll("circle")
             // .attr("d", map.projection(projection))
-            .attr("r", 4/zoom.scale())
+            .attr("r", 10/zoom.scale())
 						.attr("stroke-width", 1/zoom.scale());
 	}
 }
@@ -198,6 +198,8 @@ function LoadData(map, key, points) {
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
+								.style("left", (d3.event.pageX - 108) + "px")
+      					.style("top", (d3.event.pageY-28) + "px");
 	 						})
 							.on('mouseout', function() {map.tooltip.classed('hidden', true)}) //hide tooltip
 				};
@@ -217,7 +219,7 @@ function LoadData(map, key, points) {
 						 .attr("cy", function (d) {
 							 return map.projection([d.long, d.lati])[1];
 						 })
-						 .attr("r", 2)
+						 .attr("r", 10)
 						 .style("fill", status)
 						 .attr("stroke", status)
 						 .attr("stroke-width", 1)
@@ -231,28 +233,16 @@ function LoadData(map, key, points) {
 					 // LTC SHOW HOME NAME
 				 	function showHomes(d) {
 
-				 		// d3.select(this).attr("r", 10) // increase size on hover
-
-				 		// Get the current mouse position (as integer)
-				 		var mouse = d3.mouse(d3.select('#map').node()).map(
-				 			function(d) { return parseInt(d); }
-				 		);
-
-				 		// Calculate the absolute left and top offsets of the tooltip. If the
-				 		// mouse is close to the right border of the map, show the tooltip on
-				 		// the left.
-				 		var left = Math.min(width - 4 * d.cleaned_name.length, mouse[0] + 5);
-				 		var top = mouse[1] + 25;
-
 				 		// Show the tooltip (unhide it) and set the name of the data entry.
 				 		// Set the position as calculated before.
 				 		map.tooltip.classed('hidden', false)
-				 			   .attr("style", "left:" + left + "px; top:" + top + "px")
 				 			   .html(d.cleaned_name+ "</br> "
  										+ "Type: " + d.home_type + "</br> "
  										+ "Beds: " + d.number_beds + "</br> "
  										+ "LHIN: " + d.LHIN + "</br> "
-										+ "Status: " + d.status);
+										+ "Status: " + d.status)
+								.style("left", (d3.event.pageX - 108) + "px")
+      					.style("top", (d3.event.pageY-128) + "px");
 				 	}
 
 

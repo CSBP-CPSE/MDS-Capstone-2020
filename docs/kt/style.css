@@ -101,10 +101,10 @@ tr:hover {background-color: #f5f5f5;}
   overflow: hidden;
   float: left;
 }
-
+/*
 #map4{
-  float: right;
-}
+  float: left;
+} */
 
 #legend {
   /* border: 1px solid silver; */
@@ -126,6 +126,15 @@ tr:hover {background-color: #f5f5f5;}
 }
 
 /* bar chart */
+/* chart */
+svg {
+        padding: 20px 40px;
+      }
+
+rect:hover {
+        fill: green;
+      }
+			
 .axis {
 	  font: 10px sans-serif;
 	}

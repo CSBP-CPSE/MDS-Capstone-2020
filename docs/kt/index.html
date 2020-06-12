@@ -32,18 +32,31 @@
         the number of cases for each PHU was determined from data provided by Statistics Canada and divided by the population of the corresponding PHU.
         On hover, additional data is provided regarding the <strong>PHU name</strong>, <strong> count of fatalities</strong>, and <strong> Amenity Score</strong>, which
         represents a measure of "connectedness" according to proximity to amenities (transit, pharmacies, education, employment... etc.).
-
       </br>
-
 
     </div>
 
     <div id="map"><!-- Map container --></div>
     <div id="legend"><!-- Legend container --></div>
+
+
     <div class="left">
       </br>
+        Amenity richness was calculated from an amenity score provided by Statistics Canada.
+        Each dissemination block receives a score of 0 or 1, representing low or high proximity to amenities, respectively,
+        and the mean of dissemination block scores for a single PHU was calculated.
+        The distribution of amenity-richness scores seems to reflect the proportion of COVID-19 on the PHU level with highly connected PHUs reporting
+        high case proportions and amenity-poor PHUs reporting lower proportions.
+        Factor analysis supported this observation.
+        </br>
+    </div>
+
+    <div id="chart"> <!-- chart container--></div>
+
+    <div class="right">
         Zoom and hover over the map of Ontario Long-Term Care homes (right) to view the home <strong> name</strong>, <strong> type</strong>,
-        <strong> number of beds</strong>, associated <strong> Local Health Integration Network</strong>, and <strong> outbreak status</strong>.
+        <strong> number of beds</strong>, associated <strong> Local Health Integration Network (LHIN)</strong>, and <strong> outbreak status</strong>.
+        In this map, Ontario is subdivided according to LHIN.
         </br>
     </div>
 
@@ -57,8 +70,6 @@
     <div id="map4"><!-- Map container --></div>
     <div id="legend4"><!-- Legend container --></div>
 
-
-  <div id="chart"> <!-- chart container--></div>
 
 </br>
 

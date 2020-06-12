@@ -151,3 +151,18 @@ Monday June 8
 - Meeting with Bruno StatCan (1h)
 - D3 visualization
   - Add LTC home points
+
+Teusday June 9
+- d3 visualization
+- Weekly team meeting (20min)
+
+Wednesday June 10
+- Meeting with StatCan (2h)
+  - d3 demo with Bruno
+
+Thursday June 11
+- Documentation for the LTC homes analysis (6h)
+  - Revising, organizing and debugging the code
+
+Friday June 12
+- Documentation for the LTC homes analysis

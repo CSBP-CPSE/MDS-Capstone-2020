@@ -1,0 +1,294 @@
+,LTC Home,City,Beds,Confirmed Resident Cases,Resident Deaths,Confirmed Staff Cases,Status
+0,"Albright Gardens Homes, Incorporated",Beamsville,231,<5,0,0,Active
+1,Alexander Place,Waterdown,128,<5,0,0,Active
+2,Almonte Country Haven,Almonte,82,0,30,0,Active
+3,Altamont Care Community,Scarborough,159,<5,52,24,Active
+4,Anson Place Care Centre,Hagersville,61,28,23,29,Active
+5,Bennett Health Care Centre,Georgetown,66,<5,0,0,Active
+6,Burton Manor,Brampton,128,0,11,<5,Active
+7,Camilla Care Community,Mississauga,236,51,61,31,Active
+8,Carlingview Manor,Ottawa,303,39,54,87,Active
+9,Castleview Wychwood Towers,Toronto,456,<5,0,<5,Active
+10,Cedarwood Village,Simcoe,90,0,0,<5,Active
+11,Chartwell Ballycliffe Long Term Care Residence,Ajax,100,<5,32,0,Active
+12,Chartwell Brant Centre Long Term Care Residence,Burlington,175,<5,0,0,Active
+13,Chartwell Gibson Long Term Care Residence,North York,202,35,9,10,Active
+14,Chartwell Pine Grove Long Term Care Residence,Woodbridge,96,0,0,<5,Active
+15,Chartwell Royal Oak Long Term Care Residence,Kingsville,160,<5,0,0,Active
+16,Chartwell Wenleigh Long Term Care Residence,Mississauga,161,0,0,<5,Active
+17,Chartwell Westbury Long Term Care Residence,Etobicoke,187,<5,22,26,Active
+18,Chartwell Westmount Long Term Care Residence,Kitchener,160,<5,0,<5,Active
+19,Chartwell White Eagle Long Term Care Residence,Toronto,56,26,11,9,Active
+20,Chelsey Park,London,247,0,0,<5,Active
+21,Collingwood Nursing Home,Collingwood,64,<5,0,0,Active
+22,Columbia Forest,Waterloo,156,<5,0,<5,Active
+23,Cooksville Care Centre,Mississauga,192,23,13,22,Active
+24,Craiglee Nursing Home,Scarborough,169,<5,<5,5,Active
+25,Creek Way Village,Burlington,144,<5,0,<5,Active
+26,Crescent Park Lodge,Fort Erie,68,<5,0,0,Active
+27,Downsview Long Term Care Centre,North York,252,66,52,70,Active
+28,Eastholme Home for the Aged,Powassan,128,0,0,<5,Active
+29,Eatonville Care Centre,Etobicoke,247,44,42,24,Active
+30,Élisabeth-Bruyère Residence,Ottawa,71,<5,15,8,Active
+31,Elizabeth Centre,Val Caron,128,<5,0,<5,Active
+32,Erin Mills Lodge Nursing Home,Mississauga,86,29,17,22,Active
+33,Extendicare Bayview,North York,205,40,12,<5,Active
+34,Extendicare Brampton,Brampton,150,11,<5,6,Active
+35,Extendicare Guildwood,Scarborough,169,54,31,17,Active
+36,Extendicare Halton Hills,Georgetown,130,0,0,<5,Active
+37,Extendicare Laurier Manor,Gloucester,242,<5,25,<5,Active
+38,Extendicare Scarborough,Scarborough,154,40,14,22,Active
+39,Extendicare Southwood Lakes,Windsor,150,0,0,<5,Active
+40,Faith Manor Nursing Home,Brampton,120,<5,<5,<5,Active
+41,Fenelon Court,Fenelon Falls,67,0,0,<5,Active
+42,Forest Heights,Kitchener,240,171,50,68,Active
+43,Fudger House,Toronto,250,<5,0,0,Active
+44,Garden Terrace,Kanata,160,0,0,<5,Active
+45,Grace Manor,Brampton,120,7,11,<5,Active
+46,Hampton Terrace Care Centre,Burlington,101,0,0,0,Active
+47,Hawthorne Place Care Centre,North York,269,0,43,33,Active
+48,Hellenic Care for Seniors (Toronto),Toronto,81,0,0,<5,Active
+49,Hellenic Home - Scarborough,Scarborough,128,42,14,14,Active
+50,Henley Place,London,192,<5,0,0,Active
+51,Heron Terrace Long Term Care Community,Windsor,140,25,23,0,Active
+52,Humber Valley Terrace,Etobicoke (Rexdale),158,59,28,24,Active
+53,Ina Grafton Gage Home,Scarborough,128,31,29,15,Active
+54,Isabel and Arthur Meighen Manor,Toronto,168,6,47,31,Active
+55,Ivan Franko Home (Etobicoke),Toronto,85,0,0,<5,Active
+56,Kennedy Lodge,Scarborough,289,<5,0,<5,Active
+57,Kensington Village,London,78,<5,6,<5,Active
+58,Kilean Lodge,Grimsby,50,0,0,<5,Active
+59,Kipling Acres,Etobicoke,337,30,14,11,Active
+60,Kristus Darzs Latvian Home,Woodbridge,100,19,11,15,Active
+61,Lakeshore Lodge,Etobicoke,150,27,11,21,Active
+62,Lambton Meadowview Villa,Petrolia,125,0,0,<5,Active
+63,Lanark Lodge,Perth,163,0,0,<5,Active
+64,Macassa Lodge,Hamilton,270,0,0,<5,Active
+65,Mackenzie Health Long Term Care Facility,Richmond Hill,168,0,0,<5,Active
+66,Madonna Care Community,Orleans,160,15,43,27,Active
+67,Main Street Terrace,Toronto,150,<5,0,0,Active
+68,Maitland Manor,Goderich,91,<5,0,0,Active
+69,Malton Village Long Term Care Centre,Mississauga,160,<5,0,<5,Active
+70,Manitoulin Lodge,Gore Bay,62,0,0,<5,Active
+71,Manoir Marochel,Ottawa,64,28,7,13,Active
+72,Maple Grove Care Community,Brampton,160,<5,0,<5,Active
+73,Marshall Gowland Manor,Sarnia,126,<5,0,0,Active
+74,Maxville Manor,Maxville,122,<5,0,0,Active
+75,Maynard Nursing Home,Toronto,77,0,0,0,Active
+76,Meadow Park (London),London,126,<5,<5,8,Active
+77,Midland Gardens Care Community,Scarborough,299,67,16,22,Active
+78,Mon Sheong Home for the Aged,Toronto,105,58,33,16,Active
+79,Montfort,Ottawa,128,<5,29,<5,Active
+80,Norview Lodge,Simcoe,179,0,0,<5,Active
+81,Orchard Villa,Pickering,233,<5,69,7,Active
+82,Owen Hill Care Community,Barrie,57,0,12,<5,Active
+83,Parkwood Mennonite Home,Waterloo,96,0,0,<5,Active
+84,Peel Manor,Brampton,177,<5,<5,6,Active
+85,peopleCare A.R. Goudie Kitchener,Kitchener,80,<5,9,18,Active
+86,Peter D. Clark Centre,Ottawa,216,18,5,16,Active
+87,Pinecrest (Plantagenet),Plantagenet,60,23,11,<5,Active
+88,Post Inn Village,Oakville,228,0,0,<5,Active
+89,ReachView Village,Uxbridge,100,22,11,10,Active
+90,Regency Park Long Term Care Home,Windsor,72,0,0,<5,Active
+91,Residence Saint-Louis,Ottawa,198,13,9,8,Active
+92,River Glen Haven Nursing Home,Sutton West,119,50,24,30,Active
+93,Rockcliffe Care Community,Scarborough,204,0,0,<5,Active
+94,Royal Rose Place,Welland,96,<5,18,<5,Active
+95,Secord Trails Care Community,Ingersoll,80,0,0,7,Active
+96,Seven Oaks,Scarborough,249,18,41,21,Active
+97,Sherbourne Place,Toronto,126,19,19,10,Active
+98,Sheridan Villa,Mississauga,142,10,<5,7,Active
+99,Silverthorn Care Community,Mississauga,160,0,0,<5,Active
+100,South Centennial Manor,Iroquois Falls,69,<5,0,0,Active
+101,St. George Care Community,Toronto,238,0,0,<5,Active
+102,St. Patrick's Home,Ottawa,288,<5,<5,<5,Active
+103,Stoneridge Manor,Carleton Place,60,<5,6,0,Active
+104,Sun Parlor Home for Senior Citizens,Leamington,206,<5,<5,<5,Active
+105,Sunnyside Home,Kitchener,263,0,0,<5,Active
+106,The Jewish Home for the Aged,North York,472,<5,<5,8,Active
+107,The Norfolk Hospital Nursing Home,Simcoe,80,<5,0,0,Active
+108,The Village of Erin Meadows,Mississauga,180,13,19,17,Active
+109,The Village of Humber Heights,Etobicoke,192,45,10,17,Active
+110,The Village of Taunton Mills,Whitby,120,0,0,<5,Active
+111,Thompson House,North York,136,0,0,<5,Active
+112,Trinity Village Care Centre,Kitchener,150,<5,18,<5,Active
+113,Tufford Nursing Home,St. Catharines,64,0,0,0,Active
+114,Ukrainian Canadian Care Centre,Etobicoke,152,20,<5,<5,Active
+115,Vermont Square,Toronto,130,<5,0,<5,Active
+116,Villa Colombo Homes for the Aged,Toronto,391,9,<5,11,Active
+117,Villa Colombo Seniors Centre (Vaughan),Vaughan,160,25,19,15,Active
+118,Villa Leonardo Gambin,Woodbridge,168,<5,12,19,Active
+119,Vision Nursing Home,Sarnia,146,16,6,20,Active
+120,Wellesley Central Place,Toronto,150,28,18,10,Active
+121,Wesburn Manor,Etobicoke,192,<5,0,0,Active
+122,West Oak Village,Oakville,133,0,0,<5,Active
+123,West Park Health Centre,St. Catharines,101,<5,<5,0,Active
+124,West Park Long Term Care Centre,Toronto,200,41,25,11,Active
+125,Weston Terrace Care Community,Toronto,224,25,24,39,Active
+126,Westside,Etobicoke,242,<5,<5,<5,Active
+127,Woodbridge Vista Care Community,Woodbridge,224,72,6,20,Active
+128,Wyndham Manor Long Term Care Centre,Oakville,128,<5,0,<5,Active
+0,Allendale,Milton,200,,0,,Inactive
+1,Arbour Creek Long-Term Care Centre,Hamilton,129,,0,,Inactive
+2,Avalon Retirement Centre,Orangeville,137,,0,,Inactive
+3,Banwell Gardens Care Centre,Tecumseh,142,,0,,Inactive
+4,Bay Ridges,Pickering,124,,0,,Inactive
+5,Belmont House,Toronto,140,,0,,Inactive
+6,Belmont Long Term Care Facility,Belleville,128,,0,,Inactive
+7,Bendale Acres,Scarborough,302,,0,,Inactive
+8,Berkshire Care Centre,Windsor,231,,0,,Inactive
+9,Bethany Lodge,Markham,128,,<5,,Inactive
+10,Blackadar Continuing Care Centre,Dundas,80,,0,,Inactive
+11,Blue Water Rest Home,Zurich,65,,0,,Inactive
+12,Bonnechere Manor,Renfrew,180,,0,,Inactive
+13,Bradford Valley Care Community,Bradford,246,,12,,Inactive
+14,Braemar Retirement Centre,Wingham,69,,0,,Inactive
+15,Brucelea Haven Long Term Care Home - Corporation of the County of Bruce,Walkerton,144,,0,,Inactive
+16,Carefree Lodge,North York,127,,0,,Inactive
+17,Caressant Care Courtland,Courtland,55,,0,,Inactive
+18,Caressant Care Fergus Nursing Home,Fergus,87,,0,,Inactive
+19,Caressant Care Lindsay Nursing Home,Lindsay,124,,0,,Inactive
+20,Caressant Care on Bonnie Place,St Thomas,116,,0,,Inactive
+21,Case Manor Care Community,Bobcaygeon,96,,0,,Inactive
+22,Cassellholme,North Bay,240,,0,,Inactive
+23,Cawthra Gardens,Mississauga,192,,0,,Inactive
+24,Cedarvale Terrace,Toronto,218,,0,,Inactive
+25,Centre d'Accueil Champlain,Vanier,160,,0,,Inactive
+26,Centre d'Accueil Roger Seguin,Clarence Creek,113,,0,,Inactive
+27,Chartwell Aurora Long Term Care Residence,Aurora,235,,11,,Inactive
+28,Chartwell Elmira Long Term Care Residence,Elmira,48,,0,,Inactive
+29,Chartwell Trilogy Long Term Care Residence,Scarborough,197,,0,,Inactive
+30,Chartwell Waterford Long Term Care Residence,Oakville,168,,0,,Inactive
+31,Chartwell Woodhaven Long Term Care Residence,Markham,192,,0,,Inactive
+32,Chartwell Wynfield Long Term Care Residence,Oshawa,172,,0,,Inactive
+33,Clarion Nursing Home,Stoney Creek,100,,0,,Inactive
+34,Copernicus Lodge,Toronto,228,,0,,Inactive
+35,Country Terrace,Komoka,120,,0,,Inactive
+36,Country Village Homes - Woodslee,Woodslee,104,,18,,Inactive
+37,Cummer Lodge,North York,391,,<5,,Inactive
+38,Dom Lipa,Etobicoke,66,,0,,Inactive
+39,Douglas H. Rapelje Lodge,Welland,120,,0,,Inactive
+40,Dufferin Oaks,Shelburne,160,,0,,Inactive
+41,Dundurn Place Care Centre,Hamilton,201,,<5,,Inactive
+42,Eagle Terrace,Newmarket,70,,<5,,Inactive
+43,Earls Court Village,London,128,,0,,Inactive
+44,Ehatare Nursing Home,Scarborough,32,,0,,Inactive
+45,Elm Grove Living Centre,Toronto,126,,18,,Inactive
+46,Elmwood Place,London,90,,0,,Inactive
+47,Exeter Villa,Exeter,47,,0,,Inactive
+48,Extendicare Hamilton,Hamilton,160,,0,,Inactive
+49,Extendicare Lakefield,Lakefield,100,,0,,Inactive
+50,Extendicare Maple View of Sault Ste. Marie,Sault Ste. Marie,256,,0,,Inactive
+51,Extendicare Oshawa,Oshawa,175,,0,,Inactive
+52,Extendicare Rouge Valley,Toronto,192,,0,,Inactive
+53,Extendicare Starwood,Nepean,192,,0,,Inactive
+54,Extendicare Tecumseh,Tecumseh,128,,0,,Inactive
+55,Extendicare Timmins,Timmins,180,,0,,Inactive
+56,Extendicare West End Villa,Ottawa,242,,0,,Inactive
+57,Extendicare York,Sudbury,288,,0,,Inactive
+58,Fairview Lodge,Whitby,198,,0,,Inactive
+59,Finlandia Hoivakoti Nursing Home,Sudbury,112,,0,,Inactive
+60,Fountain View Care Community,East York,158,,0,,Inactive
+61,Franklin Gardens Long Term Care Home,Leamington,120,,0,,Inactive
+62,Garden City Manor,St. Catharines,200,,0,,Inactive
+63,Gardenview Long Term Care Home,Townsend,64,,0,,Inactive
+64,Garry J. Armstrong Home,Ottawa,180,,0,,Inactive
+65,Glen Hill Strathaven,Bowmanville,210,,0,,Inactive
+66,Golden Dawn Nursing Home,Lion's Head,45,,0,,Inactive
+67,Golden Manor,Timmins,177,,0,,Inactive
+68,Golden Years Nursing Home,Cambridge,88,,0,,Inactive
+69,Grace Villa Nursing Home,Hamilton,184,,0,,Inactive
+70,Greenwood Court,Stratford,45,,<5,,Inactive
+71,Hallowell House,Picton,97,,0,,Inactive
+72,Harold and Grace Baker Centre,Toronto,120,,16,,Inactive
+73,Hastings Manor Home for the Aged,Belleville,253,,<5,,Inactive
+74,Heritage Green Nursing Home,Stoney Creek,167,,<5,,Inactive
+75,Hillsdale Estates,Oshawa,300,,0,,Inactive
+76,Hillsdale Terraces,Oshawa,200,,13,,Inactive
+77,Hillside Manor,Stratford,90,,0,,Inactive
+78,Hogarth Riverview Manor,Thunder Bay,543,,0,,Inactive
+79,Idlewyld Manor,Hamilton,192,,0,,Inactive
+80,IOOF Seniors Home,Barrie,182,,0,,Inactive
+81,Labdara Lithuanian Nursing Home,Etobicoke,90,,0,,Inactive
+82,Lakeview Manor,Beaverton,149,,0,,Inactive
+83,Lanark Heights Long Term Care Centre,Kitchener,160,,0,,Inactive
+84,Leamington Mennonite Home Long Term Care Residence,Leamington,84,,0,,Inactive
+85,MacKenzie Place,Newmarket,93,,15,,Inactive
+86,Maple View,Owen Sound,29,,0,,Inactive
+87,Maple View Lodge,Athens,60,,0,,Inactive
+88,Maplewood,Brighton,49,,0,,Inactive
+89,Markhaven,Markham,96,,17,,Inactive
+90,McCall Centre Long Term Care Interim Unit,Etobicoke,21,,0,,Inactive
+91,Miramichi Lodge,Pembroke,166,,0,,Inactive
+92,Moira Place Long-Term Care Home,Tweed,128,,0,,Inactive
+93,Mon Sheong Scarborough Long Term Care Centre,Scarborough,160,,0,,Inactive
+94,Mount Hope Centre for Long Term Care,London,394,,0,,Inactive
+95,North Park Nursing Home,North York,75,,0,,Inactive
+96,Northridge,Oakville,133,,0,,Inactive
+97,Northview Nursing Home,Englehart,48,,0,,Inactive
+98,Norwood Nursing Home,Toronto,60,,0,,Inactive
+99,Parkview Manor Health Care Centre,Chesley,34,,0,,Inactive
+100,peopleCare Hilltop Manor Cambridge,Cambridge,185,,0,,Inactive
+101,peopleCare Oakcrossing London,London,160,,0,,Inactive
+102,Pinecrest Nursing Home (Bobcaygeon),Bobcaygeon,65,,29,,Inactive
+103,Pinehaven Nursing Home,Waterloo,84,,0,,Inactive
+104,Pioneer Manor,Sudbury,433,,0,,Inactive
+105,Providence Healthcare,Scarborough,288,,<5,,Inactive
+106,Providence Manor,Kingston,243,,0,,Inactive
+107,Regina Gardens,Hamilton,128,,0,,Inactive
+108,Riverside Place,Windsor,96,,0,,Inactive
+109,Riverview Manor Nursing Home,Peterborough,124,,0,,Inactive
+110,Rosebridge Manor,Jasper,78,,0,,Inactive
+111,Royal Terrace,Palmerston,67,,0,,Inactive
+112,Saint Luke's Place,Cambridge,114,,0,,Inactive
+113,Shalom Manor Long Term Care Home,Grimsby,144,,0,,Inactive
+114,Shelburne Long Term Care Home,Shelburne,60,,18,,Inactive
+115,Shepherd Lodge,Toronto,252,,0,,Inactive
+116,Sherwood Court Long Term Care Centre,Maple,96,,0,,Inactive
+117,Southlake Residential Care Village,Newmarket,224,,0,,Inactive
+118,Spencer House,Orillia,160,,0,,Inactive
+119,Sprucedale Care Centre,Strathroy,96,,0,,Inactive
+120,St. Andrew's Terrace Long Term Care Community,Cambridge,128,,0,,Inactive
+121,St. Clair O'Connor Community Nursing Home,East York,25,,8,,Inactive
+122,St. Gabriel's Villa of Sudbury,Chelmsford,128,,0,,Inactive
+123,St. Joseph's at Fleming,Peterborough,200,,<5,,Inactive
+124,St. Joseph's Continuing Care Centre,Cornwall,150,,0,,Inactive
+125,St. Joseph's Lifecare Centre,Brantford,205,,0,,Inactive
+126,"St. Joseph's Villa, Dundas",Dundas,425,,0,,Inactive
+127,"St. Joseph's Villa, Sudbury",Sudbury,128,,<5,,Inactive
+128,Stirling Heights,Cambridge,110,,0,,Inactive
+129,Strathcona Long Term Care,Mount Forest,87,,0,,Inactive
+130,Sumac Lodge,Sarnia,100,,0,,Inactive
+131,Sunnycrest Nursing Home,Whitby,136,,0,,Inactive
+132,Tall Pines Long Term Care Centre,Brampton,160,,0,,Inactive
+133,Telfer Place,Paris,45,,0,,Inactive
+134,Temiskaming Lodge,Haileybury,83,,0,,Inactive
+135,Tendercare Living Centre,Scarborough,254,,<5,,Inactive
+136,The Henley House,St. Catharines,160,,0,,Inactive
+137,The Kensington Gardens,Toronto,350,,8,,Inactive
+138,The O'Neill Centre,Toronto,162,,0,,Inactive
+139,The Perley and Rideau Veterans' Health Centre,Ottawa,450,,11,,Inactive
+140,The Village at St. Clair,Windsor,256,,0,,Inactive
+141,The Village at University Gates,Waterloo,192,,0,,Inactive
+142,The Village of Riverside Glen,Guelph,192,,0,,Inactive
+143,The Village of Wentworth Heights,Hamilton,120,,0,,Inactive
+144,The Village of Winston Park,Kitchener,95,,0,,Inactive
+145,The Wexford,Scarborough,166,,0,,Inactive
+146,The Woodlands of Sunset,Welland,121,,0,,Inactive
+147,Thorntonview,Oshawa,154,,0,,Inactive
+148,Tony Stacey Centre for Veterans' Care,Toronto,100,,0,,Inactive
+149,Twin Oaks of Maryhill,Maryhill,31,,0,,Inactive
+150,Union Villa,Unionville,160,,0,,Inactive
+151,Valleyview Residence,North York,174,,<5,,Inactive
+152,Villa Forum,Mississauga,160,,10,,Inactive
+153,Villa Marconi,Ottawa,128,,0,,Inactive
+154,Wellington Terrace Long-Term Care Home,Fergus,176,,0,,Inactive
+155,Wentworth Lodge,Dundas,160,,0,,Inactive
+156,Wikwemikong Nursing Home,Wikwemikong,59,,0,,Inactive
+157,Winbourne Park,Ajax,110,,0,,Inactive
+158,Woodland Villa,Long Sault,111,,0,,Inactive
+159,Woods Park Care Centre,Barrie,123,,0,,Inactive
+160,Yee Hong Centre - Markham,Markham,200,,0,,Inactive
+161,Yee Hong Centre - Mississauga,Mississauga,200,,0,,Inactive
+162,Yee Hong Centre - Scarborough Finch,Scarborough,250,,0,,Inactive
+163,Yee Hong Centre - Scarborough McNicoll,Scarborough,155,,0,,Inactive

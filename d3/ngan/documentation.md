@@ -9,6 +9,7 @@ https://bl.ocks.org/mbostock/a7bdfeb041e850799a8d3dce4d8c50c8
 
 ## Using mapshaper to make coordinates wgs84
 https://help.flourish.studio/article/67-how-to-make-your-coordinates-wgs84-with-mapshaper-org
+Open the console and enter `-proj wgs84`
 
 ## Use mapshaper to simplify the geojson
 Drop file into mapshaper

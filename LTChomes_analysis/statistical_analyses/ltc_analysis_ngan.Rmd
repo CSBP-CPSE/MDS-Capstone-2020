@@ -6,126 +6,152 @@ output:
   html_document: default
   pdf_document: default
 ---
-
 ## Import the data
 ```{r }
 library(skimr)
 
 # Import the data
-df_LTCdata_for_stats_FINAL <- read.csv("~/Desktop/capstone/df_LTCdata_for_stats_FINAL.csv", na.strings="", header=TRUE)
-# skim(df_LTCdata_for_stats_FINAL)
+df <- read.csv("merged_LTC_odhf_quality.csv", na.strings="", header=TRUE)
+skim(df)
 ```
-
 
 
 ```{r }
 # Add column with outbreak status
-df_LTCdata_for_stats_FINAL$outbreak <- with(df_LTCdata_for_stats_FINAL, ifelse(is.na(Status), 'no', 'yes'))
+df$outbreak <- with(df, ifelse(is.na(status), 'no', 'yes'))
 
 # Update data types for some columns
-df_LTCdata_for_stats_FINAL[, 'outbreak'] <- as.factor(df_LTCdata_for_stats_FINAL[, 'outbreak'])
-df_LTCdata_for_stats_FINAL[, 'cleaned_name'] <- as.character(df_LTCdata_for_stats_FINAL[, 'cleaned_name'])
+df[, 'outbreak'] <- as.factor(df[, 'outbreak'])
 
-# Remove single LTC home (lennox hospital) with missing values for accreditation etc.
-df <- df_LTCdata_for_stats_FINAL[!is.na(df_LTCdata_for_stats_FINAL$accreditation),]
-# df <- subset(df_LTCdata_for_stats_FINAL, accreditation.not.na())
-skim(df)
-head(df)
+# Change data type of character
+listofcol = list('name', 'cleaned_name', 'address', 'city', 'postal_code', 'CSDname')
+for (each in listofcol){
+  df[, each] <- as.character(df[, each])
+}
 
-# Create list of columns with that may not be needed for the analysis
-location = c(1, 2, 8, 9, 19, 24, 25, 26, 27) # 2 represents LHIN
-inspection_range = c(11, 14, 17)
-inspection_count = c(10, 13, 16)
-inspection_rank = c(12, 15, 18)
-covid = c(20, 21, 22, 23)
+colnames(df)
+```
 
-# Create df using binned inspections data
-# binned = df[,-c(location, inspection_count, inspection_range, covid)]
-# skim(binned)
 
+```{r }
 # # Combine categories of Municipal and Non-profit for home_type
-# df$home.type[df$home.type == 'Municipal'] <- 'Non-Profit'
-# df$home.type <- factor(df$home.type)
+# df$home_type[df$home_type == 'Municipal'] <- 'Non-Profit'
+# df$home_type <- factor(df$home_type)
 
-# Create df with inspections count data to be logtransformed
-logtrans = df[,-c(location, inspection_range, inspection_rank, covid)]
+# Create new columns
+# Sum of complaints and critical
+df$total_cc <- df$total_critical + df$total_complaints
+df$X5y_cc <- df$X5y_complaints + df$X5y_critical
+df$X2y_cc <- df$X2y_complaints + df$X2y_critical
+
+# Sum of complaints, critical and withOrders
+df$total_ccw <- df$total_critical + df$total_complaints + df$total_withOrders
+df$X5y_ccw <- df$X5y_complaints + df$X5y_critical + df$X5y_withOrders
+df$X2y_ccw <- df$X2y_complaints + df$X2y_critical + df$X2y_withOrders
 
 ```
 
+
+```{r }
+# Create list of columns used to filter data for analysis
+location = c('address', 'LHIN', 'city', 'postal_code', 'CSDname', 'CSDuid', 'latitude', 'longitude') 
+all_inspections = c("total_inspections", "X5y_inspections", "X2y_inspections") 
+complaints = c("total_complaints", "X5y_complaints", "X2y_complaints")
+critical = c("total_critical", "X5y_critical", "X2y_critical") 
+withOrders = c("total_withOrders", "X5y_withOrders", "X2y_withOrders")
+cc_ccw = c("total_cc", "X5y_cc", "X2y_cc", "total_ccw", "X5y_ccw", "X2y_ccw")
+covid = c("confirmed_resident_cases", "resident_deaths", "confirmed_staff_cases")
+inspections = c(all_inspections, complaints, critical, withOrders, cc_ccw)
+quality = c("antipsychotic_percent", "depression_percent", "falls_percent", "pressure_ulcers_percent", "pain_percent")
+
+# Explore new values
+# Many inspections variables include 0
+for (each in inspections){
+  print(each)
+  print(summary(df[[each]]))
+}
+
+# Most quality variables include 0
+for (each in quality){
+  print(each)
+  print(summary(df[[each]]))
+}
+
+# Create df with inspections count data to be transformed
+logtrans <- subset(df, select = c('outbreak', 'home_type', inspections, 'number_beds', quality, "short_stay", "residents_council", "family_council", "accreditation"))
+
+```
+
+
 ## Assessing skewness
+We see that the inspections and number of beds data are right skewed. The quality data are not as right skewed except for antipsychotic_percent and pain_percent. 
 ```{r }
 # Check for R skewness in numeric predictors
 library(e1071)
-print(c(skewness(logtrans$number_beds), 
-skewness(logtrans$total_inspections),
-skewness(logtrans$X5y_inspections),
-skewness(logtrans$X2y_inspections)))
 
-qqnorm(logtrans$total_inspections); qqline(logtrans$total_inspections, col = 'red')
-qqnorm(logtrans$X5y_inspections); qqline(logtrans$X5y_inspections, col = 'red')
-qqnorm(logtrans$X2y_inspections); qqline(logtrans$X2y_inspections, col = 'red')
-qqnorm(logtrans$number_beds); qqline(logtrans$number_beds, col = 'red')
+listofcols = c(inspections, 'number_beds', quality)
 
-# Visualize the effect of square root and log transformations the data
-library(rcompanion)
-
-# Log transformations are better for the inspections data
-plotNormalHistogram(logtrans$total_inspections)
-plotNormalHistogram(sqrt(logtrans$total_inspections))
-plotNormalHistogram(log(logtrans$total_inspections))
-
-plotNormalHistogram(logtrans$X5y_inspections)
-plotNormalHistogram(sqrt(logtrans$X5y_inspections))
-plotNormalHistogram(log(logtrans$X5y_inspections))
-
-plotNormalHistogram(logtrans$X2y_inspections)
-plotNormalHistogram(sqrt(logtrans$X2y_inspections))
-plotNormalHistogram(log(logtrans$X2y_inspections))
-
-# A square root transformation is better for number_beds
-plotNormalHistogram(logtrans$number_beds)
-plotNormalHistogram(sqrt(logtrans$number_beds))
-plotNormalHistogram(log(logtrans$number_beds))
+for (each in listofcols){
+  print(skewness(logtrans[[each]]))
+  qqnorm(logtrans[[each]], main = each)
+  qqline(logtrans[[each]], col = 'red')
+}
 
 ```
 
+
+
+```{r }
+# Visualize the effect of square root and log transformations the data
+library(rcompanion)
+
+for (each in listofcols) {  
+  plotNormalHistogram(x = logtrans[[each]], main = each)
+  plotNormalHistogram(x = sqrt(logtrans[[each]]), main = c(each, 'sqrt trans'))
+  # plotNormalHistogram(x = log(logtrans[[each]]), main = c(each, 'log trans'))
+    }
+
+```
+Notes:
+- Many of the numeric data are right skewed
+  - Log transformations are better for the total inspections data
+  - Sqrt transformation is better for the number_beds
+  - Will have to perform sqrt transformations on the complaints, critical, withOrders, cc and ccw since these have zeros
+  - For the quality data, will square root transform antipsychotic, ulcers and pain data
+
+
 ```{r }
 # Transform the numeric variables in place
-cols = c(6, 7, 8)
-logtrans[cols] <- log(logtrans[cols])
-logtrans[9] <- sqrt(logtrans[9])
+logtrans[all_inspections] <- log(logtrans[all_inspections])
+logtrans[c(complaints, critical, withOrders, cc_ccw, "antipsychotic_percent", "pressure_ulcers_percent", "pain_percent")] <- sqrt(logtrans[c(complaints, critical, withOrders, cc_ccw, "antipsychotic_percent", "pressure_ulcers_percent", "pain_percent")])
 skim(logtrans)
 
 ```
 
+
 ```{r }
 # Assess the distribution of variables
-xtabs(~outbreak + home.type, data=binned)
-xtabs(~accreditation + home.type, data=binned)
-xtabs(~short.stay + home.type, data=binned)
-xtabs(~family.council + home.type, data=binned)
-xtabs(~residents.council + home.type, data=binned)
-xtabs(~residents.council + outbreak, data=binned)
-xtabs(~accreditation + outbreak, data=binned)
-xtabs(~short.stay + outbreak, data=binned)
-xtabs(~family.council + outbreak, data=binned)
-xtabs(~family.council + residents.council, data=binned)
+xtabs(~outbreak + home_type, data=df)
+xtabs(~accreditation + home_type, data=df)
+xtabs(~short_stay + home_type, data=df)
+xtabs(~family_council + home_type, data=df)
+xtabs(~residents_council + home_type, data=df)
+xtabs(~residents_council + outbreak, data=df)
+xtabs(~accreditation + outbreak, data=df)
+xtabs(~short_stay + outbreak, data=df)
+xtabs(~family_council + outbreak, data=df)
+xtabs(~family_council + residents_council, data=df)
 
 ```
-
 
 ## Fit the logistic regression
 ```{r }
 # # Fit logistic regression against home type
-# glm1 <- glm(outbreak~home.type, data = df2, family = 'binomial')
+# glm1 <- glm(outbreak~home_type, data = df2, family = 'binomial')
 # summary(glm1)
-# 
-# # Fit logistic regression using binned inspection counts
-# binned_glm = glm(outbreak~.,family=binomial,data=binned)
-# summary(binned_glm)
 
 # Fit logistic regression using transformed inspection counts
-logtrans_glm = glm(outbreak~.,family=binomial,data=logtrans)
+logtrans_glm = glm(outbreak~., family=binomial, data=logtrans)
 summary(logtrans_glm)
 
 ```
@@ -133,38 +159,12 @@ summary(logtrans_glm)
 
 ```{r }
 # Calculate McFadden's pseudo R2 
-# ll.null <- binned_glm$null.deviance/-2
-# ll.proposed <- binned_glm$deviance/-2
-# print((ll.null - ll.proposed)/ll.null)
-# 1 - pchisq(2*(ll.proposed - ll.null), df = (length(binned_glm$coefficients)-1)) #pvalue
-
 ll.null <- logtrans_glm$null.deviance/-2
 ll.proposed <- logtrans_glm$deviance/-2
 print((ll.null - ll.proposed)/ll.null)
 1 - pchisq(2*(ll.proposed - ll.null), df = (length(logtrans_glm$coefficients)-1)) #pvalue
 
-
 ```
-
-
-```{r }
-# # Create a new dataframe showing probability of outbreak and outbreak status
-# predicted.data <- data.frame(probability.of.outbreak=binned_glm$fitted.values, outbreak=binned$outbreak)
-# 
-# # Sort the above df
-# predicted.data <- predicted.data[order(predicted.data$probability.of.outbreak, decreasing=FALSE),]
-# 
-# # Add new col to df with rank
-# predicted.data$rank <- 1:nrow(predicted.data)
-# 
-# library(ggplot2)
-# library(cowplot)
-# 
-# ggplot(data = predicted.data, aes(x=rank, y=probability.of.outbreak)) +
-#   geom_point(aes(color=outbreak), alpha = 1, shape = 4, stroke = 2) +
-#   xlab("Index") + ylab("Predicted probability of an outbreak")
-```
-
 
 ## Visualize the model
 ```{r }
@@ -188,13 +188,23 @@ ggplot(data = predicted.data, aes(x=rank, y=probability.of.outbreak)) +
 
 ```
 
-
 ```{r }
-
-
-
 
 ```
 
+```{r }
 
+```
+
+```{r }
+
+```
+
+```{r }
+
+```
+
+```{r }
+
+```
 

@@ -240,6 +240,7 @@ function LoadData(map, key, points) {
  										+ "Type: " + d.home_type + "</br> "
  										+ "Beds: " + d.number_beds + "</br> "
  										+ "LHIN: " + d.LHIN + "</br> "
+										+ "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
 								.style("left", (d3.event.pageX - 108) + "px")
       					.style("top", (d3.event.pageY-128) + "px");

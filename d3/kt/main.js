@@ -17,7 +17,8 @@ function InitializeMap(container, width, height) {
 	// We add a <div> container for the tooltip, which is hidden by default.
 	var tooltip = d3.select("#map")
 				    .append("div")
-				    .attr("class", "tooltip hidden");
+				    .attr("class", "tooltip hidden")
+						// .attr('style', 'left:' + d3.event.x + 'px'; 'top:' + d3.event.y + 'px');
 
 	// We define a geographical projection
 	//     https://github.com/mbostock/d3/wiki/Geo-Projections
@@ -198,6 +199,8 @@ function LoadData(map, key, points) {
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
+								.style("left", (d3.event.pageX - 108) + "px")
+      					.style("top", (d3.event.pageY-28) + "px");
 	 						})
 							.on('mouseout', function() {map.tooltip.classed('hidden', true)}) //hide tooltip
 				};
@@ -247,12 +250,13 @@ function LoadData(map, key, points) {
 				 		// Show the tooltip (unhide it) and set the name of the data entry.
 				 		// Set the position as calculated before.
 				 		map.tooltip.classed('hidden', false)
-				 			   .attr("style", "left:" + left + "px; top:" + top + "px")
 				 			   .html(d.cleaned_name+ "</br> "
  										+ "Type: " + d.home_type + "</br> "
  										+ "Beds: " + d.number_beds + "</br> "
  										+ "LHIN: " + d.LHIN + "</br> "
-										+ "Status: " + d.status);
+										+ "Status: " + d.status)
+								.style("left", (d3.event.pageX - 108) + "px")
+      					.style("top", (d3.event.pageY-28) + "px");
 				 	}
 
 

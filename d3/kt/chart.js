@@ -1,77 +1,26 @@
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 40, left: 100},
+var margin = {top: 50, right: 30, bottom: 50, left: 50},
     width = 460 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-// // append the svg object to the body of the page
-// var svg = d3.select("#chart")
-//   .append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//     .attr("transform",
-//           "translate(" + margin.left + "," + margin.top + ")");
+// append the svg object to the body of the page
+var svg = d3.select("#chart")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")")
 
-// Parse the Data
-// d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY4AT22OXIBYAXBF3OK65EK7I", function(data) {
-//
-//   // Add X axis
-//   var x = d3.scale.linear()
-//     .domain([0, 0.7])
-//     .range([ 0, width]);
-//   svg.append("g")
-//     .attr("transform", "translate(0," + height + ")")
-//     // .call(d3.axisBottom(x))
-//     .selectAll("text")
-//       .attr("transform", "translate(-10,0)rotate(-45)")
-//       .style("text-anchor", "end");
-//
-//   // Y axis
-//   var y = d3.scale.ordinal()
-//     .range([ 0, height ])
-//     .domain(data.map(function(d) { return d.ENG_LABEL; }))
-//     .padding(1);
-//   svg.append("g")
-//     .call(d3.axisLeft(y))
-//
-//
-//   // Lines
-//   svg.selectAll("myline")
-//     .data(data)
-//     .enter()
-//     .append("line")
-//       .attr("x1", function(d) { return x(+d.amenity_dense); })
-//       .attr("x2", x(0))
-//       .attr("y1", function(d) { return y(d.ENG_LABEL); })
-//       .attr("y2", function(d) { return y(d.ENG_LABEL); })
-//       .attr("stroke", "grey")
-//
-//   // Circles
-//   svg.selectAll("mycircle")
-//     .data(data)
-//     .enter()
-//     .append("circle")
-//       .attr("cx", function(d) { return x(+d.amenity_dense); })
-//       .attr("cy", function(d) { return y(d.ENG_LABEL); })
-//       .attr("r", "4")
-//       .style("fill", "#69b3a2")
-//       .attr("stroke", "black")
-// })
-d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/d3/kt/data/prox.csv?token=AJI7AY4AT22OXIBYAXBF3OK65EK7I", function(data) {
 
-  ///////////////////////
-  // Chart Size Setup
-  var margin = { top: 35, right: 0, bottom: 30, left: 40 };
+var tooltip2 = d3.select("#chart")
+			    .append("div")
+			    .attr("class", "tooltip hidden");
 
-  var width = 960 - margin.left - margin.right;
-  var height = 500 - margin.top - margin.bottom;
 
-  var chart = d3.select(".chart")
-      .attr("width", 960)
-      .attr("height", 500)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data/prox.csv", function(data) {
 
   ///////////////////////
   // Scales
@@ -87,25 +36,36 @@ d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-s
   // Axis
   var xAxis = d3.svg.axis()
       .scale(x)
-      .orient("bottom");
+      .orient("bottom")
+			.tickValues([]);
 
   var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left");
 
-  chart.append("g")
+  svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+    // .selectAll('text')
+    //   .attr("transform", "rotate(90)")
+    //   .attr("x", 9)
+    //   .style("text-anchor", "start")
+		// .append('text')
+			// 	.attr("transform",
+			// 				"translate(" + (width/2) + " ," +
+			// 											 (height + margin.top + 20) + ")")
+			// 	.style("text-anchor", "middle")
+			// 	.text("Public Health Unit");
 
-  chart.append("g")
+  svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
 
   ///////////////////////
   // Title
-  chart.append("text")
-    .text('Bar Chart!')
+  svg.append("text")
+    .text('Amenity Richness by Public Health Unit')
     .attr("text-anchor", "middle")
     .attr("class", "graph-title")
     .attr("y", -10)
@@ -113,14 +73,17 @@ d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-s
 
   ///////////////////////
   // Bars
-  var bar = chart.selectAll(".bar")
+  var bar = svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x(d['ENG_LABEL']); })
       .attr("y", height)
       .attr("width", x.rangeBand())
-      .attr("height", 0);
+      .attr("height", 0)
+			.attr('fill', 'rgb(65,174,118)')
+      .on('mouseover', showBar)
+      .on('mouseout', hideBar);
 
   bar.transition()
       .duration(1500)
@@ -129,4 +92,26 @@ d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-s
       .attr("height", function(d) { return height - y(+d['amenity_dense']);
 
   });
+
+
+  // Bar show details
+ function showBar(d) {
+
+   // Show the tooltip (unhide it) and set the name of the data entry.
+   // Set the position as calculated before.
+   tooltip2.classed('hidden', false)
+        .html(d.ENG_LABEL+ "</br> "
+           + "Amenity Score: " + d.amenity_dense)
+       .style("left", (d3.event.pageX - 108) + "px")
+       .style("top", (d3.event.pageY-128) + "px");
+ }
+
+
+ /**
+  * Bar hide tooltip
+  */
+ function hideBar() {
+   tooltip2.classed('hidden', true);
+ }
+
 });

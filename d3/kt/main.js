@@ -18,7 +18,6 @@ function InitializeMap(container, width, height) {
 	var tooltip = d3.select("#map")
 				    .append("div")
 				    .attr("class", "tooltip hidden")
-						// .attr('style', 'left:' + d3.event.x + 'px'; 'top:' + d3.event.y + 'px');
 
 	// We define a geographical projection
 	//     https://github.com/mbostock/d3/wiki/Geo-Projections
@@ -56,7 +55,7 @@ function InitializeMap(container, width, height) {
 function InitZoom(map) {
 	// Define the zoom and attach it to the map
 	var zoom = d3.behavior.zoom()
-				 .scaleExtent([1, 50])
+				 .scaleExtent([1,75])
 				 .on('zoom', doZoom);
 
 	map.svg.call(zoom);
@@ -72,7 +71,7 @@ function InitZoom(map) {
 				.style("stroke-width", 0.5 / d3.event.scale + "px");
 		map.mapFeatures.selectAll("circle")
             // .attr("d", map.projection(projection))
-            .attr("r", 4/zoom.scale())
+            .attr("r", 10/zoom.scale())
 						.attr("stroke-width", 1/zoom.scale());
 	}
 }
@@ -220,7 +219,7 @@ function LoadData(map, key, points) {
 						 .attr("cy", function (d) {
 							 return map.projection([d.long, d.lati])[1];
 						 })
-						 .attr("r", 2)
+						 .attr("r", 10)
 						 .style("fill", status)
 						 .attr("stroke", status)
 						 .attr("stroke-width", 1)
@@ -234,19 +233,6 @@ function LoadData(map, key, points) {
 					 // LTC SHOW HOME NAME
 				 	function showHomes(d) {
 
-				 		// d3.select(this).attr("r", 10) // increase size on hover
-
-				 		// Get the current mouse position (as integer)
-				 		var mouse = d3.mouse(d3.select('#map').node()).map(
-				 			function(d) { return parseInt(d); }
-				 		);
-
-				 		// Calculate the absolute left and top offsets of the tooltip. If the
-				 		// mouse is close to the right border of the map, show the tooltip on
-				 		// the left.
-				 		var left = Math.min(width - 4 * d.cleaned_name.length, mouse[0] + 5);
-				 		var top = mouse[1] + 25;
-
 				 		// Show the tooltip (unhide it) and set the name of the data entry.
 				 		// Set the position as calculated before.
 				 		map.tooltip.classed('hidden', false)
@@ -256,7 +242,7 @@ function LoadData(map, key, points) {
  										+ "LHIN: " + d.LHIN + "</br> "
 										+ "Status: " + d.status)
 								.style("left", (d3.event.pageX - 108) + "px")
-      					.style("top", (d3.event.pageY-28) + "px");
+      					.style("top", (d3.event.pageY-128) + "px");
 				 	}
 
 

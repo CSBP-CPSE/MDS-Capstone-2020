@@ -1,0 +1,350 @@
+---
+title: "ltc_analysis"
+author: "NL"
+date: "15/06/2020"
+output: html_document
+---
+
+## Import the data
+```{r }
+library(skimr)
+
+# Import the data
+df <- read.csv("merged_LTC_odhf_quality.csv", na.strings="", header=TRUE)
+skim(df)
+```
+
+## Add derived variables
+```{r }
+# Add a column with outbreak status
+df$outbreak <- with(df, ifelse(is.na(status), 'no', 'yes'))
+
+# Add a column of LHIN health regions
+unique(df[['LHIN']])
+df$region[df$LHIN=='North West' | df$LHIN=='North East'] <- "North"
+df$region[df$LHIN=='Toronto Central'] <- "Toronto"
+df$region[df$LHIN=='Champlain' | df$LHIN=='Central East' | df$LHIN=='South East'] <- "East"
+df$region[df$LHIN=='Erie St. Clair' | df$LHIN=='Hamilton Niagara Haldimand Brant (Hnhb)' | df$LHIN=='South West' | df$LHIN=='Waterloo Wellington'] <- "West"
+df$region[df$LHIN=='Mississauga Halton' | df$LHIN=='Central West' | df$LHIN=='Central' | df$LHIN=='North Simcoe Muskoka'] <- "Central"
+
+# Sum of complaints and critical
+df$total_cc <- df$total_complaints + df$total_critical
+df$X5y_cc <- df$X5y_complaints + df$X5y_critical
+df$X2y_cc <- df$X2y_complaints + df$X2y_critical
+
+# Sum of complaints, critical and withOrders
+df$total_ccw <- df$total_critical + df$total_complaints + df$total_withOrders
+df$X5y_ccw <- df$X5y_complaints + df$X5y_critical + df$X5y_withOrders
+df$X2y_ccw <- df$X2y_complaints + df$X2y_critical + df$X2y_withOrders
+
+# Number of non-complaints inspections
+df$total_noncomplaints <- df$total_inspections - df$total_complaints
+df$X5y_noncomplaints <- df$X5y_inspections - df$X5y_complaints
+df$X2y_noncomplaints <- df$X2y_inspections - df$X2y_complaints
+
+```
+
+## Change variable types
+```{r }
+# Update data types for some columns
+df[, 'outbreak'] <- as.factor(df[, 'outbreak'])
+df[, 'region'] <- as.factor(df[, 'region'])
+
+# Change data type of character
+listofcol = list('name', 'cleaned_name', 'address', 'city', 'postal_code', 'CSDname')
+for (each in listofcol){
+  df[, each] <- as.character(df[, each])
+}
+
+skim(df)
+```
+
+## Generate the data for analysis
+```{r }
+# Create lists of variables used to filter data for analysis
+keep = c("outbreak", "home_type", "number_beds")
+profile = c("short_stay", "residents_council", "family_council", "accreditation")
+location = c('address', 'LHIN', 'region', 'city', 'postal_code', 'CSDname', 'CSDuid', 'latitude', 'longitude')
+quality = c("antipsychotic_percent", "depression_percent", "falls_percent", "pressure_ulcers_percent", "pain_percent")
+
+all_inspections = c("total_inspections", "X5y_inspections", "X2y_inspections")
+complaints = c("total_complaints", "X5y_complaints", "X2y_complaints")
+critical = c("total_critical", "X5y_critical", "X2y_critical") 
+noncomplaints = c("total_noncomplaints", "X5y_noncomplaints", "X2y_noncomplaints")
+withOrders = c("total_withOrders", "X5y_withOrders", "X2y_withOrders")
+cc_ccw = c("total_cc", "X5y_cc", "X2y_cc", "total_ccw", "X5y_ccw", "X2y_ccw")
+
+covid = c("confirmed_resident_cases", "resident_deaths", "confirmed_staff_cases")
+
+data <- subset(df, select = c(keep, profile, 'region', quality, all_inspections, complaints, critical, noncomplaints, withOrders, cc_ccw))
+
+```
+
+## Assessing skewness
+```{r }
+# Check for R skewness in numeric predictors
+library(e1071)
+
+listofcols = c('number_beds', quality, all_inspections, complaints, noncomplaints, critical, withOrders, cc_ccw)
+
+for (each in listofcols){
+  print(each)
+  print(skewness(data[[each]]))
+  qqnorm(data[[each]], main = each)
+  qqline(data[[each]], col = 'red')
+}
+
+```
+
+We see above that the inspections and number of beds data are highly right skewed with skewness values > 1. The quality data are not as right skewed with skewness values between 0 and 1, except for pain_percent which has a skewness value of 2.5. 
+
+The highly skewed variables will have to be transformed for the analysis, but first we explore the variables to assess for any zero values. 
+
+
+```{r }
+for (each in listofcols){
+  print(each)
+  print(summary(df[[each]]))
+}
+```
+We see above that the following variables contain zeros:
+  - antipsychotic_percent
+  - pressure_ulcers_percent
+  - pain_percent
+  - complaints group
+  - critical group
+  - withOrders group
+  - cc group
+  - X2y_noncomplaints
+  - X2y_ccw
+
+## Explore the variables for transformation
+```{r }
+# Create a list of numeric variables with 0 values
+list0s <- c('antipsychotic_percent', 'pressure_ulcers_percent', 'pain_percent', complaints, 'X2y_noncomplaints', critical, withOrders, 'total_cc', 'X5y_cc', 'X2y_cc', 'X2y_ccw')
+
+library(rcompanion)
+listofcols <- setdiff(listofcols, list0s)
+
+# Visualize the effect of square root and log transformations on the data without 0s
+for (each in listofcols) {  
+  plotNormalHistogram(x = data[[each]], main = each)
+  plotNormalHistogram(x = sqrt(data[[each]]), main = c(each, 'sqrt trans'))
+  plotNormalHistogram(x = log(data[[each]]), main = c(each, 'log trans'))
+}
+
+```
+
+As shown above a square root transformation seems best for the following data:
+  - number_beds
+  
+A log transformation seems better for the following data:
+  - all_inspections group
+  - total_noncomplaints
+  - X5y_noncomplaints
+  - total_ccw
+  - X5y_ccw
+  
+```{r }
+# Visualize the effect of a square root transformation on the variables with 0s
+for (each in list0s) {  
+  plotNormalHistogram(x = data[[each]], main = each)
+  plotNormalHistogram(x = sqrt(data[[each]]), main = c(each, 'sqrt trans'))
+}
+
+```
+As shown above, in all cases where variables contain 0s, a square root transformation seems to improve the distribution. 
+
+## Log transform the data
+```{r }
+
+# Log transform in place
+data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')] <- log(data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')])
+
+# Square root transform in place
+data[c('number_beds', list0s)] <- sqrt(data[c('number_beds', list0s)])
+
+skim(data)
+```
+
+## Inspect the distribution of the categorical variables
+```{r }
+xtabs(~outbreak + home_type, data=df)
+xtabs(~accreditation + home_type, data=df)
+xtabs(~short_stay + home_type, data=df)
+xtabs(~family_council + home_type, data=df)
+xtabs(~residents_council + home_type, data=df)
+xtabs(~residents_council + outbreak, data=df)
+xtabs(~accreditation + outbreak, data=df)
+xtabs(~short_stay + outbreak, data=df)
+xtabs(~family_council + outbreak, data=df)
+xtabs(~family_council + residents_council, data=df)
+```
+
+
+```{r }
+# Fit logistic regression using transformed inspection counts
+fit = glm(outbreak~., family=binomial, data=data)
+summary(fit)
+```
+
+## Backwards selection
+```{r }
+fit <- update(fit, .~. -pressure_ulcers_percent)
+summary(fit)
+fit <- update(fit, .~. -X5y_complaints)
+summary(fit)
+fit <- update(fit, .~. -total_critical)
+summary(fit)
+fit <- update(fit, .~. -total_cc)
+summary(fit)
+fit <- update(fit, .~. -X2y_withOrders)
+summary(fit)
+fit <- update(fit, .~. -depression_percent)
+summary(fit)
+fit <- update(fit, .~. -falls_percent)
+summary(fit)
+fit <- update(fit, .~. -X2y_complaints)
+summary(fit)
+fit <- update(fit, .~. -residents_council)
+summary(fit)
+fit <- update(fit, .~. -short_stay)
+summary(fit)
+fit <- update(fit, .~. -X5y_ccw)
+summary(fit)
+fit <- update(fit, .~. -total_ccw)
+summary(fit)
+fit <- update(fit, .~. -total_withOrders)
+summary(fit)
+fit <- update(fit, .~. -X5y_cc)
+summary(fit)
+fit <- update(fit, .~. -X2y_inspections)
+summary(fit)
+fit <- update(fit, .~. -accreditation)
+summary(fit)
+fit <- update(fit, .~. -X5y_inspections)
+summary(fit)
+fit <- update(fit, .~. -antipsychotic_percent)
+summary(fit)
+fit <- update(fit, .~. -pain_percent)
+summary(fit)
+fit <- update(fit, .~. -X2y_noncomplaints)
+summary(fit)
+fit <- update(fit, .~. -X2y_ccw)
+summary(fit)
+fit <- update(fit, .~. -X2y_cc)
+summary(fit)
+fit <- update(fit, .~. -X2y_critical)
+summary(fit)
+fit <- update(fit, .~. -X5y_critical)
+summary(fit)
+fit <- update(fit, .~. -X5y_noncomplaints)
+summary(fit)
+fit <- update(fit, .~. -total_noncomplaints)
+summary(fit)
+fit <- update(fit, .~. -X5y_withOrders)
+summary(fit)
+fit <- update(fit, .~. -total_inspections)
+summary(fit)
+fit <- update(fit, .~. -home_type)
+summary(fit)
+
+```
+
+As shown above when all variables are included in the initial regression and then backwards selection is used for variable selection, the significant variables are number of beds, total complaints and region. 
+
+```{r }
+# Calculate McFadden's pseudo R2
+ll.null <- fit$null.deviance/-2
+ll.proposed <- fit$deviance/-2
+print((ll.null - ll.proposed)/ll.null)
+1 - pchisq(2*(ll.proposed - ll.null), df = (length(fit$coefficients)-1)) #pvalue
+```
+
+## Visualize the model
+```{r }
+# Create a new dataframe showing probability of outbreak and outbreak status
+predicted.data <- data.frame(probability.of.outbreak=fit$fitted.values, outbreak=data$outbreak)
+
+# Sort the above df
+predicted.data <- predicted.data[order(predicted.data$probability.of.outbreak, decreasing=FALSE),]
+
+# Add new col to df with rank
+predicted.data$rank <- 1:nrow(predicted.data)
+
+library(ggplot2)
+library(cowplot)
+
+ggplot(data = predicted.data, aes(x=rank, y=probability.of.outbreak)) +
+  geom_point(aes(color=outbreak), alpha = 0.5, shape = 4, stroke = 1) +
+  xlab("Index") + ylab("Predicted probability of an outbreak") +
+  ggtitle("Outbreak Status Ordered By Predicted Probability of an Outbreak") + 
+  scale_color_manual(values = c('blue', 'red'))
+
+```
+
+## Repeat the logistic regression with selected variables
+```{r }
+data_selected <- subset(df, select= c('outbreak', 'home_type', 'number_beds', noncomplaints, complaints, withOrders))
+skim(data_selected)
+fit = glm(outbreak~., family=binomial, data=data_selected)
+summary(fit)
+```
+
+## Backwards Selection
+```{r }
+fit <- update(fit, .~. -X2y_withOrders)
+summary(fit)
+fit <- update(fit, .~. -X2y_complaints)
+summary(fit)
+fit <- update(fit, .~. -X2y_noncomplaints)
+summary(fit)
+fit <- update(fit, .~. -total_withOrders)
+summary(fit)
+fit <- update(fit, .~. -X5y_noncomplaints)
+summary(fit)
+fit <- update(fit, .~. -X5y_complaints)
+summary(fit)
+fit <- update(fit, .~. -X5y_withOrders)
+summary(fit)
+
+```
+
+## Repeat the logistic regression with selected variables
+```{r }
+data_selected <- subset(df, select= c('outbreak', 'home_type', 'number_beds', all_inspections, complaints, withOrders))
+skim(data_selected)
+fit = glm(outbreak~., family=binomial, data=data_selected)
+summary(fit)
+
+```
+
+
+```{r }
+fit <- update(fit, .~. -X2y_complaints)
+summary(fit)
+fit <- update(fit, .~. -X2y_withOrders)
+summary(fit)
+fit <- update(fit, .~. -X2y_inspections)
+summary(fit)
+fit <- update(fit, .~. -total_withOrders)
+summary(fit)
+fit <- update(fit, .~. -X5y_inspections)
+summary(fit)
+fit <- update(fit, .~. -X5y_complaints)
+summary(fit)
+fit <- update(fit, .~. -X5y_withOrders)
+summary(fit)
+
+```
+
+
+```{r }
+
+```
+
+
+```{r }
+
+```
+

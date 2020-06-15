@@ -161,8 +161,12 @@ Wednesday June 10
   - d3 demo with Bruno
 
 Thursday June 11
-- Documentation for the LTC homes analysis (6h)
+- Documentation for the LTC homes data preparation and analysis (6h)
   - Revising, organizing and debugging the code
 
 Friday June 12
 - Documentation for the LTC homes analysis
+- Meeting with Scott and KT for Github pages demo
+
+Saturday June 13
+- LTC homes statistical analysis (2h)

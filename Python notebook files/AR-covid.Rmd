@@ -10,7 +10,9 @@ suppressMessages(library(arules))
 suppressMessages(library(arulesViz))
 
 covid <- read.csv('../data/ON_cases.csv')
-covid2 <- covid[,c(4:8)]
+covid2 <- covid[,c(7:10, 12)]
+colnames(covid)
+colnames(covid2)
 ```
 
 
@@ -60,7 +62,7 @@ rownames(phu_prop) <- phu_prop$Location
 ```
 
 ```{r AR Rules coprox}
-#phu_prop$prox_idx_transit <- discretize(phu_prop$prox_idx_transit, method = 'cluster')
+phu_prop$prox_idx_transit <- discretize(phu_prop$prox_idx_transit, method = 'cluster')
 coprox_rules <- apriori(phu_prop, parameter = list(support = 0.01, confidence = 0.5))
 ```
 

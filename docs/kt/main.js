@@ -71,7 +71,7 @@ function InitZoom(map) {
 				.style("stroke-width", 0.5 / d3.event.scale + "px");
 		map.mapFeatures.selectAll("circle")
             // .attr("d", map.projection(projection))
-            .attr("r", 10/zoom.scale())
+            .attr("r", 8/zoom.scale())
 						.attr("stroke-width", 1/zoom.scale());
 	}
 }
@@ -198,16 +198,17 @@ function LoadData(map, key, points) {
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
-								.style("left", (d3.event.pageX - 108) + "px")
+								.style("left", (d3.event.pageX - 235) + "px")
       					.style("top", (d3.event.pageY-28) + "px");
 	 						})
 							.on('mouseout', function() {map.tooltip.classed('hidden', true)}) //hide tooltip
 				};
 
 	if (points != 0)	{
+
 					map.mapFeatures.selectAll("path")
 						.attr('d', map.path)
-						.style('fill', "#243327") // map fill colour
+						.style('fill', "#BFDDEC") // map fill colour
 
 					map.mapFeatures.selectAll("circle")
 						 .data(points)
@@ -219,7 +220,7 @@ function LoadData(map, key, points) {
 						 .attr("cy", function (d) {
 							 return map.projection([d.long, d.lati])[1];
 						 })
-						 .attr("r", 10)
+						 .attr("r", 8)
 						 .style("fill", status)
 						 .attr("stroke", status)
 						 .attr("stroke-width", 1)
@@ -242,8 +243,8 @@ function LoadData(map, key, points) {
  										+ "LHIN: " + d.LHIN + "</br> "
 										+ "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
-								.style("left", (d3.event.pageX - 108) + "px")
-      					.style("top", (d3.event.pageY-128) + "px");
+								.style("left", (d3.event.pageX - 235) + "px")
+      					.style("top", (d3.event.pageY-28) + "px");
 				 	}
 
 
@@ -262,9 +263,9 @@ function LoadData(map, key, points) {
 
 //  Colour by LTC home status
 function status(d){
-	if(d.outbreak == "No") return "#69b3a2"
+	if(d.outbreak == "No") return "#23298C" //E6D616
 
-	else return "#61acff";
+	else return "#BA2727";
 }
 
 
@@ -283,17 +284,4 @@ function hideDetails() {
  */
 function hideTooltip() {
   map.tooltip.classed('hidden', true);
-}
-
-
-/**
- * Helper function to access the (current) value of a data object.
- *
- * Use "+" to convert text values to numbers.
- *
- * @param {object} d - A data object representing an entry (one line) of
- * the data CSV.
- */
-function getValueOfData(d) {
-  return +d[currentKey];
 }

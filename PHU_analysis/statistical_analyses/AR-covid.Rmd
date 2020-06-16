@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# COVID Association Rules
+
+```{r load, include = F}
+suppressMessages(library(arules))
+suppressMessages(library(arulesViz))
+
+covid <- read.csv('../data/ON_cases.csv')
+covid2 <- covid[,c(7:10, 12)]
+colnames(covid)
+colnames(covid2)
+```
+
+
+```{r AR Rules}
+covid_rules <- apriori(covid2, parameter = list(support = 0.01, confidence = 0.5))
+```
+
+```{r inspect AR}
+inspect(head(sort(covid_rules, by = "confidence"), 3))
+```

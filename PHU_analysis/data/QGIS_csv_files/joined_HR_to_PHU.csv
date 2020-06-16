@@ -1,0 +1,37 @@
+HR_UID,ENG_LABEL,FRE_LABEL,Shape_Leng,Shape_Area,HR_UID_2,ENG_LABEL_2,FRE_LABEL_2,SHAPE_AREA_2,SHAPE_LEN,ADJ_LABEL
+3531,Elgin-St. Thomas Health Unit,Circonscription sanitaire d'Elgin-St. Thomas,293261.6305,1998848995,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3539,Huron County Health Unit,Circonscription sanitaire du comté de Huron,341344.8703,3585616137,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3540,Chatham-Kent Health Unit,Circonscription sanitaire de Chatham-Kent,417786.3367,2641962209,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3542,Lambton Health Unit,Circonscription sanitaire de Lambton,654375.1077,3196601495,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3544,Middlesex-London Health Unit,Circonscription sanitaire de Middlesex-London,335153.1866,3523312721,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3568,Windsor-Essex County Health Unit,Circonscription sanitaire de Windsor-comté d'Essex,430749.581,1991396069,3501,Erie St. Clair,Érié St. Clair,11128344423,580255.5431,South West
+3527,Brant County Health Unit,Circonscription sanitaire du comté de Brant,166701.6455,1204670587,3502,South West,Sud-Ouest,28153012470,1148034.553,Central West
+3533,Grey Bruce Health Unit,Circonscription sanitaire de Grey Bruce,1096318.141,9059314836,3502,South West,Sud-Ouest,28153012470,1148034.553,South West
+3534,Haldimand-Norfolk Health Unit,Circonscription sanitaire de Haldimand-Norfolk,1091354.271,3055060063,3502,South West,Sud-Ouest,28153012470,1148034.553,Central West
+3552,Oxford County Health Unit,Circonscription sanitaire du comté d'Oxford,229351.999,2164444557,3502,South West,Sud-Ouest,28153012470,1148034.553,South West
+3554,Perth District Health Unit,Circonscription sanitaire du district de Perth,258538.2295,2336944694,3502,South West,Sud-Ouest,28153012470,1148034.553,South West
+3565,Waterloo Health Unit,Circonscription sanitaire de Waterloo,187498.4951,1456000867,3502,South West,Sud-Ouest,28153012470,1148034.553,Central West
+3566,Wellington-Dufferin-Guelph Health Unit,Circonscription sanitaire de Wellington-Dufferin-Guelph,405003.8661,4393653327,3502,South West,Sud-Ouest,28153012470,1148034.553,Central West
+3536,Halton Regional Health Unit,Circonscription sanitaire régionale de Halton,196372.994,1019047660,3503,Waterloo Wellington,Waterloo Wellington,5041406776,415281.3044,Central West
+3537,City of Hamilton Health Unit,Circonscription sanitaire de la cité de Hamilton,174718.3167,1209133931,3503,Waterloo Wellington,Waterloo Wellington,5041406776,415281.3044,Central West
+3553,Peel Regional Health Unit,Circonscription sanitaire régionale de Peel,309469.8389,1316629115,3503,Waterloo Wellington,Waterloo Wellington,5041406776,415281.3044,Central West
+3546,Niagara Regional Area Health Unit,Circonscription sanitaire régionale de Niagara,272440.7962,1988472859,3504,Hamilton Niagara Haldimand Brant,Hamilton Niagara Haldimand Brant,8281724115,474521.9671,Central West
+3560,Simcoe Muskoka District Health Unit,Circonscription sanitaire du district de Simcoe Muskoka,1731101.096,10234824349,3505,Central West,Centre-Ouest,2732729904,295662.7581,Central East
+3570,York Regional Health Unit,Circonscription sanitaire régionale de York,244497.0071,2191146336,3505,Central West,Centre-Ouest,2732729904,295662.7581,Central East
+3595,City of Toronto Health Unit,Circonscription sanitaire de la cité de Toronto,212865.555,665110177.6,3505,Central West,Centre-Ouest,2732729904,295662.7581,Toronto
+3530,Durham Regional Health Unit,Circonscription sanitaire régionale de Durham,309314.194,2738080245,3508,Central,Centre,3207455854,375538.9715,Central East
+3535,"Haliburton, Kawartha, Pine Ridge District Health Unit","Circonscription sanitaire du district de Haliburton, Kawartha et Pine Ridge",841245.9535,10259359460,3509,Central East,Centre-Est,17551322727,693724.8505,Central East
+3538,Hastings and Prince Edward Counties Health Unit,Circonscription sanitaire des comtés de Hastings et Prince Edward,1129597.826,7682618460,3509,Central East,Centre-Est,17551322727,693724.8505,South East
+3555,Peterborough County - City Health Unit,Circonscription sanitaire du comté et de la cité de Peterborough,299893.0453,4381309605,3509,Central East,Centre-Est,17551322727,693724.8505,Central East
+3557,Renfrew County and District Health Unit,Circonscription sanitaire du comté et du district de Renfrew,763171.9303,16931293741,3509,Central East,Centre-Est,17551322727,693724.8505,South East
+3541,"Kingston, Frontenac and Lennox and Addington Health Unit","Circonscription sanitaire de Kingston, Frontenac et Lennox et Addington",927747.534,7486681570,3510,South East,Sud-Est,22462852320,796308.5853,South East
+3543,"Leeds, Grenville and Lanark District Health Unit","Circonscription sanitaire du district de Leeds, Grenville et Lanark",781921.5637,7057561078,3510,South East,Sud-Est,22462852320,796308.5853,South East
+3551,City of Ottawa Health Unit,Circonscription sanitaire de la ville d'Ottawa,277375.6743,2985482024,3510,South East,Sud-Est,22462852320,796308.5853,South East
+3558,The Eastern Ontario Health Unit,Circonscription sanitaire de l'Est de l'Ontario,609169.7935,5568738720,3510,South East,Sud-Est,22462852320,796308.5853,South East
+3547,North Bay Parry Sound District Health Unit,Circonscription sanitaire du district de North Bay Parry Sound,3289144.729,19586849285,3511,North East,North East,19327735763,1105831.52,North East
+3526,The District of Algoma Health Unit,Circonscription sanitaire du district d'Algoma,3026509.767,44944996470,3513,North East,Nord-Est,4.34254E+11,3793255.305,North East
+3556,Porcupine Health Unit,Circonscription sanitaire de Porcupine,2901441.761,2.75623E+11,3513,North East,Nord-Est,4.34254E+11,3793255.305,North East
+3561,Sudbury and District Health Unit,Circonscription sanitaire de Sudbury et son district,4259083.328,51774337492,3513,North East,Nord-Est,4.34254E+11,3793255.305,North East
+3562,Thunder Bay District Health Unit,Circonscription sanitaire du district de Thunder Bay,5036774.227,2.49418E+11,3513,North East,Nord-Est,4.34254E+11,3793255.305,North East
+3563,Timiskaming Health Unit,Circonscription sanitaire de Timiskaming,603607.3221,15774542455,3513,North East,Nord-Est,4.34254E+11,3793255.305,North East
+3549,Northwestern Health Unit,Circonscription sanitaire du Nord-Ouest,9437888.416,1.98895E+11,3514,North West,Nord-Ouest,4.75238E+11,3378558.41,North West

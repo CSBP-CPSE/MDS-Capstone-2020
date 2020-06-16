@@ -1,0 +1,336 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+# COVID PHU-Level Clustering 
+
+## Hierarchical Clustering Methods
+
+```{r packages, include = F}
+suppressPackageStartupMessages(library('dplyr'))
+suppressPackageStartupMessages(library('tidyverse'))
+suppressPackageStartupMessages(library('mclust'))
+suppressPackageStartupMessages(library('factoextra'))
+suppressPackageStartupMessages(library('cluster'))
+suppressPackageStartupMessages(library('ggplot2'))
+suppressPackageStartupMessages(library('dendextend'))
+```
+
+```{r read and clean data, include = F}
+phu <- read.csv('../data/PMD-en/PHU_FINAL_prop.csv')
+phu <- phu[,-c(1,2)]
+
+# percent comorbidities clean ----
+percents <- c('copd.percent', 'asthma.percent', 'smokers.percent', 'hbp.percent')
+phu[,percents] <- lapply(phu[,percents], function(x) as.numeric(gsub("[\\%,]", "", x))/100)
+
+# convert missing transit data to 0 ----
+# (ASSUMPTION: there is no public transit in the corresponding PHU)
+phu$prox_idx_transit[is.na(phu$prox_idx_transit)] <- 0
+
+# PHU cols for pca ----
+keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 
+         'prox_idx_emp', 'prox_idx_pharma', 'prox_idx_childcare', 'prox_idx_health',
+         'prox_idx_grocery', 'prox_idx_educpri', 'prox_idx_educsec', 'prox_idx_lib',
+         'prox_idx_parks', 'prox_idx_transit')
+
+phu_prop <- subset(phu, select = keep)
+
+#assign names phu df
+rownames(phu_prop) <- phu_prop$Location
+```
+
+### Agglomerative Clustering:
+
+Data is first scaled then the euclidean distance is computed between each PHU. Clusters are formed based on least dissimilarities between observations.
+
+*Group average clustering:* attempts to produce relatively compact that are relatively far apart.
+*Complete clustering:* all union observations for two groups are least dissimilar - can produce clusters that violate "closeness" property (one observation may be more similar to observations in other groups).
+*Single clustering:* grouped based on one dissimilarity measure common between two observations being very small - prone to chaining.
+
+Single linkage appears to have chaining while average linkage groups are not as easily discernable. Complete linkage was chosen for further analysis.
+
+```{r scale and dist, include = F}
+#scale
+phu_sc <- scale(phu_prop[,-1])
+
+#euc distance between each PHU is ok because all var are quantitative
+phu_dist <- dist(phu_sc)
+
+#clust
+comp <- hclust(phu_dist, method = "complete")
+av <- hclust(phu_dist, method = "average")
+sing <- hclust(phu_dist, method = 'single')
+
+plot(comp, main = "Complete Linkage") # best, suggests 2 groups
+plot(av, main = "Average Linkage") # chaining
+plot(sing, main = "Single Linkage") # chaining
+
+```
+
+```{r complete clust, echo = F}
+# comp clust better visualization ----
+comp_dend <- as.dendrogram(comp)
+comp_col_dend <- color_branches(comp_dend, h = 3)
+plot(comp_col_dend, main = "Complete Linkage")
+```
+
+With 8 groups it seems as though there is too much separation...
+
+```{r comp clust k 2, echo = F}
+
+# 8 clusters according to previous plot ----
+phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 8)) 
+count(phu_cl,cluster)
+
+# VIS: cluster groups ----
+fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 8)), 
+             main = "Cluster Plot k = 8 - Agglomerative Complete Hierarchical Clustering")
+
+```
+
+With 3 groups it appears as though there is not enough separation...
+
+```{r comp clust k 3, echo = F}
+
+# 3 clusters according to previous plot ----
+phu_cl <- mutate(phu_prop, cluster = cutree(comp, k = 3)) 
+count(phu_cl,cluster)
+
+# VIS: cluster groups ----
+fviz_cluster(list(data = phu_cl[,-1], cluster = cutree(comp, k = 3)), 
+             main = "Cluster Plot k = 3 - Agglomerative Complete Hierarchical Clustering")
+
+```
+
+The agglomerative coefficient for complete linkage:
+
+```{r ac comp, echo = F}
+paste("Aggloemeratice Coefficient: ", coef.hclust(comp))
+```
+
+```{r k 3, echo = F}
+# VIS: bar plots ----
+phu_cl <- mutate(phu_cl, CovidCaseStrat = phu$TOTALprop) 
+
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+
+```
+
+### Divisive Hierarchical Clustering - DIANA
+All observations begin as a single cluster and are divisible separated based on largest average dissimilarity between an observation and all others.
+
+Hierarchical clustering will always cluster even if there is no grouping in the data. The divisive coefficient is on a 0-1 scale, representing the extent to which the hierarchical structure produced by a dendrogram actually represents the data (closer to 1 = better representation).
+
+```{r DIANA, echo = F}
+hc <- diana(phu_dist)
+paste("Divisive Coefficient: ", hc$dc)
+```
+
+```{r DIANA VIS, echo = F}
+pltree(hc, cex = 0.6, hang = -1, main = "Dendrogram of DIANA")
+clust <- cutree(hc, k = 4)
+fviz_cluster(list(data = phu_dist, cluster = clust), main = "Cluster Plot DIANA - Divisive Hierarchical Clustering")
+
+```
+
+Covid Case Total Proportions (per PHU) data and DIANA cluster assignment are added to `phu_prop` to assess groupings by covid output.
+
+```{r diana bar, echo = F}
+# VIS: bar plots ----
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TOTALprop) 
+phu_cl <- mutate(phu_cl, cluster = clust) 
+
+
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
+
+```
+
+
+Looking at covid case proportions for each PHU coloured by transit proximity.
+
+Peel and York have week transit proximity but high case proportions.
+
+```{r by transit}
+phu_cl <- mutate(phu_prop, CovidCaseStrat = phu$TOTALprop) 
+
+ggplot(phu_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = prox_idx_transit)) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Proportion of PHU with Covid Cases")
+
+
+```
+
+## Mixture Model Clustering Methods 
+
+### EM Algorithm
+
+Soft version of K-means clustering that is based on probabilities rather than deterministic assignments of points to groups. Used package `Mclust`.
+
+For all parameters:
+
+```{r EM all params, include = F}
+# EM by all params ----
+mphu <-Mclust(phu_prop, G=1:3)
+plot(mphu, what="classification")
+```
+
+
+Between PHU and Stratified Proportion of Cases:
+
+```{r EM cases, include = F}
+# EM by total cases ----
+mcovid <- Mclust(phu[,21], G=1:2)
+plot(mcovid, what="classification")
+```
+
+```{r EM case classes}
+# EM view clasess ----
+classes <- mutate(as.data.frame(mcovid$classification), loc = phu$Location)
+colnames(classes)[1] <- 'class'
+classes <- classes[order(classes),][1:36,]
+classes
+```
+
+
+### Multidimensional Scaling
+
+Uses euclidean distances of scaled PHU data. Similarly represents hierarchical clustering (Toronto is its own cluster, denser regions such as Peel, Halton, York, Waterloo, Ottawa...etc. separate from smaller districts).
+
+```{r}
+labels(phu_dist)
+plot(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], type = "n", 
+     xlab = "", ylab = "", 
+     asp = 1, axes = FALSE, 
+     main = "MDS Results on phu_dist")
+text(cmdscale(phu_dist)[,1], cmdscale(phu_dist)[,2], rownames(cmdscale(phu_dist)), cex = 0.6)
+
+
+```
+
+
+
+---
+
+
+# Clustering with only `amenity` cols
+
+```{r}
+amenity_keep <- c('Location', 'asthma.percent', 'copd.percent', 'hbp.percent', 'smokers.percent', 'amenity')
+
+phu_amen <- subset(phu, select = amenity_keep)
+
+rownames(phu_amen) <- phu_amen$Location
+
+```
+
+
+```{r scale and dist2, include = F}
+#scale
+phu_amen_sc <- scale(phu_amen[,-1])
+
+#euc distance between each PHU is ok because all var are quantitative
+phu_dist2 <- dist(phu_amen_sc)
+
+#clust
+comp2 <- hclust(phu_dist2, method = "complete")
+av2 <- hclust(phu_dist2, method = "average")
+sing2 <- hclust(phu_dist2, method = 'single')
+
+plot(comp2, main = "Complete Linkage") # best, suggests 2 groups
+plot(av2, main = "Average Linkage") # chaining
+plot(sing2, main = "Single Linkage") # chaining
+
+```
+
+```{r complete clust2, echo = F}
+# comp clust better visualization ----
+comp_dend2 <- as.dendrogram(comp2)
+comp_col_dend2 <- color_branches(comp_dend2, h = 3)
+plot(comp_col_dend2, main = "Complete Linkage")
+```
+
+```{r}
+# 2 clusters according to previous plot ----
+phu_amen_cl <- mutate(phu_amen, cluster = cutree(comp2, k = 2)) 
+count(phu_amen_cl,cluster)
+
+# VIS: cluster groups ----
+fviz_cluster(list(data = phu_amen_cl[,-1], cluster = cutree(comp2, k = 2)), 
+             main = "Agglomerative Complete Hierarchical Clustering, k = 2")+   scale_colour_manual(values=c("#46A5FE", "#E69F00")) +
+  scale_fill_manual(values=c("#46A5FE", "#E69F00")) 
+```
+
+
+The agglomerative coefficient for complete linkage:
+
+```{r ac comp2, echo = F}
+paste("Aggloemeratice Coefficient: ", coef.hclust(comp2))
+```
+
+
+```{r , echo = F}
+# VIS: bar plots ----
+phu_amen_cl <- mutate(phu_amen_cl, CovidCaseStrat = phu$TOTALprop) 
+
+ggplot(phu_amen_cl, aes(x=fct_reorder(Location,CovidCaseStrat, .desc=F), y = CovidCaseStrat, fill = factor(cluster))) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  labs(x = "PHU", y = "Stratified Proportion of PHU with Covid Cases")
+
+```
+
+```{r , echo = F}
+library(ggthemes)
+library(htmlwidgets)
+# VIS: bar plots ----
+phu_amen_cl <- mutate(phu_amen_cl, CovidCase = phu$TOTALprop) 
+phu_amen_cl$Cluster <- as.factor(phu_amen_cl$cluster)
+
+
+# clean location names
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$Location, "Health Unit")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "North Bay Parry Sound District", "NBPS")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Haliburton, Kawartha, Pine Ridge", "HKPR")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Leeds, Grenville and Lanark District", "LGL")
+#phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "Kingston, Frontenac and Lennox and Addington", "KFLA")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "District")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "County")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "The")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "of")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "City")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Regional")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Counties")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "and")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "-")
+phu_amen_cl$abbrev <- str_remove(phu_amen_cl$abbrev, "Area")
+phu_amen_cl$abbrev <- str_replace(phu_amen_cl$abbrev, "  ", " ")
+
+
+
+
+#pdf('StratClust.pdf')
+yes <-ggplot(phu_amen_cl, aes(x=fct_reorder(abbrev,CovidCase, .desc=F), y = CovidCase, fill = Cluster)) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=45,hjust=1)) +
+  labs(x = "PHU", y = "Proportion") +
+  ggtitle('PHU Proportion of Covid Cases')+ 
+  #theme(legend.title = element_blank()) +
+    scale_fill_manual(values=c("#46A5FE", "#E69F00"))
+
+
+saveWidget(ggplotly(yes), 'barplotly.html')
+
+#dev.off()
+
+```

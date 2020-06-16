@@ -1,8 +1,8 @@
 
 // set the dimensions and margins of the graph
-var margin = {top: 50, right: 30, bottom: 50, left: 50},
-    width = 460 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 30, right: 0, bottom: 30, left: 30},
+    width = 400 - margin.left - margin.right,
+    height = 420 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#chart")
@@ -102,8 +102,8 @@ d3.csv("data/prox.csv", function(data) {
    tooltip2.classed('hidden', false)
         .html(d.ENG_LABEL+ "</br> "
            + "Amenity Score: " + d.amenity_dense)
-       .style("left", (d3.event.pageX - 108) + "px")
-       .style("top", (d3.event.pageY-128) + "px");
+       .style("left", (d3.event.pageX - 235) + "px")
+       .style("top", (d3.event.pageY-28) + "px");
  }
 
 

@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ## Import the data
-```{r }
+```{r results='hide'}
 library(skimr)
 
 # Import the data
@@ -101,7 +101,7 @@ We see above that the inspections and number of beds data are highly right skewe
 The highly skewed variables will have to be transformed for the analysis, but first we explore the variables to assess for any zero values. 
 
 
-```{r }
+```{r, results='hide'}
 for (each in listofcols){
   print(each)
   print(summary(df[[each]]))
@@ -157,7 +157,6 @@ As shown above, in all cases where variables contain 0s, a square root transform
 
 ## Log transform the data
 ```{r }
-
 # Log transform in place
 data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')] <- log(data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')])
 
@@ -189,7 +188,7 @@ summary(fit)
 ```
 
 ## Backwards selection
-```{r }
+```{r, results="hide"}
 fit <- update(fit, .~. -pressure_ulcers_percent)
 summary(fit)
 fit <- update(fit, .~. -X5y_complaints)
@@ -248,7 +247,11 @@ fit <- update(fit, .~. -total_inspections)
 summary(fit)
 fit <- update(fit, .~. -home_type)
 summary(fit)
+```
 
+
+```{r }
+summary(fit)
 ```
 
 As shown above when all variables are included in the initial regression and then backwards selection is used for variable selection, the significant variables are number of beds, total complaints and region. 
@@ -259,6 +262,7 @@ ll.null <- fit$null.deviance/-2
 ll.proposed <- fit$deviance/-2
 print((ll.null - ll.proposed)/ll.null)
 1 - pchisq(2*(ll.proposed - ll.null), df = (length(fit$coefficients)-1)) #pvalue
+
 ```
 
 ## Visualize the model
@@ -292,7 +296,7 @@ summary(fit)
 ```
 
 ## Backwards Selection
-```{r }
+```{r, results="hide" }
 fit <- update(fit, .~. -X2y_withOrders)
 summary(fit)
 fit <- update(fit, .~. -X2y_complaints)
@@ -310,6 +314,10 @@ summary(fit)
 
 ```
 
+```{r }
+summary(fit)
+```
+
 ## Repeat the logistic regression with selected variables
 ```{r }
 data_selected <- subset(df, select= c('outbreak', 'home_type', 'number_beds', all_inspections, complaints, withOrders))
@@ -320,7 +328,7 @@ summary(fit)
 ```
 
 
-```{r }
+```{r, results='hide' }
 fit <- update(fit, .~. -X2y_complaints)
 summary(fit)
 fit <- update(fit, .~. -X2y_withOrders)
@@ -337,7 +345,9 @@ fit <- update(fit, .~. -X5y_withOrders)
 summary(fit)
 
 ```
-
+```{r }
+summary(fit)
+```
 
 ```{r }
 

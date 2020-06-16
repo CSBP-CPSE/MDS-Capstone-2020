@@ -20,7 +20,7 @@ var tooltip2 = d3.select("#chart")
 
 
 
-d3.csv("data/prox.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/docs/kt/data/prox.csv?token=AJI7AY2G2HWDZBVJA2CXCU266IZWO", function(data) {
 
   ///////////////////////
   // Scales
@@ -73,17 +73,41 @@ d3.csv("data/prox.csv", function(data) {
 
   ///////////////////////
   // Bars
-  var bar = svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d['ENG_LABEL']); })
-      .attr("y", height)
-      .attr("width", x.rangeBand())
-      .attr("height", 0)
-			.attr('fill', 'rgb(65,174,118)')
-      .on('mouseover', showBar)
-      .on('mouseout', hideBar);
+  // var bar = svg.selectAll(".bar")
+  //     .data(data)
+  //   .enter().append("rect")
+  //     .attr("class", "bar")
+  //     .attr("x", function(d) { return x(d['ENG_LABEL']); })
+  //     .attr("y", height)
+  //     .attr("width", x.rangeBand())
+  //     .attr("height", 0)
+	// 		.attr('fill', 'rgb(65,174,118)')
+  //     .on('mouseover', showBar)
+  //     .on('mouseout', hideBar);
+
+// Lines
+svg.selectAll("myline")
+  .data(data)
+  .enter()
+  .append("line")
+    .attr("x1", function(d) { return x(d.ENG_LABEL); })
+    .attr("x2", function(d) { return x(d.ENG_LABEL); })
+    .attr("y1", function(d) { return +y(d.amenity_dense); })
+    .attr("y2", y(0))
+    .attr("stroke", "grey")
+
+// Circles
+svg.selectAll("mycircle")
+						  .data(data)
+						  .enter()
+						  .append("circle")
+						    .attr("cx", function(d) { return x(d.ENG_LABEL); })
+						    .attr("cy", function(d) { return +y(d.amenity_dense); })
+						    .attr("r", "4")
+						    .style("fill", "#69b3a2")
+						    .attr("stroke", "black")
+								.on('mouseover', showBar)
+								.on('mouseout', hideBar);
 
   bar.transition()
       .duration(1500)

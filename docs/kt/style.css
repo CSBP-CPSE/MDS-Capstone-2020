@@ -129,6 +129,10 @@ rect:hover {
         fill: green;
       }
 
+#mycircle:hover {
+        fill: green;
+      }
+
 .axis {
 	  font: 10px sans-serif;
 	}

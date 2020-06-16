@@ -1,0 +1,60 @@
+---
+title: "socioecon_analysis"
+author: "KT Hobbs"
+date: "15/06/2020"
+output: html_document
+---
+
+```{r libs}
+library(skimr)
+```
+
+```{r read}
+df = read.csv(file = 'econ_kt.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
+colnames(df)
+```
+
+
+```{r }
+df2 = df[,-c(1, 2, 25, 30:50,52)]
+
+# summary(df2)
+ skim(df2)
+
+```
+
+
+```{r}
+df3 = na.omit(df2)
+
+pc2 <- prcomp(df3)
+summary(pc2)
+```
+
+```{r}
+screeplot(pc2)
+```
+
+
+```{r}
+pc2$rotation[,1:2]
+```
+PC1: higher comorbidities, more detached homes, less amenity dense, higher age of population, less higher education, poorer mental and physical health
+
+PC2: higher cost of living, high rises, more unemployment/less in the work force, perceived high stress, more commuting altogether and more vehical transit usage, percieved good health, much more amenity dense? => *possibly indicative of a city*
+
+With commute time, all variables load onto one component.
+
+```{r}
+library(dplyr)
+df_na <- na.omit(df)
+mutate(df3, total = df_na$TOTAL)
+```
+
+
+
+```{r}
+
+suppressWarnings(biplot(pc2, xlabs = df_na$Location_x))
+```
+

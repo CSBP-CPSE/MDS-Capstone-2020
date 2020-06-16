@@ -44,3 +44,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Thursday June 11
 
 1. Work on remaining tasks for the week...writing and D3.
+
+## Weekend
+
+1. continued work on D3, stats, and paper writing.

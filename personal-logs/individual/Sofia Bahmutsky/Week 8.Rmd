@@ -1,0 +1,30 @@
+---
+title: "Individual Work Log WEEK 8"
+author: "Sofia Bahmutsky"
+date: "16/06/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Monday June 15
+
+1. Writing paper
+
+2. Group meeting 9:30-3pm (6 hours)
+
+
+## Tuesday Hune 16
+
+1. Paper writing, research (8 hours)
+
+2. Zoom meeting with Scott and TA's (1 hour)
+
+3. Zoom meeting with KT and Ngan
+
+4. Re-run all stats with new dataset...
+

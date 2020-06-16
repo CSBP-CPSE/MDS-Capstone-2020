@@ -1,5 +1,5 @@
 ---
-title: "Weekly Team Log - WEEK 6"
+title: "Weekly Team Log - WEEK 7"
 author: "Sofia Bahmutsky"
 date: "02/06/2020"
 output:
@@ -16,9 +16,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Monday June 8
 
-1. Group meeting, also a help session with Bruno to help us with the D3. 9:30-?
+1. Group meeting, also a help session with Bruno to help us with the D3. 9:30-4:30
 
-2. Bruno help session (11am-12?)
+2. Bruno help session (11am-12:30)
 
 3. Continuing to work on the dashboard.
 
@@ -31,4 +31,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Presentationi to Scott and TA's (11:30am)
 
-2. 
+2. Continues work on D3 and final report
+
+
+## Wednesday June 10
+
+1. Group meeting 9:30 - ?
+
+2. meeting with Bruno and Marian, going through the latest progress.
+
+
+## Thursday June 11
+
+1. Work on remaining tasks for the week...writing and D3.
+
+## Weekend
+
+1. continued work on D3, stats, and paper writing.

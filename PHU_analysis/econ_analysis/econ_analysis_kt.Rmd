@@ -56,5 +56,5 @@ mutate(df3, total = df_na$TOTAL)
 ```{r}
 
 suppressWarnings(biplot(pc2, xlabs = df_na$Location_x))
-```
+````
 

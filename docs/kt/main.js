@@ -136,7 +136,7 @@ d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canad
 		// We add a listener to the browser window, calling updateLegend when the window is resized.
 		window.onresize = (ev) => {
 			updateLegend(map1, legend1);
-			updateLegend(map2, legend2);
+			// updateLegend(map2, legend2);
 			updateLegend(map3, legend3);
 
 		};
@@ -241,7 +241,7 @@ function LoadData(map, key, points) {
  										+ "Type: " + d.home_type + "</br> "
  										+ "Beds: " + d.number_beds + "</br> "
  										+ "LHIN: " + d.LHIN + "</br> "
-										+ "Inspections: " + d.total_inspections + "</br> "
+										// + "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
 								.style("left", (d3.event.pageX - 235) + "px")
       					.style("top", (d3.event.pageY-28) + "px");

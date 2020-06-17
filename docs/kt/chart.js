@@ -20,7 +20,7 @@ var tooltip2 = d3.select("#chart")
 
 
 
-d3.csv("https://raw.githubusercontent.com/ubco-mds-2019-labs/data-599-capstone-statistics-canada/master/docs/kt/data/prox.csv?token=AJI7AY2G2HWDZBVJA2CXCU266IZWO", function(data) {
+d3.csv("https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/phu_statistics.csv", function(data) {
 
   ///////////////////////
   // Scales

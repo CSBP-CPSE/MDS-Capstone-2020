@@ -94,7 +94,7 @@ InitZoom(map1);
 InitZoom(map4);
 
 // Load the features from the GeoJSON.
-d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/reversed_phu.geojson', function(error, collection) {
+d3.json('../data/34_phus.json', function(error, collection) {
 	// console.log(collection.features)
 	var features = collection.features;
 

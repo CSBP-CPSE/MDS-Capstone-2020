@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 2. Group meeting 9:30-3pm (6 hours)
 
 
-## Tuesday Hune 16
+## Tuesday June 16
 
 1. Paper writing, research (8 hours)
 
@@ -26,5 +26,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. Zoom meeting with KT and Ngan
 
-4. Re-run all stats with new dataset...
+4. Re-run all stats with new dataset... econ_kt.csv in PHU folder!
+
+5. Working again on QGI, fixing up some polygon issues which were discovered.. (1 hour)
+
+
+## Wednesday June 17
+
+1. Group meeting, stats Canada meeting from 11-12.
+
+2. Continue writing
+
+3. Re-run the stats wth updated data.
 

@@ -94,12 +94,12 @@ InitZoom(map1);
 InitZoom(map4);
 
 // Load the features from the GeoJSON.
-d3.json('../data/34_phus.json', function(error, collection) {
+d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/data/reversed_34_phu_simplified.geojson', function(error, collection) {
 	// console.log(collection.features)
 	var features = collection.features;
 
 	// Read the data for the cartogram
-	d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/phu_statistics.csv', function(data) {
+	d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/data/phu_statistics.csv', function(data) {
 		// We store the data object in the variable which is accessible from
 		// outside of this function.
 		var index = d3.nest()

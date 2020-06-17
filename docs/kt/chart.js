@@ -109,13 +109,13 @@ svg.selectAll("mycircle")
 								.on('mouseover', showBar)
 								.on('mouseout', hideBar);
 
-  bar.transition()
-      .duration(1500)
-      .ease("elastic")
-      .attr("y", function(d) { return y(+d['amenity_dense']); })
-      .attr("height", function(d) { return height - y(+d['amenity_dense']);
-
-  });
+  // bar.transition()
+  //     .duration(1500)
+  //     .ease("elastic")
+  //     .attr("y", function(d) { return y(+d['amenity_dense']); })
+  //     .attr("height", function(d) { return height - y(+d['amenity_dense']);
+	//
+  // });
 
 
   // Bar show details

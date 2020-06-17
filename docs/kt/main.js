@@ -159,7 +159,6 @@ d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canad
 						LoadData(map4, key = 0, points = csv);
 
 
-
 				})
 	});
 
@@ -189,7 +188,7 @@ function LoadData(map, key, points) {
 
 								return map.quantize(+meta[key]); // Use the quantized value for the class
 							})
-	 				   .on('mousemove',  function(f){ // show tooltip
+	 				   .on('mousemove',  function(f, i){ // show tooltip
 	 						 var id = f.properties.HR_UID;
 	 						 var meta = map.index[id];
 
@@ -198,10 +197,16 @@ function LoadData(map, key, points) {
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
-								.style("left", (d3.event.pageX) + "px")
-      					.style("top", (d3.event.pageY - 120) + "px");
+								.style("left", (d3.event.pageX + 20) + "px")
+								.style("top", (d3.event.pageY - 120) + "px");
+												
+								HighlightChart(f, i);
 	 						})
-							.on('mouseout', function() {map.tooltip.classed('hidden', true)}) //hide tooltip
+							.on('mouseout', function() {
+								map.tooltip.classed('hidden', true);
+								
+								ClearHighlight();
+							}) //hide tooltip
 				};
 
 	if (points != 0)	{
@@ -243,8 +248,8 @@ function LoadData(map, key, points) {
  										+ "LHIN: " + d.LHIN + "</br> "
 										// + "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
-								.style("left", (d3.event.pageX) + "px")
-      					.style("top", (d3.event.pageY - 120) + "px");
+								.style("left", (d3.event.pageX - 235) + "px")
+      					.style("top", (d3.event.pageY-28) + "px");
 				 	}
 
 

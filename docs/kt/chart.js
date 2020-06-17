@@ -1,14 +1,15 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 0, bottom: 30, left: 30},
-    width = 400 - margin.left - margin.right,
-    height = 420 - margin.top - margin.bottom;
+    width = 500 - margin.left - margin.right,
+    height = 520 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#chart")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+	.attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")")
@@ -19,6 +20,19 @@ var tooltip2 = d3.select("body")
 			    .attr("class", "tooltip hidden");
 
 
+
+function HighlightChart(f, i) {
+	var data = svg.selectAll('circle').data();
+	
+	// NOT SUPPORTED IN IE
+	// var d = data.find(d => d.HR_UID == f.properties.HR_UID);
+	
+	var circle = svg.selectAll('circle').filter((d, i) => d.HR_UID == f.properties.HR_UID).style("fill", "yellow");
+}
+
+function ClearHighlight() {
+	svg.selectAll('circle').style("fill", "#69b3a2");
+}
 
 d3.csv("https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/phu_statistics.csv", function(data) {
 
@@ -117,7 +131,6 @@ svg.selectAll("mycircle")
 	//
   // });
 
-
   // Bar show details
  function showBar(d) {
 
@@ -127,7 +140,7 @@ svg.selectAll("mycircle")
         .html(d.ENG_LABEL+ "</br> "
            + "Amenity Score: " + d.amenity_dense)
        .style("left", (d3.event.pageX + 20) + "px")
-       .style("top", (d3.event.pageY + 20) + "px");
+       .style("top", (d3.event.pageY - 20) + "px");
  }
 
 

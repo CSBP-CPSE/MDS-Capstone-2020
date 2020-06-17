@@ -2,6 +2,10 @@ body {
   margin: 25px;
 }
 
+body .container {
+	max-width : 1260px;
+}
+
 h3 {
   background-color: #253970;
   color: white;
@@ -13,7 +17,6 @@ h3 {
   clear: both;
 	width: 100%;
 }
-
 
 
 /* map */
@@ -184,4 +187,8 @@ g.features {
 }
 g.features path:hover {
   opacity: 0.5;
+}
+
+circle.highlight {
+	fill : yellow;
 }

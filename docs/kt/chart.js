@@ -14,7 +14,7 @@ var svg = d3.select("#chart")
           "translate(" + margin.left + "," + margin.top + ")")
 
 
-var tooltip2 = d3.select("#chart")
+var tooltip2 = d3.select("body")
 			    .append("div")
 			    .attr("class", "tooltip hidden");
 
@@ -126,8 +126,8 @@ svg.selectAll("mycircle")
    tooltip2.classed('hidden', false)
         .html(d.ENG_LABEL+ "</br> "
            + "Amenity Score: " + d.amenity_dense)
-       .style("left", (d3.event.pageX - 235) + "px")
-       .style("top", (d3.event.pageY-28) + "px");
+       .style("left", (d3.event.pageX + 20) + "px")
+       .style("top", (d3.event.pageY + 20) + "px");
  }
 
 

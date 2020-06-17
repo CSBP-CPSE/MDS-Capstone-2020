@@ -15,7 +15,7 @@ function InitializeMap(container, width, height) {
 	var mapFeatures = svg.append('g').attr('class', 'features YlGnBu');
 
 	// We add a <div> container for the tooltip, which is hidden by default.
-	var tooltip = d3.select("#map")
+	var tooltip = d3.select("body")
 				    .append("div")
 				    .attr("class", "tooltip hidden")
 
@@ -198,8 +198,8 @@ function LoadData(map, key, points) {
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
-								.style("left", (d3.event.pageX - 235) + "px")
-      					.style("top", (d3.event.pageY-28) + "px");
+								.style("left", (d3.event.pageX) + "px")
+      					.style("top", (d3.event.pageY - 120) + "px");
 	 						})
 							.on('mouseout', function() {map.tooltip.classed('hidden', true)}) //hide tooltip
 				};
@@ -243,8 +243,8 @@ function LoadData(map, key, points) {
  										+ "LHIN: " + d.LHIN + "</br> "
 										// + "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
-								.style("left", (d3.event.pageX - 235) + "px")
-      					.style("top", (d3.event.pageY-28) + "px");
+								.style("left", (d3.event.pageX) + "px")
+      					.style("top", (d3.event.pageY - 120) + "px");
 				 	}
 
 

@@ -73,7 +73,7 @@ var quantize = d3.scale.quantize()
 var formatNumber = d3.format('.4f');
 
 // Load the features from the GeoJSON.
-d3.json('data/reversed_phu.geojson', function(error, features) {
+d3.json('data/r34_phus.geojson', function(error, features) {
   //
   // aa = [-82.36, 42.98];
   // bb = [-80.01, 43.21];

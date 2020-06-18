@@ -179,4 +179,4 @@ Tuesday June 16
 
 Wednesday June 17
 - Meeting with StatCan (1h)
-- PHU analysis Documentation (5h)
+- PHU analysis organizing and documentation (4h)

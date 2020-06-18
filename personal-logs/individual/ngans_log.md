@@ -170,3 +170,13 @@ Friday June 12
 
 Saturday June 13
 - LTC homes statistical analysis (2h)
+
+Monday June 15
+- Put together the weekly meeting presentation
+
+Tuesday June 16
+- Weekly meeting and presentation (30min)
+
+Wednesday June 17
+- Meeting with StatCan (1h)
+- PHU analysis Documentation (5h)

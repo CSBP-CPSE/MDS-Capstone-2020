@@ -10,14 +10,14 @@ library(skimr)
 ```
 
 ```{r read}
-df = read.csv(file = 'econ_kt.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
+df = read.csv(file = '/Users/kt/Documents/UBC_MDS/capstone/data-599-capstone-statistics-canada/PHU_analysis/data/econ_kt.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
 colnames(df)
 ```
 
 
 ```{r }
-df2 = df[,-c(1, 2, 25, 30:50,52)]
-
+df2 = df[,-c(1, 2, 25, 30:50,52, 75,76)]
+colnames(df2)
 # summary(df2)
  skim(df2)
 

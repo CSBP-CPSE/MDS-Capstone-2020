@@ -1,7 +1,29 @@
-# Data 599 - Capstone
+# Modeling and Visualization of the COVID-19 Outbreak in Ontario
 
-This private repository is provided for the capstone project.  Please use it to manage your project resources (keeping in mind data security and privacy considerations).  
+#### For
 
-Personal and team work logs can be stored under logs.  Your weekly status reports are to be stored in the weekly-update folder.  You must remember to keep your repository up to date. 
+Bruno St-Aubin & Marian Radulescu
 
-You are free to create any additional structure you require for the project.  
+#### At
+
+Statistics Canada
+
+
+
+#### Written by:
+
+Sofia Bahmutsky 
+
+Kaitlyn Hobbs 
+
+Ngan Hien Lyle
+
+Shreeram Murali
+
+**Data 599 - Capstone Project MDS**
+
+**June 23, 2020**
+
+
+
+[Interactive Visualizations](https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/)

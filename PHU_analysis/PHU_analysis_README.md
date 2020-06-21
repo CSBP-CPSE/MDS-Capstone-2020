@@ -32,3 +32,11 @@ Input files | 13100113.csv
 Output file | <ul><li>comorbidity_data_percent.csv</li><li>comorbidity_data_num.csv</li></ul>
 
 The Health characteristics, two-year period estimates was downloaded from [Statistics Canada](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301).
+
+### Merge Data
+
+Type | Name
+--|--
+Script | PHU_merge_data.ipynb
+Input files | <ul><li>comorbidity_data_percent.csv</li><li>proximity_data_aggregated.csv</li></ul>
+Output file | PHU_merged_data.csv

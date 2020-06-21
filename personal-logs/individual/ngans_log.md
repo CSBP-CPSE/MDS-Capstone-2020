@@ -175,8 +175,12 @@ Monday June 15
 - Put together the weekly meeting presentation
 
 Tuesday June 16
-- Weekly meeting and presentation (30min)
+- Weekly meeting and presentation, presenter (30min)
 
 Wednesday June 17
 - Meeting with StatCan (1h)
 - PHU analysis organizing and documentation (4h)
+
+Thursday June 18
+- Wrangling census profile data (4h)
+- Writing one page summary (2h)

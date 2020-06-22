@@ -184,3 +184,11 @@ Wednesday June 17
 Thursday June 18
 - Wrangling census profile data (4h)
 - Writing one page summary (2h)
+
+Saturday June 20
+Final report writing (8h)
+
+Sunday June 21
+Reran the PHU PCA and PCR (2h)
+Final report writing (2h)
+Final presentation (2h)

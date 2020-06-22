@@ -133,11 +133,23 @@ phu_cl$abbrev <- str_replace(phu_cl$abbrev, "Sudbury &", "Sudbury")
 pdf('../visualizations/ClusterBar.pdf')
 ggplot(phu_cl, aes(x=fct_reorder(abbrev,CovidCase, .desc=F), y = CovidCase, fill = Cluster)) + 
   geom_bar(stat="identity")  +
-  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  theme(axis.text.x=element_text(angle=45,hjust=1)) +
   labs(x = "", y = "") +
   ggtitle('Proportion of COVID-19 Cases per Public Health Unit')
 dev.off()
 
+```
+
+
+```{r}
+
+colnames(phu_cl)
+
+ggplot(phu_cl, aes(x=fct_reorder(abbrev,amenity_dense, .desc=F), y = amenity_dense, fill = Cluster)) + 
+  geom_bar(stat="identity")  +
+  theme(axis.text.x=element_text(angle=45,hjust=1)) +
+  labs(x = "", y = "") +
+  ggtitle('Amenity Density per Public Health Unit')
 ```
 
 ### Divisive Hierarchical Clustering - DIANA

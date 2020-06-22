@@ -10,13 +10,13 @@ library(skimr)
 ```
 
 ```{r read}
-df = read.csv(file = '/Users/kt/Documents/UBC_MDS/capstone/data-599-capstone-statistics-canada/PHU_analysis/data/econ_kt.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
+df = read.csv(file = '../data/econ.csv', stringsAsFactors = FALSE, na.strings="", header=TRUE)
 colnames(df)
 ```
 
 
 ```{r }
-df2 = df[,-c(1, 2, 25, 30:50,52, 75,76)]
+df2 = df[,-c(1, 2, 25, 30:50,52, 73, 84:86)]
 colnames(df2)
 # summary(df2)
  skim(df2)
@@ -55,6 +55,12 @@ mutate(df3, total = df_na$TOTAL)
 
 ```{r}
 
-suppressWarnings(biplot(pc2, xlabs = df_na$Location_x))
+suppressWarnings(biplot(pc2, xlabs = df_na$Reporting_PHU, cex = 0.4))
 ````
+
+
+# Considerations:
+
+- Kingston PHU is missing from socioeconomic data
+- everything loads heavily onto one PC - how does p~=n effect pca?
 

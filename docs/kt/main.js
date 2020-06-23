@@ -249,7 +249,7 @@ function LoadData(map, key, points) {
 										// + "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
 								.style("left", (d3.event.pageX + 20) + "px")
-      					.style("top", (d3.event.pageY- 120) + "px");
+      					.style("top", (d3.event.pageY - 120) + "px");
 				 	}
 
 

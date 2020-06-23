@@ -27,7 +27,7 @@ names(data)[names(data) == "smokers.percent"] <- "smokers.prop"
 # dropping unneeded cols
 df <- subset(data, select = -c(X, DGUID, Reporting_PHU, fid, DBUID, PRUID_x, CSDUID_x, CMAUID_x, CMAPUID_x, HR_UID, DAUID, lon, lat, transit_na, suppressed))
   
-# dropping some cols which may be not make sense in this analysis...(need to check with John i think)
+# dropping some cols which may be not make sense in this analysis...
 df <- subset(df, select = -c(FATALprop, NOT.RESOLVEDprop, RESOLVEDprop))
 df[is.na(df)] <- 0
            

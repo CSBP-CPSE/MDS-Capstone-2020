@@ -199,12 +199,12 @@ function LoadData(map, key, points) {
 										+ "Amenity Score: " + meta.amenity_dense)
 								.style("left", (d3.event.pageX + 20) + "px")
 								.style("top", (d3.event.pageY - 120) + "px");
-												
+
 								HighlightChart(f, i);
 	 						})
 							.on('mouseout', function() {
 								map.tooltip.classed('hidden', true);
-								
+
 								ClearHighlight();
 							}) //hide tooltip
 				};
@@ -248,8 +248,8 @@ function LoadData(map, key, points) {
  										+ "LHIN: " + d.LHIN + "</br> "
 										// + "Inspections: " + d.total_inspections + "</br> "
 										+ "Status: " + d.status)
-								.style("left", (d3.event.pageX - 235) + "px")
-      					.style("top", (d3.event.pageY-28) + "px");
+								.style("left", (d3.event.pageX + 20) + "px")
+      					.style("top", (d3.event.pageY- 120) + "px");
 				 	}
 
 

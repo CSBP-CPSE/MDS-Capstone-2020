@@ -84,4 +84,6 @@ Script | merge_LTC_quality.ipynb
 Input files |  <ul><li>hqo-2020-quality.csv</li><li>merged_LTC_odhf.csv</li></ul>
 Output file | merged_LTC_odhf_quality.csv
 
-Note that 4 homes from step 3, without quality data, were removed leaving 621 homes with complete data.  
+Note that 10 homes from step 3 were removed leaving 615 homes with complete data:
+  - 4 homes did not have any quality data
+  - 6 homes had incomplete quality data

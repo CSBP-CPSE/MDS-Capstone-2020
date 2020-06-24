@@ -32,19 +32,30 @@
     <div id="legend"><!-- Legend container --></div>
 </div>
 
-    <div id="details">
-            The chloropleth map of Ontario (left) displays the proportion of cases for each of the 34 Public Health Units (PHUs). To calculate this proportion,
-            the number of cases for each PHU was determined from data provided by Statistics Canada and divided by the population of the corresponding PHU.
-            On hover, additional data is provided regarding the <strong>PHU name</strong>, <strong> count of fatalities</strong>, and <strong> Amenity Score</strong>, which
-            represents a measure of "connectedness" according to proximity to amenities (transit, pharmacies, education, employment... etc.).
-          </br></br>
-            Amenity richness was calculated from an amenity score provided by Statistics Canada.
-            Each dissemination block receives a score of 0 or 1, representing low or high proximity to amenities, respectively,
-            and the mean of dissemination block scores for a single PHU was calculated.
-            The distribution of amenity-richness scores seems to reflect the proportion of COVID-19 on the PHU level with highly connected PHUs reporting
-            high case proportions and amenity-poor PHUs reporting lower proportions.
-            Factor analysis supported this observation.
-    </div>
+
+    <table style="width:100%">
+  <tr>
+    <th>Element</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Incidence Rate Ratio</td>
+    <td>The number of cases for each PHU was determined from data provided by Statistics Canada and divided by the population of the corresponding PHU.</td>
+  </tr>
+  <tr>
+    <td>Fatality Ratio</td>
+    <td>\[no. fatalities \over no. cases\]</td>
+  </tr>
+
+  <tr>
+      <td>Amenity Score</td>
+    <td>Amenity richness was calculated from an amenity score provided by Statistics Canada.
+    Each dissemination block receives a score of 0 or 1, representing low or high proximity to amenities, respectively.
+    The mean of dissemination block scores for a single PHU was calculated.
+  </td>
+  </tr>
+</table>
+
 
   </br>
   </br>
@@ -53,10 +64,7 @@
 
       <div id="map4"><!-- Map container --></div>
 
-      Zoom and hover over the map of Ontario Long-Term Care homes to view the home <strong> name</strong>, <strong> type</strong>,
-      <strong> number of beds</strong>, associated <strong> Local Health Integration Network (LHIN)</strong>, and <strong> outbreak status</strong>.
-      In this map, Ontario is subdivided according to LHIN. Red points represent homes that have or have had an outbreak while blue points represent those without.
-      </br>
+      Outbreak status describes whether a long-term care home is currently experiencing a COVID-19 outbreak (active) or not (inactive), as of <strong> June 12, 2020. </strong>
 
 
 
@@ -68,7 +76,7 @@
   </br>
     <strong>Data sources</strong>: Data from Statistics Canada -
       <a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020011-eng.htm" target="_blank">proximity data</a>,
-      <a href="https://www.ontario.ca/page/how-ontario-is-responding-covid-19" target="_blank">LTC data</a>.
+      <a href="https://www.ontario.ca/page/how-ontario-is-responding-covid-19" target="_blank">LTC data</a>,
       <a href="https://data.ontario.ca/dataset/f4112442-bdc8-45d2-be3c-12efae72fb27/resource/455fd63b-603d-4608-8216-7d8647f43350" target="_blank">Ontario Covid-19 data</a> and
       <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310011301" target="_blank">health data</a>.
   </br>
@@ -80,6 +88,8 @@
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
   <script src="https://d3js.org/d3-scale.v3.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <!-- Custom JS code -->
   <script src="main.js"></script>

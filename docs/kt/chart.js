@@ -23,10 +23,10 @@ var tooltip2 = d3.select("body")
 
 function HighlightChart(f, i) {
 	var data = svg.selectAll('circle').data();
-	
+
 	// NOT SUPPORTED IN IE
 	// var d = data.find(d => d.HR_UID == f.properties.HR_UID);
-	
+
 	var circle = svg.selectAll('circle').filter((d, i) => d.HR_UID == f.properties.HR_UID).style("fill", "yellow");
 }
 
@@ -34,7 +34,7 @@ function ClearHighlight() {
 	svg.selectAll('circle').style("fill", "#69b3a2");
 }
 
-d3.csv("https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/data/phu_statistics.csv", function(data) {
+d3.csv("https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/data/phu_statistics.csv", function(data) {
 
   ///////////////////////
   // Scales

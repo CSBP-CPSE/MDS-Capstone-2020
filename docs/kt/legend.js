@@ -10,7 +10,7 @@ function InitializeLegend(container, map) {
 	  .scale(legendX)
 	  .orient("bottom")
 	  .tickSize(13)
-	  .tickFormat(d => d3.format('.4f')(d))
+	  .tickFormat(d => d3.format('.2f')(d))
 
 	// We create an SVG element in the legend container and give it some
 	// dimensions.

@@ -99,7 +99,7 @@ d3.json('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canad
 	var features = collection.features;
 
 	// Read the data for the cartogram
-	d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/data/phu_statistics_orig.csv', function(data) {
+	d3.csv('https://ubco-mds-2019-labs.github.io/data-599-capstone-statistics-canada/kt/data/phu_statistics.csv', function(data) {
 		// We store the data object in the variable which is accessible from
 		// outside of this function.
 		var index = d3.nest()

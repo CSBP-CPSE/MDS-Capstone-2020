@@ -20,7 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 2. Stats work finishing up
 
-3. Make presentation slides
+3. KT - Make presentation slides
+
 
 
 ## Tuesday June 2

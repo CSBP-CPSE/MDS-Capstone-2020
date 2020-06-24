@@ -72,3 +72,10 @@ knitr::opts_chunk$set(echo = TRUE)
 1. Presentation!
 2. watching all the other presentations...
 
+## Wednesday June 24
+
+1. Finishing up lookse ends of the paper, trying to use Latex for the final formatting
+2. cleaning up the repo...a lot of extra random files and duplicates.
+
+
+

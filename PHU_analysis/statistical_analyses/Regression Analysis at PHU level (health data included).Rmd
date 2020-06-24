@@ -14,31 +14,33 @@ Data
 library(dplyr)
 
 # load the data
-data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/PHU_analysis/data/econ_kt.csv")
+data <- read.csv("/Users/Sofia/Desktop/data-599-capstone-statistics-canada/PHU_analysis/data/econ.csv")
 
 str(data)
 data[is.na(data)] <- 0
 
 # drop duplicate rows
-data <- data[-c(13, 28), ] 
+#data <- data[-c(13, 28), ] 
 
 # dropping unneeded cols, cleaning...
 data <- data[-c(1, 3:39, 41:49, 61)]
+data <- data[-c(26:35)]
+#data
 
 # calcualte the proportion of COVID-19 cases per PHU
-data$Total_prop <- data$TOTAL/data$HRPOP
-data$Fatal_prop <- data$FATAL/data$HRPOP
+#data$TOTAL_prop <- data$TOTAL/data$HRPOP
+#data$FATAL_prop <- data$FATAL/data$HRPOP
 
 # need to convert all percentages into proportion...
 prop <- function(x) x/100
-data <- data.frame(data[1:3], lapply(data[4:24], prop), data[25:30])
+data <- data.frame(data[1:3], lapply(data[4:24], prop), data[25:28])
 ```
 
 
 Keep only the predictors and response variables needed for the analysis
 ```{r}
-final_cases <- subset(data, select = -c(Location_x, FATAL, TOTAL, HRPOP, FATAL_prop, TOTAL_prop, Fatal_prop))
-final_fatalities <- subset(data, select = -c(Location_x, FATAL, TOTAL, HRPOP,Total_prop, TOTAL_prop, FATAL_prop))
+final_cases <- subset(data, select = -c(Reporting_PHU, FATAL, TOTAL,  FATAL_prop, DBPOP))
+final_fatalities <- subset(data, select = -c(Reporting_PHU, FATAL, TOTAL,TOTAL_prop,  DBPOP))
 ```
 
 LASSO
@@ -49,15 +51,15 @@ library(corrplot)
 library(glmnet)
 
 y=na.omit(final_cases)
-x=model.matrix(Total_prop~.,final_cases)[,-1]
+x=model.matrix(TOTAL_prop~.,final_cases)[,-1]
 rownames(x)=c()
-y=as.matrix(final_cases$Total_prop)
+y=as.matrix(final_cases$TOTAL_prop)
 
 lasso <- glmnet(x, y, alpha = 1)
 plot(lasso, label = TRUE)
 plot(lasso, xvar = "lambda", label = TRUE)
 
-regfit.full=regsubsets(Total_prop~.,final_cases, nvmax = 23)
+regfit.full=regsubsets(TOTAL_prop~.,final_cases, nvmax = 23)
 reg.summary = summary(regfit.full)
 
 reg.summary
@@ -82,7 +84,7 @@ coef(cv.lasso, cv.lasso$lambda.min)
 beta regression model...
 ```{r}
 library(betareg)
-beta_model <- betareg(Total_prop~Arthritis..15.years.and.over.+Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Heavy.drinking+amenity_dense,data = final_cases, link = "loglog")
+beta_model <- betareg(TOTAL_prop~Arthritis..15.years.and.over.+Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Heavy.drinking+amenity,data = final_cases, link = "loglog")
 summary(beta_model)
 
 # checking the links.
@@ -103,9 +105,9 @@ library(plotly)
 
 
 
-ggplot(final_cases, aes(x=Heavy.drinking, y=Total_prop, col = amenity_dense)) +
+ggplot(final_cases, aes(x=Heavy.drinking, y=TOTAL_prop, col = amenity)) +
   theme_classic()+
-  geom_point(alpha = 0.9, aes(colour=amenity_dense), size=4) + 
+  geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
  stat_smooth(method = "glm", family= "beta",formula = y ~ log(x), se = T, col = "gray", fill="lightgray") +
    xlab("Proportion of PHU which participates in heavy drinking regularly")+
   ylab("COVID-19 total cases (proportion)")+
@@ -113,9 +115,9 @@ ggplot(final_cases, aes(x=Heavy.drinking, y=Total_prop, col = amenity_dense)) +
   ggtitle("COVID-19 Cases in Ontario PHU's")+
   scale_color_gradientn(colors = c("blue", "gold", "red")) +
  
-ggrepel::geom_label_repel(data=data %>% filter(Heavy.drinking == 0.198), aes(label = Location_x, fill=factor(amenity_dense)),label.size = 0.3, color = "black",  nudge_x = 0.055, nudge_y = 0.0015)+
+ggrepel::geom_label_repel(data=data %>% filter(Heavy.drinking == 0.198), aes(label = Reporting_PHU, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.055, nudge_y = 0.0015)+
   
-geom_label( data=data %>% filter(Total_prop> 0.004),aes(label=Location_x, fill = factor(amenity_dense)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"), nudge_x = 0.028, nudge_y = 0.00015)+ 
+geom_label( data=data %>% filter(TOTAL_prop> 0.004),aes(label=Reporting_PHU, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"), nudge_x = 0.028, nudge_y = 0.00015)+ 
   
 guides(fill=FALSE)+
 scale_fill_manual(values = setNames(c("gold", "red"), levels(data$amenity)))
@@ -131,15 +133,15 @@ library(corrplot)
 library(glmnet)
 
 y=na.omit(final_fatalities)
-x=model.matrix(Fatal_prop~.,final_fatalities)[,-1]
+x=model.matrix(FATAL_prop~.,final_fatalities)[,-1]
 rownames(x)=c()
-y=as.matrix(final_fatalities$Fatal_prop)
+y=as.matrix(final_fatalities$FATAL_prop)
 
 lasso <- glmnet(x, y, alpha = 1)
 plot(lasso, label = TRUE)
 plot(lasso, xvar = "lambda", label = TRUE)
 
-regfit.full=regsubsets(Fatal_prop~.,final_fatalities, nvmax = 23)
+regfit.full=regsubsets(FATAL_prop~.,final_fatalities, nvmax = 23)
 reg.summary = summary(regfit.full)
 
 reg.summary
@@ -165,9 +167,9 @@ coef(cv.lasso, cv.lasso$lambda.min)
 #beta regression model...
 
 library(betareg)
-final_fatalities$Fatal_prop <- final_fatalities$Fatal_prop+0.00001
+final_fatalities$FATAL_prop <- final_fatalities$FATAL_prop+0.00001
 
-beta_model2 <- betareg(Fatal_prop~Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Chronic.obstructive.pulmonary.disease..COPD..35.years.and.over.+Heavy.drinking+Sense.of.belonging.to.local.community..somewhat.strong.or.very.strong+amenity_dense,data = final_fatalities, link = "loglog")
+beta_model2 <- betareg(FATAL_prop~Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Chronic.obstructive.pulmonary.disease..COPD..35.years.and.over.+Heavy.drinking+Sense.of.belonging.to.local.community..somewhat.strong.or.very.strong+amenity,data = final_fatalities, link = "loglog")
 summary(beta_model2)
 
 # checking the links.
@@ -182,9 +184,9 @@ plot(beta_model)
 
 ```{r}
 
-ggplot(final_fatalities, aes(x=Sense.of.belonging.to.local.community..somewhat.strong.or.very.strong, y=Fatal_prop, col = amenity_dense)) +
+ggplot(final_fatalities, aes(x=Sense.of.belonging.to.local.community..somewhat.strong.or.very.strong, y=FATAL_prop, col = amenity)) +
   theme_classic()+
-  geom_point(alpha = 0.9, aes(colour=amenity_dense), size=4) + 
+  geom_point(alpha = 0.9, aes(colour=amenity), size=4) + 
   xlab("Proportion of PHU which reports a strong sense of belonging to their community")+
   ylab("COVID-19 fatalities (proportion)")+
   labs(col = "Amenity Richness")+
@@ -193,7 +195,7 @@ ggplot(final_fatalities, aes(x=Sense.of.belonging.to.local.community..somewhat.s
 stat_smooth(method = "glm",formula = y ~ log(x), se = T, col = "gray", fill="lightgray") +
 #ggrepel::geom_label_repel(data=data %>% filter(hbp.prop < 0.16), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
   
-#geom_label_repel( data=data %>% filter(Fatal_prop > 0.00035),aes(label=Location_x, fill = factor(amenity_dense)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 3, nudge_y = 0.5)+ 
+#geom_label_repel( data=data %>% filter(FATAL_prop > 0.00035),aes(label=Reporting_PHU, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 3, nudge_y = 0.5)+ 
 
  # geom_label_repel( data=data %>% filter(hbp.prop < 0.16 & hbp.prop > 0.14),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.0275, nudge_y = 0.00002)+ 
 

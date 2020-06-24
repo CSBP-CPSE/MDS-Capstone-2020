@@ -1,35 +1,35 @@
 Reporting_PHU,FEMALE,MALE,TRANSGENDER,UNKNOWN,OTHER,CONTACT,NEITHER,TRAVEL-RELATED,NOT-RESOLVED,RESOLVED,FATAL,youth,20s,30s,40s,50s,60s,70s,80s,90s,TOTAL
-Algoma Public Health Unit,13,10,0,0,0,3,9,8,2,21,0,1,3,1,4,4,6,3,0,1,23
-Brant County Health Unit,68,59,0,0,0,61,44,18,7,115,5,8,24,15,25,24,12,10,6,3,127
-Chatham-Kent Health Unit,29,120,0,0,0,130,8,11,2,146,1,1,34,49,36,14,12,2,1,0,149
-Durham Region Health Department,997,641,0,0,0,496,1046,56,106,1353,179,61,164,181,205,304,188,139,219,177,1638
-Eastern Ontario Health Unit,82,77,0,0,0,86,39,33,11,136,12,6,14,19,18,33,33,15,12,9,159
-Grey Bruce Health Unit,57,37,0,1,0,28,55,10,4,91,0,7,10,12,10,17,19,6,9,5,95
-Haldimand-Norfolk Health Unit,146,250,0,1,0,110,150,11,35,331,31,10,52,83,80,52,33,16,41,30,397
-"Haliburton, Kawartha, Pine Ridge District Health Unit",114,71,0,0,0,44,107,28,6,160,19,6,10,18,17,29,34,25,29,17,185
-Halton Region Health Department,394,314,0,0,0,257,333,83,54,630,24,37,83,100,115,148,90,42,55,38,708
-Hamilton Public Health Services,424,335,0,0,0,439,236,61,57,659,43,40,148,91,96,116,88,69,73,38,759
-Hastings and Prince Edward Counties Health Unit,29,15,0,0,0,18,9,14,0,39,5,1,6,3,6,7,4,8,4,5,44
-Huron Perth District Health Unit,36,21,0,0,0,24,22,8,3,49,5,1,6,8,4,10,16,4,5,3,57
-"Kingston, Frontenac and Lennox & Addington Public Health",35,27,0,0,0,29,14,19,0,62,0,4,9,8,8,16,9,8,0,0,62
-Lambton Public Health,154,121,0,0,0,137,106,8,9,241,25,14,38,26,23,44,28,32,44,26,275
-"Leeds, Grenville and Lanark District Health Unit",241,110,0,0,0,213,68,24,1,298,52,12,22,25,28,29,39,54,85,57,351
-Middlesex-London Health Unit,344,237,0,0,0,275,238,56,34,490,57,21,114,65,64,100,67,49,61,40,581
-Niagara Region Public Health Department,395,328,0,0,0,272,357,87,37,625,61,32,107,93,97,86,78,59,97,74,723
-North Bay Parry Sound District Health Unit,13,14,0,0,0,4,14,9,0,26,1,2,3,2,3,6,8,1,2,0,27
-Northwestern Health Unit,8,19,0,0,0,5,10,10,4,23,0,2,4,8,4,5,3,0,0,1,27
-Ottawa Public Health,1208,822,0,0,0,695,396,190,65,1707,258,90,243,261,267,288,235,180,270,196,2030
-Peel Public Health,2713,2514,1,22,1,1509,3145,136,586,4363,302,312,964,732,800,905,609,347,367,213,5251
-Peterborough Public Health,50,42,0,0,0,32,30,30,3,87,2,5,18,11,12,15,14,6,7,4,92
-Porcupine Health Unit,35,30,0,0,0,33,23,7,0,57,8,4,1,11,7,10,17,8,4,3,65
-"Region of Waterloo, Public Health",681,504,1,3,1,321,706,53,67,1008,115,34,179,172,173,193,131,96,128,84,1190
-Renfrew County and District Health Unit,21,8,0,0,0,9,11,6,2,26,1,0,3,8,3,5,2,4,3,1,29
-Simcoe Muskoka District Health Unit,285,227,0,0,0,178,273,52,32,446,34,33,78,74,70,80,66,53,30,28,512
-Southwestern Public Health,47,32,0,0,0,48,15,16,5,70,4,3,7,12,10,22,12,10,2,1,79
-Sudbury & District Health Unit,40,24,0,0,0,17,22,20,0,62,2,4,12,5,6,18,6,11,2,0,64
-Thunder Bay District Health Unit,37,49,0,1,0,46,29,9,6,80,1,8,14,12,21,16,9,5,2,0,87
-Timiskaming Health Unit,12,6,0,0,0,7,9,2,0,18,0,2,6,2,0,3,2,2,0,1,18
-Toronto Public Health,6487,5500,4,209,6,5988,2768,370,1053,10205,948,486,1588,1687,1773,1963,1361,941,1384,1015,12206
-Wellington-Dufferin-Guelph Public Health,255,169,0,0,0,207,175,25,41,349,34,20,46,52,78,62,61,47,35,23,424
-Windsor-Essex County Health Unit,532,653,0,4,0,342,398,137,210,910,69,32,253,241,187,158,100,64,78,76,1189
-York Region Public Health Services,1509,1231,0,7,0,929,1302,165,188,2330,229,104,361,321,378,506,356,230,298,193,2747
+Algoma Public Health Unit,13,11,0,0,0,0,0,0,2,22,0,1,3,1,4,5,6,3,0,1,24
+Brant County Health Unit,71,59,0,0,0,0,0,0,3,122,5,9,24,15,25,25,13,10,6,3,130
+Chatham-Kent Health Unit,35,122,0,0,0,0,0,0,6,150,1,4,35,49,38,14,13,2,2,0,157
+Durham Region Health Department,1018,655,0,0,0,0,0,0,46,1447,180,70,171,186,206,309,194,140,219,178,1673
+Eastern Ontario Health Unit,86,78,0,0,0,0,0,0,11,141,12,7,14,19,19,34,34,15,13,9,164
+Grey Bruce Health Unit,63,39,0,0,0,0,0,0,8,94,0,7,11,12,9,20,22,6,10,5,102
+Haldimand-Norfolk Health Unit,148,276,0,1,0,0,0,0,16,372,37,11,56,87,91,58,35,16,41,30,425
+"Haliburton, Kawartha, Pine Ridge District Health Unit",120,73,0,0,0,0,0,0,7,166,20,7,13,19,19,30,34,25,29,17,193
+Halton Region Health Department,403,326,0,1,0,0,0,0,44,661,25,42,84,105,118,146,96,43,58,38,730
+Hamilton Public Health Services,449,353,0,0,0,0,0,0,50,707,45,58,158,95,99,117,93,69,74,39,802
+Hastings and Prince Edward Counties Health Unit,29,15,0,0,0,0,0,0,0,39,5,1,6,3,6,8,4,7,4,5,44
+Huron Perth District Health Unit,36,22,0,0,0,0,0,0,1,52,5,1,6,9,4,10,16,4,5,3,58
+"Kingston, Frontenac and Lennox & Addington Public Health",37,27,0,0,0,0,0,0,2,62,0,5,10,8,8,16,9,8,0,0,64
+Lambton Public Health,159,126,0,0,0,0,0,0,11,249,25,14,40,27,25,46,30,32,45,26,285
+"Leeds, Grenville and Lanark District Health Unit",243,110,0,0,0,0,0,0,2,299,52,12,22,25,28,29,40,54,86,57,353
+Middlesex-London Health Unit,358,252,0,0,0,0,0,0,26,527,57,27,122,69,66,102,70,52,62,40,610
+Niagara Region Public Health Department,405,335,0,0,0,0,0,0,16,663,61,33,111,94,100,89,79,60,98,76,740
+North Bay Parry Sound District Health Unit,13,15,0,0,0,0,0,0,1,26,1,2,3,2,3,6,9,1,2,0,28
+Northwestern Health Unit,13,23,0,0,0,0,0,0,9,27,0,3,7,9,5,7,4,0,0,1,36
+Ottawa Public Health,1228,837,0,0,0,0,0,0,52,1751,262,94,257,263,274,293,237,181,270,196,2065
+Peel Public Health,2862,2689,1,22,1,0,0,0,464,4808,303,363,1064,785,842,945,640,356,365,213,5575
+Peterborough Public Health,51,44,0,0,0,0,0,0,4,89,2,5,18,11,13,15,14,8,7,4,95
+Porcupine Health Unit,36,31,0,0,0,0,0,0,2,57,8,4,2,11,7,10,17,9,4,3,67
+"Region of Waterloo, Public Health",715,523,1,4,1,0,0,0,57,1071,116,43,188,182,183,201,131,98,133,85,1244
+Renfrew County and District Health Unit,20,7,0,0,0,0,0,0,1,25,1,0,3,6,3,5,2,4,3,1,27
+Simcoe Muskoka District Health Unit,311,266,0,0,0,0,0,0,67,476,34,40,93,88,78,88,74,58,30,28,577
+Southwestern Public Health,49,32,0,0,0,0,0,0,0,77,4,3,8,12,10,23,12,10,2,1,81
+Sudbury & District Health Unit,41,26,0,0,0,0,0,0,3,62,2,4,14,5,6,18,7,11,2,0,67
+Thunder Bay District Health Unit,40,49,0,1,0,0,0,0,6,83,1,9,16,12,21,16,9,5,2,0,90
+Timiskaming Health Unit,12,6,0,0,0,0,0,0,0,18,0,2,6,2,0,3,2,2,0,1,18
+Toronto Public Health,6805,5774,5,219,6,0,0,0,697,11087,1025,522,1699,1781,1838,2081,1436,974,1432,1041,12809
+Wellington-Dufferin-Guelph Public Health,279,187,0,0,0,0,0,0,55,375,36,24,58,60,81,68,65,50,37,23,466
+Windsor-Essex County Health Unit,562,791,0,4,0,0,0,0,244,1044,69,38,297,294,226,178,103,67,78,76,1357
+York Region Public Health Services,1562,1291,0,7,0,0,0,0,136,2487,237,117,381,342,390,526,371,241,299,193,2860

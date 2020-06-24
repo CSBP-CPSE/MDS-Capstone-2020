@@ -1,0 +1,53 @@
+---
+title: "Weekly Team Log - WEEK 6"
+author: "Sofia Bahmutsky"
+date: "02/06/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Weekly Team Log - WEEK 6
+
+## Week of June 1 to June 8
+
+## Monday June 1
+
+1. Group meeting 9:30-4pm
+
+2. Stats work finishing up
+
+3. KT - Make presentation slides
+
+
+
+## Tuesday June 2
+
+1. Watching everyones presentations.. (8:30-12:30)
+
+2. Our presentation!
+
+
+## Wednesday June 3
+
+1. Group meeting 9:30-4pm
+
+2. Meeting with Bruno/Marian (11am - 12pm)
+
+3. D3 tutorials...
+
+4. Fixing some of the stats and graphs to refelct what we talked about in the meeting.
+
+
+## Thursday June 4
+
+1. D3 learning individually
+
+
+
+## Weekend
+
+Work on tutorial and following it to make the javascript maps. some progress, making questinos for Bruno for monday help session. 

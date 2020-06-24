@@ -1,5 +1,5 @@
 ---
-title: "PHU more stats."
+title: "PHU Statistcs"
 author: "Sofia Bahmutsky"
 date: "28/05/2020"
 output:
@@ -287,7 +287,7 @@ ggplot(final, aes(x=hbp.prop, y=FATALprop, col = amenity)) +
   ylim(0, 0.00035)+
   xlim(0.12, 0.26)+
   scale_color_gradientn(colors = c("blue", "gold", "red")) +
-stat_smooth(method = "glm", family= "beta",formula = y ~ log(x), se = F, col = "gray") +
+stat_smooth(method = "glm", family= "beta",formula = y ~ log(x), col = "gray") +
 #ggrepel::geom_label_repel(data=data %>% filter(hbp.prop < 0.16), aes(label = Location, fill=factor(amenity)),label.size = 0.3, color = "black",  nudge_x = 0.025, nudge_y = 0)+
   
 geom_label_repel( data=data %>% filter(hbp.prop < 0.14),aes(label=Location, fill = factor(amenity)), color = "black",label.size = 0.3, label.padding = unit(0.15, "lines"),nudge_x = 0.0275, nudge_y = -0.00002)+ 

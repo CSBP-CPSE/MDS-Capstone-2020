@@ -5,8 +5,8 @@ date: "15/06/2020"
 output: html_document
 ---
 
-## Import the data
-```{r results='hide'}
+## Import and prepare the data
+```{r results="hide"}
 library(skimr)
 
 # Import the data
@@ -14,8 +14,9 @@ df <- read.csv("merged_LTC_odhf_quality.csv", na.strings="", header=TRUE)
 skim(df)
 ```
 
-## Add derived variables
-```{r }
+
+```{r, include=FALSE}
+# Add derived variables
 # Add a column with outbreak status
 df$outbreak <- with(df, ifelse(is.na(status), 'no', 'yes'))
 
@@ -44,8 +45,8 @@ df$X2y_noncomplaints <- df$X2y_inspections - df$X2y_complaints
 
 ```
 
-## Change variable types
-```{r }
+```{r, echo=FALSE}
+# Change variable types
 # Update data types for some columns
 df[, 'outbreak'] <- as.factor(df[, 'outbreak'])
 df[, 'region'] <- as.factor(df[, 'region'])
@@ -59,8 +60,9 @@ for (each in listofcol){
 skim(df)
 ```
 
-## Generate the data for analysis
-```{r }
+
+```{r, include=FALSE}
+# Generate the data for analysis
 # Create lists of variables used to filter data for analysis
 keep = c("outbreak", "home_type", "number_beds")
 profile = c("short_stay", "residents_council", "family_council", "accreditation")
@@ -80,8 +82,9 @@ data <- subset(df, select = c(keep, profile, 'region', quality, all_inspections,
 
 ```
 
+
+```{r, include=FALSE}
 ## Assessing skewness
-```{r }
 # Check for R skewness in numeric predictors
 library(e1071)
 
@@ -101,13 +104,13 @@ We see above that the inspections and number of beds data are highly right skewe
 The highly skewed variables will have to be transformed for the analysis, but first we explore the variables to assess for any zero values. 
 
 
-```{r, results='hide'}
+```{r, include=FALSE}
 for (each in listofcols){
   print(each)
   print(summary(df[[each]]))
 }
 ```
-We see above that the following variables contain zeros:
+We see that the following variables contain zeros:
   - antipsychotic_percent
   - pressure_ulcers_percent
   - pain_percent
@@ -119,7 +122,7 @@ We see above that the following variables contain zeros:
   - X2y_ccw
 
 ## Explore the variables for transformation
-```{r }
+```{r, fig.show="hide"}
 # Create a list of numeric variables with 0 values
 list0s <- c('antipsychotic_percent', 'pressure_ulcers_percent', 'pain_percent', complaints, 'X2y_noncomplaints', critical, withOrders, 'total_cc', 'X5y_cc', 'X2y_cc', 'X2y_ccw')
 
@@ -135,7 +138,7 @@ for (each in listofcols) {
 
 ```
 
-As shown above a square root transformation seems best for the following data:
+A square root transformation seems best for the following data:
   - number_beds
   
 A log transformation seems better for the following data:
@@ -145,7 +148,7 @@ A log transformation seems better for the following data:
   - total_ccw
   - X5y_ccw
   
-```{r }
+```{r, fig.show="hide"}
 # Visualize the effect of a square root transformation on the variables with 0s
 for (each in list0s) {  
   plotNormalHistogram(x = data[[each]], main = each)
@@ -153,9 +156,9 @@ for (each in list0s) {
 }
 
 ```
-As shown above, in all cases where variables contain 0s, a square root transformation seems to improve the distribution. 
+As shown, in all cases where variables contain 0s, a square root transformation seems to improve the distribution. 
 
-## Log transform the data
+## Transform the data
 ```{r }
 # Log transform in place
 data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')] <- log(data[c(all_inspections, 'total_noncomplaints', 'X5y_noncomplaints', 'total_ccw', 'X5y_ccw')])
@@ -166,8 +169,9 @@ data[c('number_beds', list0s)] <- sqrt(data[c('number_beds', list0s)])
 skim(data)
 ```
 
-## Inspect the distribution of the categorical variables
+
 ```{r }
+# Inspect the distribution of the categorical variables
 xtabs(~outbreak + home_type, data=df)
 xtabs(~accreditation + home_type, data=df)
 xtabs(~short_stay + home_type, data=df)
@@ -180,15 +184,15 @@ xtabs(~family_council + outbreak, data=df)
 xtabs(~family_council + residents_council, data=df)
 ```
 
-
+## Fit logistic regression
 ```{r }
-# Fit logistic regression using transformed inspection counts
+# Fit logistic regression using transformed data
 fit = glm(outbreak~., family=binomial, data=data)
 summary(fit)
 ```
 
-## Backwards selection
-```{r, results="hide"}
+### Backwards selection
+```{r, include=FALSE}
 fit <- update(fit, .~. -pressure_ulcers_percent)
 summary(fit)
 fit <- update(fit, .~. -X5y_complaints)
@@ -246,15 +250,16 @@ summary(fit)
 fit <- update(fit, .~. -total_inspections)
 summary(fit)
 fit <- update(fit, .~. -home_type)
-summary(fit)
+
 ```
 
 
 ```{r }
+# Backwards selection
 summary(fit)
 ```
 
-As shown above when all variables are included in the initial regression and then backwards selection is used for variable selection, the significant variables are number of beds, total complaints and region. 
+As shown when all variables are included in the initial regression and then backwards selection is used for variable selection, the significant variables are number of beds, total complaints and region. 
 
 ```{r }
 # Calculate McFadden's pseudo R2
@@ -266,7 +271,7 @@ print((ll.null - ll.proposed)/ll.null)
 ```
 
 ## Visualize the model
-```{r }
+```{r, echo=FALSE}
 # Create a new dataframe showing probability of outbreak and outbreak status
 predicted.data <- data.frame(probability.of.outbreak=fit$fitted.values, outbreak=data$outbreak)
 
@@ -287,16 +292,16 @@ ggplot(data = predicted.data, aes(x=rank, y=probability.of.outbreak)) +
 
 ```
 
-## Repeat the logistic regression with selected variables
+
 ```{r }
+# Repeat the logistic regression with selected variables
 data_selected <- subset(df, select= c('outbreak', 'home_type', 'number_beds', noncomplaints, complaints, withOrders))
 skim(data_selected)
 fit = glm(outbreak~., family=binomial, data=data_selected)
 summary(fit)
 ```
 
-## Backwards Selection
-```{r, results="hide" }
+```{r, include=FALSE}
 fit <- update(fit, .~. -X2y_withOrders)
 summary(fit)
 fit <- update(fit, .~. -X2y_complaints)
@@ -310,16 +315,18 @@ summary(fit)
 fit <- update(fit, .~. -X5y_complaints)
 summary(fit)
 fit <- update(fit, .~. -X5y_withOrders)
-summary(fit)
 
 ```
 
+
 ```{r }
+# Backwards Selection
 summary(fit)
 ```
 
-## Repeat the logistic regression with selected variables
+
 ```{r }
+### Repeat the logistic regression with selected variables
 data_selected <- subset(df, select= c('outbreak', 'home_type', 'number_beds', all_inspections, complaints, withOrders))
 skim(data_selected)
 fit = glm(outbreak~., family=binomial, data=data_selected)
@@ -328,7 +335,7 @@ summary(fit)
 ```
 
 
-```{r, results='hide' }
+```{r, include=FALSE}
 fit <- update(fit, .~. -X2y_complaints)
 summary(fit)
 fit <- update(fit, .~. -X2y_withOrders)
@@ -346,6 +353,7 @@ summary(fit)
 
 ```
 ```{r }
+# Backwards Selection
 summary(fit)
 ```
 

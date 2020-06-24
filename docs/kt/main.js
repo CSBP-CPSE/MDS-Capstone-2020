@@ -196,6 +196,7 @@ function LoadData(map, key, points) {
 	 							.html(meta.ENG_LABEL + "</br> "
 										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
+										+ "Fatality Ratio: " + meta.fatality_ratio + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)
 								.style("left", (d3.event.pageX + 20) + "px")
 								.style("top", (d3.event.pageY - 120) + "px");

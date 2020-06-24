@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Wednesday June 10
 
-1. Group meeting 9:30 - ?
+1. Group meeting 9:30 - 4
 
 2. meeting with Bruno and Marian, going through the latest progress.
 

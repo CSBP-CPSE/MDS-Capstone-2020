@@ -84,7 +84,7 @@ coef(cv.lasso, cv.lasso$lambda.min)
 beta regression model...
 ```{r}
 library(betareg)
-beta_model <- betareg(TOTAL_prop~Arthritis..15.years.and.over.+Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Heavy.drinking+amenity,data = final_cases, link = "loglog")
+beta_model <- betareg(TOTAL_prop~Arthritis..15.years.and.over.+Body.mass.index..adjusted.self.reported..adult..18.years.and.over...obese+Diabetes+Heavy.drinking+Physical.activity..150.minutes.per.week..adult..18.years.and.over.+Sense.of.belonging.to.local.community..somewhat.strong.or.very.strong +amenity,data = final_cases, link = "loglog")
 summary(beta_model)
 
 # checking the links.

@@ -194,7 +194,7 @@ function LoadData(map, key, points) {
 
 	 							map.tooltip.classed('hidden', false)
 	 							.html(meta.ENG_LABEL + "</br> "
-										+ "Incidence Rate Ratio: " + meta.TOTAL_prop + "</br> "
+										+ "Proportion: " + meta.TOTAL_prop + "</br> "
 										+ "Fatalities: " + meta.FATAL + "</br> "
 										+ "Fatality Ratio: " + meta.fatality_ratio + "</br> "
 										+ "Amenity Score: " + meta.amenity_dense)

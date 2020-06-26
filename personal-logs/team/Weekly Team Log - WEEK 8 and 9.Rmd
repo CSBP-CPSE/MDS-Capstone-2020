@@ -1,0 +1,25 @@
+---
+title: "Weekly Team Log - WEEK 8 and 9"
+author: "Sofia Bahmutsky"
+date: "24/06/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Weekly Team Log - WEEK 8 and 9
+
+## Weeks of June 16 to June 26
+
+1. Finishing of D# webpage by KT
+
+2. Ngan and Sofia, re-running all stats using updated datasets which included more health preidctors.
+
+3. Writing the research paper
+
+4. PResenting on Tuesday June 23, and also on Friday 26.
+
+5. Incorporating more of MArians requests for the webpage (KT)
+
+6. Interpretation of results, trying to tie together our findings. 

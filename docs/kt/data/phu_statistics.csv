@@ -1,35 +1,35 @@
 HR_UID,ENG_LABEL,FATAL,TOTAL,DBPOP,TOTAL_prop,amenity_dense,fatality_ratio
-3549,Northwestern Health Unit,0,36,74026,48.63,0.0,0.0
+3549,Northwestern Health Unit,0,42,74026,56.74,0.0,0.0
 3563,Timiskaming Health Unit,0,18,30573,58.88,0.0,0.0
-3540,Chatham-Kent Health Unit,1,157,103551,151.62,0.0,0.64
-3556,Porcupine Health Unit,8,67,82838,80.88,0.0,11.94
-3533,Grey Bruce Health Unit,0,102,163521,62.38,0.0,0.0
-3534,Haldimand-Norfolk Health Unit,37,425,108412,392.02,0.0,8.71
-3531,Southwestern Public Health,4,81,205151,39.48,0.0,4.94
-3547,North Bay Parry Sound District Health Unit,1,28,126943,22.06,0.0,3.57
+3540,Chatham-Kent Health Unit,1,168,103551,162.24,0.0,0.6
+3556,Porcupine Health Unit,8,68,82838,82.09,0.0,11.76
+3533,Grey Bruce Health Unit,0,108,163521,66.05,0.0,0.0
+3534,Haldimand-Norfolk Health Unit,37,431,108412,397.56,0.0,8.58
+3531,Southwestern Public Health,5,86,205151,41.92,0.0,5.81
+3547,North Bay Parry Sound District Health Unit,1,35,126943,27.57,0.0,2.86
 3538,Hastings and Prince Edward Counties Health Unit,5,44,161160,27.3,0.0,11.36
-3539,Huron Perth District Health Unit,5,58,141116,41.1,0.0,8.62
-3557,Renfrew County and District Health Unit,1,27,100667,26.82,0.0,3.7
-3542,Lambton Public Health,25,285,125652,226.82,0.0,8.77
-3535,"Haliburton, Kawartha, Pine Ridge District Health Unit",20,193,186141,103.68,0.0042,10.36
-3558,Eastern Ontario Health Unit,12,164,196829,83.32,0.0121,7.32
-3526,Algoma Public Health Unit,0,24,112847,21.27,0.0126,0.0
-3543,"Leeds, Grenville and Lanark District Health Unit",52,353,171222,206.17,0.0275,14.73
-3560,Simcoe Muskoka District Health Unit,34,577,537217,107.41,0.0282,5.89
+3539,Huron Perth District Health Unit,5,59,141116,41.81,0.0,8.47
+3557,Renfrew County and District Health Unit,1,29,100667,28.81,0.0,3.45
+3542,Lambton Public Health,25,286,125652,227.61,0.0,8.74
+3535,"Haliburton, Kawartha, Pine Ridge District Health Unit",20,205,186141,110.13,0.0042,9.76
+3558,Eastern Ontario Health Unit,12,168,196829,85.35,0.0121,7.14
+3526,Algoma Public Health Unit,0,25,112847,22.15,0.0126,0.0
+3543,"Leeds, Grenville and Lanark District Health Unit",52,355,171222,207.33,0.0275,14.65
+3560,Simcoe Muskoka District Health Unit,34,619,537217,115.22,0.0282,5.49
 3555,Peterborough Public Health,2,95,130697,72.69,0.0472,2.11
 3561,Sudbury & District Health Unit,2,67,193636,34.6,0.0604,2.99
-3570,York Region Public Health Services,237,2860,1131052,252.86,0.0766,8.29
-3568,Windsor-Essex County Health Unit,69,1357,397008,341.81,0.0781,5.08
-3527,Brant County Health Unit,5,130,137290,94.69,0.0841,3.85
-3562,Thunder Bay District Health Unit,1,90,149563,60.18,0.0844,1.11
-3546,Niagara Region Public Health Department,61,740,444486,166.48,0.0947,8.24
-3544,Middlesex-London Health Unit,57,610,452066,134.94,0.1033,9.34
-3536,Halton Region Health Department,25,730,561949,129.91,0.1064,3.42
-3566,Wellington-Dufferin-Guelph Public Health,36,466,267523,174.19,0.1071,7.73
-3541,"Kingston, Frontenac and Lennox & Addington Public Health",0,64,193986,32.99,0.1222,0.0
-3530,Durham Region Health Department,180,1673,655838,255.09,0.1251,10.76
-3565,"Region of Waterloo, Public Health",116,1244,534525,232.73,0.1438,9.32
-3553,Peel Public Health,303,5575,1388271,401.58,0.1847,5.43
-3551,Ottawa Public Health,262,2065,936641,220.47,0.206,12.69
-3537,Hamilton Public Health Services,45,802,534386,150.08,0.2723,5.61
-3595,Toronto Public Health,1025,12809,2694831,475.32,0.6598,8.0
+3570,York Region Public Health Services,249,3130,1131052,276.73,0.0766,7.96
+3568,Windsor-Essex County Health Unit,69,1805,397008,454.65,0.0781,3.82
+3527,Brant County Health Unit,5,143,137290,104.16,0.0841,3.5
+3562,Thunder Bay District Health Unit,1,93,149563,62.18,0.0844,1.08
+3546,Niagara Region Public Health Department,64,776,444486,174.58,0.0947,8.25
+3544,Middlesex-London Health Unit,57,640,452066,141.57,0.1033,8.91
+3536,Halton Region Health Department,25,794,561949,141.29,0.1064,3.15
+3566,Wellington-Dufferin-Guelph Public Health,36,500,267523,186.9,0.1071,7.2
+3541,"Kingston, Frontenac and Lennox & Addington Public Health",0,105,193986,54.13,0.1222,0.0
+3530,Durham Region Health Department,181,1751,655838,266.99,0.1251,10.34
+3565,"Region of Waterloo, Public Health",118,1328,534525,248.44,0.1438,8.89
+3553,Peel Public Health,308,6184,1388271,445.45,0.1847,4.98
+3551,Ottawa Public Health,263,2158,936641,230.4,0.206,12.19
+3537,Hamilton Public Health Services,44,851,534386,159.25,0.2723,5.17
+3595,Toronto Public Health,1092,13673,2694831,507.38,0.6598,7.99
